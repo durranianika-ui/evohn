@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://durranianika-ui.github.io/evohn
+Sitemap: https://durranianika-ui.github.io/evohn/sitemap.xml
