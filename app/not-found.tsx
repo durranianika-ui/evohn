@@ -22,7 +22,7 @@ export default function NotFound() {
         </p>
 
         <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <ButtonLink href="/products" tone="dark">
+          <ButtonLink href="/catalogue" tone="dark">
             View Catalogue
           </ButtonLink>
           <WhatsAppCTA intent="advisor" variant="outline" tone="dark" />

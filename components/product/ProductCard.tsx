@@ -2,14 +2,19 @@ import Link from "next/link";
 import { ProductMedia } from "./ProductMedia";
 import { getCategory } from "@/data/categories";
 import type { Product } from "@/data/products";
+import { currentBatch } from "@/data/lab-results";
 import { cn } from "@/lib/utils";
 
 /**
  * Catalogue card.
  *
  * The whole card is a single link, so the affordance is one uninterrupted
- * target rather than a link nested inside a link. The "View Product" cue is
+ * target rather than a link nested inside a link. The "View compound" cue is
  * therefore styled text driven by the card's own hover group.
+ *
+ * The purity figure shown is the assayed result for the current batch, read
+ * from the certificate — not the specification. Where no batch has been
+ * released the badge is omitted rather than falling back to the target.
  */
 export function ProductCard({
   product,
@@ -17,25 +22,29 @@ export function ProductCard({
   tone = "light",
   className,
   priority = false,
+  sizes,
 }: {
   product: Product;
   index?: number;
   tone?: "light" | "dark";
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }) {
   const category = getCategory(product.category);
+  const batch = currentBatch(product.slug);
   const dark = tone === "dark";
 
   return (
     <Link
-      href={`/products/${product.slug}`}
+      href={`/catalogue/${product.slug}`}
       className={cn("group/card block", className)}
     >
       <div className="relative overflow-hidden">
         <ProductMedia
           product={product}
           priority={priority}
+          sizes={sizes}
           className={cn(
             "aspect-4/5 w-full",
             "transition-transform duration-[1.2s] ease-brand",
@@ -51,13 +60,28 @@ export function ProductCard({
         />
 
         {index !== undefined ? (
+          <span className="type-label absolute top-5 right-5 tabular-nums text-carbon/62">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        ) : null}
+
+        {/* Verified band — slides up from the foot of the plate on hover. */}
+        {batch ? (
           <span
             className={cn(
-              "type-label absolute top-5 right-5 tabular-nums",
-              "text-carbon/62",
+              "absolute inset-x-0 bottom-0 flex items-center justify-between gap-4",
+              "bg-soft/92 px-5 py-3.5 backdrop-blur-sm",
+              "translate-y-full transition-transform duration-500 ease-brand",
+              "group-hover/card:translate-y-0",
+              "motion-reduce:translate-y-0 motion-reduce:transition-none",
             )}
           >
-            {String(index + 1).padStart(2, "0")}
+            <span className="type-label text-carbon/62">
+              Batch {batch.batch}
+            </span>
+            <span className="type-label tabular-nums text-carbon">
+              {batch.purity}
+            </span>
           </span>
         ) : null}
       </div>
@@ -73,12 +97,7 @@ export function ProductCard({
           <span className="tabular-nums">{product.dosage}</span>
         </div>
 
-        <h3
-          className={cn(
-            "type-title mt-4",
-            dark ? "text-soft" : "text-carbon",
-          )}
-        >
+        <h3 className={cn("type-title mt-4", dark ? "text-soft" : "text-carbon")}>
           {product.name}
         </h3>
 
@@ -98,7 +117,7 @@ export function ProductCard({
           )}
         >
           <span className="relative">
-            View Product
+            View compound
             <span
               aria-hidden
               className={cn(

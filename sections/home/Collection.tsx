@@ -30,8 +30,8 @@ export function Collection() {
             className="lg:max-w-3xl"
           />
           <Reveal delay={0.2} className="shrink-0">
-            <ButtonLink href="/products" tone="light" variant="outline">
-              Browse All Products
+            <ButtonLink href="/catalogue" tone="light" variant="outline">
+              Browse the Catalogue
             </ButtonLink>
           </Reveal>
         </div>

@@ -1,5 +1,12 @@
 import { ButtonExternal } from "@/components/ui/Button";
-import { CTA_LABEL, whatsappHref, type EnquiryIntent } from "@/lib/whatsapp";
+import {
+  CTA_LABEL,
+  enquiryMessage,
+  whatsappHref,
+  whatsappConfigured,
+  type EnquiryIntent,
+} from "@/lib/whatsapp";
+import { site } from "@/data/site";
 
 interface WhatsAppCTAProps {
   /** When supplied, the message names the product and the label becomes product-specific. */
@@ -19,6 +26,11 @@ interface WhatsAppCTAProps {
  * There is no cart, checkout or ordering layer anywhere in this project —
  * every commercial intent resolves to a WhatsApp conversation with the
  * product already named in the opening message.
+ *
+ * While the number in `data/site.ts` is still the placeholder, the action
+ * falls back to a pre-composed email rather than emitting a `wa.me` link that
+ * would resolve to nothing. Replace the number and every CTA on the site
+ * switches over with no further change.
  */
 export function WhatsAppCTA({
   product,
@@ -28,8 +40,16 @@ export function WhatsAppCTA({
   tone = "light",
   className,
 }: WhatsAppCTAProps) {
-  const href = whatsappHref(product, intent);
   const text = label ?? CTA_LABEL[intent];
+  const message = enquiryMessage(product, intent);
+
+  const href = whatsappConfigured
+    ? whatsappHref(product, intent)
+    : `mailto:${site.email}?subject=${encodeURIComponent(
+        product ? `Enquiry — ${product}` : "Enquiry",
+      )}&body=${encodeURIComponent(message)}`;
+
+  const channel = whatsappConfigured ? "WhatsApp" : "email";
 
   return (
     <ButtonExternal
@@ -39,7 +59,9 @@ export function WhatsAppCTA({
       className={className}
       data-analytics="whatsapp-enquiry"
       aria-label={
-        product ? `${text} about ${product} on WhatsApp` : `${text} on WhatsApp`
+        product
+          ? `${text} about ${product} by ${channel}`
+          : `${text} by ${channel}`
       }
     >
       {text}

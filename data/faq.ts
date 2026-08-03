@@ -80,6 +80,61 @@ export const faqGroups: FaqGroup[] = [
     ],
   },
   {
+    title: "Research Stacks",
+    items: [
+      {
+        question: "Are the compounds in a stack supplied pre-mixed?",
+        answer:
+          "No. Every component arrives in its own vial with its own batch number and its own certificate of analysis. Pre-mixing would make a result untraceable to the analysis that produced it, and it would force the whole preparation onto the shortest stability window in the set.",
+      },
+      {
+        question: "Can I request a single component from a stack?",
+        answer:
+          "Yes. Every compound in every grouping is listed individually in the catalogue. A stack describes how compounds are studied together; it does not restrict how they are supplied.",
+      },
+      {
+        question: "Is the protocol information administration guidance?",
+        answer:
+          "No. It describes how the grouping is handled and sequenced in the published record — reconstitution order, documentation, and the constraints imposed by differing stability profiles. Nothing in it is guidance on administration, and none of it should be read as such.",
+      },
+      {
+        question: "Which stack should I be looking at?",
+        answer:
+          "That depends on the endpoint you are measuring rather than the outcome you are interested in. Describe the measurement to a specialist and they will say which grouping the literature would point at — including when the honest answer is a single compound rather than a set.",
+      },
+    ],
+  },
+  {
+    title: "Lab Results",
+    items: [
+      {
+        question: "Where do I find the certificate for my batch?",
+        answer:
+          "Every published certificate is in the lab results library, indexed by compound. The batch number printed on the vial matches the batch number on the certificate exactly — if it does not, tell us before you open the vial.",
+      },
+      {
+        question: "Why are superseded batches still published?",
+        answer:
+          "Because a result produced months ago needs the certificate that released the material it used, not the one that happens to be current. Archived batches remain on the site permanently for that reason.",
+      },
+      {
+        question: "Can I confirm a certificate with the laboratory directly?",
+        answer:
+          "Yes, and you should. Every certificate carries an accession number issued by the testing laboratory, which the laboratory can retrieve independently of us. That is the point of publishing it. The desk will arrange the confirmation rather than vouch for it.",
+      },
+      {
+        question: "Why does the assayed content differ from the label?",
+        answer:
+          "The label states nominal strength; the certificate states what the laboratory found. The two are rarely identical. Where a compound is consumed stoichiometrically rather than acting catalytically, the assayed figure is the one to build the calculation on.",
+      },
+      {
+        question: "What happens to a batch that misses specification?",
+        answer:
+          "It is rejected. There is no re-grade and no intermediate category, because an intermediate category is where standards erode quietly.",
+      },
+    ],
+  },
+  {
     title: "Compliance",
     items: [
       {

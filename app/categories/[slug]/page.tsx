@@ -47,7 +47,7 @@ export default async function CategoryPage(props: PageProps<"/categories/[slug]"
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", href: "/" },
-          { name: "Catalogue", href: "/products" },
+          { name: "Catalogue", href: "/catalogue" },
           { name: category.name, href: `/categories/${category.slug}` },
         ])}
       />
@@ -58,7 +58,7 @@ export default async function CategoryPage(props: PageProps<"/categories/[slug]"
         body={category.description}
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Catalogue", href: "/products" },
+          { name: "Catalogue", href: "/catalogue" },
           { name: category.name, href: `/categories/${category.slug}` },
         ]}
         meta={[
@@ -109,7 +109,7 @@ export default async function CategoryPage(props: PageProps<"/categories/[slug]"
       <CallToAction
         eyebrow="Enquiries"
         title={`Discuss ${category.name.toLowerCase()}\nwith a specialist.`}
-        secondary={{ label: "Full Catalogue", href: "/products" }}
+        secondary={{ label: "Full Catalogue", href: "/catalogue" }}
       />
     </>
   );

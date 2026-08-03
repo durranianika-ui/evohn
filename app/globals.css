@@ -71,6 +71,7 @@
 
   --animate-marquee: marquee 46s linear infinite;
   --animate-drift: drift 9s var(--ease-soft) infinite;
+  --animate-shimmer: shimmer 1.6s var(--ease-soft) infinite;
 }
 
 @keyframes marquee {
@@ -89,6 +90,16 @@
   }
   50% {
     transform: translate3d(0, -14px, 0);
+  }
+}
+
+/* Loading placeholders: a slow band travelling across the plate. */
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
   }
 }
 

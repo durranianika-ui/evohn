@@ -65,7 +65,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.74} className="mt-8 flex flex-wrap gap-4">
-              <ButtonLink href="/products" tone="dark">
+              <ButtonLink href="/catalogue" tone="dark">
                 View Catalogue
               </ButtonLink>
               <WhatsAppCTA intent="specialist" variant="outline" tone="dark" />

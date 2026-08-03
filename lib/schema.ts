@@ -1,5 +1,7 @@
 import { categories, getCategory } from "@/data/categories";
 import type { Product } from "@/data/products";
+import type { Article } from "@/data/journal";
+import type { Stack } from "@/data/stacks";
 import { allFaqItems } from "@/data/faq";
 import { site } from "@/data/site";
 
@@ -50,7 +52,7 @@ export function productSchema(product: Product) {
     name: product.name,
     description: product.summary,
     category: category.name,
-    url: `${site.url}/products/${product.slug}`,
+    url: `${site.url}/catalogue/${product.slug}`,
     brand: { "@type": "Brand", name: site.name },
     manufacturer: { "@type": "Organization", name: site.name },
     additionalProperty: [
@@ -89,12 +91,52 @@ export function faqSchema() {
   };
 }
 
+/**
+ * Journal entries are Articles, not blog posts — the distinction matters to
+ * how they are surfaced, and the content is reference writing rather than
+ * news. No `image` node is emitted while photography is outstanding.
+ */
+export function articleSchema(article: Article) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    url: `${site.url}/journal/${article.slug}`,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: { "@type": "Organization", name: site.name },
+    publisher: { "@type": "Organization", name: site.name },
+    isAccessibleForFree: true,
+  };
+}
+
+/**
+ * A stack is described as an ItemList of the compounds it groups. Modelling
+ * it as a Product would imply a purchasable unit, which it is not.
+ */
+export function stackSchema(stack: Stack) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: stack.name,
+    description: stack.tagline,
+    url: `${site.url}/stacks/${stack.slug}`,
+    numberOfItems: stack.includes.length,
+    itemListElement: stack.includes.map((entry, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${site.url}/catalogue/${entry.slug}`,
+    })),
+  };
+}
+
 export function catalogueSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: `${site.name} Catalogue`,
-    url: `${site.url}/products`,
+    url: `${site.url}/catalogue`,
     description: site.description,
     hasPart: categories.map((category) => ({
       "@type": "CollectionPage",
