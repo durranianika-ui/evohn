@@ -11,7 +11,7 @@ export function Philosophy() {
   const editorial = "/editorial/philosophy-vial.jpg";
 
   return (
-    <section className="section-y bg-soft text-carbon">
+    <section id="mission" className="section-y scroll-mt-24 bg-soft text-carbon">
       <div className="container-content">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">

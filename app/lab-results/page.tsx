@@ -131,7 +131,7 @@ export default function LabResultsPage() {
                 rejected — there is no intermediate category.
               </p>
               <Link
-                href="/science/manufacturing"
+                href="/quality"
                 className="type-label mt-10 inline-flex items-center gap-3 text-soft"
               >
                 How material is made
@@ -236,7 +236,7 @@ export default function LabResultsPage() {
         eyebrow="Documentation"
         title={"Need a historical\nbatch?"}
         body="Archived certificates, retained-sample queries and confirmation direct from the issuing laboratory are all handled by the research desk."
-        secondary={{ label: "Analytical methods", href: "/science/analytical-methods" }}
+        secondary={{ label: "Quality process", href: "/quality" }}
       />
     </>
   );

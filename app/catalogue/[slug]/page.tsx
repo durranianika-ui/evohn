@@ -149,7 +149,7 @@ export default async function ProductPage(
                         style={{ backgroundColor: category.token }}
                       />
                       <Link
-                        href={`/categories/${category.slug}`}
+                        href={`/catalogue?domain=${category.slug}`}
                         className="type-label text-carbon/62 transition-colors duration-400 ease-brand hover:text-carbon"
                       >
                         {category.name}
@@ -494,7 +494,7 @@ export default async function ProductPage(
 
           <Reveal delay={0.2} className="mt-14">
             <Link
-              href="/science/reconstitution"
+              href="/reconstitution"
               className="type-label inline-flex items-center gap-3 border border-carbon/20 px-7 py-4 text-carbon transition-colors duration-400 ease-brand hover:border-carbon"
             >
               Reconstitution guide

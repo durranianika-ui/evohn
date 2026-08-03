@@ -174,7 +174,7 @@ export default async function LabResultPage(
                     Compound entry
                   </Link>
                   <Link
-                    href="/science/analytical-methods"
+                    href="/quality"
                     className="type-label text-carbon/62 transition-colors duration-400 ease-brand hover:text-carbon"
                   >
                     Method notes

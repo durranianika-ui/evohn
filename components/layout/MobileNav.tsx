@@ -17,9 +17,7 @@ import { cn } from "@/lib/utils";
  */
 
 function children(item: NavItem): NavLink[] {
-  if (item.menu) return item.menu;
-  if (item.mega) return item.mega.columns.flatMap((c) => c.links);
-  return [];
+  return item.menu?.links ?? [];
 }
 
 function Section({
@@ -34,7 +32,7 @@ function Section({
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
   const links = children(item);
-  const panelId = `mobile-nav-${item.href.replace(/\W+/g, "-")}`;
+  const panelId = `mobile-nav-${item.label.replace(/\W+/g, "-").toLowerCase()}`;
 
   return (
     <motion.div
@@ -42,19 +40,32 @@ function Section({
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: reduced ? 0.15 : 0.55,
-        delay: reduced ? 0 : 0.08 + index * 0.045,
+        delay: reduced ? 0 : 0.08 + index * 0.04,
         ease: EASE_BRAND,
       }}
       className="border-b border-soft/12"
     >
       <div className="flex items-center justify-between">
-        <Link
-          href={item.href}
-          onClick={onNavigate}
-          className="type-display-s flex-1 py-5 text-soft"
-        >
-          {item.label}
-        </Link>
+        {item.href ? (
+          <Link
+            href={item.href}
+            onClick={onNavigate}
+            className="type-title flex-1 py-5 text-soft"
+          >
+            {item.label}
+          </Link>
+        ) : (
+          /* A dropdown-only item has no destination; the whole row toggles. */
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls={panelId}
+            className="type-title flex-1 py-5 text-left text-soft"
+          >
+            {item.label}
+          </button>
+        )}
 
         {links.length ? (
           <button
@@ -98,9 +109,16 @@ function Section({
                   <Link
                     href={link.href}
                     onClick={onNavigate}
-                    className="type-body block py-3 text-soft/60 transition-colors duration-300 hover:text-soft"
+                    className="block py-3 transition-colors duration-300"
                   >
-                    {link.label}
+                    <span className="type-label block text-soft/75">
+                      {link.label}
+                    </span>
+                    {link.description ? (
+                      <span className="type-body-s mt-1 block text-soft/45">
+                        {link.description}
+                      </span>
+                    ) : null}
                   </Link>
                 </li>
               ))}
@@ -126,7 +144,7 @@ export function MobileNav({
       {open ? (
         <motion.div
           id="primary-menu"
-          className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-ink lg:hidden"
+          className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-ink xl:hidden"
           data-lenis-prevent
           initial={{ opacity: 0, y: reduced ? 0 : -16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -137,7 +155,7 @@ export function MobileNav({
             <nav aria-label="Primary" className="flex flex-col">
               {nav.map((item, i) => (
                 <Section
-                  key={item.href}
+                  key={item.label}
                   item={item}
                   index={i}
                   onNavigate={onClose}

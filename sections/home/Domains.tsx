@@ -26,7 +26,7 @@ export function Domains() {
             return (
               <Reveal key={category.slug} as="li" delay={i * 0.04} distance={16}>
                 <Link
-                  href={`/categories/${category.slug}`}
+                  href={`/catalogue?domain=${category.slug}`}
                   className="group/row grid grid-cols-12 items-center gap-4 border-b border-carbon/12 py-7 md:py-9"
                 >
                   <span className="type-label col-span-2 tabular-nums text-carbon/62 md:col-span-1">

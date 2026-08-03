@@ -41,7 +41,7 @@ export function Standard() {
             </Reveal>
 
             <Reveal delay={0.24} className="mt-12">
-              <ArrowLink href="/science" className="text-soft">
+              <ArrowLink href="/quality" className="text-soft">
                 Our Science
               </ArrowLink>
             </Reveal>

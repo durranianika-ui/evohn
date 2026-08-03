@@ -261,7 +261,7 @@ export default async function StackPage(props: PageProps<"/stacks/[slug]">) {
                   {stack.storage}
                 </p>
                 <Link
-                  href="/science/storage"
+                  href="/storage"
                   className="type-label mt-8 inline-flex items-center gap-3 border border-carbon/20 px-7 py-4 text-carbon transition-colors duration-400 ease-brand hover:border-carbon"
                 >
                   Storage &amp; handling guide

@@ -121,7 +121,7 @@ export default function JournalPage() {
         eyebrow="The research desk"
         title={"Ask the question\ndirectly."}
         body="If something here is unclear, or you want the reasoning behind a specific result on a specific certificate, the desk answers technical questions itself."
-        secondary={{ label: "Science hub", href: "/science" }}
+        secondary={{ label: "Peptide Pedia", href: "/peptide-pedia" }}
       />
     </>
   );

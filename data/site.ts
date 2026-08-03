@@ -85,302 +85,152 @@ export interface NavColumn {
 
 export interface NavItem {
   label: string;
-  href: string;
-  /** Compact dropdown — a single list of links. */
-  menu?: NavLink[];
-  /** Mega panel — multiple columns plus an optional promoted card. */
-  mega?: {
-    columns: NavColumn[];
-    feature?: {
-      eyebrow: string;
-      title: string;
-      body: string;
-      href: string;
-      cta: string;
-    };
+  /** Present on plain links. Dropdown triggers are buttons and have none. */
+  href?: string;
+  /** Dropdown panel: one heading and a list of link/description rows. */
+  menu?: {
+    heading: string;
+    links: NavLink[];
   };
 }
 
+/**
+ * Primary navigation.
+ *
+ * The order, the labels, the dropdown groupings and the row descriptions
+ * mirror the reference information architecture one-for-one. Four sections
+ * are additions the brief specifies — Stacks and Strips sit after the
+ * catalogue, Research and Blog before About, which is where the second
+ * reference places them relative to its own shop and about links.
+ *
+ * Nothing else is added. A dropdown here is one heading and a flat list of
+ * link/description rows; there are no mega panels and no promoted cards,
+ * because the reference has neither.
+ */
 export const nav: NavItem[] = [
-  {
-    label: "Catalogue",
-    href: "/catalogue",
-    mega: {
-      columns: [
-        {
-          heading: "Research domains",
-          links: [
-            {
-              label: "Weight Loss",
-              href: "/categories/weight-loss",
-              description: "Incretin signalling",
-            },
-            {
-              label: "Recovery",
-              href: "/categories/recovery",
-              description: "Tissue repair",
-            },
-            {
-              label: "Longevity",
-              href: "/categories/longevity",
-              description: "Cellular energetics",
-            },
-            {
-              label: "Growth",
-              href: "/categories/growth",
-              description: "Somatotropic axis",
-            },
-          ],
-        },
-        {
-          heading: "More domains",
-          links: [
-            {
-              label: "Neuro",
-              href: "/categories/neuro",
-              description: "Neuropeptide pathways",
-            },
-            {
-              label: "Metabolism",
-              href: "/categories/metabolism",
-              description: "Mitochondrial signalling",
-            },
-            {
-              label: "Regeneration",
-              href: "/categories/regeneration",
-              description: "Matrix remodelling",
-            },
-            {
-              label: "Performance",
-              href: "/categories/performance",
-              description: "Multi-receptor agonism",
-            },
-          ],
-        },
-        {
-          heading: "Browse",
-          links: [
-            {
-              label: "All compounds",
-              href: "/catalogue",
-              description: "The complete collection",
-            },
-            {
-              label: "Research stacks",
-              href: "/stacks",
-              description: "Multi-compound protocols",
-            },
-            {
-              label: "Compound index",
-              href: "/science/compound-index",
-              description: "Reference library, A–Z",
-            },
-            {
-              label: "Lab results",
-              href: "/lab-results",
-              description: "Certificates of analysis",
-            },
-          ],
-        },
-      ],
-      feature: {
-        eyebrow: "Standard",
-        title: "Every vial is documented",
-        body: "Identity, purity and residual profile are established by an independent laboratory before a batch is released. The certificate travels with the batch.",
-        href: "/lab-results",
-        cta: "Open the COA library",
-      },
-    },
-  },
-  {
-    label: "Stacks",
-    href: "/stacks",
-    menu: [
-      {
-        label: "All stacks",
-        href: "/stacks",
-        description: "Curated multi-compound protocols",
-      },
-      {
-        label: "Regenerative",
-        href: "/stacks/regenerative-protocol",
-        description: "BPC-157 · TB-500 · GHK-Cu",
-      },
-      {
-        label: "Metabolic",
-        href: "/stacks/metabolic-protocol",
-        description: "Semaglutide · MOTS-c",
-      },
-      {
-        label: "Longevity",
-        href: "/stacks/longevity-protocol",
-        description: "NAD+ · MOTS-c",
-      },
-      {
-        label: "Somatotropic",
-        href: "/stacks/somatotropic-protocol",
-        description: "CJC-1295 / Ipamorelin · TB-500",
-      },
-      {
-        label: "Cognitive",
-        href: "/stacks/cognitive-protocol",
-        description: "Semax · Selank",
-      },
-    ],
-  },
+  { label: "Catalogue", href: "/catalogue" },
+  { label: "Stacks", href: "/stacks" },
+  { label: "Strips", href: "/strips" },
   {
     label: "Science",
-    href: "/science",
-    mega: {
-      columns: [
+    menu: {
+      heading: "Research Tools",
+      links: [
         {
-          heading: "Foundations",
-          links: [
-            {
-              label: "Science hub",
-              href: "/science",
-              description: "How we establish quality",
-            },
-            {
-              label: "Analytical methods",
-              href: "/science/analytical-methods",
-              description: "HPLC, MS, KF, endotoxin",
-            },
-            {
-              label: "Purity & identity",
-              href: "/science/purity-and-identity",
-              description: "Two different questions",
-            },
-            {
-              label: "Manufacturing",
-              href: "/science/manufacturing",
-              description: "Synthesis to release",
-            },
-          ],
+          label: "Peptide Pedia",
+          href: "/peptide-pedia",
+          description: "Explore peptide science",
         },
         {
-          heading: "At the bench",
-          links: [
-            {
-              label: "Reconstitution guide",
-              href: "/science/reconstitution",
-              description: "Preparing lyophilised material",
-            },
-            {
-              label: "Storage & handling",
-              href: "/science/storage",
-              description: "Stability and cold chain",
-            },
-            {
-              label: "Dilution calculator",
-              href: "/science/calculator",
-              description: "Concentration and volume",
-            },
-            {
-              label: "Compound index",
-              href: "/science/compound-index",
-              description: "Reference library, A–Z",
-            },
-          ],
+          label: "Calculator",
+          href: "/calculator",
+          description: "Reconstitution & dosing tools",
+        },
+        {
+          label: "Reconstitution Guide",
+          href: "/reconstitution",
+          description: "Mixing & dosing basics",
+        },
+        {
+          label: "Storage & Handling Guide",
+          href: "/storage",
+          description: "Keep peptides stable",
         },
       ],
-      feature: {
-        eyebrow: "Quality",
-        title: "Verification, not assertion",
-        body: "A purity claim is only as good as the laboratory that signed it. Every EVOHN release is assayed by an accredited third party against a written specification.",
-        href: "/science/purity-and-identity",
-        cta: "Read the standard",
-      },
     },
   },
   { label: "Journal", href: "/journal" },
   { label: "Lab Results", href: "/lab-results" },
   { label: "Reviews", href: "/reviews" },
+  { label: "Research", href: "/research" },
+  { label: "Blog", href: "/blog" },
   {
     label: "About",
-    href: "/about",
-    menu: [
-      {
-        label: "Our story",
-        href: "/about",
-        description: "Origin, mission and vision",
-      },
-      {
-        label: "Quality & manufacturing",
-        href: "/science/manufacturing",
-        description: "Synthesis, purification, release",
-      },
-      {
-        label: "Facilities",
-        href: "/about#facilities",
-        description: "Where the work happens",
-      },
-      {
-        label: "Leadership",
-        href: "/about#leadership",
-        description: "The people accountable",
-      },
-      {
-        label: "Frequently asked",
-        href: "/faq",
-        description: "Documentation and policy",
-      },
-    ],
+    menu: {
+      heading: "EVOHN",
+      links: [
+        {
+          label: "Our Mission",
+          href: "/#mission",
+          description: "Why EVOHN exists",
+        },
+        {
+          label: "Quality",
+          href: "/quality",
+          description: "Third-party verified purity",
+        },
+        {
+          label: "FAQ",
+          href: "/faq",
+          description: "Common questions answered",
+        },
+      ],
+    },
   },
   {
     label: "Contact",
-    href: "/contact",
-    menu: [
-      {
-        label: "General enquiries",
-        href: "/contact",
-        description: "Compounds, documentation, support",
-      },
-      {
-        label: "Laboratory & institutional",
-        href: "/contact#institutional",
-        description: "Accounts for labs and research groups",
-      },
-      {
-        label: "Distribution partners",
-        href: "/contact#partners",
-        description: "Territory and supply enquiries",
-      },
-    ],
+    menu: {
+      heading: "Get In Touch",
+      links: [
+        {
+          label: "General Inquiry",
+          href: "/contact",
+          description: "Questions & support",
+        },
+        {
+          label: "Wholesale & Distribution",
+          href: "/contact/wholesale",
+          description: "Partnerships & resale",
+        },
+        {
+          label: "Business Accounts",
+          href: "/contact/business",
+          description: "Labs, clinics & institutions",
+        },
+      ],
+    },
   },
 ];
 
-/** Flat list of every top-level destination — used by the mobile drawer. */
-export const primaryRoutes = nav.map(({ label, href }) => ({ label, href }));
-
-/** Footer link groups. Independent of the header so each can evolve alone. */
+/**
+ * Footer link groups — the reference's own footer columns, which differ
+ * from its header and are reproduced here in the same four groups.
+ */
 export const footerNav: NavColumn[] = [
   {
     heading: "Catalogue",
     links: [
-      { label: "All compounds", href: "/catalogue" },
-      { label: "Research stacks", href: "/stacks" },
-      { label: "Compound index", href: "/science/compound-index" },
-      { label: "Lab results", href: "/lab-results" },
+      { label: "All Compounds", href: "/catalogue" },
+      { label: "Research Stacks", href: "/stacks" },
+      { label: "Pocket Strips", href: "/strips" },
+      { label: "Lab Results", href: "/lab-results" },
     ],
   },
   {
     heading: "Science",
     links: [
-      { label: "Science hub", href: "/science" },
-      { label: "Analytical methods", href: "/science/analytical-methods" },
-      { label: "Reconstitution", href: "/science/reconstitution" },
-      { label: "Storage & handling", href: "/science/storage" },
-      { label: "Dilution calculator", href: "/science/calculator" },
+      { label: "Peptide Pedia", href: "/peptide-pedia" },
+      { label: "Calculator", href: "/calculator" },
+      { label: "Reconstitution Guide", href: "/reconstitution" },
+      { label: "Storage & Handling", href: "/storage" },
+      { label: "Quality", href: "/quality" },
     ],
   },
   {
-    heading: "Company",
+    heading: "Research",
     links: [
-      { label: "About", href: "/about" },
+      { label: "Research Categories", href: "/research" },
+      { label: "Blog", href: "/blog" },
       { label: "Journal", href: "/journal" },
       { label: "Reviews", href: "/reviews" },
-      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    heading: "Contact",
+    links: [
+      { label: "General Inquiry", href: "/contact" },
+      { label: "Wholesale & Distribution", href: "/contact/wholesale" },
+      { label: "Business Accounts", href: "/contact/business" },
       { label: "FAQ", href: "/faq" },
     ],
   },

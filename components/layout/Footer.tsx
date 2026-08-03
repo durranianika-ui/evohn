@@ -56,7 +56,7 @@ export function Footer() {
               {categories.map((category) => (
                 <li key={category.slug}>
                   <Link
-                    href={`/categories/${category.slug}`}
+                    href={`/catalogue?domain=${category.slug}`}
                     className="type-body-s inline-flex items-center gap-3 text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
                   >
                     <span

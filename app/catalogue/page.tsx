@@ -88,7 +88,7 @@ export default function CataloguePage() {
             {categories.map((category) => (
               <li key={category.slug}>
                 <Link
-                  href={`/categories/${category.slug}`}
+                  href={`/catalogue?domain=${category.slug}`}
                   className="group/domain flex items-baseline gap-3"
                 >
                   <span

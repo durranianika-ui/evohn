@@ -211,7 +211,7 @@ export default function AboutPage() {
 
           <Reveal className="mt-20">
             <Link
-              href="/science/manufacturing"
+              href="/quality"
               className="type-label inline-flex items-center gap-3 border border-carbon/20 px-8 py-4 text-carbon transition-colors duration-400 ease-brand hover:border-carbon"
             >
               Manufacturing and release in full

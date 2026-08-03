@@ -80,7 +80,6 @@ export function Header() {
     closeTimer.current = window.setTimeout(() => setOpenKey(null), CLOSE_DELAY);
   };
 
-  const openItem = openKey ? nav.find((i) => i.href === openKey) : undefined;
   const solid = scrolled || openKey !== null;
   const onDark = !solid || menuOpen;
 
@@ -121,64 +120,95 @@ export function Header() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center xl:flex xl:gap-7 2xl:gap-10"
+            className="hidden flex-1 items-center justify-center xl:flex xl:gap-5 2xl:gap-7"
           >
             {nav.map((item) => {
-              const active =
-                pathname === item.href || pathname.startsWith(`${item.href}/`);
-              const hasPanel = Boolean(item.menu || item.mega);
-              const isOpen = openKey === item.href;
+              const key = item.href ?? item.label;
+              const active = item.href
+                ? pathname === item.href ||
+                  pathname.startsWith(`${item.href}/`)
+                : item.menu?.links.some((l) => pathname === l.href) ?? false;
+              const isOpen = openKey === key;
+
+              const face = cn(
+                "type-label group/nav relative flex items-center gap-1.5 py-6",
+                "transition-colors duration-500 ease-brand",
+                onDark
+                  ? "text-soft/65 hover:text-soft"
+                  : "text-carbon/62 hover:text-carbon",
+                (active || isOpen) && (onDark ? "text-soft" : "text-carbon"),
+              );
+
+              const rule = (
+                <span
+                  aria-hidden
+                  className={cn(
+                    "absolute bottom-4 left-0 h-px bg-current",
+                    "transition-[width] duration-500 ease-brand",
+                    active || isOpen ? "w-full" : "w-0 group-hover/nav:w-full",
+                    "motion-reduce:transition-none",
+                  )}
+                />
+              );
 
               return (
                 <div
-                  key={item.href}
+                  key={key}
                   className="relative"
                   onMouseEnter={() => {
                     cancelClose();
-                    setOpenKey(hasPanel ? item.href : null);
+                    setOpenKey(item.menu ? key : null);
                   }}
                 >
-                  <Link
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    aria-expanded={hasPanel ? isOpen : undefined}
-                    onFocus={() => setOpenKey(hasPanel ? item.href : null)}
-                    className={cn(
-                      "type-label group/nav relative flex items-center gap-1.5 py-6",
-                      "transition-colors duration-500 ease-brand",
-                      onDark
-                        ? "text-soft/65 hover:text-soft"
-                        : "text-carbon/62 hover:text-carbon",
-                      (active || isOpen) &&
-                        (onDark ? "text-soft" : "text-carbon"),
-                    )}
-                  >
-                    {item.label}
-                    {hasPanel ? (
+                  {item.menu ? (
+                    /* A dropdown trigger is a button, not a link — it has no
+                       destination of its own on the reference either. */
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-haspopup="menu"
+                      onFocus={() => setOpenKey(key)}
+                      onClick={() => setOpenKey(isOpen ? null : key)}
+                      className={face}
+                    >
+                      {item.label}
                       <span
                         aria-hidden
                         className={cn(
-                          "block size-[3px] rounded-full bg-current",
-                          "transition-opacity duration-400 ease-brand",
-                          isOpen ? "opacity-100" : "opacity-0",
+                          "block transition-transform duration-400 ease-brand",
+                          isOpen && "rotate-180",
                         )}
-                      />
-                    ) : null}
-                    <span
-                      aria-hidden
-                      className={cn(
-                        "absolute bottom-4 left-0 h-px bg-current",
-                        "transition-[width] duration-500 ease-brand",
-                        active || isOpen
-                          ? "w-full"
-                          : "w-0 group-hover/nav:w-full",
-                        "motion-reduce:transition-none",
-                      )}
-                    />
-                  </Link>
+                      >
+                        <svg
+                          width="9"
+                          height="6"
+                          viewBox="0 0 9 6"
+                          fill="none"
+                          className="block"
+                        >
+                          <path
+                            d="M1 1l3.5 3.5L8 1"
+                            stroke="currentColor"
+                            strokeWidth="1.2"
+                          />
+                        </svg>
+                      </span>
+                      {rule}
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href!}
+                      aria-current={active ? "page" : undefined}
+                      onFocus={() => setOpenKey(null)}
+                      className={face}
+                    >
+                      {item.label}
+                      {rule}
+                    </Link>
+                  )}
 
                   <AnimatePresence>
-                    {isOpen && hasPanel ? (
+                    {isOpen && item.menu ? (
                       <div onMouseEnter={cancelClose}>
                         <NavPanel
                           item={item}
@@ -232,15 +262,6 @@ export function Header() {
           </div>
         </div>
       </header>
-
-      {/* Scrim behind an open mega panel — dims the page without blocking it. */}
-      {openItem?.mega ? (
-        <div
-          aria-hidden
-          className="fixed inset-0 z-40 bg-carbon/25 backdrop-blur-[2px]"
-          onMouseEnter={scheduleClose}
-        />
-      ) : null}
 
       <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
