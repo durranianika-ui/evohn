@@ -163,7 +163,7 @@ export function Header() {
               const lit = active || isOpen;
 
               const face = cn(
-                "type-label group/nav relative flex h-10 items-center gap-2",
+                "type-label-lg group/nav relative flex h-10 items-center gap-2",
                 "transition-colors duration-500 ease-brand",
                 onDark
                   ? "text-soft/65 hover:text-soft"

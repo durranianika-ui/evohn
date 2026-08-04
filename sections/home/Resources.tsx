@@ -30,8 +30,6 @@ export function Resources() {
             <Reveal key={tool.href} delay={i * 0.05} as="li">
               <Link
                 href={tool.href}
-                data-cursor="view"
-                data-cursor-label="Open"
                 className="group/res grid gap-4 border-b border-soft/12 py-9 transition-colors duration-500 ease-brand hover:bg-soft/4 md:grid-cols-12 md:items-baseline md:gap-10 md:px-4 md:py-11"
               >
                 <span

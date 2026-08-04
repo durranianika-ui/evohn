@@ -1,40 +1,53 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Archivo, Azeret_Mono, Cormorant_Garamond } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Curtain } from "@/components/motion/Curtain";
 import { PageTransition } from "@/components/motion/PageTransition";
-import { Cursor } from "@/components/motion/Cursor";
 import { AgeGate } from "@/components/common/AgeGate";
 import { EnquiryProvider } from "@/lib/enquiry";
 import { site } from "@/data/site";
 import "./globals.css";
 
 /**
- * PRIMARY — Brand Identity Kit §03 specifies Canela Regular.
- * Canela is a licensed face from Commercial Type and cannot be self-hosted
- * from a public font CDN. Cormorant Garamond stands in: a high-contrast
- * display serif with comparable proportions at the light weights used here.
- * To switch to the licensed face, drop the woff2 files into `app/fonts`,
- * swap this for `next/font/local`, and nothing else needs to change.
+ * TYPOGRAPHY
+ *
+ * Three faces, in the roles the reference experience uses them:
+ *
+ *   Archivo      headings and body — a neutral grotesk standing in for the
+ *                reference's licensed Roc Grotesk. Set uppercase with tight
+ *                negative tracking at display sizes, which is what gives that
+ *                design its density.
+ *   Azeret Mono  every technical label: navigation, eyebrows, indices, meta.
+ *                The reference uses this exact face for that layer, and it is
+ *                the single largest reason the two sites read differently.
+ *   Cormorant    the EVOHN wordmark only.
+ *
+ * NOTE — this overrides the Brand Identity Kit §03, which specifies Canela
+ * for display. The wordmark keeps its serif so the mark is still EVOHN's;
+ * everything else follows the reference. Reverting is one line: point
+ * `--font-display` at `--font-cormorant` in globals.css.
  */
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const azeret = Azeret_Mono({
+  variable: "--font-azeret",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
+/** Wordmark only — the one place the kit's serif survives. */
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
-  display: "swap",
-});
-
-/**
- * SECONDARY — Brand Identity Kit §03 specifies Helvetica Neue.
- * The token stack prefers the visitor's own Helvetica Neue where the OS
- * provides it, and falls back to Inter, the closest widely-available
- * neo-grotesque, everywhere else.
- */
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -97,7 +110,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${cormorant.variable} ${inter.variable} antialiased`}
+      className={`${archivo.variable} ${azeret.variable} ${cormorant.variable} antialiased`}
     >
       <body className="flex min-h-dvh flex-col bg-soft text-carbon">
         {/* The enquiry list is read by the header count, the drawer, the
@@ -105,7 +118,6 @@ export default function RootLayout({
         <EnquiryProvider>
           <SmoothScroll />
           <Curtain />
-          <Cursor />
           <Header />
           <main id="main" className="flex-1">
             <PageTransition>{children}</PageTransition>

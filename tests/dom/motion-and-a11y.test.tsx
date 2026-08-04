@@ -1,62 +1,15 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Cursor } from "@/components/motion/Cursor";
 import { SplitText } from "@/components/motion/SplitText";
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { SearchResults } from "@/components/search/SearchResults";
-import { setMediaQuery } from "../setup";
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
   useRouter: () => ({ push: vi.fn(), replace: vi.fn(), prefetch: vi.fn() }),
 }));
 
-const FINE = "(hover: hover) and (pointer: fine)";
-const CALM = "(prefers-reduced-motion: reduce)";
-
-describe("custom pointer", () => {
-  it("does not mount for a coarse pointer", () => {
-    // The default stub matches nothing, i.e. touch.
-    const { container } = render(<Cursor />);
-    expect(container).toBeEmptyDOMElement();
-    expect(document.documentElement.dataset.cursor).toBeUndefined();
-  });
-
-  it("does not mount when reduced motion is requested, even with a mouse", () => {
-    setMediaQuery(FINE, true);
-    setMediaQuery(CALM, true);
-    const { container } = render(<Cursor />);
-    expect(container).toBeEmptyDOMElement();
-  });
-
-  it("mounts for a fine pointer with no motion preference", async () => {
-    setMediaQuery(FINE, true);
-    render(<Cursor />);
-    await waitFor(() =>
-      expect(document.documentElement.dataset.cursor).toBe("on"),
-    );
-  });
-
-  it("suppresses the native arrow only while it is mounted", async () => {
-    setMediaQuery(FINE, true);
-    const { unmount } = render(<Cursor />);
-    await waitFor(() =>
-      expect(document.documentElement.dataset.cursor).toBe("on"),
-    );
-    unmount();
-    // Unmounting must give the native pointer back, or a visitor whose
-    // preference changes mid-session is left with no cursor at all.
-    expect(document.documentElement.dataset.cursor).toBeUndefined();
-  });
-
-  it("is hidden from assistive technology", async () => {
-    setMediaQuery(FINE, true);
-    const { container } = render(<Cursor />);
-    await waitFor(() => expect(container.firstElementChild).not.toBeNull());
-    expect(container.firstElementChild).toHaveAttribute("aria-hidden", "true");
-  });
-});
 
 describe("split text", () => {
   it("announces the whole phrase as one string, not word by word", () => {

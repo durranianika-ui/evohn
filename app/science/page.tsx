@@ -169,8 +169,6 @@ export default function SciencePage() {
               <Reveal key={tool.href} delay={(i % 2) * 0.06} as="li">
                 <Link
                   href={tool.href}
-                  data-cursor="view"
-                  data-cursor-label="Open"
                   className="group/tool flex h-full flex-col border border-carbon/12 p-8 transition-colors duration-500 ease-brand hover:border-carbon/30 md:p-10"
                 >
                   <span

@@ -45,8 +45,6 @@ export function Evidence() {
             <Reveal key={entry.batch.batch} delay={i * 0.07} as="li">
               <Link
                 href={`/lab-results/${entry.product.slug}`}
-                data-cursor="view"
-                data-cursor-label="Open"
                 className="group/coa flex h-full flex-col border border-carbon/12 transition-colors duration-500 ease-brand hover:border-carbon/30"
               >
                 <div className="border-b border-carbon/10 bg-mist/40 px-6 pt-6 pb-3">
