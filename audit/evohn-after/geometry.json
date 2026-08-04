@@ -1,0 +1,1693 @@
+{
+  "target": "evohn-after",
+  "base": "http://127.0.0.1:3456",
+  "capturedAt": "2026-08-04T13:55:04.606Z",
+  "viewports": {
+    "1920x1080": {
+      "docHeight": 19138,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflowX": 0,
+      "gutter": 324,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 1080,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 88
+        },
+        {
+          "tag": "SECTION",
+          "top": 1092,
+          "height": 1004,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 2096,
+          "height": 857,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 2954,
+          "height": 1688,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 4642,
+          "height": 4625,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 9266,
+          "height": 1291,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 10557,
+          "height": 1186,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 11743,
+          "height": 1842,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 13585,
+          "height": 2241,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 15826,
+          "height": 1082,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 16908,
+          "height": 845,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 64
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 88,
+          "lineHeight": 84,
+          "tracking": "-2.64px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 64,
+          "lineHeight": 63,
+          "tracking": "-1.92px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 4946,
+          "w": 1920,
+          "h": 1080
+        },
+        {
+          "cls": "lg:sticky lg:top-[18vh]",
+          "position": "sticky",
+          "x": 324,
+          "y": 11943,
+          "w": 493,
+          "h": 335
+        },
+        {
+          "cls": "lg:sticky lg:top-[18vh]",
+          "position": "sticky",
+          "x": 324,
+          "y": 15291,
+          "w": 493,
+          "h": 335
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1920,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 2167,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 4334,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 6501,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 8668,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 10835,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 13002,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 15169,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 16975,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 18058,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=pmdLt4ngU_tPcMiOVaWRl' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "1440x900": {
+      "docHeight": 18216,
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflowX": 0,
+      "gutter": 84,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 900,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 86
+        },
+        {
+          "tag": "SECTION",
+          "top": 912,
+          "height": 1004,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 1916,
+          "height": 857,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 2774,
+          "height": 1688,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 4462,
+          "height": 3883,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 8345,
+          "height": 1291,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 9636,
+          "height": 1186,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 10821,
+          "height": 1842,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 12663,
+          "height": 2241,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 14904,
+          "height": 1082,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 15986,
+          "height": 845,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 64
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 86,
+          "lineHeight": 81,
+          "tracking": "-2.565px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 64,
+          "lineHeight": 63,
+          "tracking": "-1.92px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 4745,
+          "w": 1440,
+          "h": 900
+        },
+        {
+          "cls": "lg:sticky lg:top-[18vh]",
+          "position": "sticky",
+          "x": 84,
+          "y": 11021,
+          "w": 493,
+          "h": 335
+        },
+        {
+          "cls": "lg:sticky lg:top-[18vh]",
+          "position": "sticky",
+          "x": 84,
+          "y": 14369,
+          "w": 493,
+          "h": 335
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 2078,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 4156,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 6234,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 8312,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 10390,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 12468,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 14545,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 16277,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 17316,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=7CLvmk4zQphXZVzzdRtx0' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "1280x800": {
+      "docHeight": 17346,
+      "viewport": [
+        1280,
+        800
+      ],
+      "overflowX": 0,
+      "gutter": 64,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 800,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 76
+        },
+        {
+          "tag": "SECTION",
+          "top": 812,
+          "height": 950,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 1762,
+          "height": 880,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 2642,
+          "height": 1688,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 4330,
+          "height": 3471,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 7801,
+          "height": 1270,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 9071,
+          "height": 1173,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 10244,
+          "height": 1703,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 11948,
+          "height": 2103,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 14050,
+          "height": 1082,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 15132,
+          "height": 845,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 64
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 76,
+          "lineHeight": 72,
+          "tracking": "-2.28px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 64,
+          "lineHeight": 63,
+          "tracking": "-1.92px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 4601,
+          "w": 1280,
+          "h": 800
+        },
+        {
+          "cls": "lg:sticky lg:top-[18vh]",
+          "position": "sticky",
+          "x": 64,
+          "y": 10444,
+          "w": 443,
+          "h": 335
+        },
+        {
+          "cls": "lg:sticky lg:top-[18vh]",
+          "position": "sticky",
+          "x": 64,
+          "y": 13515,
+          "w": 443,
+          "h": 335
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1986,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3971,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5957,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 7942,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 9928,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 11913,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 13899,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 15553,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 16546,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=VH6oKWgFNwMECk4MDdyRD' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "768x1024": {
+      "docHeight": 22777,
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflowX": 0,
+      "gutter": 40,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 1024,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 55
+        },
+        {
+          "tag": "SECTION",
+          "top": 1036,
+          "height": 1767,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 2803,
+          "height": 1133,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 3936,
+          "height": 1548,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 5484,
+          "height": 4441,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 9925,
+          "height": 1775,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 11700,
+          "height": 1269,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 12969,
+          "height": 2395,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 15364,
+          "height": 2395,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 17759,
+          "height": 1500,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 19259,
+          "height": 779,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 41
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 55,
+          "lineHeight": 53,
+          "tracking": "-1.65888px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 41,
+          "lineHeight": 41,
+          "tracking": "-1.24416px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5829,
+          "w": 768,
+          "h": 1024
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 2610,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 5221,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 7831,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 10441,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 13052,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 15662,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 18273,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 20448,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 21753,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=Jx23ntJFfVf5APvnXoL7m' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "430x932": {
+      "docHeight": 20906,
+      "viewport": [
+        430,
+        932
+      ],
+      "overflowX": 0,
+      "gutter": 24,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 932,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 944,
+          "height": 1237,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 2181,
+          "height": 1603,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 3785,
+          "height": 1562,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 5347,
+          "height": 4052,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 9398,
+          "height": 1570,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 10968,
+          "height": 2123,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 13091,
+          "height": 1529,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 14619,
+          "height": 1529,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 16148,
+          "height": 1330,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 17478,
+          "height": 669,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 36
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 38,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 36,
+          "lineHeight": 35,
+          "tracking": "-1.08px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5670,
+          "w": 430,
+          "h": 932
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 430,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 2397,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 4794,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 7191,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 9588,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 11984,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 14381,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 16778,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 18776,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 19974,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=r4Xg2hfd1sLME82AeBhp7' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "390x844": {
+      "docHeight": 20477,
+      "viewport": [
+        390,
+        844
+      ],
+      "overflowX": 0,
+      "gutter": 24,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 844,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 856,
+          "height": 1211,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 2067,
+          "height": 1627,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 3694,
+          "height": 1586,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 5280,
+          "height": 3724,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 9004,
+          "height": 1622,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 10626,
+          "height": 2086,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 12712,
+          "height": 1436,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 14149,
+          "height": 1436,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 15585,
+          "height": 1446,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 17031,
+          "height": 693,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 36
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 38,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 36,
+          "lineHeight": 35,
+          "tracking": "-1.08px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5628,
+          "w": 390,
+          "h": 844
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 2356,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 4712,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 7068,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 9424,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 11780,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 14136,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 16492,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 18455,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 19633,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=y5xJ62Wdp7Vamtm5TCMgw' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "360x800": {
+      "docHeight": 20375,
+      "viewport": [
+        360,
+        800
+      ],
+      "overflowX": 0,
+      "gutter": 24,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 800,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 812,
+          "height": 1257,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 2069,
+          "height": 1673,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 3742,
+          "height": 1586,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 5328,
+          "height": 3578,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 8906,
+          "height": 1660,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 10566,
+          "height": 2155,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 12721,
+          "height": 1367,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 14088,
+          "height": 1367,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 15456,
+          "height": 1446,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 16902,
+          "height": 693,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 36
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 38,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 36,
+          "lineHeight": 35,
+          "tracking": "-1.08px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5706,
+          "w": 360,
+          "h": 800
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 2349,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 4698,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 7047,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 9396,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 11745,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 14094,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 16443,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 18401,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 19575,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=IaSRhxIkDOs79LqaR7jw9' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    }
+  }
+}

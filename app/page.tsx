@@ -7,6 +7,8 @@ import { Collection } from "@/sections/home/Collection";
 import { Standard } from "@/sections/home/Standard";
 import { Verification } from "@/sections/home/Verification";
 import { Evidence } from "@/sections/home/Evidence";
+import { Researchers } from "@/sections/home/Researchers";
+import { Performance } from "@/sections/home/Performance";
 import { CallToAction } from "@/sections/shared/CallToAction";
 import { organisationSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -50,9 +52,11 @@ export default function HomePage() {
       <Pillars />
       <Domains />
       <Collection />
-      <Standard />
       <Verification />
       <Evidence />
+      <Researchers />
+      <Performance />
+      <Standard />
       <CallToAction secondary={{ label: "View Catalogue", href: "/catalogue" }} />
     </>
   );

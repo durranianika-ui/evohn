@@ -1,0 +1,232 @@
+{
+  "target": "evohn-before",
+  "base": "http://127.0.0.1:3456",
+  "capturedAt": "2026-08-04T13:42:08.152Z",
+  "viewports": {
+    "1920x1080": {
+      "docHeight": 12542,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflowX": 0,
+      "gutter": 324,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 12,
+          "height": 1080,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 88
+        },
+        {
+          "tag": "SECTION",
+          "top": 1092,
+          "height": 1004,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Precision before promise.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 2096,
+          "height": 857,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Analytical Purity",
+          "headingSize": 24
+        },
+        {
+          "tag": "SECTION",
+          "top": 2954,
+          "height": 1688,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 4642,
+          "height": 2112,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Compounds that set the standard.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 6754,
+          "height": 1082,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Built by scientists.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 7835,
+          "height": 1291,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 9126,
+          "height": 1186,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 10312,
+          "height": 845,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Your research deserves certainty.",
+          "headingSize": 64
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 88,
+          "lineHeight": 84,
+          "tracking": "-2.64px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 64,
+          "lineHeight": 63,
+          "tracking": "-1.92px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 24,
+          "lineHeight": 26,
+          "tracking": "-0.48px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1920,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": null,
+      "headerAtTop": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": 0,
+        "h": 73,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1375,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 2751,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 4126,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 5502,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 6877,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 8253,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 9628,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 10774,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 11462,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=9apGZbw6THCRL-6bCZJbJ' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+      ]
+    },
+    "1440x900": {
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3456/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    "1280x800": {
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3456/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    "768x1024": {
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3456/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    "430x932": {
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3456/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    "390x844": {
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3456/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    "360x800": {
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3456/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+  }
+}

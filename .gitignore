@@ -42,3 +42,16 @@ next-env.d.ts
 
 # static export output (published to gh-pages, not tracked on main)
 /out
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+dev.log
+
+# visual audit — the rendered frames are large and regenerable from the
+# capture script, so only the measured geometry and the comparison report
+# are tracked. Run `node scripts/audit-capture.mjs` to rebuild the images.
+/audit/**/*.png
+/audit/**/*.jpg

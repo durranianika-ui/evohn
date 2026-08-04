@@ -11,7 +11,11 @@ export function Philosophy() {
   const editorial = "/editorial/philosophy-vial.jpg";
 
   return (
-    <section id="mission" className="section-y scroll-mt-24 bg-soft text-carbon">
+    /* Ground is `mist` (#edeae3), not `soft` (#f5f4f0): measured off the
+       reference, which uses its warmer neutral here and reserves the lighter
+       one for the facility block further down. The two are close enough to
+       read as a mistake and far enough apart to change the section's weight. */
+    <section id="mission" className="section-y scroll-mt-24 bg-mist text-carbon">
       <div className="container-content">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
