@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
 import { Hero } from "@/sections/home/Hero";
-import { TrustBand } from "@/sections/home/TrustBand";
 import { Philosophy } from "@/sections/home/Philosophy";
 import { Pillars } from "@/sections/home/Pillars";
 import { Domains } from "@/sections/home/Domains";
 import { Collection } from "@/sections/home/Collection";
-import { Stacks } from "@/sections/home/Stacks";
+import { Standard } from "@/sections/home/Standard";
 import { Verification } from "@/sections/home/Verification";
 import { Evidence } from "@/sections/home/Evidence";
-import { Resources } from "@/sections/home/Resources";
-import { Reading } from "@/sections/home/Reading";
-import { Voices } from "@/sections/home/Voices";
-import { Standard } from "@/sections/home/Standard";
 import { CallToAction } from "@/sections/shared/CallToAction";
 import { organisationSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/common/JsonLd";
@@ -23,53 +18,41 @@ export const metadata: Metadata = {
 /**
  * Home.
  *
- * Fourteen movements. The tones below were measured against the rendered
- * page, not asserted — no two adjacent sections share a ground except where
- * the pairing is deliberate (Hero into TrustBand, Standard into the closing
- * call, both of which read as one dark movement):
+ * The sequence and the grounds below were measured off the reference at
+ * 1440x900 — eight blocks, not fourteen, with these heights and these
+ * background changes:
  *
- *   dark   Hero            the statement
- *   dark   TrustBand       the figures, immediately, before any more claims
- *   light  Philosophy      why the standard exists
- *   dark   Pillars         the four numbered standards
- *   mist   Domains         the eight research domains
- *   light  Collection      six compounds
- *   mist   Stacks          how compounds are studied together
- *   dark   Verification    how a batch is actually verified
- *   light  Evidence        three real certificates
- *   dark   Resources       the four research tools
- *   light  Reading         the journal
- *   mist   Voices          what comes back from the bench
- *   dark   Standard        the closing brand statement
- *   dark   CallToAction    the one thing to do next
+ *   0  dark   Hero           900px   #0a0a0a  one viewport, film behind
+ *   1  mist   Philosophy     886px   #edeae3  the single ground change up top
+ *   2  onyx   Pillars       2140px   #111110  the four standards
+ *   3  dark   Domains       3600px            pinned — four viewports of scroll
+ *   4  light  Collection    1443px   #f5f4f0  the horizontal collection
+ *   5  dark   Standard       805px   #0a0a0a  the repeating brand line
+ *   6  dark   Verification  2258px   #0a0a0a  how a batch is verified
+ *   7  dark   Evidence      2258px   #0a0a0a  the certification grid
  *
- * The former `Editorial` section was removed here: it rendered its own
- * journal preview and its own review block, which `Reading` and `Voices`
- * now do with a lead-plus-two composition and a computed review aggregate.
- * Two of each on one page was the duplication, not the depth.
+ * The closing call keeps the dark ground it inherits, so 5 through 8 read as
+ * one long dark movement rather than four separate panels — which is what the
+ * reference does with its own tail.
  *
- * The order is an argument, read top to bottom: what we believe, how we prove
- * it, what the catalogue holds, how those compounds are studied, the evidence
- * for the claim, the tools built on it, what we have written, who says so, and
- * who we are.
+ * Five sections were removed from this page, not deleted from the site:
+ * TrustBand, Stacks, Resources, Reading and Voices have no counterpart in the
+ * reference sequence and were what made the page read as a dashboard. Their
+ * content still lives on `/stacks`, `/science`, `/journal` and `/reviews`,
+ * all of which remain linked from the navigation and the footer.
  */
 export default function HomePage() {
   return (
     <>
       <JsonLd data={[organisationSchema(), websiteSchema()]} />
       <Hero />
-      <TrustBand />
       <Philosophy />
       <Pillars />
       <Domains />
       <Collection />
-      <Stacks />
+      <Standard />
       <Verification />
       <Evidence />
-      <Resources />
-      <Reading />
-      <Voices />
-      <Standard />
       <CallToAction secondary={{ label: "View Catalogue", href: "/catalogue" }} />
     </>
   );

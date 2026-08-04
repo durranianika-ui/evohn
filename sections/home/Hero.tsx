@@ -1,150 +1,71 @@
-import { SplitText } from "@/components/motion/SplitText";
 import { Reveal } from "@/components/motion/Reveal";
+import { LineMask, type Line } from "@/components/motion/LineMask";
 import { ButtonLink } from "@/components/ui/Button";
-import { WhatsAppCTA } from "@/components/common/WhatsAppCTA";
-import { VialGlyph } from "@/components/product/VialGlyph";
 import { HeroVideo } from "@/components/motion/HeroVideo";
 import { asset, hasAsset } from "@/lib/media";
-import Image from "next/image";
-
-const marks = [
-  "≥ 99% HPLC Verified",
-  "Batch Traceable",
-  "Cold-Chain Shipped",
-  "Third-Party Tested",
-];
 
 /**
  * Opening statement.
  *
- * Follows Brand Identity Kit §11 "WEBSITE DIRECTION": monochrome ground,
- * elegant typography left, large photography right. The headline is the
- * brand's own cover statement.
+ * Composition measured off the reference at 1440x900: the hero fills exactly
+ * one viewport, a full-bleed film sits behind everything, and the headline is
+ * a four-line display stack whose lines alternate against the left and right
+ * edges — lines one and two left, three and four right. That alternation is
+ * most of the section's character; a centred or two-column arrangement reads
+ * as an ordinary landing page instead.
+ *
+ * The headline block starts at roughly 44% of the viewport and resolves at
+ * 83%, which is what `justify-end` plus the bottom inset reproduces without
+ * pinning anything to a fixed pixel height.
+ *
+ * The words are EVOHN's own: "measured, not claimed" is the phrase already
+ * carried in `data/standards.ts`, promoted here to the cover statement.
  */
+const headline: Line[] = [
+  { text: "Scientific", align: "left" },
+  { text: "Precision.", align: "left" },
+  { text: "Measured,", align: "right" },
+  { text: "Not Claimed.", align: "right" },
+];
+
 export function Hero() {
   const heroImage = "/editorial/hero-vial.jpg";
   const heroFilm = "/editorial/hero.mp4";
 
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-soft">
-      {/* Full-bleed film behind everything, held well down so the statement
-          over it keeps its contrast. Suppressed under reduced motion and on
-          a metered connection — see HeroVideo. */}
-      {hasAsset(heroFilm) ? (
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+    <section className="relative isolate flex min-h-dvh flex-col justify-end overflow-hidden bg-ink text-soft">
+      {/* Full-bleed film. Suppressed under reduced motion and on a metered
+          connection — see HeroVideo, which falls back to the poster. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        {hasAsset(heroFilm) ? (
           <HeroVideo
             src={asset(heroFilm)}
             poster={hasAsset(heroImage) ? asset(heroImage) : undefined}
-            className="h-full w-full object-cover opacity-35"
+            className="h-full w-full object-cover"
           />
-          {/* Two washes: one to sink the whole frame, one to weight the left
-              column where the headline sits. */}
-          <div className="absolute inset-0 bg-ink/55" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-ink/20" />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent" />
-        </div>
-      ) : null}
+        ) : null}
+        {/* One even sink so the film reads as ground, then a heavier foot so
+            the display type keeps its contrast where it actually sits. */}
+        <div className="absolute inset-0 bg-ink/55" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/70 to-transparent" />
+      </div>
 
-      {/* Warm pool of light behind the product — kit §07 photography style. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-0 right-0 h-full w-full max-w-[62rem] opacity-70 lg:w-3/5"
-        style={{
-          background:
-            "radial-gradient(58% 52% at 68% 42%, rgba(214,210,204,0.30) 0%, rgba(214,210,204,0.10) 42%, transparent 72%)",
-        }}
-      />
+      <div className="container-content relative pt-32 pb-[8vh]">
+        <Reveal distance={0} duration={0.8}>
+          <p className="type-label text-soft/55">Research Compounds</p>
+        </Reveal>
 
-      <div className="container-content relative flex min-h-dvh flex-col justify-center pt-26 pb-8">
-        <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
-          {/* Statement */}
-          <div className="lg:col-span-6 xl:col-span-5">
-            <Reveal distance={12}>
-              <p className="type-label text-soft/55">Research Compounds</p>
-            </Reveal>
+        <LineMask
+          as="h1"
+          lines={headline}
+          delay={0.15}
+          className="type-display-l mt-6 text-soft"
+        />
 
-            <SplitText
-              as="h1"
-              text={"Scientific\nPrecision."}
-              className="type-display-l mt-6 text-soft"
-              delay={0.1}
-            />
-
-            <Reveal delay={0.5} className="mt-6">
-              <p className="type-editorial max-w-[22ch] text-soft/70">
-                Luxury performance. Research excellence.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.62} className="mt-5">
-              <p className="type-body max-w-[46ch] text-soft/55">
-                A precision-manufactured catalogue of research compounds —
-                analytically verified, independently confirmed, and documented
-                from raw material through to the vial in your hand.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.74} className="mt-8 flex flex-wrap gap-4">
-              <ButtonLink href="/catalogue" tone="dark">
-                View Catalogue
-              </ButtonLink>
-              <WhatsAppCTA intent="specialist" variant="outline" tone="dark" />
-            </Reveal>
-          </div>
-
-          {/* Product */}
-          <div className="lg:col-span-6 xl:col-span-7">
-            <Reveal
-              delay={0.25}
-              duration={1.2}
-              distance={40}
-              className="relative mx-auto w-full max-w-md lg:max-w-none"
-            >
-              {/* Capped against viewport height so the hero resolves within
-                  one screen on short laptop displays. */}
-              <div className="relative mx-auto aspect-4/5 w-full max-w-[20rem] sm:max-w-[24rem] lg:aspect-auto lg:h-[min(58vh,620px)] lg:max-w-none">
-                {hasAsset(heroImage) ? (
-                  <Image
-                    src={asset(heroImage)}
-                    alt="EVOHN research compound vial on stone"
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 55vw, 90vw"
-                    className="object-contain"
-                  />
-                ) : (
-                  <>
-                    {/* Stone plinth — kit §07 "premium shadows, stone texture". */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-x-[18%] bottom-[9%] h-[7%] rounded-[50%] blur-xl"
-                      style={{
-                        background:
-                          "radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,0.65) 0%, transparent 70%)",
-                      }}
-                    />
-                    <VialGlyph
-                      caption="Semaglutide"
-                      className="animate-drift absolute inset-0 mx-auto h-full w-auto motion-reduce:animate-none"
-                      seed={3}
-                    />
-                  </>
-                )}
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* Verification marks */}
-        <Reveal delay={0.9} className="mt-8 border-t border-soft/12 pt-6 lg:mt-10">
-          <ul className="grid grid-cols-2 gap-y-5 md:grid-cols-4">
-            {marks.map((mark) => (
-              <li key={mark} className="type-label flex items-center gap-3 text-soft/55">
-                <span className="h-px w-4 bg-soft/30" aria-hidden />
-                {mark}
-              </li>
-            ))}
-          </ul>
+        <Reveal delay={0.62} distance={12} className="mt-10 flex justify-end">
+          <ButtonLink href="/catalogue" tone="dark">
+            View Catalogue
+          </ButtonLink>
         </Reveal>
       </div>
     </section>
