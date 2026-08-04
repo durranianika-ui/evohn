@@ -15,7 +15,7 @@ export function Philosophy() {
        reference, which uses its warmer neutral here and reserves the lighter
        one for the facility block further down. The two are close enough to
        read as a mistake and far enough apart to change the section's weight. */
-    <section id="mission" className="section-y scroll-mt-24 bg-mist text-carbon">
+    <section id="mission" className="section-y-home scroll-mt-24 bg-mist text-carbon">
       <div className="container-home">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">

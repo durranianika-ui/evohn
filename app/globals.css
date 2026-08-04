@@ -390,6 +390,28 @@
   }
 }
 
+/* Homepage section rhythm.
+
+   `section-y` steps up to the large padding at 48rem — which is exactly 768px,
+   so a 768x1024 tablet receives full desktop spacing. Across Verification,
+   Evidence, Researchers and Performance that was most of the +2.11vh the
+   homepage ran long at that width.
+
+   This holds the compact padding until 64rem and adds a middle step between,
+   so tablet gets its own rhythm rather than inheriting desktop's. Homepage
+   only; `section-y` is unchanged for internal pages. */
+@utility section-y-home {
+  padding-block: var(--spacing-section);
+  @media (width >= 48rem) {
+    /* 1.7, tuned by measurement: 1.25 overshot and left 768 running 0.67vh
+       SHORT of the reference. This lands it inside tolerance. */
+    padding-block: calc(var(--spacing-section) * 1.7);
+  }
+  @media (width >= 64rem) {
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
 @utility hairline-t {
   border-top: 1px solid color-mix(in oklab, currentColor 12%, transparent);
 }

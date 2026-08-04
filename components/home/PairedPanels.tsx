@@ -80,8 +80,15 @@ export function PairedPanels({
           </div>
         </div>
 
-        {/* Panel stack. */}
-        <div className="flex flex-col gap-6 lg:col-span-6 lg:col-start-7">
+        {/* Panel stack.
+
+            Two across between 640 and 1024: at tablet a single column of
+            full-width 1.3:1 panels ran roughly 590px each, and three of them
+            plus the editorial column was most of why these two blocks were
+            +0.32 and +0.59vh at 768. Back to one column at lg, where the
+            editorial column takes half the width and the reference stacks
+            them again. */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:grid-cols-1">
           {panels.map((panel, i) => (
             <Reveal key={panel.title} delay={i * 0.06}>
               <article

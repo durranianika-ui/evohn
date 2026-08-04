@@ -28,7 +28,7 @@ const panels: Panel[] = [
 
 export function Performance() {
   return (
-    <section className="section-y bg-ink text-soft">
+    <section className="section-y-home bg-ink text-soft">
       <PairedPanels
         eyebrow="For Performance"
         title={"Consistency is\nthe whole point."}

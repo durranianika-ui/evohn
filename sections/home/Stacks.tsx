@@ -21,7 +21,7 @@ export function Stacks() {
   const leadComponents = stackComponents(lead);
 
   return (
-    <section className="section-y bg-mist/50 text-carbon">
+    <section className="section-y-home bg-mist/50 text-carbon">
       <div className="container-home">
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <SectionHeading

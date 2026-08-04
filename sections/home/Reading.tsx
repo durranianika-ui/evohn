@@ -26,7 +26,7 @@ export function Reading() {
   ].slice(0, 2);
 
   return (
-    <section className="section-y bg-soft text-carbon">
+    <section className="section-y-home bg-soft text-carbon">
       <div className="container-home">
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <SectionHeading

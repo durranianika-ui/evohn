@@ -16,7 +16,7 @@ export function Resources() {
   if (!tools.length) return null;
 
   return (
-    <section className="section-y bg-ink text-soft">
+    <section className="section-y-home bg-ink text-soft">
       <div className="container-home">
         <SectionHeading
           eyebrow="Research Tools"

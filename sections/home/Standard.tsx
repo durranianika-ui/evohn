@@ -18,7 +18,7 @@ export function Standard() {
         />
       </div>
 
-      <div className="container-home section-y">
+      <div className="container-home section-y-home">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <Reveal distance={12}>

@@ -25,7 +25,7 @@ const panels: Panel[] = [
 
 export function Researchers() {
   return (
-    <section className="section-y bg-ink text-soft">
+    <section className="section-y-home bg-ink text-soft">
       <PairedPanels
         eyebrow="For Researchers"
         title={"Documentation\nyou can audit."}

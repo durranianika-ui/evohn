@@ -7,7 +7,7 @@ import { pillars } from "@/data/standards";
  */
 export function Pillars() {
   return (
-    <section className="section-y bg-carbon text-soft">
+    <section className="section-y-home bg-carbon text-soft">
       <div className="container-home">
         <Stagger className="grid gap-px border border-soft/12 bg-soft/12 md:grid-cols-2 xl:grid-cols-4">
           {pillars.map((pillar, i) => (

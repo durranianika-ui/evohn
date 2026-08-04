@@ -1,7 +1,7 @@
 {
   "target": "evohn-after",
   "base": "http://127.0.0.1:3456",
-  "capturedAt": "2026-08-04T14:46:51.863Z",
+  "capturedAt": "2026-08-04T14:57:13.823Z",
   "viewports": {
     "1920x1080": {
       "docHeight": 16492,
@@ -223,7 +223,7 @@
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=fAaEoZDrg2xvmpQ8eCX8x' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=SAgjwd190gYTqT3N5xidL' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "1440x900": {
@@ -446,7 +446,7 @@
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=3hwHk2ITUfJB6Fi3UnyN5' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=FCKGknF_z7L5LuGqcZh6r' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "1280x800": {
@@ -669,11 +669,11 @@
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=O739I9bjnvh9MuyGo8XWw' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=xNpJz14DsA7lGByhDoyD8' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "768x1024": {
-      "docHeight": 17815,
+      "docHeight": 15506,
       "viewport": [
         768,
         1024
@@ -702,7 +702,7 @@
         {
           "tag": "SECTION",
           "top": 1964,
-          "height": 1548,
+          "height": 1556,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Eight domains. One standard.",
@@ -710,7 +710,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 3512,
+          "top": 3520,
           "height": 4134,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -719,8 +719,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 7646,
-          "height": 1790,
+          "top": 7654,
+          "height": 1798,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
           "heading": "Published, not on request.",
@@ -728,8 +728,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 9436,
-          "height": 1274,
+          "top": 9452,
+          "height": 1282,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
           "heading": "Every batch, on the record.",
@@ -737,8 +737,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 10709,
-          "height": 2506,
+          "top": 10733,
+          "height": 1339,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -746,8 +746,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 13215,
-          "height": 2783,
+          "top": 12072,
+          "height": 1617,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -793,7 +793,7 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 3857,
+          "y": 3865,
           "w": 768,
           "h": 1024
         }
@@ -830,53 +830,53 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 2015,
+          "scrollY": 1738,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 4030,
+          "scrollY": 3476,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 6045,
+          "scrollY": 5214,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 8060,
+          "scrollY": 6951,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 10075,
+          "scrollY": 8689,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 12090,
+          "scrollY": 10427,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 14104,
+          "scrollY": 12165,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 15784,
+          "scrollY": 13613,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 16791,
+          "scrollY": 14482,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=xhLjX9vgrBwXddT1zduDG' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=iDyvpMKrFzzabmmZ_UgA6' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "430x932": {
@@ -1083,7 +1083,7 @@
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=s7ghkvpuHrIMXH1oDXJ_c' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=PI71-pkufNchvgXEayzjT' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "390x844": {
@@ -1290,7 +1290,7 @@
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=eIpoJFx9yf31iR1ZbANhZ' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=Bm62c2nNgEx--t_1Iv-V4' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "360x800": {
@@ -1497,7 +1497,7 @@
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=BtQ9FLBzB6Drus2IKTE97' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=72Ml3Qkt6WJY8PfYsO4Ba' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     }
   }

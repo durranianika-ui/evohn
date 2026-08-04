@@ -21,7 +21,7 @@ export function Verification() {
   if (!lead) return null;
 
   return (
-    <section className="section-y bg-carbon text-soft">
+    <section className="section-y-home bg-carbon text-soft">
       <div className="container-home">
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <SectionHeading
