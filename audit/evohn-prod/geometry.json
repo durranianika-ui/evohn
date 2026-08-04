@@ -1,0 +1,1835 @@
+{
+  "target": "evohn-prod",
+  "base": "http://127.0.0.1:3999",
+  "capturedAt": "2026-08-04T19:22:26.912Z",
+  "viewports": {
+    "1920x1080": {
+      "docHeight": 16372,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflowX": 0,
+      "gutter": 276,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 1080,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 88
+        },
+        {
+          "tag": "SECTION",
+          "top": 1080,
+          "height": 942,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 2022,
+          "height": 1998,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 4019,
+          "height": 4301,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 8320,
+          "height": 1308,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 9628,
+          "height": 835,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 10463,
+          "height": 2272,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 12735,
+          "height": 2272,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 40
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 88,
+          "lineHeight": 84,
+          "tracking": "-2.64px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 40,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 4324,
+          "w": 1920,
+          "h": 1080
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 276,
+          "y": 10663,
+          "w": 533,
+          "h": 335
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 992,
+          "y": 10663,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 992,
+          "y": 11295,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 992,
+          "y": 11927,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 1111,
+          "y": 12935,
+          "w": 533,
+          "h": 584
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 276,
+          "y": 12935,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 276,
+          "y": 13567,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 276,
+          "y": 14199,
+          "w": 652,
+          "h": 608
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1920,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1835,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3670,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5505,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 7340,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 9175,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 11010,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 12845,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 14374,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 15292,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    },
+    "1440x900": {
+      "docHeight": 15472,
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflowX": 0,
+      "gutter": 36,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 900,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 86
+        },
+        {
+          "tag": "SECTION",
+          "top": 900,
+          "height": 909,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 1809,
+          "height": 1998,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 3807,
+          "height": 3613,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 7420,
+          "height": 1308,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 8728,
+          "height": 835,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 9564,
+          "height": 2272,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 11836,
+          "height": 2272,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 40
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 86,
+          "lineHeight": 81,
+          "tracking": "-2.565px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 40,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 4090,
+          "w": 1440,
+          "h": 900
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 36,
+          "y": 9764,
+          "w": 533,
+          "h": 335
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 752,
+          "y": 9764,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 752,
+          "y": 10396,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 752,
+          "y": 11028,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 871,
+          "y": 12036,
+          "w": 533,
+          "h": 584
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 36,
+          "y": 12036,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 36,
+          "y": 12668,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 36,
+          "y": 13300,
+          "w": 652,
+          "h": 608
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1749,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3497,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5246,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 6995,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 8743,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 10492,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 12240,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 13698,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 14572,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    },
+    "1280x800": {
+      "docHeight": 14900,
+      "viewport": [
+        1280,
+        800
+      ],
+      "overflowX": 0,
+      "gutter": 16,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 800,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 76
+        },
+        {
+          "tag": "SECTION",
+          "top": 800,
+          "height": 856,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 1656,
+          "height": 1998,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 3654,
+          "height": 3231,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 6885,
+          "height": 1287,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 64
+        },
+        {
+          "tag": "SECTION",
+          "top": 8172,
+          "height": 835,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 9007,
+          "height": 2272,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 11279,
+          "height": 2272,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 40
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 76,
+          "lineHeight": 72,
+          "tracking": "-2.28px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 40,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 3925,
+          "w": 1280,
+          "h": 800
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 16,
+          "y": 9207,
+          "w": 483,
+          "h": 335
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 672,
+          "y": 9207,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 672,
+          "y": 9839,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 672,
+          "y": 10471,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 781,
+          "y": 11479,
+          "w": 483,
+          "h": 584
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 11479,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12111,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12743,
+          "w": 592,
+          "h": 608
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1692,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3384,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5076,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 6768,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 8460,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 10152,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 11844,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 13254,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 14100,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    },
+    "768x1024": {
+      "docHeight": 16279,
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflowX": 0,
+      "gutter": 16,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 1024,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 55
+        },
+        {
+          "tag": "SECTION",
+          "top": 1024,
+          "height": 928,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 1952,
+          "height": 1721,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 3673,
+          "height": 4134,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 7807,
+          "height": 1326,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 41
+        },
+        {
+          "tag": "SECTION",
+          "top": 9133,
+          "height": 1158,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 10291,
+          "height": 2184,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 12475,
+          "height": 2184,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 55,
+          "lineHeight": 53,
+          "tracking": "-1.65888px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 28,
+          "lineHeight": 28,
+          "tracking": "-0.84px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 4018,
+          "w": 768,
+          "h": 1024
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 16,
+          "y": 10495,
+          "w": 288,
+          "h": 329
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 336,
+          "y": 10495,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 336,
+          "y": 11095,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 336,
+          "y": 11695,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 464,
+          "y": 12679,
+          "w": 288,
+          "h": 647
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12679,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13279,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13879,
+          "w": 416,
+          "h": 576
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1831,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3661,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5492,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 7322,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 9153,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 10984,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 12814,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 14340,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 15255,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    },
+    "430x932": {
+      "docHeight": 17556,
+      "viewport": [
+        430,
+        932
+      ],
+      "overflowX": 0,
+      "gutter": 16,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 932,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 932,
+          "height": 2161,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 3093,
+          "height": 1684,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 4777,
+          "height": 3772,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 8549,
+          "height": 1809,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 10358,
+          "height": 1284,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 11643,
+          "height": 1847,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 13490,
+          "height": 2137,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 38,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 28,
+          "lineHeight": 28,
+          "tracking": "-0.84px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5101,
+          "w": 430,
+          "h": 932
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12122,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12546,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12970,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14259,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14683,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 15107,
+          "w": 398,
+          "h": 400
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 430,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1995,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3990,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5985,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 7980,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 9974,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 11969,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 13964,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 15627,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 16624,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    },
+    "390x844": {
+      "docHeight": 17231,
+      "viewport": [
+        390,
+        844
+      ],
+      "overflowX": 0,
+      "gutter": 16,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 844,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 844,
+          "height": 2177,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 3021,
+          "height": 1708,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 4729,
+          "height": 3436,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 8165,
+          "height": 1851,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 10016,
+          "height": 1307,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 11323,
+          "height": 1847,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 13170,
+          "height": 2137,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 38,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 28,
+          "lineHeight": 28,
+          "tracking": "-0.84px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5042,
+          "w": 390,
+          "h": 844
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 11802,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12226,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12650,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13940,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14364,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14788,
+          "w": 358,
+          "h": 400
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1966,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3933,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5899,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 7866,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 9832,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 11799,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 13765,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 15404,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 16387,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    },
+    "360x800": {
+      "docHeight": 17175,
+      "viewport": [
+        360,
+        800
+      ],
+      "overflowX": 0,
+      "gutter": 16,
+      "sections": [
+        {
+          "tag": "SECTION",
+          "top": 0,
+          "height": 800,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "ScientificPrecision.Measured,Not Claimed.",
+          "headingSize": 40
+        },
+        {
+          "tag": "SECTION",
+          "top": 800,
+          "height": 2198,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Precision before promise.Precision before promis",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 2998,
+          "height": 1708,
+          "bg": "rgb(237, 234, 227)",
+          "position": "static",
+          "heading": "Eight domains. One standard.Eight domains.One st",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 4706,
+          "height": 3338,
+          "bg": "rgb(10, 10, 10)",
+          "position": "relative",
+          "heading": "Compounds that set the standard.Compounds thatse",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 8044,
+          "height": 1889,
+          "bg": "rgb(17, 17, 17)",
+          "position": "static",
+          "heading": "Published, not on request.Published, noton reque",
+          "headingSize": 36
+        },
+        {
+          "tag": "SECTION",
+          "top": 9933,
+          "height": 1307,
+          "bg": "rgb(245, 244, 240)",
+          "position": "static",
+          "heading": "Every batch, on the record.Every batch,on the re",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 11240,
+          "height": 1847,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Documentation you can audit.",
+          "headingSize": 28
+        },
+        {
+          "tag": "SECTION",
+          "top": 13088,
+          "height": 2137,
+          "bg": "rgb(10, 10, 10)",
+          "position": "static",
+          "heading": "Consistency is the whole point.",
+          "headingSize": 28
+        }
+      ],
+      "type": {
+        "h1": {
+          "family": "Archivo",
+          "size": 40,
+          "lineHeight": 38,
+          "tracking": "-1.2px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h2": {
+          "family": "Archivo",
+          "size": 28,
+          "lineHeight": 28,
+          "tracking": "-0.84px",
+          "weight": "500",
+          "transform": "uppercase"
+        },
+        "h3": {
+          "family": "Archivo",
+          "size": 18,
+          "lineHeight": 23,
+          "tracking": "-0.45px",
+          "weight": "500",
+          "transform": "none"
+        },
+        "p": {
+          "family": "Azeret Mono",
+          "size": 11,
+          "lineHeight": 18,
+          "tracking": "0.44px",
+          "weight": "400",
+          "transform": "uppercase"
+        }
+      },
+      "sticky": [
+        {
+          "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
+          "position": "sticky",
+          "x": 0,
+          "y": 5084,
+          "w": 360,
+          "h": 800
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 11720,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12144,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12568,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13857,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14281,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14705,
+          "w": 328,
+          "h": 400
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none",
+        "radius": "0px",
+        "position": "fixed"
+      },
+      "bodyCursor": "auto",
+      "ageGate": "I confirm both — enter",
+      "headerAtTop": {
+        "y": 0,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "headerScrolled": {
+        "y": -72,
+        "h": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "backdrop": "none"
+      },
+      "frames": [
+        {
+          "stop": 0,
+          "scrollY": 0,
+          "file": "scroll-000.png"
+        },
+        {
+          "stop": 0.12,
+          "scrollY": 1965,
+          "file": "scroll-012.png"
+        },
+        {
+          "stop": 0.24,
+          "scrollY": 3930,
+          "file": "scroll-024.png"
+        },
+        {
+          "stop": 0.36,
+          "scrollY": 5895,
+          "file": "scroll-036.png"
+        },
+        {
+          "stop": 0.48,
+          "scrollY": 7860,
+          "file": "scroll-048.png"
+        },
+        {
+          "stop": 0.6,
+          "scrollY": 9825,
+          "file": "scroll-060.png"
+        },
+        {
+          "stop": 0.72,
+          "scrollY": 11790,
+          "file": "scroll-072.png"
+        },
+        {
+          "stop": 0.84,
+          "scrollY": 13755,
+          "file": "scroll-084.png"
+        },
+        {
+          "stop": 0.94,
+          "scrollY": 15393,
+          "file": "scroll-094.png"
+        },
+        {
+          "stop": 1,
+          "scrollY": 16375,
+          "file": "scroll-100.png"
+        }
+      ],
+      "consoleErrors": []
+    }
+  }
+}
