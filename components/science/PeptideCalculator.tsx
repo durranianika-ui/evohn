@@ -301,6 +301,11 @@ export function PeptideCalculator() {
         aria-labelledby={`${uid}-tab-${mode}`}
         className="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16"
       >
+        {/* The panel is a section of the page and its Steps are h3s, so it
+            needs an h2 of its own or the heading order jumps h1 -> h3. It is
+            visually redundant beside the selected tab, hence sr-only. */}
+        <h2 className="sr-only">{activeMode.label} calculator</h2>
+
         {/* ============================== INPUTS ============================ */}
         <form
           className="flex flex-col gap-10 lg:col-span-6"

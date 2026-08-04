@@ -131,7 +131,10 @@ export function ReviewCard({
               <Link
                 href={`/products/${product.slug}`}
                 className={cn(
-                  "transition-colors duration-400 ease-brand",
+                  // min-h-6 is WCAG 2.2 SC 2.5.8: this sits in a metadata row
+                  // rather than in prose, so the inline-target exemption does
+                  // not apply to it.
+                  "inline-flex min-h-6 items-center transition-colors duration-400 ease-brand",
                   dark ? "hover:text-soft" : "hover:text-carbon",
                 )}
               >

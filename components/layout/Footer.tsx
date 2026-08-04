@@ -73,7 +73,7 @@ export function Footer() {
                   <li key={`${column.heading}-${link.href}`}>
                     <Link
                       href={link.href}
-                      className="type-body-s text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
+                      className="type-body-s inline-flex min-h-6 items-center text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
                     >
                       {link.label}
                     </Link>
@@ -91,7 +91,7 @@ export function Footer() {
                 <li key={doc.slug}>
                   <Link
                     href={doc.path}
-                    className="type-body-s text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
+                    className="type-body-s inline-flex min-h-6 items-center text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
                   >
                     {doc.label}
                   </Link>
@@ -112,7 +112,7 @@ export function Footer() {
               <li key={category.slug}>
                 <Link
                   href={`/catalogue?domain=${category.slug}`}
-                  className="type-body-s inline-flex items-center gap-3 text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
+                  className="type-body-s inline-flex min-h-6 items-center gap-3 text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
                 >
                   <span
                     className="size-1.5 rounded-dot ring-1 ring-soft/20"
@@ -147,13 +147,13 @@ export function Footer() {
               </p>
               <Link
                 href="/research-use-only"
-                className="type-label text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
+                className="type-label inline-flex min-h-6 items-center text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
               >
                 Research use only
               </Link>
               <Link
                 href="/legal"
-                className="type-label text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
+                className="type-label inline-flex min-h-6 items-center text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
               >
                 Legal
               </Link>

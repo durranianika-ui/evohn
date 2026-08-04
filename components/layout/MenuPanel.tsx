@@ -138,7 +138,7 @@ export function MenuPanel({
                       <Link
                         href={doc.path}
                         onClick={onClose}
-                        className="type-body-s text-soft/50 transition-colors duration-400 ease-brand hover:text-soft"
+                        className="type-body-s inline-flex min-h-6 items-center text-soft/50 transition-colors duration-400 ease-brand hover:text-soft"
                       >
                         {doc.label}
                       </Link>

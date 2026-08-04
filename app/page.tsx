@@ -6,7 +6,6 @@ import { Pillars } from "@/sections/home/Pillars";
 import { Domains } from "@/sections/home/Domains";
 import { Collection } from "@/sections/home/Collection";
 import { Stacks } from "@/sections/home/Stacks";
-import { Editorial } from "@/sections/home/Editorial";
 import { Verification } from "@/sections/home/Verification";
 import { Evidence } from "@/sections/home/Evidence";
 import { Resources } from "@/sections/home/Resources";
@@ -24,24 +23,30 @@ export const metadata: Metadata = {
 /**
  * Home.
  *
- * Fifteen movements, alternating dark and light so the page has a pulse
- * rather than a scroll length:
+ * Fourteen movements. The tones below were measured against the rendered
+ * page, not asserted — no two adjacent sections share a ground except where
+ * the pairing is deliberate (Hero into TrustBand, Standard into the closing
+ * call, both of which read as one dark movement):
  *
  *   dark   Hero            the statement
  *   dark   TrustBand       the figures, immediately, before any more claims
  *   light  Philosophy      why the standard exists
  *   dark   Pillars         the four numbered standards
- *   light  Domains         the eight research domains
+ *   mist   Domains         the eight research domains
  *   light  Collection      six compounds
- *   dark   Stacks          how compounds are studied together
- *   dark   Editorial       the facility, at full bleed
+ *   mist   Stacks          how compounds are studied together
  *   dark   Verification    how a batch is actually verified
  *   light  Evidence        three real certificates
  *   dark   Resources       the four research tools
  *   light  Reading         the journal
  *   mist   Voices          what comes back from the bench
- *   light  Standard        the closing brand statement
+ *   dark   Standard        the closing brand statement
  *   dark   CallToAction    the one thing to do next
+ *
+ * The former `Editorial` section was removed here: it rendered its own
+ * journal preview and its own review block, which `Reading` and `Voices`
+ * now do with a lead-plus-two composition and a computed review aggregate.
+ * Two of each on one page was the duplication, not the depth.
  *
  * The order is an argument, read top to bottom: what we believe, how we prove
  * it, what the catalogue holds, how those compounds are studied, the evidence
@@ -59,7 +64,6 @@ export default function HomePage() {
       <Domains />
       <Collection />
       <Stacks />
-      <Editorial />
       <Verification />
       <Evidence />
       <Resources />

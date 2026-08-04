@@ -55,10 +55,16 @@ export function SplitText({
               <span
                 key={`${lineNo}-${index}`}
                 // `pb`/`-mb` give descenders room inside the clip box.
-                className="inline-flex overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom"
+                // `max-w-full` plus the wrapping rules on the inner span let
+                // a word longer than the line break rather than push the
+                // document wider than the viewport — at 320px a display-size
+                // compound name is wider than the screen on its own.
+                className="inline-flex max-w-full overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom"
               >
                 <motion.span
-                  className="inline-block whitespace-pre"
+                  // pre-wrap keeps the trailing space visible while still
+                  // allowing a break; anywhere permits one mid-word.
+                  className="inline-block [overflow-wrap:anywhere] whitespace-pre-wrap"
                   initial={{ y: "110%" }}
                   whileInView={{ y: "0%" }}
                   viewport={VIEWPORT}

@@ -72,7 +72,9 @@ export default function JournalPage() {
       {lead ? (
         <section className="border-b border-carbon/10 bg-soft text-carbon">
           <div className="container-content py-20 md:py-28">
-            <p className="type-label text-carbon/45">Latest</p>
+            {/* A heading rather than a paragraph: the card beneath carries an
+                h3, so without an h2 here the order jumps h1 -> h3. */}
+            <h2 className="type-label text-carbon/45">Latest</h2>
             <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-7">
                 <ArticleCard article={lead} feature priority sizes="60vw" />

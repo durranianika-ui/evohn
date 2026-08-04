@@ -117,7 +117,9 @@ export function ArrowLink({
   return (
     <Link
       className={cn(
-        "group/arrow type-label inline-flex items-center gap-3 pb-1",
+        // min-h-6 is WCAG 2.2 SC 2.5.8 (Target Size, Minimum): 24 CSS px.
+        // At this type size the line box alone is 21px.
+        "group/arrow type-label inline-flex min-h-6 items-center gap-3 pb-1",
         className,
       )}
       {...props}

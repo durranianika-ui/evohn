@@ -120,9 +120,9 @@ export default function CalculatorPage() {
               <Reveal key={guide.href} delay={i * 0.08}>
                 <Link
                   href={guide.href}
-                  className="group/g flex items-center justify-between gap-6 border border-carbon/12 bg-soft p-8 transition-colors duration-500 ease-brand hover:border-carbon/30"
+                  className="group/g flex items-center justify-between gap-6 border border-carbon/12 bg-soft p-6 transition-colors duration-500 ease-brand hover:border-carbon/30 md:p-8"
                 >
-                  <span>
+                  <span className="min-w-0">
                     <span className="type-title block text-carbon">
                       {guide.title}
                     </span>

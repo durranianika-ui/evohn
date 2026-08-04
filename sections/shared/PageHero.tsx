@@ -53,7 +53,11 @@ export function PageHero({
                     ) : (
                       <Link
                         href={crumb.href}
-                        className="transition-colors duration-400 ease-brand hover:text-soft"
+                        // WCAG 2.2 SC 2.5.8: the 11px label type gives a 17px
+                        // line box. The crumbs clear the spacing exception on
+                        // their own, but a 24px box is the honest target on a
+                        // touch screen.
+                        className="inline-flex min-h-6 items-center transition-colors duration-400 ease-brand hover:text-soft"
                       >
                         {crumb.name}
                       </Link>
