@@ -57,7 +57,6 @@ export function WhatsAppCTA({
       variant={variant}
       tone={tone}
       className={className}
-      data-analytics="whatsapp-enquiry"
       aria-label={
         product
           ? `${text} about ${product} by ${channel}`
