@@ -34,7 +34,7 @@ export function TrustBand() {
       aria-label="Verification summary"
       className="border-y border-soft/10 bg-ink text-soft"
     >
-      <div className="container-content grid gap-10 py-12 lg:grid-cols-12 lg:items-center lg:gap-8">
+      <div className="container-home grid gap-10 py-12 lg:grid-cols-12 lg:items-center lg:gap-8">
         <dl className="grid grid-cols-3 gap-6 lg:col-span-5">
           {figures.map((figure) => (
             <div key={figure.label}>

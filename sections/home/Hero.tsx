@@ -50,7 +50,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/70 to-transparent" />
       </div>
 
-      <div className="container-content relative pt-32 pb-[8vh]">
+      <div className="container-home relative pt-32 pb-[8vh]">
         <Reveal distance={0} duration={0.8}>
           <p className="type-label text-soft/55">Research Compounds</p>
         </Reveal>

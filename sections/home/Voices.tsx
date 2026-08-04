@@ -24,7 +24,7 @@ export function Voices() {
 
   return (
     <section className="section-y bg-mist text-carbon">
-      <div className="container-content">
+      <div className="container-home">
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <SectionHeading
             eyebrow="From the bench"

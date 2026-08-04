@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { Hero } from "@/sections/home/Hero";
-import { Philosophy } from "@/sections/home/Philosophy";
-import { Pillars } from "@/sections/home/Pillars";
+import { Standards } from "@/sections/home/Standards";
 import { Domains } from "@/sections/home/Domains";
 import { Collection } from "@/sections/home/Collection";
-import { Standard } from "@/sections/home/Standard";
 import { Verification } from "@/sections/home/Verification";
 import { Evidence } from "@/sections/home/Evidence";
 import { Researchers } from "@/sections/home/Researchers";
 import { Performance } from "@/sections/home/Performance";
-import { CallToAction } from "@/sections/shared/CallToAction";
 import { organisationSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/common/JsonLd";
 
@@ -20,44 +17,45 @@ export const metadata: Metadata = {
 /**
  * Home.
  *
- * The sequence and the grounds below were measured off the reference at
- * 1440x900 — eight blocks, not fourteen, with these heights and these
- * background changes:
+ * Eight blocks, matching the reference measured at all seven audit widths.
+ * Target heights in viewport multiples, with the ground each sits on:
  *
- *   0  dark   Hero           900px   #0a0a0a  one viewport, film behind
- *   1  mist   Philosophy     886px   #edeae3  the single ground change up top
- *   2  onyx   Pillars       2140px   #111110  the four standards
- *   3  dark   Domains       3600px            pinned — four viewports of scroll
- *   4  light  Collection    1443px   #f5f4f0  the horizontal collection
- *   5  dark   Standard       805px   #0a0a0a  the repeating brand line
- *   6  dark   Verification  2258px   #0a0a0a  how a batch is verified
- *   7  dark   Evidence      2258px   #0a0a0a  the certification grid
+ *   1  1.00  #0a0a0a  Hero            one viewport, film behind
+ *   2  0.98  #edeae3  Standards       philosophy and the four-panel row
+ *   3  2.18  #111110  Domains         the eight research domains
+ *   4  4.00  inherit  Collection      pinned, four viewports of horizontal travel
+ *   5  1.60  #f5f4f0  Verification    how a batch is actually verified
+ *   6  0.89  #0a0a0a  Evidence        the certification grid
+ *   7  2.51  #0a0a0a  Researchers     sticky column, panels travelling past
+ *   8  2.51  #0a0a0a  Performance     the same composition, mirrored
  *
- * The closing call keeps the dark ground it inherits, so 5 through 8 read as
- * one long dark movement rather than four separate panels — which is what the
- * reference does with its own tail.
+ * That sums to 15.67vh; the reference document is 16.74vh, the balance being
+ * the footer at ~1.06vh.
  *
- * Five sections were removed from this page, not deleted from the site:
- * TrustBand, Stacks, Resources, Reading and Voices have no counterpart in the
- * reference sequence and were what made the page read as a dashboard. Their
- * content still lives on `/stacks`, `/science`, `/journal` and `/reviews`,
- * all of which remain linked from the navigation and the footer.
+ * Four sections previously at this level are gone from the homepage and only
+ * the homepage: TrustBand, Stacks, Resources, Reading and Voices have no
+ * reference counterpart, and Standard and CallToAction were standalone blocks
+ * the reference does not have — their content now closes the Performance
+ * block, which is where the reference puts its own final statement before the
+ * footer. Everything remains reachable at /stacks, /science, /journal,
+ * /reviews and /quality, all still linked from the navigation and footer.
+ *
+ * Philosophy and Pillars were merged rather than stacked: the reference treats
+ * the statement and the evidence for it as one continuous composition, and
+ * running them as two blocks was worth roughly 0.9vh of excess page length.
  */
 export default function HomePage() {
   return (
     <>
       <JsonLd data={[organisationSchema(), websiteSchema()]} />
       <Hero />
-      <Philosophy />
-      <Pillars />
+      <Standards />
       <Domains />
       <Collection />
       <Verification />
       <Evidence />
       <Researchers />
       <Performance />
-      <Standard />
-      <CallToAction secondary={{ label: "View Catalogue", href: "/catalogue" }} />
     </>
   );
 }

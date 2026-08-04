@@ -22,7 +22,7 @@ export function Verification() {
 
   return (
     <section className="section-y bg-carbon text-soft">
-      <div className="container-content">
+      <div className="container-home">
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <SectionHeading
             eyebrow="Lab Results"

@@ -25,7 +25,7 @@ export function Evidence() {
 
   return (
     <section className="section-y bg-soft text-carbon">
-      <div className="container-content">
+      <div className="container-home">
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <SectionHeading
             eyebrow="Evidence"

@@ -43,7 +43,7 @@ export function PairedPanels({
   reverse = false,
 }: PairedPanelsProps) {
   return (
-    <div className="container-content">
+    <div className="container-home">
       <div
         className={cn(
           "grid gap-12 lg:grid-cols-12 lg:gap-16",

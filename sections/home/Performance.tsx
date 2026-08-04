@@ -1,4 +1,7 @@
 import { PairedPanels, type Panel } from "@/components/home/PairedPanels";
+import { Reveal } from "@/components/motion/Reveal";
+import { ButtonLink } from "@/components/ui/Button";
+import { SplitText } from "@/components/motion/SplitText";
 
 /**
  * Second half of the paired sequence, mirrored. The reference flips the
@@ -34,6 +37,30 @@ export function Performance() {
         panels={panels}
         reverse
       />
+
+      {/* The closing statement, and the one thing to do next.
+
+          This was a standalone CallToAction block. The reference has no such
+          block: it resolves its final statement inside the last panelled
+          section and hands straight to the footer, so that is where EVOHN's
+          closing line now lives. */}
+      <div className="container-home mt-[clamp(4rem,10vh,8rem)]">
+        <div className="border-t border-soft/12 pt-[clamp(3rem,7vh,5rem)]">
+          <SplitText
+            as="p"
+            text={"Your research\ndeserves certainty."}
+            className="type-display-s max-w-[20ch] text-soft"
+          />
+          <Reveal delay={0.18} className="mt-9 flex flex-wrap gap-4">
+            <ButtonLink href="/catalogue" tone="dark">
+              View Catalogue
+            </ButtonLink>
+            <ButtonLink href="/contact" tone="dark" variant="outline">
+              Speak to a Specialist
+            </ButtonLink>
+          </Reveal>
+        </div>
+      </div>
     </section>
   );
 }

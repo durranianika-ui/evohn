@@ -17,7 +17,7 @@ export function Resources() {
 
   return (
     <section className="section-y bg-ink text-soft">
-      <div className="container-content">
+      <div className="container-home">
         <SectionHeading
           eyebrow="Research Tools"
           title={"Instruments,\nnot advice."}

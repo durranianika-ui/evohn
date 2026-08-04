@@ -11,7 +11,7 @@ import { productsByCategory } from "@/data/products";
 export function Domains() {
   return (
     <section className="section-y bg-mist text-carbon">
-      <div className="container-content">
+      <div className="container-home">
         <SectionHeading
           eyebrow="Our Research"
           title={"Eight domains.\nOne standard."}

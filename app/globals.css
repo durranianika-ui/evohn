@@ -361,6 +361,24 @@
   }
 }
 
+/* Homepage-scoped container.
+
+   The reference solves exactly to `max-width: 1368px; padding-inline: 16px`,
+   confirmed at every audit width: 1920 gives (1920-1368)/2 = 276px gutters,
+   1440 gives 36px, and 1280 and below fall under the max-width so the gutter
+   is the padding alone at 16px. Measured Evohn gutters ran +48px at desktop
+   against that.
+
+   Deliberately NOT a change to `container-content`: every internal page uses
+   that, and widening them all to chase homepage parity would move layouts that
+   were already approved. Only `/` opts into this. */
+@utility container-home {
+  width: 100%;
+  max-width: 85.5rem; /* 1368px */
+  margin-inline: auto;
+  padding-inline: 1rem; /* 16px, at every width — as the reference does */
+}
+
 @utility section-y {
   padding-block: var(--spacing-section);
   @media (width >= 48rem) {

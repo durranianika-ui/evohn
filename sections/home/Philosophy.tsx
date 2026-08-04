@@ -16,7 +16,7 @@ export function Philosophy() {
        one for the facility block further down. The two are close enough to
        read as a mistake and far enough apart to change the section's weight. */
     <section id="mission" className="section-y scroll-mt-24 bg-mist text-carbon">
-      <div className="container-content">
+      <div className="container-home">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <ParallaxImage className="relative aspect-4/5 w-full bg-[radial-gradient(120%_90%_at_50%_20%,var(--color-mist)_0%,var(--color-warm)_60%,#b0a9a1_100%)]">

@@ -41,7 +41,7 @@ export function Collection() {
 
   return (
     <section className="relative bg-ink text-soft">
-      <div className="container-content pt-[clamp(5rem,12vh,10rem)]">
+      <div className="container-home pt-[clamp(5rem,12vh,10rem)]">
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
           <SectionHeading
             eyebrow="The Collection"
