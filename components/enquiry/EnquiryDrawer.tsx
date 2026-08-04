@@ -2,11 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { EASE_BRAND } from "@/constants/motion";
 import { useEnquiry } from "@/lib/enquiry";
 import { whatsappConfigured } from "@/lib/whatsapp";
 import { site } from "@/data/site";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * The enquiry drawer.
@@ -24,7 +25,7 @@ export function EnquiryDrawer({
   onClose: () => void;
 }) {
   const { items, remove, clear, href, count } = useEnquiry();
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreTo = useRef<HTMLElement | null>(null);
 

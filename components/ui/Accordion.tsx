@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useId } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EASE_BRAND } from "@/constants/motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 export interface AccordionEntry {
   question: string;
@@ -27,7 +28,7 @@ export function Accordion({
   className?: string;
 }) {
   const [open, setOpen] = useState<number | null>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const baseId = useId();
   const dark = tone === "dark";
 

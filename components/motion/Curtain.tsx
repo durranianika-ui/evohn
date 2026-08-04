@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EASE_BRAND } from "@/constants/motion";
 import { site } from "@/data/site";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * First-load curtain: the wordmark resolves out of the dark, holds, then the
@@ -15,7 +16,7 @@ import { site } from "@/data/site";
  * never repeats as the visitor moves between routes.
  */
 export function Curtain() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {

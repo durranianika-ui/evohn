@@ -3,16 +3,10 @@
 import { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { CornerFrame } from "@/components/ui/CornerFrame";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 export interface TrackItem {
   slug: string;
@@ -31,19 +25,27 @@ export interface TrackItem {
  * the page itself never stops moving, which is why this uses scroll progress
  * rather than a wheel hijack.
  *
- * The slot width is a CSS variable rather than a JS measurement so the track
- * reflows on resize without a re-render, and the transform is a `calc()`
- * driven by one motion value — no per-frame React state. The only state that
- * changes during a scroll is the active index, and only when it actually
- * crosses to a new card.
+ * Cards are not a uniform width. Measured off the reference at 1440: the
+ * active card is 605px and the ones either side are 216px — 42vw against
+ * 15vw — and the inactive ones sit at 0.4 opacity with their supporting text
+ * collapsed to nothing. Reaching a card *opens* it; leaving it closes it
+ * again. That expansion, and the way the row reshuffles around it, is the
+ * movement the whole section is built on.
+ *
+ * All of it is one discrete state — the active index — expressed as a CSS
+ * variable. Widths, opacities and the track offset are then pure `calc()` on
+ * that one number, each carrying the same 700ms brand-eased transition, so
+ * the shuffle runs on the compositor with no per-frame React state and no
+ * JS measurement to invalidate on resize. Every card before the active one is
+ * idle width, which is what makes the offset a closed form rather than a sum.
  *
  * Under reduced motion the pin is dropped entirely: the section collapses to
- * its natural height and the track becomes an ordinary scroll-snap rail that
- * works with a trackpad, a touch drag or the keyboard.
+ * its natural height and the track becomes an ordinary scroll-snap rail of
+ * equal cards that works with a trackpad, a touch drag or the keyboard.
  */
 export function CollectionTrack({ items }: { items: TrackItem[] }) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [active, setActive] = useState(0);
   const last = Math.max(items.length - 1, 1);
 
@@ -57,8 +59,6 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
   const progress = useTransform(scrollYProgress, [0.06, 0.94], [0, 1], {
     clamp: true,
   });
-
-  const x = useMotionTemplate`calc(${progress} * -${last} * (var(--slot) + var(--slot-gap)))`;
 
   useMotionValueEvent(progress, "change", (p) => {
     const next = Math.round(p * last);
@@ -108,12 +108,34 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
   );
 
   const cards = items.map((item, i) => (
-    <Card key={item.slug} item={item} index={i} total={items.length} active={active === i} />
+    <Card
+      key={item.slug}
+      item={item}
+      index={i}
+      total={items.length}
+      active={active === i}
+      open={reduced || active === i}
+    />
   ));
 
-  if (reduced) {
-    return (
-      <div ref={sectionRef} className="relative">
+  return (
+    /* One tree for both modes, differing only in class and style.
+       Two returns meant the pinned stage and the rail were different elements:
+       React tore one down and built the other the moment the media query
+       resolved, and anything already holding the rail — a test locator, a
+       focused card, a scroll-into-view in flight — was left pointing at a
+       detached node.
+
+       370vh, not 400: the reference's block measures 4.00vh in total, and the
+       heading above this track accounts for roughly 0.3vh of that. Giving the
+       track the full four viewports pushed the block to 4.31vh at every width.
+       The pin itself is unaffected — only the scroll duration feeding it. */
+    <div ref={sectionRef} className={cn("relative", !reduced && "h-[370vh]")}>
+      <div
+        className={cn(
+          !reduced && "sticky top-0 flex h-dvh flex-col justify-center overflow-hidden",
+        )}
+      >
         <div
           data-rail
           data-collection-rail
@@ -122,49 +144,66 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
           aria-label="Featured compounds"
           tabIndex={0}
           onKeyDown={onKeyDown}
-          className="flex snap-x snap-mandatory gap-[var(--slot-gap)] overflow-x-auto px-[max(1rem,calc((100vw-var(--slot))/2))] pb-8 [--slot-gap:3vw] [--slot:80vw] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft md:[--slot:52vw] xl:[--slot:44vw]"
+          style={
+            reduced
+              ? undefined
+              : ({
+                  "--active": active,
+                  /* Every card left of the active one is idle width, so
+                     centring the active card is a closed form rather than a
+                     running sum: half the viewport, less the idle cards
+                     behind it, less half of the open card itself. Written
+                     here rather than as an arbitrary utility because calc
+                     needs real whitespace around its operators and this reads
+                     as arithmetic. */
+                  transform:
+                    "translateX(calc(50vw - var(--active) * (var(--slot-idle) + var(--slot-gap)) - var(--slot-active) / 2))",
+                } as React.CSSProperties)
+          }
+          className={cn(
+            SLOTS,
+            /* items-center, not the default stretch: a closed card should be
+               its own height — the reference's are 342px against the open
+               card's 612 — and stretching held every one of them at full
+               height, which erased half the difference between open and
+               closed. */
+            "flex items-center gap-[var(--slot-gap)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft",
+            reduced
+              ? /* Equal cards on the rail: shrinking whatever is not centred
+                   would be its own animation, which is the thing being opted
+                   out of. */
+                "snap-x snap-mandatory overflow-x-auto px-[max(1rem,calc((100vw-var(--slot-active))/2))] pb-8 [--slot-idle:var(--slot-active)]"
+              : "will-change-transform transition-transform duration-700 ease-[var(--ease-brand)]",
+          )}
         >
           {cards}
         </div>
       </div>
-    );
-  }
-
-  return (
-    /* 370vh, not 400: the reference's block measures 4.00vh in total, and the
-       heading above this track accounts for roughly 0.3vh of that. Giving the
-       track the full four viewports pushed the block to 4.31vh at every width.
-       The pin itself is unaffected — only the scroll duration feeding it. */
-    <div ref={sectionRef} className="relative h-[370vh]">
-      <div className="sticky top-0 flex h-dvh flex-col justify-center overflow-hidden">
-        <motion.div
-          data-rail
-          data-collection-rail
-          role="group"
-          aria-roledescription="carousel"
-          aria-label="Featured compounds"
-          tabIndex={0}
-          onKeyDown={onKeyDown}
-          style={{ x }}
-          className="flex gap-[var(--slot-gap)] pl-[calc((100vw-var(--slot))/2)] will-change-transform [--slot-gap:3vw] [--slot:80vw] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft md:[--slot:52vw] xl:[--slot:44vw]"
-        >
-          {cards}
-        </motion.div>
-      </div>
     </div>
   );
 }
+
+/**
+ * Slot geometry. The xl pair is the reference's own — 42vw open, 15vw closed;
+ * the narrower stops keep the open card readable on a phone, where 42vw would
+ * be 164px.
+ */
+const SLOTS =
+  "[--slot-gap:3vw] [--slot-active:80vw] [--slot-idle:32vw] md:[--slot-active:52vw] md:[--slot-idle:20vw] xl:[--slot-active:42vw] xl:[--slot-idle:15vw]";
 
 function Card({
   item,
   index,
   total,
   active,
+  open,
 }: {
   item: TrackItem;
   index: number;
   total: number;
   active: boolean;
+  /** Active, or forced open because the rail shows every card in full. */
+  open: boolean;
 }) {
   return (
     <article
@@ -175,20 +214,32 @@ function Card({
       role="group"
       aria-roledescription="slide"
       aria-label={`${index + 1} of ${total}: ${item.name}`}
+      aria-current={active ? "true" : undefined}
       className={cn(
-        "relative w-[var(--slot)] shrink-0 transition-[opacity,transform] duration-700 ease-[var(--ease-brand)]",
-        active ? "scale-100 opacity-100" : "scale-[0.92] opacity-45",
+        "relative shrink-0 transition-[width,opacity] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
+        open
+          ? "w-[var(--slot-active)] opacity-100"
+          : "w-[var(--slot-idle)] opacity-40",
       )}
     >
       <CornerFrame className="p-5 md:p-7">
-        <p className="type-label text-soft">{item.name}</p>
+        <p className="type-label truncate text-soft">{item.name}</p>
 
-        <div className="relative mt-5 aspect-[4/3] w-full overflow-hidden bg-onyx">
+        {/* Landscape when open, portrait when closed. The reference's closed
+            card is 216x342 — a vertical sliver — and holding a 4:3 crop there
+            gave 216x214, which read as a shrunken copy of the open card
+            rather than a different state of it. */}
+        <div
+          className={cn(
+            "relative mt-5 w-full overflow-hidden bg-onyx transition-[aspect-ratio] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
+            open ? "aspect-[4/3]" : "aspect-[3/4]",
+          )}
+        >
           <Image
             src={item.image}
             alt={`EVOHN ${item.name} vial`}
             fill
-            sizes="(min-width: 1280px) 44vw, (min-width: 768px) 52vw, 80vw"
+            sizes="(min-width: 1280px) 42vw, (min-width: 768px) 52vw, 80vw"
             /* Only the opening pair is worth fetching eagerly; the rest are
                several viewports of scrolling away. */
             loading={index < 2 ? "eager" : "lazy"}
@@ -197,18 +248,38 @@ function Card({
           />
         </div>
 
-        <p className="type-mono mt-5 line-clamp-3 text-soft/55">{item.summary}</p>
+        {/* The supporting text belongs to the open card only. Collapsing it
+            on max-height rather than unmounting it keeps the link in the tab
+            order at its natural place — `inert` and `aria-hidden` would drop
+            it out — and keeps the transition symmetrical in both directions.
+            The closed height is 0 with the overflow clipped, so nothing of it
+            shows on a 15vw card. */}
+        <div
+          className={cn(
+            "overflow-hidden transition-[max-height,opacity,margin] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
+            open ? "mt-5 max-h-52 opacity-100" : "mt-0 max-h-0 opacity-0",
+          )}
+        >
+          <p className="type-mono line-clamp-3 text-soft/55">{item.summary}</p>
 
-        <div className="mt-6 flex items-center justify-between gap-4">
-          <Link
-            href={`/products/${item.slug}`}
-            className="type-label text-soft underline-offset-8 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft"
-          >
-            View Product
-          </Link>
-          <span className="type-label tabular-nums text-soft/60">
-            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-          </span>
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <Link
+              href={`/products/${item.slug}`}
+              className="group/view type-label inline-flex items-center gap-3 text-soft underline-offset-8 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft"
+              tabIndex={open ? undefined : -1}
+            >
+              View Product
+              <span
+                aria-hidden
+                className="inline-block -translate-x-6 opacity-0 transition-[transform,opacity] duration-500 ease-[var(--ease-brand)] group-hover/view:translate-x-0 group-hover/view:opacity-100 motion-reduce:transition-none"
+              >
+                &rarr;
+              </span>
+            </Link>
+            <span className="type-label tabular-nums text-soft/60">
+              {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+          </div>
         </div>
       </CornerFrame>
     </article>

@@ -2,12 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { WhatsAppCTA } from "@/components/common/WhatsAppCTA";
 import { EASE_BRAND } from "@/constants/motion";
 import { menuIndex, site } from "@/data/site";
 import { legalDocuments } from "@/data/legal";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * The utility index.
@@ -26,7 +27,7 @@ export function MenuPanel({
   open: boolean;
   onClose: () => void;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreTo = useRef<HTMLElement | null>(null);
 

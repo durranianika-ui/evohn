@@ -1,7 +1,7 @@
 "use client";
 
 import { useDeferredValue, type ReactNode } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { CardGridSkeleton } from "@/components/common/Skeleton";
 import { EASE_BRAND } from "@/constants/motion";
 import { useQueryParams } from "@/lib/query";
@@ -17,6 +17,7 @@ import {
 } from "@/lib/catalogue";
 import type { Category, CategorySlug } from "@/data/categories";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 export interface CatalogueEntry extends CatalogueRecord {
   /**
@@ -51,7 +52,7 @@ export function CatalogueBrowser({
   categories: Category[];
 }) {
   const { params, setQuery: setUrl } = useQueryParams();
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   // The URL is the only state. An unknown domain or sort — a hand-edited
   // address, or a stale link from before a domain was renamed — falls back to

@@ -1,9 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { EASE_BRAND } from "@/constants/motion";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * Route transition.
@@ -15,7 +16,7 @@ import { EASE_BRAND } from "@/constants/motion";
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <motion.div

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { EASE_BRAND, VIEWPORT } from "@/constants/motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 export interface Line {
   /** The words of this line. */
@@ -40,7 +41,7 @@ export function LineMask({
   gap = 0.09,
   as: Tag = "div",
 }: LineMaskProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <Tag className={cn(className)}>

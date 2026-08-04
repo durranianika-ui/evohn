@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ElementType, ReactNode } from "react";
 import { EASE_BRAND, DURATION, RISE, VIEWPORT } from "@/constants/motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 interface RevealProps {
   children: ReactNode;
@@ -13,6 +14,14 @@ interface RevealProps {
   duration?: number;
   /** Travel distance; 0 for a pure fade. */
   distance?: number;
+  /**
+   * Starting scale, for a whole composition arriving as one object rather than
+   * a stack of parts. The reference opens its philosophy block at
+   * `scale(0.95) translateY(19px) opacity(0)` over a full second — measured
+   * off its live DOM — and that gesture is what makes the statement land as a
+   * single movement.
+   */
+  scaleFrom?: number;
   as?: ElementType;
 }
 
@@ -27,16 +36,21 @@ export function Reveal({
   delay = 0,
   duration = DURATION.slow,
   distance = RISE,
+  scaleFrom,
   as = "div",
 }: RevealProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const MotionTag = motion[as as "div"] ?? motion.div;
 
   return (
     <MotionTag
       className={cn(className)}
-      initial={{ opacity: 0, y: reduced ? 0 : distance }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{
+        opacity: 0,
+        y: reduced ? 0 : distance,
+        scale: reduced ? 1 : (scaleFrom ?? 1),
+      }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={VIEWPORT}
       transition={{
         duration: reduced ? 0.2 : duration,
@@ -59,7 +73,7 @@ interface StaggerProps {
 
 /** Parent for staggered groups. Pair with `<StaggerItem>`. */
 export function Stagger({ children, className, gap = 0.08, delay = 0 }: StaggerProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <motion.div
@@ -91,7 +105,7 @@ export function StaggerItem({
   className?: string;
   distance?: number;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <motion.div

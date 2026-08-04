@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 interface ParallaxProps {
   children: ReactNode;
@@ -20,7 +21,7 @@ interface ParallaxProps {
  */
 export function Parallax({ children, className, distance = -80 }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -54,7 +55,7 @@ export function ParallaxImage({
   to?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const { scrollYProgress } = useScroll({
     target: ref,

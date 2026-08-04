@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { WhatsAppCTA } from "./WhatsAppCTA";
 import { EASE_BRAND } from "@/constants/motion";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /** Scroll distance after which the bar is offered. */
 const APPEAR_AT = 520;
@@ -18,7 +19,7 @@ const APPEAR_AT = 520;
 export function StickyEnquiryBar({ product }: { product: string }) {
   const [pastHero, setPastHero] = useState(false);
   const [nearEnd, setNearEnd] = useState(false);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   useEffect(() => {
     const onScroll = () => setPastHero(window.scrollY > APPEAR_AT);

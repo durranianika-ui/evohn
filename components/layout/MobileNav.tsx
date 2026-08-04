@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { WhatsAppCTA } from "@/components/common/WhatsAppCTA";
 import { EASE_BRAND } from "@/constants/motion";
 import { useEnquiry } from "@/lib/enquiry";
 import { menuIndex, nav, site, type NavItem, type NavLink } from "@/data/site";
 import { legalDocuments } from "@/data/legal";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * Full-screen mobile drawer.
@@ -37,7 +38,7 @@ function Section({
   onNavigate: () => void;
 }) {
   const [open, setOpen] = useState(false);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const links = children(item);
   const panelId = `mobile-nav-${item.label.replace(/\W+/g, "-").toLowerCase()}`;
 
@@ -152,7 +153,7 @@ export function MobileNav({
   open: boolean;
   onClose: () => void;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const { count, ready } = useEnquiry();
   const panelRef = useRef<HTMLDivElement>(null);
 

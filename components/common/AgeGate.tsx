@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { EASE_BRAND } from "@/constants/motion";
 import { createLocalStore, hydratedStore } from "@/lib/local-store";
 import { site } from "@/data/site";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * Entrance notice.
@@ -110,7 +111,7 @@ export function AgeGate() {
   const [declined, setDeclined] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const acceptRef = useRef<HTMLButtonElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const open = hydrated && !acknowledged;
 

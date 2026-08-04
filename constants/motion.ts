@@ -34,11 +34,21 @@ export const fadeVariants: Variants = {
   visible: { opacity: 1 },
 };
 
-/** Masked line reveal — the character of the reference experience. */
+/** Masked line reveal — kept for the surfaces that still want a curtain. */
 export const maskVariants: Variants = {
   hidden: { y: "110%" },
   visible: { y: "0%" },
 };
+
+/**
+ * Headline reveal, measured off the reference: every character starts 8px low
+ * and transparent and settles individually, a few milliseconds apart. Ours
+ * used to lift a whole word out of a clipping box by 110% of its own height —
+ * 69px at display size — which is a far heavier gesture than anything the
+ * reference makes.
+ */
+export const CHAR_RISE = 8;
+export const CHAR_STAGGER = 0.015;
 
 /** Shared viewport config: fire once, slightly before the element is centred. */
 export const VIEWPORT = { once: true, margin: "0px 0px -12% 0px" } as const;

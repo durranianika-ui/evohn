@@ -2,9 +2,10 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { SearchResults } from "./SearchResults";
 import { EASE_BRAND } from "@/constants/motion";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * Header search.
@@ -28,7 +29,7 @@ export function SearchOverlay({
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreTo = useRef<HTMLElement | null>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const router = useRouter();
   const uid = useId();
 

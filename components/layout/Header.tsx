@@ -16,18 +16,57 @@ import { useEnquiry } from "@/lib/enquiry";
 import { nav, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
-/** Distance scrolled before the bar commits to its solid state. */
-const SOLID_AT = 72;
+/**
+ * Distance scrolled before a downward move is allowed to hide the bar, in
+ * viewports. The reference still shows its bar at 1200px and has hidden it by
+ * 3000, so the threshold sits between; a viewport and a half puts it in the
+ * same place at every screen size.
+ */
+const HIDE_AFTER_VIEWPORTS = 1.5;
 /** Grace period before a hovered panel closes, so a diagonal cursor survives. */
 const CLOSE_DELAY = 140;
+/** Where the ground under the bar is sampled, in px from the top. */
+const SAMPLE_Y = 84;
+
+/** sRGB relative luminance, for deciding which way to set the bar's text. */
+function luminance(rgb: string) {
+  const m = rgb.match(/[\d.]+/g);
+  if (!m || m.length < 3) return 0;
+  const [r, g, b] = m.slice(0, 3).map(Number);
+  const lin = (c: number) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+
+/** Alpha of a computed colour; 0 for `transparent` and for unparseable input. */
+function alpha(rgb: string) {
+  const m = rgb.match(/[\d.]+/g);
+  if (!m) return 0;
+  return m.length > 3 ? Number(m[3]) : 1;
+}
 
 /**
  * Primary navigation.
  *
  * Seven destinations in the centre, three utility controls at the right,
- * wordmark at the left. Transparent and light-on-dark over the hero — every
- * route on this site opens dark, which is what makes a single top state
- * possible — then solid, translucent and dark-on-light once the page moves.
+ * wordmark at the left.
+ *
+ * ## Behaviour, measured off the reference
+ *
+ * The bar is **always transparent** — no background, no border, no backdrop
+ * blur at any scroll position — and it **hides on the way down and returns on
+ * the way up**, travelling its own height over 400ms. Ours previously faded in
+ * a light 85% ground with a 24px blur at 72px of scroll, which put a bright
+ * bar across every dark section of the page and read nothing like the
+ * reference.
+ *
+ * With no ground of its own, the bar has to take its contrast from whatever is
+ * underneath it. Rather than tag every section on every route, it hit-tests
+ * the point just below itself, walks up to the first element with an opaque
+ * background and sets itself light or dark from that colour's luminance. One
+ * hit-test per animation frame, and only while the page is moving.
  *
  * ## Pointer intent
  *
@@ -43,7 +82,9 @@ const CLOSE_DELAY = 140;
  * reflows the document when a menu opens.
  */
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [lightGround, setLightGround] = useState(false);
+  const barRef = useRef<HTMLElement>(null);
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,10 +95,55 @@ export function Header() {
   const { count, ready } = useEnquiry();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > SOLID_AT);
-    onScroll();
+    let lastY = window.scrollY;
+    let frame = 0;
+
+    const measure = () => {
+      frame = 0;
+      const y = window.scrollY;
+      /* Any upward movement brings it back, however small; only a downward
+         move past the fold takes it away. The comparison is against the last
+         *sampled* position, so a scroll that reverses inside one frame does
+         not flicker the bar. */
+      const down = y > lastY + 2;
+      const up = y < lastY - 2;
+      const threshold = window.innerHeight * HIDE_AFTER_VIEWPORTS;
+      if (down && y > threshold) setHidden(true);
+      else if (up || y <= threshold) setHidden(false);
+      if (down || up) lastY = y;
+
+      /* The ground under the bar. elementsFromPoint gives the whole stack at
+         that point, so the bar and its own children are skipped and the first
+         thing behind it that actually paints a colour wins. */
+      /* jsdom has no hit-testing, so the tests that render this bar would
+         throw on the first scroll frame. Without a reading the bar simply
+         keeps the light-on-dark state every route opens in. */
+      if (typeof document.elementsFromPoint !== "function") return;
+      const stack = document.elementsFromPoint(24, SAMPLE_Y);
+      for (const node of stack) {
+        if (barRef.current?.contains(node)) continue;
+        for (let el: Element | null = node; el; el = el.parentElement) {
+          const bg = getComputedStyle(el).backgroundColor;
+          if (alpha(bg) < 0.5) continue;
+          setLightGround(luminance(bg) > 0.4);
+          return;
+        }
+        break;
+      }
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+
+    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Close everything when the route changes. Adjusting state during render
@@ -104,9 +190,12 @@ export function Header() {
     closeTimer.current = window.setTimeout(() => setOpenKey(null), CLOSE_DELAY);
   };
 
-  const solid = scrolled || openKey !== null;
   const anyOverlay = mobileOpen || menuOpen;
-  const onDark = !solid || anyOverlay;
+  /* An open panel or drawer pins the bar in place: it is the thing the user
+     is interacting with, and sliding it away under the cursor would be an
+     accident, not an effect. */
+  const away = hidden && !anyOverlay && openKey === null && !searchOpen && !enquiryOpen;
+  const onDark = anyOverlay || !lightGround;
 
   const utility = cn(
     "relative flex size-11 items-center justify-center transition-colors duration-500 ease-brand",
@@ -126,12 +215,12 @@ export function Header() {
       </a>
 
       <header
+        ref={barRef}
         className={cn(
-          "fixed inset-x-0 top-0 z-50",
-          "transition-[background-color,border-color,backdrop-filter] duration-700 ease-brand",
-          solid && !anyOverlay
-            ? "border-b border-carbon/10 bg-soft/85 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent",
+          "fixed inset-x-0 top-0 z-50 bg-transparent",
+          /* 400ms, the reference's own figure for this travel. */
+          "transition-transform duration-400 ease-brand motion-reduce:transition-none",
+          away ? "-translate-y-full" : "translate-y-0",
         )}
         onMouseLeave={scheduleClose}
       >

@@ -63,6 +63,32 @@ function RollingLabel({ children }: LabelProps) {
   );
 }
 
+/**
+ * The arrow that arrives on hover.
+ *
+ * Measured off the reference, whose buttons hold an arrow at `translateX(-24px)`
+ * and `opacity: 0` and bring it in on hover. Ours had the rolling label but
+ * nothing arriving, which is why a hover probe of the reference recorded a
+ * moving child and a hover probe of ours recorded nothing at all. The span is
+ * zero-width until it is wanted, so the label stays optically centred at rest.
+ */
+function HoverArrow() {
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        "pointer-events-none ml-0 inline-block w-0 -translate-x-6 overflow-hidden opacity-0",
+        "transition-[width,transform,opacity,margin] duration-500 ease-brand",
+        "group-hover/btn:ml-2 group-hover/btn:w-4 group-hover/btn:translate-x-0 group-hover/btn:opacity-100",
+        "group-focus-visible/btn:ml-2 group-focus-visible/btn:w-4 group-focus-visible/btn:translate-x-0 group-focus-visible/btn:opacity-100",
+        "motion-reduce:transition-none",
+      )}
+    >
+      &#8594;
+    </span>
+  );
+}
+
 interface ButtonBaseProps {
   children: ReactNode;
   variant?: Variant;
@@ -81,6 +107,7 @@ export function ButtonLink({
   return (
     <Link className={cn(base, variants[variant][tone], className)} {...props}>
       <RollingLabel>{children}</RollingLabel>
+      <HoverArrow />
     </Link>
   );
 }
@@ -101,6 +128,7 @@ export function ButtonExternal({
       {...props}
     >
       <RollingLabel>{children}</RollingLabel>
+      <HoverArrow />
     </a>
   );
 }

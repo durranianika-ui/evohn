@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EASE_BRAND } from "@/constants/motion";
 import type { JournalTopic } from "@/data/journal";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 export interface JournalEntry {
   slug: string;
@@ -27,7 +28,7 @@ export function JournalBrowser({
   topics: JournalTopic[];
 }) {
   const [active, setActive] = useState<string>("all");
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const counts = useMemo(() => {
     const map = new Map<string, number>();

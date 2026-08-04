@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { EASE_BRAND } from "@/constants/motion";
 import type { NavItem } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/reduced-motion";
 
 /**
  * The Science dropdown.
@@ -27,7 +28,7 @@ export function NavPanel({
   onNavigate: () => void;
   id?: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   if (!item.menu) return null;
 
   return (
