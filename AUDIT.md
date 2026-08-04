@@ -143,3 +143,65 @@ repository or in any project asset directory. The colour and type tokens in
 `app/globals.css` were derived from it in an earlier session and are carried
 forward as the source of truth; they have not been re-verified against the
 board in this pass.
+
+---
+
+## 7. Outcome
+
+Recorded at the head of the branch, after the work.
+
+### Verification
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Types | `npm run typecheck` | pass, 0 errors |
+| Lint | `npm run lint` | pass, 0 problems |
+| Tests | `npm run test` | 218 passing, 9 files |
+| Build | `npm run build` | pass |
+| Export | `GITHUB_PAGES=true npm run build` | pass, 74 pages |
+| Link and integrity | `npm run test:e2e` | pass, 4424 links resolved |
+| Markup a11y sweep | `node scripts/audit-viewports.mjs` | pass |
+| Dependencies | `npm audit` | 0 vulnerabilities |
+
+### Defects found by the audit and fixed
+
+Each of these was found by measurement, not by inspection:
+
+1. Horizontal overflow at 320px on `/products/[slug]` — `SplitText` gave a
+   word longer than the line nowhere to break (document 372px).
+2. Horizontal overflow at 320px on `/calculator` — flex items default to
+   `min-width: auto` and would not shrink below their longest word.
+3. Horizontal overflow at 360–390px on `/quality`, `/lab-results`, `/strips`
+   and `/lab-results/[slug]` — `DataTable`'s `min-w-[38rem]`, `Marquee`'s
+   `w-max` track and `Chromatogram`'s SVG viewBox each propagated a
+   min-content width up through every ancestor, widening the grid track that
+   held them. The page scrolled sideways instead of the element scrolling
+   inside its own container.
+4. Heading order jumped `h1 → h3` on `/calculator` and `/journal`.
+5. Every calculator row carried identical field labels ("Concentration",
+   "Ratio"), which a screen reader announces as N indistinguishable fields.
+6. The hover-open Science dropdown was unreachable by tap: a touch tap
+   synthesises `pointerenter` before `click`, so the panel opened and the
+   click closed it again.
+7. 17–21px tap targets on breadcrumbs, footer links, the site index,
+   `ArrowLink` and the review card's product link.
+8. The 404 page promised "the catalogue index below" and showed nothing below.
+9. The home page carried two journal previews and two review sections, because
+   the pre-existing `Editorial` section duplicated the new `Reading` and
+   `Voices`.
+10. Three `sciencePillars` hrefs pointed at `/science/*` routes that were never
+    built.
+
+### Method note
+
+The Browser pane in this environment does not composite frames, so screenshot
+capture was unavailable and no screenshot-based comparison was performed.
+Validation was done by measurement instead: computed geometry and computed
+colour read from the live DOM across every route at ten viewport widths from
+320×568 to 1920×1080, with CSS transitions frozen first.
+
+That last step matters. A running CSS transition reports its *current* value
+to `getComputedStyle`, and with no compositing every transition sits frozen at
+t=0 — so every transitioned colour reads as its pre-transition value. The first
+contrast pass reported a 1.00:1 failure on a button that is in fact 16.9:1.
+Freezing transitions before measuring removed the artefact.
