@@ -104,7 +104,7 @@ export function PairedPanels({
                   <span
                     className={cn(
                       "type-label tabular-nums",
-                      panel.tone === "sand" ? "text-carbon/50" : "text-soft/40",
+                      panel.tone === "sand" ? "text-carbon/50" : "text-soft/60",
                     )}
                   >
                     {String(i + 1).padStart(2, "0")}

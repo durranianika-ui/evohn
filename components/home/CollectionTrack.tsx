@@ -131,7 +131,11 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
   }
 
   return (
-    <div ref={sectionRef} className="relative h-[400vh]">
+    /* 370vh, not 400: the reference's block measures 4.00vh in total, and the
+       heading above this track accounts for roughly 0.3vh of that. Giving the
+       track the full four viewports pushed the block to 4.31vh at every width.
+       The pin itself is unaffected — only the scroll duration feeding it. */
+    <div ref={sectionRef} className="relative h-[370vh]">
       <div className="sticky top-0 flex h-dvh flex-col justify-center overflow-hidden">
         <motion.div
           data-rail
@@ -164,6 +168,11 @@ function Card({
 }) {
   return (
     <article
+      /* Explicit role="group": `aria-roledescription` is prohibited on roles
+         that do not support it, and axe reads the implicit article role as
+         one of them. Group carries the same grouping semantics and permits
+         both the description and the label. */
+      role="group"
       aria-roledescription="slide"
       aria-label={`${index + 1} of ${total}: ${item.name}`}
       className={cn(
@@ -197,7 +206,7 @@ function Card({
           >
             View Product
           </Link>
-          <span className="type-label tabular-nums text-soft/40">
+          <span className="type-label tabular-nums text-soft/60">
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
         </div>

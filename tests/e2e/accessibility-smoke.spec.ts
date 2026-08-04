@@ -18,9 +18,21 @@ const SURFACES: Array<[string, string]> = [
   ["legal", "/terms"],
 ];
 
+/**
+ * One exclusion, and only one.
+ *
+ * The footer carries an oversized wordmark as a watermark rule at 8% opacity.
+ * It is `aria-hidden`, conveys nothing a reader could miss, and exists to be
+ * barely visible — raising it to a 3:1 ratio would defeat its only purpose.
+ * Scoped to that single element by attribute, never by rule or by page, so
+ * every other contrast failure on every surface still fails the run.
+ */
+const DECORATIVE_ONLY = "[data-decorative-watermark]";
+
 async function scan(page: import("@playwright/test").Page) {
   return new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .exclude(DECORATIVE_ONLY)
     .analyze();
 }
 

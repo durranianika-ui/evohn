@@ -51,7 +51,7 @@ test.describe("responsive", () => {
       window.scrollTo(0, document.documentElement.scrollHeight),
     );
     await page.waitForTimeout(700);
-    const footerVisible = await page.locator("footer").isVisible();
+    const footerVisible = await page.locator("body > footer").last().isVisible();
     expect(footerVisible).toBe(true);
   });
 
@@ -61,7 +61,7 @@ test.describe("responsive", () => {
       window.scrollTo(0, document.documentElement.scrollHeight),
     );
     await page.waitForTimeout(500);
-    const box = await page.locator("footer").boundingBox();
+    const box = await page.locator("body > footer").last().boundingBox();
     expect(box).not.toBeNull();
     expect(box!.height).toBeGreaterThan(80);
   });

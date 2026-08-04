@@ -38,7 +38,7 @@ test.describe("homepage", () => {
     await page.evaluate(() =>
       window.scrollTo(0, document.documentElement.scrollHeight),
     );
-    await expect(page.locator("footer")).toBeVisible();
+    await expect(page.locator("body > footer").last()).toBeVisible();
   });
 
   test("raises no uncaught page errors and no failed requests", async ({ page }) => {

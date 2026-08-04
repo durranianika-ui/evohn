@@ -56,7 +56,7 @@ export function Stacks() {
                   className="size-2 rounded-full ring-1 ring-carbon/15"
                   style={{ backgroundColor: leadCategory.token }}
                 />
-                <span className="type-label text-carbon/45">
+                <span className="type-label text-carbon/60">
                   {lead.eyebrow} · {leadComponents.length} compounds
                 </span>
               </div>
@@ -79,7 +79,7 @@ export function Stacks() {
 
           {/* Remaining stacks */}
           <div className="lg:col-span-4 lg:col-start-9">
-            <p className="type-label text-carbon/45">Also available</p>
+            <p className="type-label text-carbon/60">Also available</p>
             <ul className="mt-8 border-t border-carbon/15">
               {rest.map((stack, i) => {
                 const category = getCategory(stack.category);

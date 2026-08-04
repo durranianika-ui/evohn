@@ -39,7 +39,7 @@ export function Voices() {
                 <p className="type-display-s tabular-nums text-carbon">
                   {reviewSummary.average}
                 </p>
-                <p className="type-label mt-2 text-carbon/45">
+                <p className="type-label mt-2 text-carbon/60">
                   Mean of {reviewSummary.count}
                 </p>
               </div>
@@ -47,7 +47,7 @@ export function Voices() {
                 <p className="type-display-s tabular-nums text-carbon">
                   {String(reviewSummary.verified).padStart(2, "0")}
                 </p>
-                <p className="type-label mt-2 text-carbon/45">Verified</p>
+                <p className="type-label mt-2 text-carbon/60">Verified</p>
               </div>
             </div>
           </Reveal>

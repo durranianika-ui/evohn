@@ -55,7 +55,7 @@ export function Resources() {
 
                 <span
                   aria-hidden
-                  className="type-label text-soft/35 transition-transform duration-500 ease-brand group-hover/res:translate-x-1.5 motion-reduce:transition-none md:col-span-1 md:justify-self-end"
+                  className="type-label text-soft/60 transition-transform duration-500 ease-brand group-hover/res:translate-x-1.5 motion-reduce:transition-none md:col-span-1 md:justify-self-end"
                 >
                   &rarr;
                 </span>

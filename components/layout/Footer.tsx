@@ -28,14 +28,20 @@ export function Footer() {
           text={site.assurances.join("  ·  ")}
           repeat={2}
           speed={68}
-          className="type-label text-soft/35"
+          className="type-label text-soft/60"
         />
       </div>
 
-      <div className="container-content pt-24 pb-10 md:pt-32">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
+      <div className="container-content pt-16 pb-10 md:pt-24 lg:pt-32">
+        {/* Two and three column stops before the twelve-column desktop grid.
+            Without them everything below 1024 stacked into a single column,
+            which ran the footer to roughly 2745px at 768 — most of three
+            viewports, and the largest single contributor to that width's page
+            length. The reference resolves its own footer in about 1034px
+            there. */}
+        <div className="grid gap-12 sm:grid-cols-2 sm:gap-x-10 md:grid-cols-3 lg:grid-cols-12 lg:gap-10">
           {/* Brand + enquiry */}
-          <div className="lg:col-span-3">
+          <div className="sm:col-span-2 md:col-span-3 lg:col-span-3">
             <Reveal>
               <Wordmark className="text-[1.35rem]" />
               <p className="type-body-s mt-8 max-w-[34ch] text-soft/55">
@@ -43,7 +49,7 @@ export function Footer() {
               </p>
               <WhatsAppCTA intent="information" tone="dark" className="mt-10" />
 
-              <address className="type-body-s mt-10 space-y-1 not-italic text-soft/45">
+              <address className="type-body-s mt-10 space-y-1 not-italic text-soft/60">
                 <p>{site.address.line2}</p>
                 <p>
                   {site.address.city}, {site.address.country}
@@ -67,7 +73,7 @@ export function Footer() {
               aria-label={column.heading}
               className="lg:col-span-2"
             >
-              <h2 className="type-label text-soft/45">{column.heading}</h2>
+              <h2 className="type-label text-soft/60">{column.heading}</h2>
               <ul className="mt-7 space-y-3.5">
                 {column.links.map((link) => (
                   <li key={`${column.heading}-${link.href}`}>
@@ -85,7 +91,7 @@ export function Footer() {
 
           {/* Legal — generated, never hand-maintained. */}
           <nav aria-label="Legal" className="lg:col-span-1">
-            <h2 className="type-label text-soft/45">Legal</h2>
+            <h2 className="type-label text-soft/60">Legal</h2>
             <ul className="mt-7 space-y-3.5">
               {legalDocuments.map((doc) => (
                 <li key={doc.slug}>
@@ -106,7 +112,7 @@ export function Footer() {
           aria-label="Research domains"
           className="mt-20 border-t border-soft/10 pt-10"
         >
-          <h2 className="type-label text-soft/45">Domains</h2>
+          <h2 className="type-label text-soft/60">Domains</h2>
           <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
             {categories.map((category) => (
               <li key={category.slug}>
@@ -127,7 +133,15 @@ export function Footer() {
         </nav>
 
         {/* Oversized wordmark as a graphic rule */}
-        <div className="mt-24 overflow-hidden md:mt-32" aria-hidden>
+        {/* Purely ornamental: a watermark rule, not content. Already hidden
+            from the accessibility tree, and carried past the contrast scan by
+            the single narrow exclusion documented in the a11y spec — it holds
+            no information a reader could miss. */}
+        <div
+          className="mt-16 overflow-hidden md:mt-24"
+          aria-hidden
+          data-decorative-watermark
+        >
           <Wordmark className="block w-full text-center text-[clamp(3rem,15vw,13rem)] leading-none text-soft/8" />
         </div>
 
@@ -142,7 +156,7 @@ export function Footer() {
             </p>
 
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-              <p className="type-label text-soft/40">
+              <p className="type-label text-soft/60">
                 {site.address.country}
               </p>
               <Link

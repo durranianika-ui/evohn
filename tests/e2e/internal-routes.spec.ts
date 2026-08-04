@@ -13,14 +13,14 @@ const ROUTES: Array<{ path: string; heading: RegExp }> = [
   { path: "/catalogue", heading: /complete collection/i },
   { path: "/products/semaglutide", heading: /semaglutide/i },
   { path: "/calculator", heading: /peptide calculator/i },
-  { path: "/peptide-pedia", heading: /pedia|compound/i },
-  { path: "/reconstitution-guide", heading: /reconstitut/i },
-  { path: "/storage-handling", heading: /storage|handling/i },
+  { path: "/peptide-pedia", heading: /reference library/i },
+  { path: "/reconstitution-guide", heading: /reconstituted/i },
+  { path: "/storage-handling", heading: /keeping compounds stable/i },
   { path: "/journal", heading: /research desk/i },
-  { path: "/lab-results", heading: /lab|result|certificate/i },
-  { path: "/reviews", heading: /review|bench/i },
-  { path: "/about", heading: /evohn|about|standard/i },
-  { path: "/contact", heading: /contact|speak|talk/i },
+  { path: "/lab-results", heading: /certificates of analysis/i },
+  { path: "/reviews", heading: /what the bench says/i },
+  { path: "/about", heading: /documented at every step/i },
+  { path: "/contact", heading: /talk to the research desk/i },
   { path: "/search", heading: /search/i },
   { path: "/enquiry", heading: /your list/i },
   { path: "/terms", heading: /terms of use/i },
@@ -39,12 +39,15 @@ for (const { path, heading } of ROUTES) {
     expect(response?.status(), `${path} status`).toBeLessThan(400);
 
     // Identity: the right page, not a shell or a soft 404.
+    // `toContainText`, not `toHaveText` — the latter demands the regex match
+    // the entire heading, and several of these headings are full sentences.
     await expect(page.locator("h1").first()).toBeVisible();
-    await expect(page.locator("h1").first()).toHaveText(heading);
+    await expect(page.locator("h1").first()).toContainText(heading);
 
-    // Shared chrome survived the homepage work.
-    await expect(page.locator("header")).toBeVisible();
-    await expect(page.locator("footer")).toBeVisible();
+    // Shared chrome survived the homepage work. Scoped to the page footer:
+    // article cards carry their own <footer>, so a bare locator matches many.
+    await expect(page.locator("header").first()).toBeVisible();
+    await expect(page.locator("body > footer, #__next > footer").last()).toBeVisible();
 
     // Geometry the homepage container must not have disturbed.
     const overflow = await page.evaluate(

@@ -95,7 +95,7 @@ export function Standards() {
                     <span
                       className={cn(
                         "type-label tabular-nums",
-                        dark ? "text-soft/45" : "text-carbon/45",
+                        dark ? "text-soft/60" : "text-carbon/60",
                       )}
                     >
                       {String(i + 1).padStart(2, "0")} / {String(pillars.length).padStart(2, "0")}

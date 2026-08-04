@@ -13,7 +13,7 @@ export function Standard() {
       <div className="border-y border-soft/12 py-7">
         <Marquee
           text={`The ${site.name} Standard`}
-          className="type-display-s text-soft/40"
+          className="type-display-s text-soft/60"
           speed={54}
         />
       </div>

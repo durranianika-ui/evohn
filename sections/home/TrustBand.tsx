@@ -38,7 +38,7 @@ export function TrustBand() {
         <dl className="grid grid-cols-3 gap-6 lg:col-span-5">
           {figures.map((figure) => (
             <div key={figure.label}>
-              <dt className="type-label text-soft/40">{figure.label}</dt>
+              <dt className="type-label text-soft/60">{figure.label}</dt>
               <dd className="type-title mt-2.5 tabular-nums text-soft">
                 {figure.value}
               </dd>
@@ -51,7 +51,7 @@ export function TrustBand() {
             text={site.assurances.join("  ·  ")}
             repeat={2}
             speed={58}
-            className="type-label text-soft/35"
+            className="type-label text-soft/60"
           />
         </div>
       </div>

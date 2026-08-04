@@ -44,7 +44,7 @@ export function Performance() {
           block: it resolves its final statement inside the last panelled
           section and hands straight to the footer, so that is where EVOHN's
           closing line now lives. */}
-      <div className="container-home mt-[clamp(4rem,10vh,8rem)]">
+      <div className="container-home mt-[clamp(2.5rem,6vh,5rem)]">
         <div className="border-t border-soft/12 pt-[clamp(3rem,7vh,5rem)]">
           <SplitText
             as="p"

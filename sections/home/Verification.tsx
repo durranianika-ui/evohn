@@ -45,10 +45,10 @@ export function Verification() {
               <div className="border border-soft/12 p-7 md:p-10">
                 <div className="flex flex-wrap items-start justify-between gap-5">
                   <div>
-                    <p className="type-label text-soft/45">
+                    <p className="type-label text-soft/60">
                       {lead.product.name} · Batch {lead.batch.batch}
                     </p>
-                    <p className="type-body-s mt-2 text-soft/45">
+                    <p className="type-body-s mt-2 text-soft/60">
                       {lead.batch.laboratory} ·{" "}
                       {formatDateShort(lead.batch.tested)}
                     </p>
@@ -91,7 +91,7 @@ export function Verification() {
                       <span className="type-display-s block tabular-nums text-soft">
                         {stat.value}
                       </span>
-                      <span className="type-label mt-3 block text-soft/45">
+                      <span className="type-label mt-3 block text-soft/60">
                         {stat.label}
                       </span>
                     </dd>
@@ -100,7 +100,7 @@ export function Verification() {
               ))}
             </dl>
 
-            <p className="type-label mt-14 text-soft/45">Recent releases</p>
+            <p className="type-label mt-14 text-soft/60">Recent releases</p>
             <ul className="mt-6 border-t border-soft/15">
               {showcase.slice(1).map((entry, i) => (
                 <Reveal key={entry.product.slug} delay={i * 0.08} as="li">

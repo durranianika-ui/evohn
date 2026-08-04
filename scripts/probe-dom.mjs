@@ -37,7 +37,7 @@ console.log("main>section:", structure.directSections, " main section:", structu
 console.log("console errors:", errors.length);
 for (const e of [...new Set(errors)].slice(0, 6)) console.log("  -", e.slice(0, 150));
 
-const routes = ["/catalogue", "/products/semaglutide", "/calculator", "/journal", "/terms", "/search", "/enquiry"];
+const routes = ["/peptide-pedia", "/reconstitution-guide", "/storage-handling", "/lab-results", "/reviews", "/about", "/contact"];
 console.log("\nroute h1 text:");
 for (const r of routes) {
   try {

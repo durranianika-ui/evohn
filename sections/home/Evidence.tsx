@@ -70,13 +70,13 @@ export function Evidence() {
 
                   <dl className="type-body-s mt-7 flex-1 space-y-3 border-t border-carbon/10 pt-5">
                     <div className="flex justify-between gap-4">
-                      <dt className="type-label text-carbon/45">Tested</dt>
+                      <dt className="type-label text-carbon/60">Tested</dt>
                       <dd className="tabular-nums text-carbon/68">
                         {formatDateShort(entry.batch.tested)}
                       </dd>
                     </div>
                     <div className="flex justify-between gap-4">
-                      <dt className="type-label text-carbon/45">Laboratory</dt>
+                      <dt className="type-label text-carbon/60">Laboratory</dt>
                       <dd className="text-right text-carbon/68">
                         {entry.batch.laboratory}
                       </dd>

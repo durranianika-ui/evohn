@@ -1,16 +1,16 @@
 {
   "target": "evohn-after",
   "base": "http://127.0.0.1:3456",
-  "capturedAt": "2026-08-04T14:21:38.464Z",
+  "capturedAt": "2026-08-04T14:46:51.863Z",
   "viewports": {
     "1920x1080": {
-      "docHeight": 16796,
+      "docHeight": 16492,
       "viewport": [
         1920,
         1080
       ],
       "overflowX": 0,
-      "gutter": 292,
+      "gutter": 276,
       "sections": [
         {
           "tag": "SECTION",
@@ -24,7 +24,7 @@
         {
           "tag": "SECTION",
           "top": 1092,
-          "height": 929,
+          "height": 942,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -32,7 +32,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 2021,
+          "top": 2034,
           "height": 1688,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
@@ -41,8 +41,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 3709,
-          "height": 4625,
+          "top": 3722,
+          "height": 4301,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -50,8 +50,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 8333,
-          "height": 1302,
+          "top": 8022,
+          "height": 1308,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
           "heading": "Published, not on request.",
@@ -59,8 +59,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 9636,
-          "height": 1192,
+          "top": 9330,
+          "height": 1195,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
           "heading": "Every batch, on the record.",
@@ -68,8 +68,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 10828,
-          "height": 1916,
+          "top": 10526,
+          "height": 1953,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -77,8 +77,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12744,
-          "height": 2667,
+          "top": 12478,
+          "height": 2661,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -124,24 +124,24 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 4013,
+          "y": 4026,
           "w": 1920,
           "h": 1080
         },
         {
           "cls": "lg:sticky lg:top-[18vh]",
           "position": "sticky",
-          "x": 292,
-          "y": 11028,
-          "w": 519,
+          "x": 276,
+          "y": 10726,
+          "w": 533,
           "h": 335
         },
         {
           "cls": "lg:sticky lg:top-[18vh]",
           "position": "sticky",
-          "x": 292,
-          "y": 14523,
-          "w": 519,
+          "x": 276,
+          "y": 14295,
+          "w": 533,
           "h": 335
         }
       ],
@@ -177,63 +177,63 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1886,
+          "scrollY": 1849,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3772,
+          "scrollY": 3699,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5658,
+          "scrollY": 5548,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7544,
+          "scrollY": 7398,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9430,
+          "scrollY": 9247,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11316,
+          "scrollY": 11097,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 13201,
+          "scrollY": 12946,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 14773,
+          "scrollY": 14487,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 15716,
+          "scrollY": 15412,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=QO3CEKI2Qes9GM3hmSX1k' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=fAaEoZDrg2xvmpQ8eCX8x' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "1440x900": {
-      "docHeight": 15809,
+      "docHeight": 15567,
       "viewport": [
         1440,
         900
       ],
       "overflowX": 0,
-      "gutter": 52,
+      "gutter": 36,
       "sections": [
         {
           "tag": "SECTION",
@@ -247,7 +247,7 @@
         {
           "tag": "SECTION",
           "top": 912,
-          "height": 894,
+          "height": 907,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -255,7 +255,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 1806,
+          "top": 1819,
           "height": 1688,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
@@ -264,8 +264,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 3494,
-          "height": 3883,
+          "top": 3507,
+          "height": 3613,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -273,8 +273,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 7378,
-          "height": 1302,
+          "top": 7120,
+          "height": 1308,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
           "heading": "Published, not on request.",
@@ -282,8 +282,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 8680,
-          "height": 1192,
+          "top": 8429,
+          "height": 1195,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
           "heading": "Every batch, on the record.",
@@ -291,8 +291,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 9872,
-          "height": 1916,
+          "top": 9624,
+          "height": 1953,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -300,8 +300,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 11788,
-          "height": 2636,
+          "top": 11577,
+          "height": 2637,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -347,24 +347,24 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 3778,
+          "y": 3790,
           "w": 1440,
           "h": 900
         },
         {
           "cls": "lg:sticky lg:top-[18vh]",
           "position": "sticky",
-          "x": 52,
-          "y": 10072,
-          "w": 519,
+          "x": 36,
+          "y": 9824,
+          "w": 533,
           "h": 335
         },
         {
           "cls": "lg:sticky lg:top-[18vh]",
           "position": "sticky",
-          "x": 52,
-          "y": 13567,
-          "w": 519,
+          "x": 36,
+          "y": 13393,
+          "w": 533,
           "h": 335
         }
       ],
@@ -400,57 +400,57 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1789,
+          "scrollY": 1760,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3578,
+          "scrollY": 3520,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5367,
+          "scrollY": 5280,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7156,
+          "scrollY": 7040,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 8945,
+          "scrollY": 8800,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 10734,
+          "scrollY": 10560,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 12524,
+          "scrollY": 12320,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 14014,
+          "scrollY": 13787,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 14909,
+          "scrollY": 14667,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=si9Dt-EMx4KhPNzmUvF0q' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=3hwHk2ITUfJB6Fi3UnyN5' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "1280x800": {
-      "docHeight": 14982,
+      "docHeight": 14678,
       "viewport": [
         1280,
         800
@@ -488,7 +488,7 @@
         {
           "tag": "SECTION",
           "top": 3340,
-          "height": 3471,
+          "height": 3231,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -496,7 +496,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 6811,
+          "top": 6571,
           "height": 1287,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
@@ -505,7 +505,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 8098,
+          "top": 7858,
           "height": 1183,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
@@ -514,7 +514,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 9281,
+          "top": 9041,
           "height": 1814,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
@@ -523,8 +523,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 11095,
-          "height": 2518,
+          "top": 10855,
+          "height": 2486,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -578,7 +578,7 @@
           "cls": "lg:sticky lg:top-[18vh]",
           "position": "sticky",
           "x": 16,
-          "y": 9481,
+          "y": 9241,
           "w": 483,
           "h": 335
         },
@@ -586,7 +586,7 @@
           "cls": "lg:sticky lg:top-[18vh]",
           "position": "sticky",
           "x": 16,
-          "y": 12773,
+          "y": 12533,
           "w": 483,
           "h": 335
         }
@@ -623,57 +623,57 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1702,
+          "scrollY": 1665,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3404,
+          "scrollY": 3331,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5106,
+          "scrollY": 4996,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 6807,
+          "scrollY": 6661,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 8509,
+          "scrollY": 8327,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 10211,
+          "scrollY": 9992,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 11913,
+          "scrollY": 11658,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 13331,
+          "scrollY": 13045,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 14182,
+          "scrollY": 13878,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=_GkwFUnoUlbAk3bmHt-Vg' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=O739I9bjnvh9MuyGo8XWw' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "768x1024": {
-      "docHeight": 19086,
+      "docHeight": 17815,
       "viewport": [
         768,
         1024
@@ -711,7 +711,7 @@
         {
           "tag": "SECTION",
           "top": 3512,
-          "height": 4441,
+          "height": 4134,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -719,7 +719,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 7953,
+          "top": 7646,
           "height": 1790,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
@@ -728,7 +728,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 9743,
+          "top": 9436,
           "height": 1274,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
@@ -737,7 +737,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 11017,
+          "top": 10709,
           "height": 2506,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
@@ -746,8 +746,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 13522,
-          "height": 2824,
+          "top": 13215,
+          "height": 2783,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -830,57 +830,57 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 2167,
+          "scrollY": 2015,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 4335,
+          "scrollY": 4030,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 6502,
+          "scrollY": 6045,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 8670,
+          "scrollY": 8060,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 10837,
+          "scrollY": 10075,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 13005,
+          "scrollY": 12090,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 15172,
+          "scrollY": 14104,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 16978,
+          "scrollY": 15784,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 18062,
+          "scrollY": 16791,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=DxK93QaIssGshSsGirXpK' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=xhLjX9vgrBwXddT1zduDG' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "430x932": {
-      "docHeight": 17789,
+      "docHeight": 17328,
       "viewport": [
         430,
         932
@@ -918,7 +918,7 @@
         {
           "tag": "SECTION",
           "top": 3791,
-          "height": 4052,
+          "height": 3772,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -926,7 +926,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 7842,
+          "top": 7563,
           "height": 1551,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
@@ -935,7 +935,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 9393,
+          "top": 9113,
           "height": 2137,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
@@ -944,7 +944,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 11530,
+          "top": 11251,
           "height": 1566,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
@@ -953,8 +953,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 13096,
-          "height": 1934,
+          "top": 12816,
+          "height": 1897,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -1037,57 +1037,57 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 2023,
+          "scrollY": 1968,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 4046,
+          "scrollY": 3935,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 6069,
+          "scrollY": 5903,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 8091,
+          "scrollY": 7870,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 10114,
+          "scrollY": 9838,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 12137,
+          "scrollY": 11805,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 14160,
+          "scrollY": 13773,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 15846,
+          "scrollY": 15412,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 16857,
+          "scrollY": 16396,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=JyarXgN5E-_Ft7dm4iejB' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=s7ghkvpuHrIMXH1oDXJ_c' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "390x844": {
-      "docHeight": 17250,
+      "docHeight": 16819,
       "viewport": [
         390,
         844
@@ -1125,7 +1125,7 @@
         {
           "tag": "SECTION",
           "top": 3779,
-          "height": 3689,
+          "height": 3436,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -1133,7 +1133,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 7468,
+          "top": 7215,
           "height": 1627,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
@@ -1142,7 +1142,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 9095,
+          "top": 8842,
           "height": 2101,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
@@ -1151,7 +1151,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 11196,
+          "top": 10943,
           "height": 1473,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
@@ -1160,8 +1160,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12669,
-          "height": 1827,
+          "top": 12416,
+          "height": 1793,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -1244,57 +1244,57 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1969,
+          "scrollY": 1917,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3937,
+          "scrollY": 3834,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5906,
+          "scrollY": 5751,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7875,
+          "scrollY": 7668,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9844,
+          "scrollY": 9585,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11812,
+          "scrollY": 11502,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 13781,
+          "scrollY": 13419,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 15422,
+          "scrollY": 15017,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 16406,
+          "scrollY": 15975,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=LMReJ25FKm2PzV7kGUK4x' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=eIpoJFx9yf31iR1ZbANhZ' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     },
     "360x800": {
-      "docHeight": 17071,
+      "docHeight": 16655,
       "viewport": [
         360,
         800
@@ -1332,7 +1332,7 @@
         {
           "tag": "SECTION",
           "top": 3773,
-          "height": 3578,
+          "height": 3338,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
           "heading": "Compounds that set the standard.",
@@ -1340,7 +1340,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 7351,
+          "top": 7111,
           "height": 1665,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
@@ -1349,7 +1349,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 9017,
+          "top": 8777,
           "height": 2119,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
@@ -1358,7 +1358,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 11136,
+          "top": 10896,
           "height": 1404,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
@@ -1367,8 +1367,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12540,
-          "height": 1750,
+          "top": 12300,
+          "height": 1718,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -1451,53 +1451,53 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1953,
+          "scrollY": 1903,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3905,
+          "scrollY": 3805,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5858,
+          "scrollY": 5708,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7810,
+          "scrollY": 7610,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9763,
+          "scrollY": 9513,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11715,
+          "scrollY": 11416,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 13668,
+          "scrollY": 13318,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 15295,
+          "scrollY": 14904,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 16271,
+          "scrollY": 15855,
           "file": "scroll-100.png"
         }
       ],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=pFs6EPnw9aLJVxak7MBNN' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
+        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=BtQ9FLBzB6Drus2IKTE97' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
       ]
     }
   }
