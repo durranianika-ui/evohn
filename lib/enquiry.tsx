@@ -4,11 +4,11 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
+import { createLocalStore, hydratedStore } from "@/lib/local-store";
 import { site } from "@/data/site";
 
 /**
@@ -59,6 +59,9 @@ const MAX_ITEMS = 40;
 
 const EnquiryContext = createContext<EnquiryContextValue | null>(null);
 
+/** One frozen empty array, so an empty list is referentially stable. */
+const EMPTY: EnquiryItem[] = [];
+
 /** Reject anything that is not the shape we wrote — storage is user-writable. */
 function parseStored(raw: string | null): EnquiryItem[] {
   if (!raw) return [];
@@ -98,35 +101,35 @@ export function buildEnquiryMessage(items: EnquiryItem[]) {
   ].join("\n");
 }
 
+/**
+ * The list, as an external store.
+ *
+ * localStorage is an external system, so it is subscribed to rather than
+ * mirrored into component state. That removes the read-on-mount effect that
+ * would otherwise render once with a guess and again with the truth, and it
+ * keeps a second tab honest for free.
+ */
+const store = createLocalStore<EnquiryItem[]>({
+  key: STORAGE_KEY,
+  parse: parseStored,
+  fallback: EMPTY,
+});
+
 export function EnquiryProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<EnquiryItem[]>([]);
-  const [ready, setReady] = useState(false);
+  const items = useSyncExternalStore(
+    store.subscribe,
+    store.getSnapshot,
+    store.getServerSnapshot,
+  );
 
-  // Read after mount, never during render: the statically exported HTML has no
-  // access to localStorage, and reading it in render would hydrate-mismatch.
-  useEffect(() => {
-    setItems(parseStored(window.localStorage.getItem(STORAGE_KEY)));
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch {
-      // Private mode, or the quota is full. The list still works for this
-      // session; it simply will not survive a reload.
-    }
-  }, [items, ready]);
-
-  // Another tab is the same visitor. Keep the count honest across both.
-  useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) setItems(parseStored(e.newValue));
-    };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
+  // False during the prerender and the first client render, true thereafter.
+  // Controls whether the count and the toggles may render at all — the export
+  // cannot know the list, so guessing would flash the wrong state.
+  const ready = useSyncExternalStore(
+    hydratedStore.subscribe,
+    hydratedStore.getSnapshot,
+    hydratedStore.getServerSnapshot,
+  );
 
   const has = useCallback(
     (slug: string) => items.some((i) => i.slug === slug),
@@ -134,28 +137,28 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
   );
 
   const add = useCallback((item: EnquiryItem) => {
-    setItems((prev) =>
-      prev.some((i) => i.slug === item.slug) || prev.length >= MAX_ITEMS
-        ? prev
-        : [...prev, item],
-    );
+    const prev = store.peek();
+    if (prev.some((i) => i.slug === item.slug) || prev.length >= MAX_ITEMS) {
+      return;
+    }
+    store.set([...prev, item]);
   }, []);
 
   const remove = useCallback((slug: string) => {
-    setItems((prev) => prev.filter((i) => i.slug !== slug));
+    store.set(store.peek().filter((i) => i.slug !== slug));
   }, []);
 
   const toggle = useCallback((item: EnquiryItem) => {
-    setItems((prev) =>
-      prev.some((i) => i.slug === item.slug)
-        ? prev.filter((i) => i.slug !== item.slug)
-        : prev.length >= MAX_ITEMS
-          ? prev
-          : [...prev, item],
-    );
+    const prev = store.peek();
+    if (prev.some((i) => i.slug === item.slug)) {
+      store.set(prev.filter((i) => i.slug !== item.slug));
+      return;
+    }
+    if (prev.length >= MAX_ITEMS) return;
+    store.set([...prev, item]);
   }, []);
 
-  const clear = useCallback(() => setItems([]), []);
+  const clear = useCallback(() => store.set(EMPTY), []);
 
   const message = useMemo(() => buildEnquiryMessage(items), [items]);
 

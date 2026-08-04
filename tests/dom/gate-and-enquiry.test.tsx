@@ -309,7 +309,11 @@ describe("enquiry storage", () => {
     );
     expect(screen.getByText(/nothing selected yet/i)).toBeInTheDocument();
 
+    // A real cross-tab event means the other tab has already written; the
+    // store re-reads storage rather than trusting the event payload, so the
+    // write has to happen for the event to mean anything.
     await act(async () => {
+      seed();
       window.dispatchEvent(
         new StorageEvent("storage", {
           key: ENQUIRY_STORAGE_KEY,

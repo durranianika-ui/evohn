@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useDeferredValue,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { useDeferredValue, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CardGridSkeleton } from "@/components/common/Skeleton";
 import { EASE_BRAND } from "@/constants/motion";
@@ -57,39 +51,28 @@ export function CatalogueBrowser({
   categories: Category[];
 }) {
   const { params, setQuery: setUrl } = useQueryParams();
-
-  const [domain, setDomain] = useState<CategorySlug | "all">("all");
-  const [query, setQueryText] = useState("");
-  const [sort, setSort] = useState<SortKey>(DEFAULT_SORT);
-
-  const deferredQuery = useDeferredValue(query);
   const reduced = useReducedMotion();
 
-  // Adopt the URL on mount and on back/forward. An unknown domain or sort in
-  // a hand-edited URL falls back to the default rather than emptying the grid.
-  useEffect(() => {
-    const urlDomain = params.get("domain");
-    setDomain(
-      urlDomain && categories.some((c) => c.slug === urlDomain)
-        ? (urlDomain as CategorySlug)
-        : "all",
-    );
+  // The URL is the only state. An unknown domain or sort — a hand-edited
+  // address, or a stale link from before a domain was renamed — falls back to
+  // the default rather than silently emptying the grid.
+  const urlDomain = params.get("domain");
+  const domain: CategorySlug | "all" =
+    urlDomain && categories.some((c) => c.slug === urlDomain)
+      ? (urlDomain as CategorySlug)
+      : "all";
 
-    const urlSort = params.get("sort");
-    setSort(isSortKey(urlSort) ? urlSort : DEFAULT_SORT);
+  const urlSort = params.get("sort");
+  const sort: SortKey = isSortKey(urlSort) ? urlSort : DEFAULT_SORT;
 
-    setQueryText(params.get("q") ?? "");
-  }, [params, categories]);
+  const query = params.get("q") ?? "";
+  const deferredQuery = useDeferredValue(query);
 
   const commit = (next: {
     domain?: CategorySlug | "all";
     sort?: SortKey;
     q?: string;
   }) => {
-    if (next.domain !== undefined) setDomain(next.domain);
-    if (next.sort !== undefined) setSort(next.sort);
-    if (next.q !== undefined) setQueryText(next.q);
-
     setUrl({
       domain: (next.domain ?? domain) === "all" ? null : (next.domain ?? domain),
       sort: (next.sort ?? sort) === DEFAULT_SORT ? null : (next.sort ?? sort),
@@ -99,12 +82,15 @@ export function CatalogueBrowser({
 
   // Counts are computed against the full set, so a chip always shows how many
   // compounds it holds rather than how many survive the current search.
-  const counts = useMemo(() => countByDomain(entries), [entries]);
-
-  const visible = useMemo(
-    () => applyCatalogue(entries, { domain, query: deferredQuery, sort }),
-    [entries, domain, deferredQuery, sort],
-  );
+  //
+  // Neither of these is hand-memoised: the React compiler does it, and a
+  // manual useMemo over values derived from the query string defeats it.
+  const counts = countByDomain(entries);
+  const visible = applyCatalogue(entries, {
+    domain,
+    query: deferredQuery,
+    sort,
+  });
 
   const filters = [
     { slug: "all" as const, name: "All", token: null, count: entries.length },
@@ -121,12 +107,7 @@ export function CatalogueBrowser({
   const stale = query !== deferredQuery;
   const narrowed = !isDefaultFilters({ domain, query, sort });
 
-  const reset = () => {
-    setDomain("all");
-    setQueryText("");
-    setSort(DEFAULT_SORT);
-    setUrl({ domain: null, sort: null, q: null });
-  };
+  const reset = () => setUrl({ domain: null, sort: null, q: null });
 
   return (
     <>

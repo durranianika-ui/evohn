@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { EASE_BRAND } from "@/constants/motion";
+import { createLocalStore, hydratedStore } from "@/lib/local-store";
 import { site } from "@/data/site";
 
 /**
@@ -42,10 +43,17 @@ interface StoredConsent {
   at: number;
 }
 
-function readConsent(): boolean {
+/**
+ * Parse a stored acknowledgement.
+ *
+ * Storage is writable by anyone with a console, so a record that is not
+ * exactly the shape we wrote is treated as absent rather than trusted. An
+ * acknowledgement older than the window is likewise treated as absent — a
+ * declaration made a year ago is not a declaration made today.
+ */
+function parseConsent(raw: string | null): boolean {
+  if (!raw) return false;
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return false;
     const parsed: unknown = JSON.parse(raw);
     if (
       typeof parsed !== "object" ||
@@ -56,24 +64,55 @@ function readConsent(): boolean {
       return false;
     }
     const age = Date.now() - (parsed as StoredConsent).at;
-    return age < TTL_DAYS * 24 * 60 * 60 * 1000;
+    return age >= 0 && age < TTL_DAYS * 24 * 60 * 60 * 1000;
   } catch {
     return false;
   }
 }
 
+/**
+ * The acknowledgement, as an external store.
+ *
+ * Read during render on the client rather than mirrored in by an effect, so
+ * the gate never renders once with a guess and again with the truth.
+ */
+const consentStore = createLocalStore<boolean>({
+  key: STORAGE_KEY,
+  parse: parseConsent,
+  // The stored shape is a timestamped record, not the bare boolean the store
+  // hands around — an acknowledgement has to carry the moment it was made, or
+  // it can never expire.
+  serialise: (accepted) =>
+    JSON.stringify({ accepted, at: Date.now() } satisfies {
+      accepted: boolean;
+      at: number;
+    }),
+  fallback: false,
+});
+
 export function AgeGate() {
-  // `null` = storage not yet read. Nothing renders in that state, so the gate
-  // never flashes at a visitor who acknowledged it last week.
-  const [open, setOpen] = useState<boolean | null>(null);
+  const acknowledged = useSyncExternalStore(
+    consentStore.subscribe,
+    consentStore.getSnapshot,
+    consentStore.getServerSnapshot,
+  );
+
+  // False during the prerender and the first client render. Until the client
+  // has taken over, nothing renders at all — the export cannot know whether
+  // this visitor acknowledged last week, and flashing the notice at someone
+  // who did would be worse than showing it a frame late.
+  const hydrated = useSyncExternalStore(
+    hydratedStore.subscribe,
+    hydratedStore.getSnapshot,
+    hydratedStore.getServerSnapshot,
+  );
+
   const [declined, setDeclined] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const acceptRef = useRef<HTMLButtonElement>(null);
   const reduced = useReducedMotion();
 
-  useEffect(() => {
-    setOpen(!readConsent());
-  }, []);
+  const open = hydrated && !acknowledged;
 
   // Lock the page and trap focus while the notice is up.
   useEffect(() => {
@@ -113,19 +152,10 @@ export function AgeGate() {
     };
   }, [open]);
 
-  const accept = () => {
-    try {
-      window.localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ accepted: true, at: Date.now() } satisfies StoredConsent),
-      );
-    } catch {
-      // Private mode. The notice will simply be shown again next visit.
-    }
-    setOpen(false);
-  };
-
-  if (open === null) return null;
+  // The store owns the stored shape (see `serialise` above), so accepting is
+  // a single write. In private mode the write fails silently and the notice
+  // is simply shown again next visit.
+  const accept = () => consentStore.set(true);
 
   return (
     <AnimatePresence>
