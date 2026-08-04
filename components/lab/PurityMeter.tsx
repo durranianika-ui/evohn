@@ -29,7 +29,7 @@ export function PurityMeter({
   const spec = clamp(((SPEC - FLOOR) / (100 - FLOOR)) * 100);
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn("w-full min-w-0", className)}>
       <div className="flex items-baseline justify-between gap-4">
         <span
           className={cn(

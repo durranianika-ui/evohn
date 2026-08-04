@@ -36,7 +36,10 @@ export function Marquee({ text, repeat = 6, className, speed = 46 }: MarqueeProp
 
   return (
     <div
-      className={cn("relative w-full overflow-hidden", className)}
+      // min-w-0 for the same reason as DataTable: the w-max track below is
+      // clipped visually, but without this its width still counts towards the
+      // min-content size of every ancestor.
+      className={cn("relative w-full min-w-0 overflow-hidden", className)}
       role="marquee"
       aria-label={text}
     >

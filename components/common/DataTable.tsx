@@ -23,8 +23,12 @@ export function DataTable({
   const dark = tone === "dark";
 
   return (
-    <div className={cn("w-full", className)}>
-      <div className="-mx-6 overflow-x-auto px-6 md:mx-0 md:px-0">
+    /* min-w-0 caps the min-content contribution. Without it, the table's
+       38rem minimum propagates up through every ancestor and widens whichever
+       grid track holds it — so the page scrolls sideways instead of the
+       table scrolling inside its own container. */
+    <div className={cn("w-full min-w-0", className)}>
+      <div className="-mx-6 min-w-0 overflow-x-auto px-6 md:mx-0 md:px-0">
         <table className="w-full min-w-[38rem] border-collapse text-left">
           {caption ? (
             <caption

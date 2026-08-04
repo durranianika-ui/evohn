@@ -66,7 +66,9 @@ export function Chromatogram({
   );
 
   return (
-    <figure className={cn("w-full", className)}>
+    /* min-w-0: an SVG with a viewBox reports that viewBox width as its
+       min-content size, which would widen the grid track holding it. */
+    <figure className={cn("w-full min-w-0", className)}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="h-auto w-full"
