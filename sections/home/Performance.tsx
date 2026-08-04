@@ -36,31 +36,33 @@ export function Performance() {
         cta={{ label: "The EVOHN Standard", href: "/quality" }}
         panels={panels}
         reverse
+        closing={
+          /* The closing statement, and the one thing to do next.
+
+             This was a standalone CallToAction block, then a full-width row
+             under the panels — worth 684px at 1440, which ran this block
+             0.42vh past the reference while its twin ran 0.34vh short. The
+             reference has neither: it resolves its final statement inside the
+             held column of this same block, where the column has 1400px of
+             spare height and the statement stays in view while the last
+             panels pass. */
+          <div className="border-t border-soft/12 pt-9">
+            <SplitText
+              as="p"
+              text={"Your research\ndeserves certainty."}
+              className="type-display-s max-w-[20ch] text-soft"
+            />
+            <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-4">
+              <ButtonLink href="/catalogue" tone="dark">
+                View Catalogue
+              </ButtonLink>
+              <ButtonLink href="/contact" tone="dark" variant="outline">
+                Speak to a Specialist
+              </ButtonLink>
+            </Reveal>
+          </div>
+        }
       />
-
-      {/* The closing statement, and the one thing to do next.
-
-          This was a standalone CallToAction block. The reference has no such
-          block: it resolves its final statement inside the last panelled
-          section and hands straight to the footer, so that is where EVOHN's
-          closing line now lives. */}
-      <div className="container-home mt-[clamp(2.5rem,6vh,5rem)]">
-        <div className="border-t border-soft/12 pt-[clamp(3rem,7vh,5rem)]">
-          <SplitText
-            as="p"
-            text={"Your research\ndeserves certainty."}
-            className="type-display-s max-w-[20ch] text-soft"
-          />
-          <Reveal delay={0.18} className="mt-9 flex flex-wrap gap-4">
-            <ButtonLink href="/catalogue" tone="dark">
-              View Catalogue
-            </ButtonLink>
-            <ButtonLink href="/contact" tone="dark" variant="outline">
-              Speak to a Specialist
-            </ButtonLink>
-          </Reveal>
-        </div>
-      </div>
     </section>
   );
 }

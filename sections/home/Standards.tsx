@@ -28,12 +28,20 @@ export function Standards() {
   return (
     <section
       id="mission"
-      className="scroll-mt-24 bg-mist py-[clamp(3.5rem,7vh,6rem)] text-carbon"
+      className="scroll-mt-24 bg-mist py-[clamp(4rem,7vh,6rem)] text-carbon"
     >
       <div className="container-home">
         {/* Editorial opening — deliberately compact; the reference gives this
             roughly a fifth of the block and spends the rest on the panels. */}
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        {/* The opener arrives as one object — scale 0.95, 19px low, over a
+            full second — which is the gesture the reference gives this exact
+            block, rather than each part fading in on its own schedule. */}
+        <Reveal
+          scaleFrom={0.95}
+          distance={19}
+          duration={1}
+          className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+        >
           <div>
             <Reveal distance={12}>
               <Eyebrow>Our Philosophy</Eyebrow>
@@ -57,7 +65,7 @@ export function Standards() {
               <ArrowLink href="/about">The EVOHN Standard</ArrowLink>
             </Reveal>
           </div>
-        </div>
+        </Reveal>
 
         {/* The four standards, one row. */}
         <Stagger
@@ -71,7 +79,12 @@ export function Standards() {
               <StaggerItem key={pillar.title}>
                 <article
                   className={cn(
-                    "group flex h-full flex-col justify-between overflow-hidden rounded-[14px] p-6 transition-transform duration-500 ease-[var(--ease-brand)] xl:aspect-[0.62] xl:p-7 hover:-translate-y-1",
+                    // Stacked on a phone the reference gives each panel roughly
+                    // 450px — they read as four full objects, not four rows of
+                    // a list, and they carry the block on their own. From the
+                    // two-column stop up they go back to content height, and
+                    // at xl the row takes over with its 0.62 aspect.
+                    "group flex h-full min-h-[25rem] flex-col justify-between overflow-hidden rounded-[14px] p-6 transition-transform duration-500 ease-[var(--ease-brand)] sm:min-h-0 xl:aspect-[0.62] xl:p-7 hover:-translate-y-1",
                     dark && "bg-onyx text-soft",
                     tone === "sand" && "bg-[var(--color-cat-growth)] text-carbon",
                     tone === "light" && "bg-soft text-carbon",
@@ -87,7 +100,7 @@ export function Standards() {
                   </h3>
 
                   <DotField
-                    className="my-6 hidden xl:block"
+                    className="my-6 block sm:hidden xl:block"
                     tone={dark ? "light" : "dark"}
                   />
 

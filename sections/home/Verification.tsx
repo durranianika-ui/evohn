@@ -16,7 +16,7 @@ import { formatDateShort } from "@/lib/format";
  * it is made on, which is the entire argument of the brand.
  */
 export function Verification() {
-  const showcase = labEntries.slice(0, 3);
+  const showcase = labEntries.slice(0, 4);
   const lead = showcase[0];
   if (!lead) return null;
 
@@ -38,9 +38,13 @@ export function Verification() {
           </Reveal>
         </div>
 
-        <div className="mt-20 grid gap-14 lg:grid-cols-12 lg:gap-16">
+        {/* The twelve-column split starts at md, not lg. Waiting for 1024 gave
+            a 768 tablet one full-width stacked column and ran the block to
+            1802px against the reference's 1106 — the largest single defect at
+            that width. */}
+        <div className="mt-20 grid gap-14 md:grid-cols-12 md:gap-10 lg:gap-16">
           {/* Lead trace */}
-          <div className="lg:col-span-7">
+          <div className="md:col-span-7">
             <Reveal duration={1}>
               <div className="border border-soft/12 p-7 md:p-10">
                 <div className="flex flex-wrap items-start justify-between gap-5">
@@ -70,8 +74,12 @@ export function Verification() {
           </div>
 
           {/* Aggregate + other batches */}
-          <div className="lg:col-span-4 lg:col-start-9">
-            <dl className="grid grid-cols-2 gap-x-8 gap-y-10">
+          <div className="md:col-span-5 md:col-start-8 lg:col-span-4 lg:col-start-9">
+            {/* One column on a phone. Two 40px figures side by side in a 358px
+                column left each label wrapping to three lines and read as a
+                table; full width they read as four statements, which is what
+                the reference does with its own aggregate figures. */}
+            <dl className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
               {[
                 {
                   value: `${labSummary.meanPurity}%`,
@@ -84,18 +92,21 @@ export function Verification() {
                 },
                 { value: "0", label: "Batches re-graded" },
               ].map((stat, i) => (
+                /* The reveal wrapper *is* the div this list is allowed to
+                   wrap its terms in. Nesting a second one inside it put the
+                   dt/dd two levels below the dl, which axe reads as terms
+                   outside any list at all — nine serious findings from one
+                   redundant element. */
                 <Reveal key={stat.label} delay={i * 0.07}>
-                  <div>
-                    <dt className="sr-only">{stat.label}</dt>
-                    <dd>
-                      <span className="type-display-s block tabular-nums text-soft">
-                        {stat.value}
-                      </span>
-                      <span className="type-label mt-3 block text-soft/60">
-                        {stat.label}
-                      </span>
-                    </dd>
-                  </div>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span className="type-display-s block tabular-nums text-soft">
+                      {stat.value}
+                    </span>
+                    <span className="type-label mt-3 block text-soft/60">
+                      {stat.label}
+                    </span>
+                  </dd>
                 </Reveal>
               ))}
             </dl>

@@ -27,28 +27,32 @@ export function Domains() {
               <Reveal key={category.slug} as="li" delay={i * 0.04} distance={16}>
                 <Link
                   href={`/catalogue?domain=${category.slug}`}
-                  className="group/row grid grid-cols-12 items-center gap-4 border-b border-carbon/12 py-7 md:py-9"
+                  className="group/row grid grid-cols-12 items-center gap-4 border-b border-carbon/12 py-8 md:py-10 lg:py-11"
                 >
                   <span className="type-label col-span-2 tabular-nums text-carbon/62 md:col-span-1">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
-                  <div className="col-span-10 md:col-span-5">
+                  {/* Set large. The reference runs its domain index at 96px —
+                      the type *is* the block, which is why the block is two
+                      viewports tall and ours was 1.56. Six columns rather than
+                      five so the longest name still sets on one line at 768. */}
+                  <div className="col-span-10 md:col-span-6">
                     <h3
-                      className="type-display-s transition-transform duration-700 ease-brand group-hover/row:translate-x-3 motion-reduce:transition-none"
+                      className="type-display transition-transform duration-700 ease-brand group-hover/row:translate-x-3 motion-reduce:transition-none"
                     >
                       {category.name}
                     </h3>
                   </div>
 
-                  <p className="type-body-s col-span-9 col-start-3 text-carbon/62 md:col-span-4 md:col-start-7">
+                  <p className="type-body-s col-span-9 col-start-3 text-carbon/62 md:col-span-4 md:col-start-8">
                     {category.tagline}
                     <span className="ml-3 tabular-nums text-carbon/62">
                       {String(count).padStart(2, "0")}
                     </span>
                   </p>
 
-                  <div className="col-span-1 flex justify-end md:col-span-2">
+                  <div className="col-span-1 flex justify-end md:col-span-1">
                     {/* Swatch grows into a rule on hover. */}
                     <span
                       aria-hidden

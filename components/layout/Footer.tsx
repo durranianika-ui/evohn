@@ -32,24 +32,29 @@ export function Footer() {
         />
       </div>
 
-      <div className="container-content pt-16 pb-10 md:pt-24 lg:pt-32">
-        {/* Two and three column stops before the twelve-column desktop grid.
-            Without them everything below 1024 stacked into a single column,
-            which ran the footer to roughly 2745px at 768 — most of three
-            viewports, and the largest single contributor to that width's page
-            length. The reference resolves its own footer in about 1034px
-            there. */}
-        <div className="grid gap-12 sm:grid-cols-2 sm:gap-x-10 md:grid-cols-3 lg:grid-cols-12 lg:gap-10">
+      <div className="container-content pt-12 pb-10 md:pt-24 lg:pt-32">
+        {/* Two, two and three column stops before the twelve-column desktop
+            grid. Without them everything below 1024 stacked into a single
+            column, which ran the footer to roughly 2745px at 768 and 2621px at
+            390 — the largest single contributor to page length at both. The
+            reference resolves its own footer in about 1034px and 1292px
+            respectively, so the link groups pair up from the narrowest width
+            rather than waiting for 640. */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:gap-x-10 sm:gap-y-12 md:grid-cols-3 lg:grid-cols-12 lg:gap-10">
           {/* Brand + enquiry */}
-          <div className="sm:col-span-2 md:col-span-3 lg:col-span-3">
+          <div className="col-span-2 md:col-span-1 lg:col-span-3">
             <Reveal>
               <Wordmark className="text-[1.35rem]" />
-              <p className="type-body-s mt-8 max-w-[34ch] text-soft/55">
+              <p className="type-body-s mt-6 max-w-[34ch] text-soft/55 md:mt-8">
                 {site.tagline}
               </p>
-              <WhatsAppCTA intent="information" tone="dark" className="mt-10" />
+              <WhatsAppCTA
+                intent="information"
+                tone="dark"
+                className="mt-7 md:mt-10"
+              />
 
-              <address className="type-body-s mt-10 space-y-1 not-italic text-soft/60">
+              <address className="type-body-s mt-7 space-y-1 not-italic text-soft/60 md:mt-10">
                 <p>{site.address.line2}</p>
                 <p>
                   {site.address.city}, {site.address.country}
@@ -74,7 +79,7 @@ export function Footer() {
               className="lg:col-span-2"
             >
               <h2 className="type-label text-soft/60">{column.heading}</h2>
-              <ul className="mt-7 space-y-3.5">
+              <ul className="mt-5 space-y-3 md:mt-7 md:space-y-3.5">
                 {column.links.map((link) => (
                   <li key={`${column.heading}-${link.href}`}>
                     <Link
@@ -110,10 +115,10 @@ export function Footer() {
         {/* Research domains — a colour key as much as a link list. */}
         <nav
           aria-label="Research domains"
-          className="mt-20 border-t border-soft/10 pt-10"
+          className="mt-12 border-t border-soft/10 pt-8 md:mt-20 md:pt-10"
         >
           <h2 className="type-label text-soft/60">Domains</h2>
-          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+          <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-3 md:mt-6">
             {categories.map((category) => (
               <li key={category.slug}>
                 <Link
@@ -138,19 +143,19 @@ export function Footer() {
             the single narrow exclusion documented in the a11y spec — it holds
             no information a reader could miss. */}
         <div
-          className="mt-16 overflow-hidden md:mt-24"
+          className="mt-12 overflow-hidden md:mt-24"
           aria-hidden
           data-decorative-watermark
         >
           <Wordmark className="block w-full text-center text-[clamp(3rem,15vw,13rem)] leading-none text-soft/8" />
         </div>
 
-        <div className="mt-16 border-t border-soft/10 pt-10">
+        <div className="mt-12 border-t border-soft/10 pt-8 md:mt-16 md:pt-10">
           <p className="type-body-s max-w-[92ch] text-soft/55">
             {disclaimer.short}
           </p>
 
-          <div className="mt-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="mt-7 flex flex-col gap-5 md:mt-8 md:flex-row md:items-center md:justify-between">
             <p className="type-label text-soft/55">
               &copy; {year} {site.name}. All rights reserved.
             </p>
