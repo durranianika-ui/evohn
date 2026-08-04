@@ -7,6 +7,7 @@ import { ProductGallery } from "@/components/product/ProductGallery";
 import { ProductMedia } from "@/components/product/ProductMedia";
 import { ProductCard } from "@/components/product/ProductCard";
 import { WhatsAppCTA } from "@/components/common/WhatsAppCTA";
+import { EnquiryToggle } from "@/components/enquiry/EnquiryToggle";
 import { StickyEnquiryBar } from "@/components/common/StickyEnquiryBar";
 import { SpecList } from "@/components/common/DataTable";
 import { Chromatogram } from "@/components/lab/Chromatogram";
@@ -207,11 +208,16 @@ export default async function ProductPage(
 
                 <Reveal delay={0.26} className="mt-10 flex flex-wrap gap-4">
                   <WhatsAppCTA product={product.name} tone="light" />
-                  <WhatsAppCTA
-                    product={product.name}
-                    intent="information"
-                    variant="outline"
-                    tone="light"
+                  {/* Collects the compound for a single combined enquiry
+                      rather than a separate message per vial. Nothing is
+                      ordered and no price is quoted — see /enquiry. */}
+                  <EnquiryToggle
+                    item={{
+                      slug: product.slug,
+                      name: product.name,
+                      subtitle: product.subtitle,
+                      dosage: product.dosage,
+                    }}
                   />
                 </Reveal>
               </div>

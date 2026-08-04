@@ -11,21 +11,36 @@ import { disclaimer } from "@/data/site";
 export const metadata: Metadata = {
   title: "Peptide Calculator",
   description:
-    "Work out reconstitution concentration, the volume that contains a given quantity, and where that lands on an insulin syringe. For laboratory research use only.",
+    "Reconstitution, mixing and blend arithmetic with the working shown. Concentration, draw volume, syringe units and component breakdown. For laboratory research use only.",
   alternates: { canonical: "/calculator" },
 };
+
+/**
+ * The legal position on the tool.
+ *
+ * Rendered as content rather than a footnote, because a calculator that
+ * converts between mass and volume in a research context is exactly the sort
+ * of thing that gets mistaken for guidance if nobody says otherwise.
+ *
+ * REQUIRES LEGAL REVIEW — see /platform-use.
+ */
+const NOTICE = [
+  "This tool is educational and mathematical. It converts between quantity, volume and concentration, and it does nothing else.",
+  "It is not medical advice, not a prescription, and not a recommendation to administer anything to anybody. It does not propose a quantity, a schedule or a compound — those belong to a study design.",
+  "It is provided for lawful laboratory and research reference. Confirm any figure that will inform a decision against an independent calculation and against the certificate of analysis for the batch in hand.",
+];
 
 /** Sibling guide cards — the same pair the reference closes its calculator with. */
 const GUIDES = [
   {
     href: "/reconstitution-guide",
     title: "Reconstitution Guide",
-    body: "Mixing & dosing basics",
+    body: "Bringing lyophilised material into solution without degrading it",
   },
   {
     href: "/storage-handling",
     title: "Storage & Handling",
-    body: "Keep peptides stable",
+    body: "Temperature, light, cycling, and the chemistry behind each rule",
   },
 ];
 
@@ -44,14 +59,14 @@ export default function CalculatorPage() {
       <PageHero
         eyebrow="Calculator"
         title={"Peptide\ncalculator"}
-        body="Work out your reconstitution concentration, the volume to draw, and where that lands on an insulin syringe. Switch to the Mix tab to combine two reconstituted vials into a single solution."
+        body="Three modes over one arithmetic core. Reconstitute a lyophilised vial, mix several solutions into one container, or resolve a multi-compound blend into its components. Every result shows its working."
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Calculator", href: "/calculator" },
         ]}
         meta={[
-          { label: "Inputs", value: "Quantity · Volume · Draw" },
-          { label: "Outputs", value: "Concentration · Units" },
+          { label: "Modes", value: "Reconstitute · Mix · Blend" },
+          { label: "Syringes", value: "30u · 50u · 100u · 1 mL · 3 mL" },
           { label: "Basis", value: "Assayed content" },
           { label: "Scope", value: "Arithmetic only" },
         ]}
@@ -60,6 +75,41 @@ export default function CalculatorPage() {
       <section className="section-y bg-soft text-carbon">
         <div className="container-content">
           <PeptideCalculator />
+        </div>
+      </section>
+
+      {/* The notice is a section, not a footnote. */}
+      <section className="border-y border-carbon/10 bg-ink text-soft">
+        <div className="container-content py-20 md:py-24">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <h2 className="type-display-s max-w-[14ch] text-soft lg:col-span-5">
+              What this tool is
+            </h2>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <div className="space-y-6">
+                {NOTICE.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 40)}
+                    className="type-body max-w-[62ch] text-soft/60"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <Link
+                href="/platform-use"
+                className="type-label group/pu mt-9 inline-flex min-h-11 items-center gap-3 text-soft/75 transition-colors duration-400 ease-brand hover:text-soft"
+              >
+                The full platform-use position
+                <span
+                  aria-hidden
+                  className="transition-transform duration-500 ease-brand group-hover/pu:translate-x-1.5 motion-reduce:transition-none"
+                >
+                  &#8594;
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

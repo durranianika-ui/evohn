@@ -188,6 +188,7 @@ export const menuIndex: NavColumn[] = [
       { label: "Reviews", href: "/reviews" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
+      { label: "Legal", href: "/legal" },
     ],
   },
   {

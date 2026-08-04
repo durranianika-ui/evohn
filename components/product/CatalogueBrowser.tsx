@@ -1,17 +1,30 @@
 "use client";
 
-import { useDeferredValue, useMemo, useState, type ReactNode } from "react";
+import {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CardGridSkeleton } from "@/components/common/Skeleton";
 import { EASE_BRAND } from "@/constants/motion";
+import { useQueryParams } from "@/lib/query";
+import {
+  DEFAULT_SORT,
+  SORT_OPTIONS,
+  applyCatalogue,
+  countByDomain,
+  isDefaultFilters,
+  isSortKey,
+  type CatalogueRecord,
+  type SortKey,
+} from "@/lib/catalogue";
 import type { Category, CategorySlug } from "@/data/categories";
 import { cn } from "@/lib/utils";
 
-export interface CatalogueEntry {
-  slug: string;
-  category: CategorySlug;
-  /** Lower-cased haystack: name, subtitle, summary, aliases, CAS. */
-  search: string;
+export interface CatalogueEntry extends CatalogueRecord {
   /**
    * The card, rendered on the server.
    * Cards read the filesystem to decide between photography and the vector
@@ -24,10 +37,17 @@ export interface CatalogueEntry {
 /**
  * Catalogue browser.
  *
- * Filtering and search are instant and do not navigate, so the grid re-flows
- * rather than reloading. Result counts are announced politely. The filter rail
- * is sticky on desktop and scrolls horizontally on narrow screens rather than
- * wrapping into a tall block that pushes the grid off-screen.
+ * Filtering, sorting and search are instant and do not navigate, so the grid
+ * re-flows rather than reloading — but every one of them is mirrored into the
+ * query string, so a filtered view can be linked, bookmarked and reached with
+ * the back button.
+ *
+ * The URL is read through `useQueryParams` rather than `useSearchParams`: the
+ * latter forces a Suspense bailout, and under `output: "export"` there is no
+ * server to resume a postponed boundary, so the fallback is what ships.
+ *
+ * The filter rail scrolls horizontally on narrow screens rather than wrapping
+ * into a tall block that would push the grid off-screen.
  */
 export function CatalogueBrowser({
   entries,
@@ -36,29 +56,55 @@ export function CatalogueBrowser({
   entries: CatalogueEntry[];
   categories: Category[];
 }) {
-  const [active, setActive] = useState<CategorySlug | "all">("all");
-  const [query, setQuery] = useState("");
+  const { params, setQuery: setUrl } = useQueryParams();
+
+  const [domain, setDomain] = useState<CategorySlug | "all">("all");
+  const [query, setQueryText] = useState("");
+  const [sort, setSort] = useState<SortKey>(DEFAULT_SORT);
+
   const deferredQuery = useDeferredValue(query);
   const reduced = useReducedMotion();
 
-  // Counts are computed once against the full set, so a chip always shows how
-  // many compounds it holds rather than how many survive the current search.
-  const counts = useMemo(() => {
-    const map = new Map<CategorySlug, number>();
-    for (const entry of entries) {
-      map.set(entry.category, (map.get(entry.category) ?? 0) + 1);
-    }
-    return map;
-  }, [entries]);
+  // Adopt the URL on mount and on back/forward. An unknown domain or sort in
+  // a hand-edited URL falls back to the default rather than emptying the grid.
+  useEffect(() => {
+    const urlDomain = params.get("domain");
+    setDomain(
+      urlDomain && categories.some((c) => c.slug === urlDomain)
+        ? (urlDomain as CategorySlug)
+        : "all",
+    );
 
-  const visible = useMemo(() => {
-    const needle = deferredQuery.trim().toLowerCase();
-    return entries.filter((entry) => {
-      if (active !== "all" && entry.category !== active) return false;
-      if (needle && !entry.search.includes(needle)) return false;
-      return true;
+    const urlSort = params.get("sort");
+    setSort(isSortKey(urlSort) ? urlSort : DEFAULT_SORT);
+
+    setQueryText(params.get("q") ?? "");
+  }, [params, categories]);
+
+  const commit = (next: {
+    domain?: CategorySlug | "all";
+    sort?: SortKey;
+    q?: string;
+  }) => {
+    if (next.domain !== undefined) setDomain(next.domain);
+    if (next.sort !== undefined) setSort(next.sort);
+    if (next.q !== undefined) setQueryText(next.q);
+
+    setUrl({
+      domain: (next.domain ?? domain) === "all" ? null : (next.domain ?? domain),
+      sort: (next.sort ?? sort) === DEFAULT_SORT ? null : (next.sort ?? sort),
+      q: (next.q ?? query).trim() || null,
     });
-  }, [active, deferredQuery, entries]);
+  };
+
+  // Counts are computed against the full set, so a chip always shows how many
+  // compounds it holds rather than how many survive the current search.
+  const counts = useMemo(() => countByDomain(entries), [entries]);
+
+  const visible = useMemo(
+    () => applyCatalogue(entries, { domain, query: deferredQuery, sort }),
+    [entries, domain, deferredQuery, sort],
+  );
 
   const filters = [
     { slug: "all" as const, name: "All", token: null, count: entries.length },
@@ -73,11 +119,19 @@ export function CatalogueBrowser({
   ];
 
   const stale = query !== deferredQuery;
+  const narrowed = !isDefaultFilters({ domain, query, sort });
+
+  const reset = () => {
+    setDomain("all");
+    setQueryText("");
+    setSort(DEFAULT_SORT);
+    setUrl({ domain: null, sort: null, q: null });
+  };
 
   return (
     <>
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        {/* Category rail */}
+        {/* Domain rail */}
         <div
           role="group"
           aria-label="Filter catalogue by research domain"
@@ -88,13 +142,13 @@ export function CatalogueBrowser({
           )}
         >
           {filters.map((filter) => {
-            const selected = active === filter.slug;
+            const selected = domain === filter.slug;
             return (
               <button
                 key={filter.slug}
                 type="button"
                 aria-pressed={selected}
-                onClick={() => setActive(filter.slug)}
+                onClick={() => commit({ domain: filter.slug })}
                 className={cn(
                   "type-label inline-flex shrink-0 items-center gap-2.5 border px-5 py-3.5",
                   "transition-colors duration-400 ease-brand",
@@ -106,7 +160,7 @@ export function CatalogueBrowser({
                 {filter.token ? (
                   <span
                     aria-hidden
-                    className="size-1.5 rounded-full ring-1 ring-current/25"
+                    className="size-1.5 rounded-dot ring-1 ring-current/25"
                     style={{ backgroundColor: filter.token }}
                   />
                 ) : null}
@@ -124,52 +178,86 @@ export function CatalogueBrowser({
           })}
         </div>
 
-        {/* Search */}
-        <div className="relative w-full shrink-0 lg:w-72">
-          <label htmlFor="catalogue-search" className="sr-only">
-            Search compounds by name, designation or CAS number
-          </label>
-          <input
-            id="catalogue-search"
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search compounds"
-            autoComplete="off"
-            className={cn(
-              "type-body-s w-full border-b border-carbon/20 bg-transparent py-3.5 pr-9",
-              "text-carbon placeholder:text-carbon/40",
-              "transition-colors duration-400 ease-brand",
-              "focus:border-carbon focus:outline-none",
-            )}
-          />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 text-carbon/35"
-          >
-            {query ? null : "⌕"}
-          </span>
-          {query ? (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              className="absolute top-1/2 right-0 flex size-9 -translate-y-1/2 items-center justify-center text-carbon/45 transition-colors hover:text-carbon"
+        <div className="flex w-full shrink-0 flex-col gap-6 sm:flex-row sm:items-end lg:w-auto">
+          {/* Sort */}
+          <div className="shrink-0">
+            <label
+              htmlFor="catalogue-sort"
+              className="type-label block text-carbon/45"
             >
-              <span className="sr-only">Clear search</span>
-              <span aria-hidden>&times;</span>
-            </button>
-          ) : null}
+              Order
+            </label>
+            <select
+              id="catalogue-sort"
+              value={sort}
+              onChange={(e) => commit({ sort: e.target.value as SortKey })}
+              className={cn(
+                "type-body-s mt-1.5 min-h-11 w-full border-b border-carbon/20 bg-transparent py-2.5 pr-6",
+                "text-carbon transition-colors duration-400 ease-brand",
+                "focus:border-carbon focus:outline-none sm:w-40",
+              )}
+            >
+              {SORT_OPTIONS.map((option) => (
+                <option key={option.key} value={option.key}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Search */}
+          <div className="relative w-full lg:w-72">
+            <label
+              htmlFor="catalogue-search"
+              className="type-label block text-carbon/45"
+            >
+              Search
+            </label>
+            <input
+              id="catalogue-search"
+              type="search"
+              value={query}
+              onChange={(e) => commit({ q: e.target.value })}
+              placeholder="Name, designation or CAS"
+              autoComplete="off"
+              className={cn(
+                "type-body-s mt-1.5 min-h-11 w-full border-b border-carbon/20 bg-transparent py-2.5 pr-9",
+                "text-carbon placeholder:text-carbon/40",
+                "transition-colors duration-400 ease-brand",
+                "focus:border-carbon focus:outline-none",
+              )}
+            />
+            {query ? (
+              <button
+                type="button"
+                onClick={() => commit({ q: "" })}
+                className="absolute right-0 bottom-0 flex size-11 items-center justify-center text-carbon/45 transition-colors hover:text-carbon"
+              >
+                <span className="sr-only">Clear search</span>
+                <span aria-hidden>&times;</span>
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
 
-      <p
-        aria-live="polite"
-        className="type-label mt-8 border-t border-carbon/10 pt-8 text-carbon/62"
-      >
-        {visible.length === entries.length
-          ? `${String(entries.length).padStart(2, "0")} compounds`
-          : `${String(visible.length).padStart(2, "0")} of ${String(entries.length).padStart(2, "0")} compounds`}
-      </p>
+      <div className="mt-8 flex flex-wrap items-baseline justify-between gap-4 border-t border-carbon/10 pt-8">
+        <p aria-live="polite" className="type-label text-carbon/62">
+          {visible.length === entries.length
+            ? `${String(entries.length).padStart(2, "0")} compounds`
+            : `${String(visible.length).padStart(2, "0")} of ${String(entries.length).padStart(2, "0")} compounds`}
+        </p>
+
+        {narrowed ? (
+          <button
+            type="button"
+            onClick={reset}
+            className="type-label min-h-11 text-carbon/50 transition-colors duration-400 ease-brand hover:text-carbon"
+          >
+            Clear all filters
+          </button>
+        ) : null}
+      </div>
 
       {/*
         On a device slow enough for the deferred search to lag a frame, the
@@ -213,11 +301,8 @@ export function CatalogueBrowser({
           </p>
           <button
             type="button"
-            onClick={() => {
-              setActive("all");
-              setQuery("");
-            }}
-            className="type-label mt-10 border border-carbon/25 px-8 py-4 transition-colors duration-400 ease-brand hover:border-carbon"
+            onClick={reset}
+            className="type-label mt-10 min-h-12 border border-carbon/25 px-8 py-4 transition-colors duration-400 ease-brand hover:border-carbon"
           >
             Reset filters
           </button>

@@ -30,5 +30,12 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  /*
+   * `vitest.config.mts` is excluded because Vitest bundles its own copy of
+   * Vite, and the plugin types from the hoisted Vite are structurally
+   * incompatible with the nested one. The mismatch is between two build
+   * tools' type declarations, not in any code that ships; Vitest reads the
+   * file with its own resolution and is unaffected.
+   */
+  "exclude": ["node_modules", "vitest.config.mts"]
 }

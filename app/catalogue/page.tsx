@@ -26,7 +26,12 @@ export default function CataloguePage() {
   // Only the server can decide between photography and the vector plate.
   const entries = products.map((product, i) => ({
     slug: product.slug,
+    name: product.name,
     category: product.category,
+    evidence: product.evidence,
+    // Position in the source data — the curated order the "Curated" sort
+    // restores, and the tie-break within a domain or evidence grouping.
+    order: i,
     search: [
       product.name,
       product.subtitle,

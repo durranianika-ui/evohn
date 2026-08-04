@@ -184,7 +184,12 @@ export function Header() {
                 <div
                   key={key}
                   className="relative"
-                  onMouseEnter={() => {
+                  // Guarded to a real mouse. A touch tap synthesises
+                  // pointerenter *before* click, so an unguarded hover-open
+                  // would open the panel and the click would immediately
+                  // toggle it shut — leaving the menu unreachable by tap.
+                  onPointerEnter={(e) => {
+                    if (e.pointerType !== "mouse") return;
                     cancelClose();
                     setOpenKey(item.menu ? key : null);
                   }}
@@ -237,7 +242,11 @@ export function Header() {
 
                   <AnimatePresence>
                     {isOpen && item.menu ? (
-                      <div onMouseEnter={cancelClose}>
+                      <div
+                        onPointerEnter={(e) => {
+                          if (e.pointerType === "mouse") cancelClose();
+                        }}
+                      >
                         <NavPanel
                           item={item}
                           id={panelId}
