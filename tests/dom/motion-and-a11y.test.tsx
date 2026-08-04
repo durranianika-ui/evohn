@@ -1,7 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { setMediaQuery } from "../setup";
 import { SplitText } from "@/components/motion/SplitText";
+import { HeroVideo } from "@/components/motion/HeroVideo";
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { SearchResults } from "@/components/search/SearchResults";
 
@@ -10,6 +12,47 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn(), replace: vi.fn(), prefetch: vi.fn() }),
 }));
 
+
+const CALM = "(prefers-reduced-motion: reduce)";
+
+describe("hero film", () => {
+  it("plays muted, looping and inline, and is hidden from the reader", async () => {
+    const { container } = render(
+      <HeroVideo src="/editorial/hero.mp4" poster="/editorial/hero-vial.jpg" />,
+    );
+    const video = await waitFor(() => {
+      const v = container.querySelector("video");
+      if (!v) throw new Error("no video yet");
+      return v;
+    });
+    expect(video.muted).toBe(true);
+    expect(video.loop).toBe(true);
+    expect(video.playsInline).toBe(true);
+    expect(video).toHaveAttribute("aria-hidden", "true");
+    expect(video.querySelector("source")).toHaveAttribute(
+      "src",
+      "/editorial/hero.mp4",
+    );
+  });
+
+  it("shows the poster instead of playing under reduced motion", () => {
+    setMediaQuery(CALM, true);
+    const { container } = render(
+      <HeroVideo src="/editorial/hero.mp4" poster="/editorial/hero-vial.jpg" />,
+    );
+    expect(container.querySelector("video")).toBeNull();
+    const img = container.querySelector("img");
+    expect(img).toHaveAttribute("src", "/editorial/hero-vial.jpg");
+    // Decorative: an empty alt, not a described background.
+    expect(img).toHaveAttribute("alt", "");
+  });
+
+  it("renders nothing at all when there is no poster to fall back to", () => {
+    setMediaQuery(CALM, true);
+    const { container } = render(<HeroVideo src="/editorial/hero.mp4" />);
+    expect(container).toBeEmptyDOMElement();
+  });
+});
 
 describe("split text", () => {
   it("announces the whole phrase as one string, not word by word", () => {

@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { WhatsAppCTA } from "@/components/common/WhatsAppCTA";
 import { VialGlyph } from "@/components/product/VialGlyph";
+import { HeroVideo } from "@/components/motion/HeroVideo";
 import { asset, hasAsset } from "@/lib/media";
 import Image from "next/image";
 
@@ -22,9 +23,28 @@ const marks = [
  */
 export function Hero() {
   const heroImage = "/editorial/hero-vial.jpg";
+  const heroFilm = "/editorial/hero.mp4";
 
   return (
     <section className="relative isolate overflow-hidden bg-ink text-soft">
+      {/* Full-bleed film behind everything, held well down so the statement
+          over it keeps its contrast. Suppressed under reduced motion and on
+          a metered connection — see HeroVideo. */}
+      {hasAsset(heroFilm) ? (
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <HeroVideo
+            src={asset(heroFilm)}
+            poster={hasAsset(heroImage) ? asset(heroImage) : undefined}
+            className="h-full w-full object-cover opacity-35"
+          />
+          {/* Two washes: one to sink the whole frame, one to weight the left
+              column where the headline sits. */}
+          <div className="absolute inset-0 bg-ink/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-ink/20" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent" />
+        </div>
+      ) : null}
+
       {/* Warm pool of light behind the product — kit §07 photography style. */}
       <div
         aria-hidden
