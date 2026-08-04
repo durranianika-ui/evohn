@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 /**
  * The pinned collection is the most interactive thing on the page, so it is
@@ -103,11 +103,16 @@ test.describe("collection under reduced motion", () => {
   test("falls back to a scroll-snap rail, still complete", async ({ page }) => {
     await page.goto("/");
     const rail = page.locator("[data-collection-rail]");
-    await rail.scrollIntoViewIfNeeded();
     await expect(rail).toBeVisible();
+    await rail.scrollIntoViewIfNeeded();
 
-    const overflowX = await rail.evaluate((el) => getComputedStyle(el).overflowX);
-    expect(overflowX).toBe("auto");
+    /* Polled, not read once. The preference is a media query with no answer
+       on the server, so the rail is deliberately rendered in its default form
+       for the first client render and takes its reduced-motion form on the
+       commit after hydration — a single `evaluate` can land in front of that. */
+    await expect
+      .poll(() => rail.evaluate((el) => getComputedStyle(el).overflowX))
+      .toBe("auto");
 
     const cards = rail.locator("article");
     expect(await cards.count()).toBeGreaterThanOrEqual(4);

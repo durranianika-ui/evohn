@@ -43,13 +43,18 @@ function arg(name, fallback) {
  * never the decline control, which would navigate away.
  */
 async function passAgeGate(page) {
-  const affirmative =
-    /^(enter|yes|i am|i'm|confirm|accept|agree|continue|21\+|18\+|over)/i;
+  /* Matched anywhere in the label, not just at its start: this site's own
+     affirmative reads "I CONFIRM BOTH — ENTER", which an anchored pattern
+     missed, so every capture since the gate shipped was taken behind it and
+     every screenshot was a picture of the gate. The negative list is what
+     keeps "I DO NOT CONFIRM" from being clicked instead. */
+  const affirmative = /(enter|confirm|accept|agree|continue|21\+|18\+|i am)/i;
+  const decline = /(not|n't|decline|leave|exit|under|no,)/i;
   for (const sel of ["button", "[role=button]", "a"]) {
     const nodes = await page.$$(sel);
     for (const n of nodes) {
       const label = ((await n.textContent()) ?? "").trim();
-      if (!label || !affirmative.test(label)) continue;
+      if (!label || !affirmative.test(label) || decline.test(label)) continue;
       if (!(await n.isVisible().catch(() => false))) continue;
       await n.click({ timeout: 3000 }).catch(() => {});
       await page.waitForTimeout(900);
@@ -191,8 +196,13 @@ async function captureTarget({ target, base, outDir }) {
 
     try {
       await page.goto(base, { waitUntil: "domcontentloaded", timeout: 60_000 });
-      const gate = await passAgeGate(page);
+      /* Settle first. An age gate is a client component that mounts after
+         hydration once it has read its acknowledgement out of storage, so
+         looking for its controls at domcontentloaded finds nothing and every
+         frame afterwards is a picture of the gate. */
       await settle(page);
+      const gate = await passAgeGate(page);
+      if (gate) await settle(page);
 
       // Header at rest, before any scroll moves it.
       await page.screenshot({ path: path.join(dir, "00-initial.png") });

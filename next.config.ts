@@ -9,8 +9,20 @@ import type { NextConfig } from "next";
 const isPages = process.env.GITHUB_PAGES === "true";
 const basePath = process.env.PAGES_BASE_PATH ?? "/evohn";
 
+/**
+ * Both loopback spellings are the same server, but the dev origin check treats
+ * them as different hosts: a page opened on `localhost` requesting a chunk
+ * from `127.0.0.1` (or the reverse) had every one of those chunks answered
+ * with 403. The audit harness and the Playwright projects address the server
+ * by IP while the browser pane opens it by name, so both have to be allowed
+ * or the e2e "no failed requests" assertion fails on a dev-server artefact.
+ * Development only — `output: "export"` ships no server at all.
+ */
+const allowedDevOrigins = ["127.0.0.1", "localhost"];
+
 const nextConfig: NextConfig = isPages
   ? {
+      allowedDevOrigins,
       output: "export",
       basePath,
       assetPrefix: basePath,
@@ -24,6 +36,6 @@ const nextConfig: NextConfig = isPages
       // so components prefix their own srcs from this.
       env: { NEXT_PUBLIC_BASE_PATH: basePath },
     }
-  : {};
+  : { allowedDevOrigins };
 
 export default nextConfig;

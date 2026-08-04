@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 /**
  * The approved navigation is not part of the reconstruction. These exist so a
@@ -64,9 +64,16 @@ test.describe("navigation", () => {
 
   test("search and enquiry controls are reachable", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("header").getByLabel(/search/i).first()).toBeVisible();
+    /* By role and accessible name. Both controls take their name from a
+       visually hidden span inside the button — that is *content*, so
+       `getByLabel` never matched either of them and the assertion could only
+       ever have passed against something else on the page. */
+    const header = page.locator("header");
     await expect(
-      page.locator("header").getByLabel(/enquiry list/i).first(),
+      header.getByRole("button", { name: /search/i }).first(),
+    ).toBeVisible();
+    await expect(
+      header.getByRole("button", { name: /enquiry list/i }).first(),
     ).toBeVisible();
   });
 });

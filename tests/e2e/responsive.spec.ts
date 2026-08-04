@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 import { homeBlocks } from "./_helpers";
 
 /**
@@ -34,11 +34,20 @@ test.describe("responsive", () => {
 
   test("headings are not clipped by their containers", async ({ page }) => {
     await page.goto("/");
+    /* Measured against the children's own boxes rather than `scrollWidth`.
+       A heading whose words are individual inline-blocks keeps the space
+       between two of them at the end of a line, and that hanging space counts
+       towards scrollWidth without a glyph ever leaving the box — which read
+       as a clipped heading at 390px when nothing was clipped at all. What
+       actually matters is whether something drawn extends past the heading. */
     const clipped = await page.locator("main h1, main h2").evaluateAll((els) =>
       els
         .filter((e) => {
           const r = e.getBoundingClientRect();
-          return r.width > 0 && e.scrollWidth > Math.ceil(r.width) + 2;
+          if (r.width <= 0) return false;
+          return [...e.querySelectorAll("*")].some(
+            (child) => child.getBoundingClientRect().right > r.right + 2,
+          );
         })
         .map((e) => (e.textContent || "").trim().slice(0, 40)),
     );

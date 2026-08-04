@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 import { homeBlocks, overflowX } from "./_helpers";
 
 /**
@@ -53,7 +53,15 @@ test.describe("homepage", () => {
     page.on("requestfailed", (r) => {
       const url = r.url();
       // The dev-server HMR socket is not a page asset.
-      if (!url.includes("_next/hmr")) failed.push(url);
+      if (url.includes("_next/hmr")) return;
+      // A media range request the browser cancels itself is not a broken
+      // asset. This test jumps to the bottom of the page a few hundred
+      // milliseconds after load, which aborts the hero film's in-flight
+      // range request roughly one run in three — the file is served, it is
+      // simply no longer wanted.
+      if (r.resourceType() === "media" && r.failure()?.errorText.includes("ABORTED"))
+        return;
+      failed.push(`${url} (${r.failure()?.errorText ?? "unknown"})`);
     });
 
     await page.goto("/");

@@ -1,10 +1,10 @@
 {
   "target": "evohn-after",
   "base": "http://127.0.0.1:3456",
-  "capturedAt": "2026-08-04T14:57:13.823Z",
+  "capturedAt": "2026-08-04T16:31:50.081Z",
   "viewports": {
     "1920x1080": {
-      "docHeight": 16492,
+      "docHeight": 16372,
       "viewport": [
         1920,
         1080
@@ -14,7 +14,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 1080,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -23,7 +23,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 1092,
+          "top": 1080,
           "height": 942,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
@@ -32,44 +32,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 2034,
-          "height": 1688,
+          "top": 2022,
+          "height": 1998,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 3722,
+          "top": 4019,
           "height": 4301,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 8022,
+          "top": 8320,
           "height": 1308,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 9330,
-          "height": 1195,
+          "top": 9628,
+          "height": 835,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 40
         },
         {
           "tag": "SECTION",
-          "top": 10526,
-          "height": 1953,
+          "top": 10463,
+          "height": 2272,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -77,8 +77,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12478,
-          "height": 2661,
+          "top": 12735,
+          "height": 2272,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -124,48 +124,96 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 4026,
+          "y": 4324,
           "w": 1920,
           "h": 1080
         },
         {
-          "cls": "lg:sticky lg:top-[18vh]",
+          "cls": "md:sticky md:top-20",
           "position": "sticky",
           "x": 276,
-          "y": 10726,
+          "y": 10663,
           "w": 533,
           "h": 335
         },
         {
-          "cls": "lg:sticky lg:top-[18vh]",
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 992,
+          "y": 10663,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 992,
+          "y": 11295,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 992,
+          "y": 11927,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 1111,
+          "y": 12935,
+          "w": 533,
+          "h": 584
+        },
+        {
+          "cls": "sticky",
           "position": "sticky",
           "x": 276,
-          "y": 14295,
-          "w": 533,
-          "h": 335
+          "y": 12935,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 276,
+          "y": 13567,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 276,
+          "y": 14199,
+          "w": 652,
+          "h": 608
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 1920,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -177,57 +225,54 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1849,
+          "scrollY": 1835,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3699,
+          "scrollY": 3670,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5548,
+          "scrollY": 5505,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7398,
+          "scrollY": 7340,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9247,
+          "scrollY": 9175,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11097,
+          "scrollY": 11010,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 12946,
+          "scrollY": 12845,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 14487,
+          "scrollY": 14374,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 15412,
+          "scrollY": 15292,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=SAgjwd190gYTqT3N5xidL' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     },
     "1440x900": {
-      "docHeight": 15567,
+      "docHeight": 15472,
       "viewport": [
         1440,
         900
@@ -237,7 +282,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 900,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -246,8 +291,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 912,
-          "height": 907,
+          "top": 900,
+          "height": 909,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -255,44 +300,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 1819,
-          "height": 1688,
+          "top": 1809,
+          "height": 1998,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 3507,
+          "top": 3807,
           "height": 3613,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 7120,
+          "top": 7420,
           "height": 1308,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 8429,
-          "height": 1195,
+          "top": 8728,
+          "height": 835,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 40
         },
         {
           "tag": "SECTION",
-          "top": 9624,
-          "height": 1953,
+          "top": 9564,
+          "height": 2272,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -300,8 +345,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 11577,
-          "height": 2637,
+          "top": 11836,
+          "height": 2272,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -347,48 +392,96 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 3790,
+          "y": 4090,
           "w": 1440,
           "h": 900
         },
         {
-          "cls": "lg:sticky lg:top-[18vh]",
+          "cls": "md:sticky md:top-20",
           "position": "sticky",
           "x": 36,
-          "y": 9824,
+          "y": 9764,
           "w": 533,
           "h": 335
         },
         {
-          "cls": "lg:sticky lg:top-[18vh]",
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 752,
+          "y": 9764,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 752,
+          "y": 10396,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 752,
+          "y": 11028,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 871,
+          "y": 12036,
+          "w": 533,
+          "h": 584
+        },
+        {
+          "cls": "sticky",
           "position": "sticky",
           "x": 36,
-          "y": 13393,
-          "w": 533,
-          "h": 335
+          "y": 12036,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 36,
+          "y": 12668,
+          "w": 652,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 36,
+          "y": 13300,
+          "w": 652,
+          "h": 608
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 1440,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -400,57 +493,54 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1760,
+          "scrollY": 1749,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3520,
+          "scrollY": 3497,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5280,
+          "scrollY": 5246,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7040,
+          "scrollY": 6995,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 8800,
+          "scrollY": 8743,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 10560,
+          "scrollY": 10492,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 12320,
+          "scrollY": 12240,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 13787,
+          "scrollY": 13698,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 14667,
+          "scrollY": 14572,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=FCKGknF_z7L5LuGqcZh6r' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     },
     "1280x800": {
-      "docHeight": 14678,
+      "docHeight": 14900,
       "viewport": [
         1280,
         800
@@ -460,7 +550,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 800,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -469,8 +559,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 812,
-          "height": 840,
+          "top": 800,
+          "height": 856,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -478,44 +568,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 1652,
-          "height": 1688,
+          "top": 1656,
+          "height": 1998,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 3340,
+          "top": 3654,
           "height": 3231,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 6571,
+          "top": 6885,
           "height": 1287,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 64
         },
         {
           "tag": "SECTION",
-          "top": 7858,
-          "height": 1183,
+          "top": 8172,
+          "height": 835,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 40
         },
         {
           "tag": "SECTION",
-          "top": 9041,
-          "height": 1814,
+          "top": 9007,
+          "height": 2272,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -523,8 +613,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 10855,
-          "height": 2486,
+          "top": 11279,
+          "height": 2272,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -570,48 +660,96 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 3611,
+          "y": 3925,
           "w": 1280,
           "h": 800
         },
         {
-          "cls": "lg:sticky lg:top-[18vh]",
+          "cls": "md:sticky md:top-20",
           "position": "sticky",
           "x": 16,
-          "y": 9241,
+          "y": 9207,
           "w": 483,
           "h": 335
         },
         {
-          "cls": "lg:sticky lg:top-[18vh]",
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 672,
+          "y": 9207,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 672,
+          "y": 9839,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 672,
+          "y": 10471,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 781,
+          "y": 11479,
+          "w": 483,
+          "h": 584
+        },
+        {
+          "cls": "sticky",
           "position": "sticky",
           "x": 16,
-          "y": 12533,
-          "w": 483,
-          "h": 335
+          "y": 11479,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12111,
+          "w": 592,
+          "h": 608
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12743,
+          "w": 592,
+          "h": 608
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 1280,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -623,57 +761,54 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1665,
+          "scrollY": 1692,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3331,
+          "scrollY": 3384,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 4996,
+          "scrollY": 5076,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 6661,
+          "scrollY": 6768,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 8327,
+          "scrollY": 8460,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 9992,
+          "scrollY": 10152,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 11658,
+          "scrollY": 11844,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 13045,
+          "scrollY": 13254,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 13878,
+          "scrollY": 14100,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=xNpJz14DsA7lGByhDoyD8' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     },
     "768x1024": {
-      "docHeight": 15506,
+      "docHeight": 16279,
       "viewport": [
         768,
         1024
@@ -683,7 +818,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 1024,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -692,7 +827,7 @@
         },
         {
           "tag": "SECTION",
-          "top": 1036,
+          "top": 1024,
           "height": 928,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
@@ -701,44 +836,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 1964,
-          "height": 1556,
+          "top": 1952,
+          "height": 1721,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 41
         },
         {
           "tag": "SECTION",
-          "top": 3520,
+          "top": 3673,
           "height": 4134,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 41
         },
         {
           "tag": "SECTION",
-          "top": 7654,
-          "height": 1798,
+          "top": 7807,
+          "height": 1326,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 41
         },
         {
           "tag": "SECTION",
-          "top": 9452,
-          "height": 1282,
+          "top": 9133,
+          "height": 1158,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 28
         },
         {
           "tag": "SECTION",
-          "top": 10733,
-          "height": 1339,
+          "top": 10291,
+          "height": 2184,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -746,8 +881,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12072,
-          "height": 1617,
+          "top": 12475,
+          "height": 2184,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -793,32 +928,96 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 3865,
+          "y": 4018,
           "w": 768,
           "h": 1024
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 16,
+          "y": 10495,
+          "w": 288,
+          "h": 329
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 336,
+          "y": 10495,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 336,
+          "y": 11095,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 336,
+          "y": 11695,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "md:sticky md:top-20",
+          "position": "sticky",
+          "x": 464,
+          "y": 12679,
+          "w": 288,
+          "h": 647
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12679,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13279,
+          "w": 416,
+          "h": 576
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13879,
+          "w": 416,
+          "h": 576
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 768,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -830,57 +1029,54 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1738,
+          "scrollY": 1831,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3476,
+          "scrollY": 3661,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5214,
+          "scrollY": 5492,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 6951,
+          "scrollY": 7322,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 8689,
+          "scrollY": 9153,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 10427,
+          "scrollY": 10984,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 12165,
+          "scrollY": 12814,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 13613,
+          "scrollY": 14340,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 14482,
+          "scrollY": 15255,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=iDyvpMKrFzzabmmZ_UgA6' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     },
     "430x932": {
-      "docHeight": 17328,
+      "docHeight": 17556,
       "viewport": [
         430,
         932
@@ -890,7 +1086,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 932,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -899,8 +1095,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 944,
-          "height": 1285,
+          "top": 932,
+          "height": 2161,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -908,44 +1104,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 2229,
-          "height": 1562,
+          "top": 3093,
+          "height": 1684,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 3791,
+          "top": 4777,
           "height": 3772,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 7563,
-          "height": 1551,
+          "top": 8549,
+          "height": 1809,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 9113,
-          "height": 2137,
+          "top": 10358,
+          "height": 1284,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 28
         },
         {
           "tag": "SECTION",
-          "top": 11251,
-          "height": 1566,
+          "top": 11643,
+          "height": 1847,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -953,8 +1149,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12816,
-          "height": 1897,
+          "top": 13490,
+          "height": 2137,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -1000,32 +1196,80 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 4114,
+          "y": 5101,
           "w": 430,
           "h": 932
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12122,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12546,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12970,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14259,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14683,
+          "w": 398,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 15107,
+          "w": 398,
+          "h": 400
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 430,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -1037,57 +1281,54 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1968,
+          "scrollY": 1995,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3935,
+          "scrollY": 3990,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5903,
+          "scrollY": 5985,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7870,
+          "scrollY": 7980,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9838,
+          "scrollY": 9974,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11805,
+          "scrollY": 11969,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 13773,
+          "scrollY": 13964,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 15412,
+          "scrollY": 15627,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 16396,
+          "scrollY": 16624,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=PI71-pkufNchvgXEayzjT' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     },
     "390x844": {
-      "docHeight": 16819,
+      "docHeight": 17231,
       "viewport": [
         390,
         844
@@ -1097,7 +1338,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 844,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -1106,8 +1347,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 856,
-          "height": 1337,
+          "top": 844,
+          "height": 2177,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -1115,44 +1356,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 2193,
-          "height": 1586,
+          "top": 3021,
+          "height": 1708,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 3779,
+          "top": 4729,
           "height": 3436,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 7215,
-          "height": 1627,
+          "top": 8165,
+          "height": 1851,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 8842,
-          "height": 2101,
+          "top": 10016,
+          "height": 1307,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 28
         },
         {
           "tag": "SECTION",
-          "top": 10943,
-          "height": 1473,
+          "top": 11323,
+          "height": 1847,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -1160,8 +1401,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12416,
-          "height": 1793,
+          "top": 13170,
+          "height": 2137,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -1207,32 +1448,80 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 4092,
+          "y": 5042,
           "w": 390,
           "h": 844
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 11802,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12226,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12650,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13940,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14364,
+          "w": 358,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14788,
+          "w": 358,
+          "h": 400
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 390,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -1244,57 +1533,54 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1917,
+          "scrollY": 1966,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3834,
+          "scrollY": 3933,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5751,
+          "scrollY": 5899,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7668,
+          "scrollY": 7866,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9585,
+          "scrollY": 9832,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11502,
+          "scrollY": 11799,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 13419,
+          "scrollY": 13765,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 15017,
+          "scrollY": 15404,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 15975,
+          "scrollY": 16387,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=Bm62c2nNgEx--t_1Iv-V4' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     },
     "360x800": {
-      "docHeight": 16655,
+      "docHeight": 17175,
       "viewport": [
         360,
         800
@@ -1304,7 +1590,7 @@
       "sections": [
         {
           "tag": "SECTION",
-          "top": 12,
+          "top": 0,
           "height": 800,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
@@ -1313,8 +1599,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 812,
-          "height": 1375,
+          "top": 800,
+          "height": 2198,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
           "heading": "Precision before promise.",
@@ -1322,44 +1608,44 @@
         },
         {
           "tag": "SECTION",
-          "top": 2187,
-          "height": 1586,
+          "top": 2998,
+          "height": 1708,
           "bg": "rgb(237, 234, 227)",
           "position": "static",
-          "heading": "Eight domains. One standard.",
+          "heading": "Eight domains.One standard.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 3773,
+          "top": 4706,
           "height": 3338,
           "bg": "rgb(10, 10, 10)",
           "position": "relative",
-          "heading": "Compounds that set the standard.",
+          "heading": "Compounds thatset the standard.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 7111,
-          "height": 1665,
+          "top": 8044,
+          "height": 1889,
           "bg": "rgb(17, 17, 17)",
           "position": "static",
-          "heading": "Published, not on request.",
+          "heading": "Published, noton request.",
           "headingSize": 36
         },
         {
           "tag": "SECTION",
-          "top": 8777,
-          "height": 2119,
+          "top": 9933,
+          "height": 1307,
           "bg": "rgb(245, 244, 240)",
           "position": "static",
-          "heading": "Every batch, on the record.",
+          "heading": "Every batch,on the record.",
           "headingSize": 28
         },
         {
           "tag": "SECTION",
-          "top": 10896,
-          "height": 1404,
+          "top": 11240,
+          "height": 1847,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Documentation you can audit.",
@@ -1367,8 +1653,8 @@
         },
         {
           "tag": "SECTION",
-          "top": 12300,
-          "height": 1718,
+          "top": 13088,
+          "height": 2137,
           "bg": "rgb(10, 10, 10)",
           "position": "static",
           "heading": "Consistency is the whole point.",
@@ -1414,32 +1700,80 @@
           "cls": "sticky top-0 flex h-dvh flex-col justify-center overflow-hid",
           "position": "sticky",
           "x": 0,
-          "y": 4151,
+          "y": 5084,
           "w": 360,
           "h": 800
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 11720,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12144,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 12568,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 13857,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14281,
+          "w": 328,
+          "h": 400
+        },
+        {
+          "cls": "sticky",
+          "position": "sticky",
+          "x": 16,
+          "y": 14705,
+          "w": 328,
+          "h": 400
         }
       ],
       "header": {
         "x": 0,
         "y": 0,
         "w": 360,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none",
         "radius": "0px",
         "position": "fixed"
       },
       "bodyCursor": "auto",
-      "ageGate": null,
+      "ageGate": "I confirm both — enter",
       "headerAtTop": {
         "y": 0,
-        "h": 73,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
       "headerScrolled": {
-        "y": 0,
-        "h": 73,
+        "y": -72,
+        "h": 72,
         "bg": "rgba(0, 0, 0, 0)",
         "backdrop": "none"
       },
@@ -1451,54 +1785,51 @@
         },
         {
           "stop": 0.12,
-          "scrollY": 1903,
+          "scrollY": 1965,
           "file": "scroll-012.png"
         },
         {
           "stop": 0.24,
-          "scrollY": 3805,
+          "scrollY": 3930,
           "file": "scroll-024.png"
         },
         {
           "stop": 0.36,
-          "scrollY": 5708,
+          "scrollY": 5895,
           "file": "scroll-036.png"
         },
         {
           "stop": 0.48,
-          "scrollY": 7610,
+          "scrollY": 7860,
           "file": "scroll-048.png"
         },
         {
           "stop": 0.6,
-          "scrollY": 9513,
+          "scrollY": 9825,
           "file": "scroll-060.png"
         },
         {
           "stop": 0.72,
-          "scrollY": 11416,
+          "scrollY": 11790,
           "file": "scroll-072.png"
         },
         {
           "stop": 0.84,
-          "scrollY": 13318,
+          "scrollY": 13755,
           "file": "scroll-084.png"
         },
         {
           "stop": 0.94,
-          "scrollY": 14904,
+          "scrollY": 15393,
           "file": "scroll-094.png"
         },
         {
           "stop": 1,
-          "scrollY": 15855,
+          "scrollY": 16375,
           "file": "scroll-100.png"
         }
       ],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
-        "WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=72Ml3Qkt6WJY8PfYsO4Ba' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE"
-      ]
+      "consoleErrors": []
     }
   }
 }

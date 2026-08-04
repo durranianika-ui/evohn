@@ -1,237 +1,224 @@
 
 === 1920x1080 ===
 reference  doc=16185 (14.99vh)  gutter=276  overflowX=0
-evohn      doc=16492 (15.27vh)  gutter=276  overflowX=0
+evohn      doc=16372 (15.16vh)  gutter=276  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
  1    0.85    0.87   0.02  rgb(237, 234, 227)  Precision before promise.
- 2       2    1.56  -0.44  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    3.98  -0.02  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4    1.34    1.21  -0.13  rgb(245, 244, 240)  Published, not on request.
- 5    0.75    1.11   0.36  rgb(10, 10, 10)     Every batch, on the record.
- 6    2.09    1.81  -0.28  rgb(10, 10, 10)     Documentation you can audit.
- 7    2.09    2.46   0.37  rgb(10, 10, 10)     Consistency is the whole point.
+ 2       2    1.85  -0.15  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    3.98  -0.02  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4    1.34    1.21  -0.13  rgb(245, 244, 240)  Published, noton request.
+ 5    0.75    0.77   0.02  rgb(10, 10, 10)     Every batch,on the record.
+ 6    2.09     2.1   0.01  rgb(10, 10, 10)     Documentation you can audit.
+ 7    2.09     2.1   0.01  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h= 1080 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  439 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  606 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  606 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 3
+ evohn sticky/fixed inside main: 9
    sticky  h= 1080 sticky top-0 flex h-dvh flex-col justify-center over
-   sticky  h=  335 lg:sticky lg:top-[18vh]
-   sticky  h=  335 lg:sticky lg:top-[18vh]
+   sticky  h=  335 md:sticky md:top-20
+   sticky  h=  608 sticky
+   sticky  h=  608 sticky
 
  h1  ref  72px/ -2.16px Roc Grotesk     evo  88px/ -2.64px Archivo
  h2  ref  28px/ -0.28px Roc Grotesk     evo  40px/  -1.2px Archivo
  h3  ref  20px/  -0.5px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=70 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=fAaEoZDrg2xvmpQ8eCX8x' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none
 
 === 1440x900 ===
 reference  doc=15062 (16.74vh)  gutter=36  overflowX=0
-evohn      doc=15567 (17.3vh)  gutter=36  overflowX=0
+evohn      doc=15472 (17.19vh)  gutter=36  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
  1    0.98    1.01   0.03  rgb(237, 234, 227)  Precision before promise.
- 2    2.18    1.88  -0.30  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    4.01   0.01  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4     1.6    1.45  -0.15  rgb(245, 244, 240)  Published, not on request.
- 5    0.89    1.33   0.44  rgb(10, 10, 10)     Every batch, on the record.
- 6    2.51    2.17  -0.34  rgb(10, 10, 10)     Documentation you can audit.
- 7    2.51    2.93   0.42  rgb(10, 10, 10)     Consistency is the whole point.
+ 2    2.18    2.22   0.04  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    4.01   0.01  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4     1.6    1.45  -0.15  rgb(245, 244, 240)  Published, noton request.
+ 5    0.89    0.93   0.04  rgb(10, 10, 10)     Every batch,on the record.
+ 6    2.51    2.52   0.01  rgb(10, 10, 10)     Documentation you can audit.
+ 7    2.51    2.52   0.01  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h=  900 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  401 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  606 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  606 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 3
+ evohn sticky/fixed inside main: 9
    sticky  h=  900 sticky top-0 flex h-dvh flex-col justify-center over
-   sticky  h=  335 lg:sticky lg:top-[18vh]
-   sticky  h=  335 lg:sticky lg:top-[18vh]
+   sticky  h=  335 md:sticky md:top-20
+   sticky  h=  608 sticky
+   sticky  h=  608 sticky
 
  h1  ref  72px/ -2.16px Roc Grotesk     evo  86px/-2.565px Archivo
  h2  ref  28px/ -0.28px Roc Grotesk     evo  40px/  -1.2px Archivo
  h3  ref  20px/  -0.5px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=70 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=3hwHk2ITUfJB6Fi3UnyN5' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none
 
 === 1280x800 ===
 reference  doc=14233 (17.79vh)  gutter=16  overflowX=0
-evohn      doc=14678 (18.35vh)  gutter=16  overflowX=0
+evohn      doc=14900 (18.63vh)  gutter=16  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
- 1     1.1    1.05  -0.05  rgb(237, 234, 227)  Precision before promise.
- 2    2.26    2.11  -0.15  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    4.04   0.04  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4    1.72    1.61  -0.11  rgb(245, 244, 240)  Published, not on request.
- 5    1.05    1.48   0.43  rgb(10, 10, 10)     Every batch, on the record.
- 6    2.73    2.27  -0.46  rgb(10, 10, 10)     Documentation you can audit.
- 7    2.73    3.11   0.38  rgb(10, 10, 10)     Consistency is the whole point.
+ 1     1.1    1.07  -0.03  rgb(237, 234, 227)  Precision before promise.
+ 2    2.26     2.5   0.24  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    4.04   0.04  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4    1.72    1.61  -0.11  rgb(245, 244, 240)  Published, noton request.
+ 5    1.05    1.04  -0.01  rgb(10, 10, 10)     Every batch,on the record.
+ 6    2.73    2.84   0.11  rgb(10, 10, 10)     Documentation you can audit.
+ 7    2.73    2.84   0.11  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h=  800 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  392 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  580 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  580 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 3
+ evohn sticky/fixed inside main: 9
    sticky  h=  800 sticky top-0 flex h-dvh flex-col justify-center over
-   sticky  h=  335 lg:sticky lg:top-[18vh]
-   sticky  h=  335 lg:sticky lg:top-[18vh]
+   sticky  h=  335 md:sticky md:top-20
+   sticky  h=  608 sticky
+   sticky  h=  608 sticky
 
  h1  ref  64px/ -1.92px Roc Grotesk     evo  76px/ -2.28px Archivo
  h2  ref  26px/-0.256px Roc Grotesk     evo  40px/  -1.2px Archivo
  h3  ref  20px/  -0.5px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=70 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=O739I9bjnvh9MuyGo8XWw' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none
 
 === 768x1024 ===
 reference  doc=15651 (15.28vh)  gutter=16  overflowX=0
-evohn      doc=17815 (17.4vh)  gutter=16  overflowX=0
+evohn      doc=16279 (15.9vh)  gutter=16  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
  1    0.89    0.91   0.02  rgb(237, 234, 227)  Precision before promise.
- 2       2    1.51  -0.49  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    4.04   0.04  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4    1.08    1.75   0.67  rgb(245, 244, 240)  Published, not on request.
- 5    1.04    1.24   0.20  rgb(10, 10, 10)     Every batch, on the record.
- 6    2.13    2.45   0.32  rgb(10, 10, 10)     Documentation you can audit.
- 7    2.13    2.72   0.59  rgb(10, 10, 10)     Consistency is the whole point.
+ 2       2    1.68  -0.32  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    4.04   0.04  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4    1.08    1.29   0.21  rgb(245, 244, 240)  Published, noton request.
+ 5    1.04    1.13   0.09  rgb(10, 10, 10)     Every batch,on the record.
+ 6    2.13    2.13   0.00  rgb(10, 10, 10)     Documentation you can audit.
+ 7    2.13    2.13   0.00  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h= 1024 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  387 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  580 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  580 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 1
+ evohn sticky/fixed inside main: 9
    sticky  h= 1024 sticky top-0 flex h-dvh flex-col justify-center over
+   sticky  h=  329 md:sticky md:top-20
+   sticky  h=  576 sticky
+   sticky  h=  576 sticky
 
  h1  ref  40px/  -1.2px Roc Grotesk     evo  55px/-1.65888px Archivo
  h2  ref  20px/  -0.2px Roc Grotesk     evo  28px/ -0.84px Archivo
  h3  ref  20px/  -0.5px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=80 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=xhLjX9vgrBwXddT1zduDG' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none
 
 === 430x932 ===
 reference  doc=17035 (18.28vh)  gutter=16  overflowX=0
-evohn      doc=17328 (18.59vh)  gutter=16  overflowX=0
+evohn      doc=17556 (18.84vh)  gutter=16  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
- 1     2.3    1.38  -0.92  rgb(237, 234, 227)  Precision before promise.
- 2       2    1.68  -0.32  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    4.05   0.05  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4    2.44    1.66  -0.78  rgb(245, 244, 240)  Published, not on request.
- 5     1.3    2.29   0.99  rgb(10, 10, 10)     Every batch, on the record.
- 6    1.97    1.68  -0.29  rgb(10, 10, 10)     Documentation you can audit.
- 7    1.94    2.04   0.10  rgb(10, 10, 10)     Consistency is the whole point.
+ 1     2.3    2.32   0.02  rgb(237, 234, 227)  Precision before promise.
+ 2       2    1.81  -0.19  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    4.05   0.05  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4    2.44    1.94  -0.50  rgb(245, 244, 240)  Published, noton request.
+ 5     1.3    1.38   0.08  rgb(10, 10, 10)     Every batch,on the record.
+ 6    1.97    1.98   0.01  rgb(10, 10, 10)     Documentation you can audit.
+ 7    1.94    2.29   0.35  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h=  932 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  318 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  400 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  400 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 1
+ evohn sticky/fixed inside main: 7
    sticky  h=  932 sticky top-0 flex h-dvh flex-col justify-center over
+   sticky  h=  400 sticky
+   sticky  h=  400 sticky
+   sticky  h=  400 sticky
 
  h1  ref  40px/  -1.2px Roc Grotesk     evo  40px/  -1.2px Archivo
  h2  ref  20px/  -0.2px Roc Grotesk     evo  28px/ -0.84px Archivo
  h3  ref  18px/ -0.45px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=80 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=s7ghkvpuHrIMXH1oDXJ_c' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none
 
 === 390x844 ===
 reference  doc=16522 (19.58vh)  gutter=16  overflowX=0
-evohn      doc=16819 (19.93vh)  gutter=16  overflowX=0
+evohn      doc=17231 (20.42vh)  gutter=16  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
- 1    2.62    1.58  -1.04  rgb(237, 234, 227)  Precision before promise.
- 2       2    1.88  -0.12  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    4.07   0.07  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4    2.55    1.93  -0.62  rgb(245, 244, 240)  Published, not on request.
- 5    1.53    2.49   0.96  rgb(10, 10, 10)     Every batch, on the record.
- 6     2.2    1.75  -0.45  rgb(10, 10, 10)     Documentation you can audit.
- 7    2.15    2.12  -0.03  rgb(10, 10, 10)     Consistency is the whole point.
+ 1    2.62    2.58  -0.04  rgb(237, 234, 227)  Precision before promise.
+ 2       2    2.02   0.02  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    4.07   0.07  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4    2.55    2.19  -0.36  rgb(245, 244, 240)  Published, noton request.
+ 5    1.53    1.55   0.02  rgb(10, 10, 10)     Every batch,on the record.
+ 6     2.2    2.19  -0.01  rgb(10, 10, 10)     Documentation you can audit.
+ 7    2.15    2.53   0.38  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h=  844 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  339 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  400 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  400 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 1
+ evohn sticky/fixed inside main: 7
    sticky  h=  844 sticky top-0 flex h-dvh flex-col justify-center over
+   sticky  h=  400 sticky
+   sticky  h=  400 sticky
+   sticky  h=  400 sticky
 
  h1  ref  40px/  -1.2px Roc Grotesk     evo  40px/  -1.2px Archivo
  h2  ref  20px/  -0.2px Roc Grotesk     evo  28px/ -0.84px Archivo
  h3  ref  18px/ -0.45px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=80 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=eIpoJFx9yf31iR1ZbANhZ' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none
 
 === 360x800 ===
 reference  doc=16278 (20.35vh)  gutter=16  overflowX=0
-evohn      doc=16655 (20.82vh)  gutter=16  overflowX=0
+evohn      doc=17175 (21.47vh)  gutter=16  overflowX=0
 
  #  ref-vh  evo-vh   delta  ref-bg              heading
  0       1       1   0.00  rgb(10, 10, 10)     ScientificPrecision.Measured,Not C
- 1    2.82    1.72  -1.10  rgb(237, 234, 227)  Precision before promise.
- 2       2    1.98  -0.02  rgb(17, 17, 16)     Eight domains. One standard.
- 3       4    4.17   0.17  rgba(0, 0, 0, 0)    Compounds that set the standard.
- 4    2.57    2.08  -0.49  rgb(245, 244, 240)  Published, not on request.
- 5    1.69    2.65   0.96  rgb(10, 10, 10)     Every batch, on the record.
- 6    2.32    1.75  -0.57  rgb(10, 10, 10)     Documentation you can audit.
- 7    2.29    2.15  -0.14  rgb(10, 10, 10)     Consistency is the whole point.
+ 1    2.82    2.75  -0.07  rgb(237, 234, 227)  Precision before promise.
+ 2       2    2.13   0.13  rgb(17, 17, 16)     Eight domains.One standard.
+ 3       4    4.17   0.17  rgba(0, 0, 0, 0)    Compounds thatset the standard.
+ 4    2.57    2.36  -0.21  rgb(245, 244, 240)  Published, noton request.
+ 5    1.69    1.63  -0.06  rgb(10, 10, 10)     Every batch,on the record.
+ 6    2.32    2.31  -0.01  rgb(10, 10, 10)     Documentation you can audit.
+ 7    2.29    2.67   0.38  rgb(10, 10, 10)     Consistency is the whole point.
 
  reference sticky/fixed inside main: 9
    sticky  h=  800 sticky top-0 h-dvh flex flex-col overflow-hidden
    sticky  h=  339 col-span-12 flex flex-col items-start gap-[35px] md:
    sticky  h=  400 bg-gold text-rich-carbon flex aspect-[1.3/1] min-h-[
    sticky  h=  400 bg-dark-surface text-off-white flex aspect-[1.3/1] m
- evohn sticky/fixed inside main: 1
+ evohn sticky/fixed inside main: 7
    sticky  h=  800 sticky top-0 flex h-dvh flex-col justify-center over
+   sticky  h=  400 sticky
+   sticky  h=  400 sticky
+   sticky  h=  400 sticky
 
  h1  ref  40px/  -1.2px Roc Grotesk     evo  40px/  -1.2px Archivo
  h2  ref  20px/  -0.2px Roc Grotesk     evo  28px/ -0.84px Archivo
  h3  ref  18px/ -0.45px Roc Grotesk     evo  18px/ -0.45px Archivo
 
  header  ref h=80 bg=rgba(0, 0, 0, 0) backdrop=none
-         evo h=73 bg=rgba(0, 0, 0, 0) backdrop=none
-
- evohn console errors: 2
-   Failed to load resource: the server responded with a status of 403 (Forbidden)
-   WebSocket connection to 'ws://127.0.0.1:3456/_next/hmr?id=BtQ9FLBzB6Drus2IKTE97' failed: Error during WebSocke
+         evo h=72 bg=rgba(0, 0, 0, 0) backdrop=none

@@ -55,12 +55,19 @@ describe("hero film", () => {
 });
 
 describe("split text", () => {
-  it("announces the whole phrase as one string, not word by word", () => {
+  it("announces the whole phrase as one string, not character by character", () => {
     render(<SplitText as="h1" text={"Scientific\nPrecision."} />);
     const heading = screen.getByRole("heading", { level: 1 });
-    expect(heading).toHaveAttribute("aria-label", "Scientific Precision.");
-    // Every animated fragment is hidden, so the label is what is read.
-    for (const line of heading.querySelectorAll(":scope > span")) {
+
+    // The phrase is carried by a visually hidden copy rather than an
+    // `aria-label`: aria-label is prohibited on a `p` or a bare `span`, both
+    // of which this component is asked to render.
+    const spoken = heading.querySelector(":scope > span.sr-only");
+    expect(spoken).not.toBeNull();
+    expect(spoken).toHaveTextContent("Scientific Precision.");
+
+    // Every animated fragment is hidden, so that copy is what is read.
+    for (const line of heading.querySelectorAll(":scope > span:not(.sr-only)")) {
       expect(line).toHaveAttribute("aria-hidden");
     }
   });
