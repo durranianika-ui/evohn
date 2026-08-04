@@ -11,6 +11,7 @@ import { NavPanel } from "./NavPanel";
 import { MobileNav } from "./MobileNav";
 import { MenuPanel } from "./MenuPanel";
 import { SearchIcon, EnquiryIcon, MenuIcon } from "./UtilityIcons";
+import { NavMark, NavDot } from "./NavMark";
 import { useEnquiry } from "@/lib/enquiry";
 import { nav, site } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -159,25 +160,22 @@ export function Header() {
                 : (item.menu?.links.some((l) => pathname === l.href) ?? false);
               const isOpen = openKey === key;
 
+              const lit = active || isOpen;
+
               const face = cn(
-                "type-label group/nav relative flex items-center gap-1.5 py-6",
+                "type-label group/nav relative flex h-10 items-center gap-2",
                 "transition-colors duration-500 ease-brand",
                 onDark
                   ? "text-soft/65 hover:text-soft"
                   : "text-carbon/62 hover:text-carbon",
-                (active || isOpen) && (onDark ? "text-soft" : "text-carbon"),
+                lit && (onDark ? "text-soft" : "text-carbon"),
               );
 
+              // The registration mark replaces the underline rule: a frame
+              // around the item and a dot before the label, both of which
+              // pin on for the current route.
               const rule = (
-                <span
-                  aria-hidden
-                  className={cn(
-                    "absolute bottom-4 left-0 h-px bg-current",
-                    "transition-[width] duration-500 ease-brand",
-                    active || isOpen ? "w-full" : "w-0 group-hover/nav:w-full",
-                    "motion-reduce:transition-none",
-                  )}
-                />
+                <NavMark active={lit} tone={onDark ? "dark" : "light"} />
               );
 
               return (
@@ -204,6 +202,7 @@ export function Header() {
                       onClick={() => setOpenKey(isOpen ? null : key)}
                       className={face}
                     >
+                      <NavDot active={lit} />
                       {item.label}
                       <span
                         aria-hidden
@@ -235,6 +234,7 @@ export function Header() {
                       onFocus={() => setOpenKey(null)}
                       className={face}
                     >
+                      <NavDot active={lit} />
                       {item.label}
                       {rule}
                     </Link>
