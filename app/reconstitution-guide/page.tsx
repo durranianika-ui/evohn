@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Reconstitution Guide",
   description:
     "How lyophilised research compounds are reconstituted: choosing a diluent, the concentration arithmetic, reading a U-100 barrel, and the step-by-step technique. For laboratory research use only.",
-  alternates: { canonical: "/reconstitution" },
+  alternates: { canonical: "/reconstitution-guide" },
 };
 
 /** The three diluents the reference contrasts, in the same order. */
@@ -83,7 +83,7 @@ export default function ReconstitutionPage() {
         data={[
           breadcrumbSchema([
             { name: "Home", href: "/" },
-            { name: "Reconstitution Guide", href: "/reconstitution" },
+            { name: "Reconstitution Guide", href: "/reconstitution-guide" },
           ]),
         ]}
       />
@@ -94,7 +94,7 @@ export default function ReconstitutionPage() {
         body="Research compounds ship as a lyophilised powder. Before handling, they are returned to solution by adding a sterile diluent. This guide covers the fundamentals, the arithmetic, and the measurement basics for laboratory work."
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Reconstitution Guide", href: "/reconstitution" },
+          { name: "Reconstitution Guide", href: "/reconstitution-guide" },
         ]}
         meta={[
           { label: "Covers", value: "Diluent · Maths · Technique" },
@@ -115,7 +115,7 @@ export default function ReconstitutionPage() {
             <span aria-hidden>&#8594;</span>
           </Link>
           <Link
-            href="/storage"
+            href="/storage-handling"
             className="type-label inline-flex min-h-12 items-center gap-3 border border-carbon/25 px-8 py-4 text-carbon transition-colors duration-400 ease-brand hover:border-carbon"
           >
             Storage &amp; handling
@@ -332,7 +332,7 @@ export default function ReconstitutionPage() {
         eyebrow="Enquiries"
         title={"Preparing a\nspecific batch?"}
         body="Reconstituted stability is compound-specific and stated on the batch certificate. The desk can confirm the interval for the batch you hold."
-        secondary={{ label: "Storage & handling", href: "/storage" }}
+        secondary={{ label: "Storage & handling", href: "/storage-handling" }}
       />
     </>
   );

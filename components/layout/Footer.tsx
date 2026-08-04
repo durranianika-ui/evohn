@@ -5,9 +5,20 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Marquee } from "@/components/motion/Marquee";
 import { categories } from "@/data/categories";
 import { disclaimer, footerNav, site } from "@/data/site";
+import { legalDocuments } from "@/data/legal";
 
 const year = 2026;
 
+/**
+ * Footer.
+ *
+ * Five link groups — the four declared in `footerNav`, plus a Legal column
+ * generated from `data/legal.ts` so publishing a document adds its footer
+ * link automatically and none can be orphaned.
+ *
+ * There is no Social group. EVOHN has no verified profile to link to, and a
+ * row of dead icons is worse than an honest absence.
+ */
 export function Footer() {
   return (
     <footer className="bg-ink text-soft">
@@ -24,7 +35,7 @@ export function Footer() {
       <div className="container-content pt-24 pb-10 md:pt-32">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
           {/* Brand + enquiry */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Reveal>
               <Wordmark className="text-[1.35rem]" />
               <p className="type-body-s mt-8 max-w-[34ch] text-soft/55">
@@ -49,28 +60,6 @@ export function Footer() {
             </Reveal>
           </div>
 
-          {/* Research domains */}
-          <nav aria-label="Research domains" className="lg:col-span-2">
-            <h2 className="type-label text-soft/45">Domains</h2>
-            <ul className="mt-7 space-y-3.5">
-              {categories.map((category) => (
-                <li key={category.slug}>
-                  <Link
-                    href={`/catalogue?domain=${category.slug}`}
-                    className="type-body-s inline-flex items-center gap-3 text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
-                  >
-                    <span
-                      className="size-1.5 rounded-full ring-1 ring-soft/20"
-                      style={{ backgroundColor: category.token }}
-                      aria-hidden
-                    />
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
           {/* Structured link groups */}
           {footerNav.map((column) => (
             <nav
@@ -81,7 +70,7 @@ export function Footer() {
               <h2 className="type-label text-soft/45">{column.heading}</h2>
               <ul className="mt-7 space-y-3.5">
                 {column.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${column.heading}-${link.href}`}>
                     <Link
                       href={link.href}
                       className="type-body-s text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
@@ -93,7 +82,49 @@ export function Footer() {
               </ul>
             </nav>
           ))}
+
+          {/* Legal — generated, never hand-maintained. */}
+          <nav aria-label="Legal" className="lg:col-span-1">
+            <h2 className="type-label text-soft/45">Legal</h2>
+            <ul className="mt-7 space-y-3.5">
+              {legalDocuments.map((doc) => (
+                <li key={doc.slug}>
+                  <Link
+                    href={doc.path}
+                    className="type-body-s text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
+                  >
+                    {doc.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
+
+        {/* Research domains — a colour key as much as a link list. */}
+        <nav
+          aria-label="Research domains"
+          className="mt-20 border-t border-soft/10 pt-10"
+        >
+          <h2 className="type-label text-soft/45">Domains</h2>
+          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+            {categories.map((category) => (
+              <li key={category.slug}>
+                <Link
+                  href={`/catalogue?domain=${category.slug}`}
+                  className="type-body-s inline-flex items-center gap-3 text-soft/60 transition-colors duration-400 ease-brand hover:text-soft"
+                >
+                  <span
+                    className="size-1.5 rounded-dot ring-1 ring-soft/20"
+                    style={{ backgroundColor: category.token }}
+                    aria-hidden
+                  />
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         {/* Oversized wordmark as a graphic rule */}
         <div className="mt-24 overflow-hidden md:mt-32" aria-hidden>
@@ -105,28 +136,26 @@ export function Footer() {
             {disclaimer.short}
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="mt-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <p className="type-label text-soft/55">
               &copy; {year} {site.name}. All rights reserved.
             </p>
-            <div className="flex flex-wrap gap-8">
+
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+              <p className="type-label text-soft/40">
+                {site.address.country}
+              </p>
+              <Link
+                href="/research-use-only"
+                className="type-label text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
+              >
+                Research use only
+              </Link>
               <Link
                 href="/legal"
                 className="type-label text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
               >
-                Legal &amp; Disclaimer
-              </Link>
-              <Link
-                href="/lab-results"
-                className="type-label text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
-              >
-                Lab Results
-              </Link>
-              <Link
-                href="/contact"
-                className="type-label text-soft/55 transition-colors duration-400 ease-brand hover:text-soft/80"
-              >
-                Enquiries
+                Legal
               </Link>
             </div>
           </div>

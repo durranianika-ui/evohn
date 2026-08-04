@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Wholesale & Distribution",
   description:
     "Territory enquiries and supply relationships for distribution partners. Documentation requirements are stated once, in full, at the outset.",
-  alternates: { canonical: "/contact/wholesale" },
+  alternates: { canonical: "/wholesale" },
 };
 
 const POINTS = [
@@ -43,7 +43,7 @@ export default function WholesalePage() {
           breadcrumbSchema([
             { name: "Home", href: "/" },
             { name: "Contact", href: "/contact" },
-            { name: "Wholesale & Distribution", href: "/contact/wholesale" },
+            { name: "Wholesale & Distribution", href: "/wholesale" },
           ]),
         ]}
       />
@@ -55,7 +55,7 @@ export default function WholesalePage() {
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Contact", href: "/contact" },
-          { name: "Wholesale", href: "/contact/wholesale" },
+          { name: "Wholesale", href: "/wholesale" },
         ]}
         meta={[
           { label: "Typical reply", value: "Within one business day" },
@@ -120,7 +120,7 @@ export default function WholesalePage() {
                   General inquiry
                 </Link>
                 <Link
-                  href="/contact/business"
+                  href="/business-accounts"
                   className="type-label text-carbon/62 transition-colors duration-400 ease-brand hover:text-carbon"
                 >
                   Business accounts

@@ -5,6 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Curtain } from "@/components/motion/Curtain";
 import { PageTransition } from "@/components/motion/PageTransition";
+import { Cursor } from "@/components/motion/Cursor";
+import { AgeGate } from "@/components/common/AgeGate";
+import { EnquiryProvider } from "@/lib/enquiry";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -83,6 +86,9 @@ export const viewport: Viewport = {
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
+  // Required for `env(safe-area-inset-*)` to resolve to anything but 0 on
+  // a notched device — without it the drawer foot sits under the home bar.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -94,13 +100,19 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} antialiased`}
     >
       <body className="flex min-h-dvh flex-col bg-soft text-carbon">
-        <SmoothScroll />
-        <Curtain />
-        <Header />
-        <main id="main" className="flex-1">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+        {/* The enquiry list is read by the header count, the drawer, the
+            product page and `/enquiry`, so its provider wraps everything. */}
+        <EnquiryProvider>
+          <SmoothScroll />
+          <Curtain />
+          <Cursor />
+          <Header />
+          <main id="main" className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+          <AgeGate />
+        </EnquiryProvider>
       </body>
     </html>
   );

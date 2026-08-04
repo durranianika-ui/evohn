@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Business Accounts",
   description:
     "Accounts for laboratories, clinics, research groups and contract organisations — scheduled supply against a study timeline, with the documentation a compliance review expects.",
-  alternates: { canonical: "/contact/business" },
+  alternates: { canonical: "/business-accounts" },
 };
 
 const POINTS = [
@@ -43,7 +43,7 @@ export default function BusinessPage() {
           breadcrumbSchema([
             { name: "Home", href: "/" },
             { name: "Contact", href: "/contact" },
-            { name: "Business Accounts", href: "/contact/business" },
+            { name: "Business Accounts", href: "/business-accounts" },
           ]),
         ]}
       />
@@ -55,7 +55,7 @@ export default function BusinessPage() {
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Contact", href: "/contact" },
-          { name: "Business Accounts", href: "/contact/business" },
+          { name: "Business Accounts", href: "/business-accounts" },
         ]}
         meta={[
           { label: "Typical reply", value: "Within one business day" },
@@ -121,7 +121,7 @@ export default function BusinessPage() {
                   General inquiry
                 </Link>
                 <Link
-                  href="/contact/wholesale"
+                  href="/wholesale"
                   className="type-label text-carbon/62 transition-colors duration-400 ease-brand hover:text-carbon"
                 >
                   Wholesale &amp; distribution

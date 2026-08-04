@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Research",
   description:
     "The EVOHN reference compound library spans eight research domains. Every compound is HPLC-verified and supplied for laboratory research use only.",
-  alternates: { canonical: "/research" },
+  alternates: { canonical: "/science" },
 };
 
 /** Format groupings shown alongside the eight compound domains. */
@@ -50,7 +50,7 @@ export default function ResearchPage() {
         data={[
           breadcrumbSchema([
             { name: "Home", href: "/" },
-            { name: "Research", href: "/research" },
+            { name: "Research", href: "/science" },
           ]),
         ]}
       />
@@ -61,7 +61,7 @@ export default function ResearchPage() {
         body={`The EVOHN reference compound library spans ${categories.length} research domains. Every compound is verified by HPLC with identity confirmed by mass spectrometry, and supplied for laboratory research use only — not for human consumption.`}
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Research", href: "/research" },
+          { name: "Research", href: "/science" },
         ]}
         meta={[
           {
@@ -83,7 +83,7 @@ export default function ResearchPage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/blog"
+              href="/journal"
               className="type-label inline-flex min-h-12 items-center gap-3 bg-carbon px-8 py-4 text-soft"
             >
               Read our research
@@ -194,7 +194,7 @@ export default function ResearchPage() {
         eyebrow="Enquiries"
         title={"Scoping a\nstudy?"}
         body="Describe the endpoint you are measuring and the desk will say which domain the literature would point you at — including when the answer is a single compound rather than a set."
-        secondary={{ label: "Read the blog", href: "/blog" }}
+        secondary={{ label: "Read the journal", href: "/journal" }}
       />
     </>
   );

@@ -65,9 +65,54 @@
   --container-prose: 800px;
   --container-narrow: 520px;
 
-  /* --- Motion ------------------------------------------------------------- */
+  /* --- Breakpoints --------------------------------------------------------
+     Named so components stop hard-coding pixel widths. The narrowest audited
+     width is 320px, so nothing below `sm` may assume horizontal room.        */
+  --breakpoint-xs: 22.5rem; /* 360 — the common small-Android width  */
+  --breakpoint-sm: 40rem; /* 640                                    */
+  --breakpoint-md: 48rem; /* 768 — tablet portrait                  */
+  --breakpoint-lg: 64rem; /* 1024 — tablet landscape                */
+  --breakpoint-xl: 80rem; /* 1280 — desktop nav appears here        */
+  --breakpoint-2xl: 96rem; /* 1536                                   */
+
+  /* --- Borders, radius, elevation -----------------------------------------
+     The identity is drawn with hairlines, not with boxes. Radius is 0 almost
+     everywhere; the two non-zero values exist for the pill controls and the
+     cursor dot only. Shadows are near-black and very soft — the brand does
+     not use glow, spread or coloured shade.                                  */
+  --border-hair: 1px;
+  --border-rule: 2px;
+
+  --radius-none: 0px;
+  --radius-pill: 999px;
+  --radius-dot: 50%;
+
+  --shadow-panel: 0 24px 64px -32px rgb(17 17 17 / 0.28);
+  --shadow-drawer: -24px 0 72px -36px rgb(17 17 17 / 0.4);
+  --shadow-lift: 0 12px 32px -20px rgb(17 17 17 / 0.32);
+
+  /* --- Z-index ------------------------------------------------------------
+     One ladder, declared once, so no component invents its own stacking.     */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 30;
+  --z-header: 50;
+  --z-drawer: 60;
+  --z-overlay: 70;
+  --z-gate: 90; /* age gate sits above every other surface   */
+  --z-cursor: 100; /* and the pointer above even that          */
+
+  /* --- Motion -------------------------------------------------------------
+     Two curves and five durations. Every transition on the site resolves to
+     one of these pairs; `constants/motion.ts` mirrors them for Framer.       */
   --ease-brand: cubic-bezier(0.62, 0.16, 0.13, 1.01);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-instant: 150ms;
+  --duration-fast: 400ms;
+  --duration-mid: 600ms;
+  --duration-slow: 700ms;
+  --duration-xslow: 1200ms;
 
   --animate-marquee: marquee 46s linear infinite;
   --animate-drift: drift 9s var(--ease-soft) infinite;
@@ -294,6 +339,109 @@
 
 @utility hairline-b {
   border-bottom: 1px solid color-mix(in oklab, currentColor 12%, transparent);
+}
+
+/* Bottom padding that clears an iOS home indicator, with a floor. */
+@utility pb-safe {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+
+@utility px-safe {
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
+}
+
+/* ============================================================================
+   CUSTOM POINTER
+   ----------------------------------------------------------------------------
+   The dot is only mounted for fine pointers that have not asked for reduced
+   motion (see components/motion/Cursor.tsx). When it is mounted the root
+   carries `data-cursor="on"`, and only then is the native arrow suppressed —
+   so a coarse-pointer, touch or reduced-motion visitor never loses it.
+
+   Form controls and text keep their native cursor unconditionally: replacing
+   a text caret or a select arrow costs usability and buys nothing.
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-cursor="on"],
+  html[data-cursor="on"] a,
+  html[data-cursor="on"] button,
+  html[data-cursor="on"] [role="button"],
+  html[data-cursor="on"] [role="tab"] {
+    cursor: none;
+  }
+
+  /* Anything the visitor types into, selects from, or drags a caret through. */
+  html[data-cursor="on"] input,
+  html[data-cursor="on"] textarea,
+  html[data-cursor="on"] select,
+  html[data-cursor="on"] [contenteditable],
+  html[data-cursor="on"] iframe,
+  html[data-cursor="on"] video,
+  html[data-cursor="on"] audio,
+  html[data-cursor="on"] :disabled {
+    cursor: auto;
+  }
+}
+
+/* ============================================================================
+   PRINT
+   ----------------------------------------------------------------------------
+   The two handling guides are written to be printed and pinned up next to a
+   bench, so the print sheet is a first-class output rather than a screenshot
+   of the screen. Chrome, header, footer and motion all come off; link targets
+   are written out inline so a paper copy is still navigable.
+   ========================================================================== */
+
+@media print {
+  @page {
+    margin: 18mm 16mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  header,
+  footer,
+  [data-print="hide"] {
+    display: none !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    word-break: break-all;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid-page;
+  }
+
+  li,
+  tr,
+  figure,
+  blockquote {
+    break-inside: avoid-page;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+  }
 }
 
 /* ============================================================================

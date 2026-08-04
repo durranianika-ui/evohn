@@ -1,46 +1,30 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/sections/shared/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { JsonLd } from "@/components/common/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
-import { disclaimer, site } from "@/data/site";
+import { formatDate } from "@/lib/format";
+import { legalDocuments } from "@/data/legal";
+import { disclaimer } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Legal & Disclaimer",
+  title: "Legal",
   description:
-    "Informational-use disclaimer, regulatory position and terms governing the EVOHN catalogue.",
+    "Index of the eight documents governing use of the EVOHN catalogue: terms, privacy, shipping, returns, platform use, age verification, research use and the research disclaimer.",
   alternates: { canonical: "/legal" },
-  robots: { index: true, follow: true },
 };
 
-const clauses = [
-  {
-    title: "Informational Purpose",
-    body: disclaimer.long,
-  },
-  {
-    title: "No Offer of Sale",
-    body: "This website is a presentation catalogue. It does not display pricing, availability or stock, contains no ordering mechanism, and nothing on it constitutes an offer, an invitation to treat, or a contract. Any supply arrangement is agreed separately and is subject to verification of the recipient and the applicable regulatory position.",
-  },
-  {
-    title: "Regulatory Compliance",
-    body: "The regulatory status of the compounds described varies by territory. It is the responsibility of the reader to determine and comply with the laws applicable to them. EVOHN does not represent that any compound described is registered, approved or permitted for any particular use in any particular jurisdiction.",
-  },
-  {
-    title: "Analytical Information",
-    body: "Purity figures, molecular data and analytical descriptions reflect measurements recorded for specific historical batches, or values reported in published scientific literature. They are not specifications, guarantees, or predictions of the characteristics of any future batch. Reference data such as CAS numbers and molecular formulae are provided for identification and should be verified against the certificate of analysis supplied with a given lot.",
-  },
-  {
-    title: "No Medical Advice",
-    body: "Nothing on this website is medical, clinical or pharmaceutical advice. No statement here has been evaluated by any medicines regulator. No content should be interpreted as indicating that any compound is safe or effective for the diagnosis, treatment, cure or prevention of any condition.",
-  },
-  {
-    title: "Intellectual Property",
-    body: `The ${site.name} name, wordmark, visual identity and the content of this website are the property of ${site.name} and may not be reproduced without written permission. Compound names are used descriptively for identification and do not imply any affiliation with, or endorsement by, the holders of any associated marks.`,
-  },
-];
+/**
+ * Legal index.
+ *
+ * A directory, not a document. Each of the eight positions lives at its own
+ * address so it can be cited; this page exists so a reader who only knows
+ * "legal" can find the one they need.
+ */
+export default function LegalIndexPage() {
+  const pending = legalDocuments.filter((d) => d.requiresLegalReview).length;
 
-export default function LegalPage() {
   return (
     <>
       <JsonLd
@@ -52,35 +36,76 @@ export default function LegalPage() {
 
       <PageHero
         eyebrow="Legal"
-        title="Disclaimer."
-        body="The terms below govern the use of this website and the information presented on it."
+        title={"Legal and\ncompliance"}
+        body="Eight documents, each at its own address so a specific position can be linked to and cited. Together they state what this website is, what it is not, and the single condition attached to everything described on it."
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Legal", href: "/legal" },
         ]}
+        meta={[
+          {
+            label: "Documents",
+            value: String(legalDocuments.length).padStart(2, "0"),
+          },
+          {
+            label: "Last reviewed",
+            value: formatDate(legalDocuments[0].lastReviewed),
+          },
+          { label: "Awaiting sign-off", value: String(pending).padStart(2, "0") },
+        ]}
       />
 
-      <section className="section-y bg-soft text-carbon">
-        <div className="container-content">
-          <div className="mx-auto max-w-prose">
-            {clauses.map((clause, i) => (
-              <Reveal key={clause.title} delay={0.04 * i}>
-                <article className="border-b border-carbon/12 py-12 first:pt-0">
-                  <span className="type-label tabular-nums text-carbon/62">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="type-display-s mt-5">{clause.title}</h2>
-                  <p className="type-body mt-7 text-carbon/62">{clause.body}</p>
-                </article>
-              </Reveal>
-            ))}
+      <section className="bg-soft text-carbon">
+        <div className="container-content py-20 md:py-28">
+          <Reveal>
+            <p className="type-editorial max-w-[58ch] text-carbon/72">
+              {disclaimer.short}
+            </p>
+          </Reveal>
 
-            <Reveal className="pt-12">
-              <p className="type-label text-carbon/62">
-                Last updated — July 2026
-              </p>
-            </Reveal>
-          </div>
+          <ol className="mt-20 border-t border-carbon/12">
+            {legalDocuments.map((doc, i) => (
+              <li key={doc.slug}>
+                <Reveal distance={14} delay={i * 0.03}>
+                  <Link
+                    href={doc.path}
+                    className="group/doc grid gap-4 border-b border-carbon/12 py-8 transition-colors duration-500 ease-brand hover:bg-mist/50 md:grid-cols-12 md:items-baseline md:gap-8 md:px-4"
+                  >
+                    <span className="type-label tabular-nums text-carbon/35 md:col-span-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+
+                    <span className="type-title-s text-carbon md:col-span-4">
+                      {doc.title}
+                    </span>
+
+                    <span className="type-body-s max-w-[52ch] text-carbon/58 md:col-span-6">
+                      {doc.summary}
+                    </span>
+
+                    <span
+                      aria-hidden
+                      className="type-label text-carbon/35 transition-transform duration-500 ease-brand group-hover/doc:translate-x-1.5 md:col-span-1 md:justify-self-end"
+                    >
+                      &rarr;
+                    </span>
+                  </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+
+          {pending ? (
+            <p className="type-body-s mt-14 max-w-[76ch] border border-carbon/15 bg-mist p-7 text-carbon/70">
+              <span className="type-label mr-3 block text-carbon sm:inline">
+                Awaiting legal review
+              </span>
+              {pending} of these {legalDocuments.length} documents state
+              EVOHN&rsquo;s current position but have not yet been approved by a
+              qualified adviser in the relevant jurisdiction. They are published
+              for transparency and must not be relied upon as legal advice.
+            </p>
+          ) : null}
         </div>
       </section>
     </>

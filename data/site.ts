@@ -90,6 +90,8 @@ export interface NavItem {
   /** Dropdown panel: one heading and a list of link/description rows. */
   menu?: {
     heading: string;
+    /** Sits under the heading inside the panel. */
+    intro?: string;
     links: NavLink[];
   };
 }
@@ -97,44 +99,47 @@ export interface NavItem {
 /**
  * Primary navigation.
  *
- * The order, the labels, the dropdown groupings and the row descriptions
- * mirror the reference information architecture one-for-one. Four sections
- * are additions the brief specifies — Stacks and Strips sit after the
- * catalogue, Research and Blog before About, which is where the second
- * reference places them relative to its own shop and about links.
+ * Seven top-level destinations, in the specified order. Only Science opens a
+ * panel; everything else is a plain link, because a bar that drops a menu
+ * under every item is a bar nobody can scan.
  *
- * Nothing else is added. A dropdown here is one heading and a flat list of
- * link/description rows; there are no mega panels and no promoted cards,
- * because the reference has neither.
+ * Stacks, Strips, Quality and FAQ are real sections and stay reachable — from
+ * the utility index below, from the footer, and from the pages they belong
+ * to. They are not in the primary bar, because eleven top-level items is not
+ * an information architecture.
  */
 export const nav: NavItem[] = [
   { label: "Catalogue", href: "/catalogue" },
-  { label: "Stacks", href: "/stacks" },
-  { label: "Strips", href: "/strips" },
   {
     label: "Science",
     menu: {
       heading: "Research Tools",
+      intro:
+        "Four instruments. They convert, reference and describe — none of them recommends.",
       links: [
-        {
-          label: "Peptide Pedia",
-          href: "/peptide-pedia",
-          description: "Explore peptide science",
-        },
         {
           label: "Calculator",
           href: "/calculator",
-          description: "Reconstitution & dosing tools",
+          description:
+            "Reconstitution, mixing and blend arithmetic, worked step by step.",
+        },
+        {
+          label: "Peptide Pedia",
+          href: "/peptide-pedia",
+          description:
+            "The reference library — every compound, searchable and cited.",
         },
         {
           label: "Reconstitution Guide",
-          href: "/reconstitution",
-          description: "Mixing & dosing basics",
+          href: "/reconstitution-guide",
+          description:
+            "Bringing lyophilised material into solution without degrading it.",
         },
         {
           label: "Storage & Handling Guide",
-          href: "/storage",
-          description: "Keep peptides stable",
+          href: "/storage-handling",
+          description:
+            "Temperature, light, cycling, and the chemistry behind each rule.",
         },
       ],
     },
@@ -142,96 +147,107 @@ export const nav: NavItem[] = [
   { label: "Journal", href: "/journal" },
   { label: "Lab Results", href: "/lab-results" },
   { label: "Reviews", href: "/reviews" },
-  { label: "Research", href: "/research" },
-  { label: "Blog", href: "/blog" },
-  {
-    label: "About",
-    menu: {
-      heading: "EVOHN",
-      links: [
-        {
-          label: "Our Mission",
-          href: "/#mission",
-          description: "Why EVOHN exists",
-        },
-        {
-          label: "Quality",
-          href: "/quality",
-          description: "Third-party verified purity",
-        },
-        {
-          label: "FAQ",
-          href: "/faq",
-          description: "Common questions answered",
-        },
-      ],
-    },
-  },
-  {
-    label: "Contact",
-    menu: {
-      heading: "Get In Touch",
-      links: [
-        {
-          label: "General Inquiry",
-          href: "/contact",
-          description: "Questions & support",
-        },
-        {
-          label: "Wholesale & Distribution",
-          href: "/contact/wholesale",
-          description: "Partnerships & resale",
-        },
-        {
-          label: "Business Accounts",
-          href: "/contact/business",
-          description: "Labs, clinics & institutions",
-        },
-      ],
-    },
-  },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 /**
- * Footer link groups — the reference's own footer columns, which differ
- * from its header and are reproduced here in the same four groups.
+ * The utility index.
+ *
+ * Opened by the Menu control at the right of the bar, and reused verbatim as
+ * the lower half of the mobile drawer. Every section the site answers on is
+ * listed here, so demoting one out of the primary bar never buries it.
  */
-export const footerNav: NavColumn[] = [
+export const menuIndex: NavColumn[] = [
   {
     heading: "Catalogue",
     links: [
       { label: "All Compounds", href: "/catalogue" },
       { label: "Research Stacks", href: "/stacks" },
       { label: "Pocket Strips", href: "/strips" },
-      { label: "Lab Results", href: "/lab-results" },
+      { label: "Search", href: "/search" },
     ],
   },
   {
     heading: "Science",
     links: [
-      { label: "Peptide Pedia", href: "/peptide-pedia" },
+      { label: "Science Overview", href: "/science" },
       { label: "Calculator", href: "/calculator" },
-      { label: "Reconstitution Guide", href: "/reconstitution" },
-      { label: "Storage & Handling", href: "/storage" },
+      { label: "Peptide Pedia", href: "/peptide-pedia" },
+      { label: "Reconstitution Guide", href: "/reconstitution-guide" },
+      { label: "Storage & Handling", href: "/storage-handling" },
       { label: "Quality", href: "/quality" },
+      { label: "Lab Results", href: "/lab-results" },
     ],
   },
   {
-    heading: "Research",
+    heading: "Company",
     links: [
-      { label: "Research Categories", href: "/research" },
-      { label: "Blog", href: "/blog" },
+      { label: "About", href: "/about" },
       { label: "Journal", href: "/journal" },
       { label: "Reviews", href: "/reviews" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
-    heading: "Contact",
+    heading: "Order",
     links: [
-      { label: "General Inquiry", href: "/contact" },
-      { label: "Wholesale & Distribution", href: "/contact/wholesale" },
-      { label: "Business Accounts", href: "/contact/business" },
+      { label: "Enquiry List", href: "/enquiry" },
+      { label: "Wholesale", href: "/wholesale" },
+      { label: "Business Accounts", href: "/business-accounts" },
+    ],
+  },
+];
+
+/**
+ * Footer link groups.
+ *
+ * Four columns here; the Legal column is generated from `data/legal.ts` in the
+ * footer itself, so publishing a document adds its footer link and its sitemap
+ * entry at the same time and neither can be forgotten.
+ *
+ * There is deliberately no Social column. EVOHN has no verified profile to
+ * link to, and inventing one would be a fabricated business detail.
+ */
+export const footerNav: NavColumn[] = [
+  {
+    heading: "Order",
+    links: [
+      { label: "Catalogue", href: "/catalogue" },
+      { label: "Enquiry List", href: "/enquiry" },
+      { label: "Wholesale", href: "/wholesale" },
+      { label: "Business Accounts", href: "/business-accounts" },
+    ],
+  },
+  {
+    heading: "Catalogue",
+    links: [
+      { label: "All Products", href: "/catalogue" },
+      { label: "Research Stacks", href: "/stacks" },
+      { label: "Pocket Strips", href: "/strips" },
+      { label: "Search", href: "/search" },
+    ],
+  },
+  {
+    heading: "Science",
+    links: [
+      { label: "Calculator", href: "/calculator" },
+      { label: "Peptide Pedia", href: "/peptide-pedia" },
+      { label: "Reconstitution Guide", href: "/reconstitution-guide" },
+      { label: "Storage & Handling Guide", href: "/storage-handling" },
+      { label: "Lab Results", href: "/lab-results" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Journal", href: "/journal" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "Quality", href: "/quality" },
       { label: "FAQ", href: "/faq" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];

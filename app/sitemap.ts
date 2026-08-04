@@ -4,6 +4,7 @@ import { stacks } from "@/data/stacks";
 import { articles } from "@/data/journal";
 import { labBatches } from "@/data/lab-results";
 import { site } from "@/data/site";
+import { indexableRoutes } from "@/data/routes";
 
 /**
  * Dynamic sitemap.
@@ -16,53 +17,16 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-08-03");
 
-  const staticRoutes: MetadataRoute.Sitemap = (
-    [
-      { url: site.url, changeFrequency: "monthly", priority: 1 },
-      { url: `${site.url}/catalogue`, changeFrequency: "weekly", priority: 0.9 },
-      { url: `${site.url}/stacks`, changeFrequency: "monthly", priority: 0.85 },
-      { url: `${site.url}/strips`, changeFrequency: "monthly", priority: 0.85 },
-      {
-        url: `${site.url}/peptide-pedia`,
-        changeFrequency: "weekly",
-        priority: 0.8,
-      },
-      { url: `${site.url}/calculator`, changeFrequency: "yearly", priority: 0.7 },
-      {
-        url: `${site.url}/reconstitution`,
-        changeFrequency: "yearly",
-        priority: 0.7,
-      },
-      { url: `${site.url}/storage`, changeFrequency: "yearly", priority: 0.7 },
-      { url: `${site.url}/journal`, changeFrequency: "weekly", priority: 0.85 },
-      {
-        url: `${site.url}/lab-results`,
-        changeFrequency: "weekly",
-        priority: 0.9,
-      },
-      { url: `${site.url}/reviews`, changeFrequency: "monthly", priority: 0.6 },
-      { url: `${site.url}/research`, changeFrequency: "monthly", priority: 0.8 },
-      { url: `${site.url}/blog`, changeFrequency: "weekly", priority: 0.8 },
-      { url: `${site.url}/quality`, changeFrequency: "monthly", priority: 0.8 },
-      { url: `${site.url}/about`, changeFrequency: "yearly", priority: 0.7 },
-      { url: `${site.url}/faq`, changeFrequency: "monthly", priority: 0.6 },
-      { url: `${site.url}/contact`, changeFrequency: "yearly", priority: 0.6 },
-      {
-        url: `${site.url}/contact/wholesale`,
-        changeFrequency: "yearly",
-        priority: 0.6,
-      },
-      {
-        url: `${site.url}/contact/business`,
-        changeFrequency: "yearly",
-        priority: 0.6,
-      },
-      { url: `${site.url}/legal`, changeFrequency: "yearly", priority: 0.3 },
-    ] satisfies MetadataRoute.Sitemap
-  ).map((route) => ({ ...route, lastModified }));
+  // Registered once in `data/routes.ts`; noindex utility routes are excluded.
+  const staticRoutes: MetadataRoute.Sitemap = indexableRoutes.map((route) => ({
+    url: route.path === "/" ? site.url : `${site.url}${route.path}`,
+    lastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
 
   const productRoutes: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `${site.url}/catalogue/${product.slug}`,
+    url: `${site.url}/products/${product.slug}`,
     lastModified,
     changeFrequency: "monthly",
     priority: 0.8,

@@ -32,7 +32,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/catalogue/[slug]">,
+  props: PageProps<"/products/[slug]">,
 ): Promise<Metadata> {
   const { slug } = await props.params;
   const product = productBySlug.get(slug);
@@ -41,12 +41,12 @@ export async function generateMetadata(
   return {
     title: product.name,
     description: product.summary,
-    alternates: { canonical: `/catalogue/${product.slug}` },
+    alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
       type: "website",
       title: `${product.name} | ${site.name}`,
       description: product.summary,
-      url: `${site.url}/catalogue/${product.slug}`,
+      url: `${site.url}/products/${product.slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -57,7 +57,7 @@ export async function generateMetadata(
 }
 
 export default async function ProductPage(
-  props: PageProps<"/catalogue/[slug]">,
+  props: PageProps<"/products/[slug]">,
 ) {
   const { slug } = await props.params;
   const product = productBySlug.get(slug);
@@ -89,7 +89,7 @@ export default async function ProductPage(
           breadcrumbSchema([
             { name: "Home", href: "/" },
             { name: "Catalogue", href: "/catalogue" },
-            { name: product.name, href: `/catalogue/${product.slug}` },
+            { name: product.name, href: `/products/${product.slug}` },
           ]),
         ]}
       />
@@ -101,7 +101,7 @@ export default async function ProductPage(
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Catalogue", href: "/catalogue" },
-          { name: product.name, href: `/catalogue/${product.slug}` },
+          { name: product.name, href: `/products/${product.slug}` },
         ]}
         meta={[
           { label: "Research domain", value: category.name },
@@ -323,7 +323,7 @@ export default async function ProductPage(
                   {compatible.map((entry, i) => (
                     <Reveal key={entry.product.slug} delay={i * 0.06} as="li">
                       <Link
-                        href={`/catalogue/${entry.product.slug}`}
+                        href={`/products/${entry.product.slug}`}
                         className="group/compat flex flex-col gap-3 border-b border-carbon/12 py-7 sm:flex-row sm:items-baseline sm:gap-10"
                       >
                         <span className="type-title-s w-full max-w-[16ch] shrink-0 text-carbon">
@@ -494,7 +494,7 @@ export default async function ProductPage(
 
           <Reveal delay={0.2} className="mt-14">
             <Link
-              href="/reconstitution"
+              href="/reconstitution-guide"
               className="type-label inline-flex items-center gap-3 border border-carbon/20 px-7 py-4 text-carbon transition-colors duration-400 ease-brand hover:border-carbon"
             >
               Reconstitution guide

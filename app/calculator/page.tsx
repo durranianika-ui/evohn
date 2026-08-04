@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 /** Sibling guide cards — the same pair the reference closes its calculator with. */
 const GUIDES = [
   {
-    href: "/reconstitution",
+    href: "/reconstitution-guide",
     title: "Reconstitution Guide",
     body: "Mixing & dosing basics",
   },
   {
-    href: "/storage",
+    href: "/storage-handling",
     title: "Storage & Handling",
     body: "Keep peptides stable",
   },

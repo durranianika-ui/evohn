@@ -5,9 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
 import { Wordmark } from "@/components/ui/Wordmark";
-import { WhatsAppCTA } from "@/components/common/WhatsAppCTA";
+import { SearchOverlay } from "@/components/search/SearchOverlay";
+import { EnquiryDrawer } from "@/components/enquiry/EnquiryDrawer";
 import { NavPanel } from "./NavPanel";
 import { MobileNav } from "./MobileNav";
+import { MenuPanel } from "./MenuPanel";
+import { SearchIcon, EnquiryIcon, MenuIcon } from "./UtilityIcons";
+import { useEnquiry } from "@/lib/enquiry";
 import { nav, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -19,20 +23,34 @@ const CLOSE_DELAY = 140;
 /**
  * Primary navigation.
  *
- * Transparent over the hero and light-on-dark; solid, translucent and
- * dark-on-light once the page has moved. Opening a dropdown also commits the
- * bar to its solid state, so a light panel never hangs off a transparent bar.
+ * Seven destinations in the centre, three utility controls at the right,
+ * wordmark at the left. Transparent and light-on-dark over the hero — every
+ * route on this site opens dark, which is what makes a single top state
+ * possible — then solid, translucent and dark-on-light once the page moves.
  *
- * Panels open on hover and on keyboard focus. Pointer intent is forgiving — a
- * short close delay lets the cursor cut the corner between trigger and panel
- * without the panel collapsing underneath it.
+ * ## Pointer intent
+ *
+ * Panels open on hover and on keyboard focus, and close after a short grace
+ * period. The grace is what lets a cursor cut the corner from the trigger to
+ * the panel without it collapsing underneath; the panel's own wrapper carries
+ * the vertical offset as padding, so there is no dead gap to cross either.
+ *
+ * ## Layout stability
+ *
+ * Every overlay this bar opens is `position: fixed`, and the scroll lock sets
+ * `overflow: hidden` on the root without touching `position`. Nothing here
+ * reflows the document when a menu opens.
  */
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [openKey, setOpenKey] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
   const closeTimer = useRef<number | undefined>(undefined);
   const pathname = usePathname();
+  const { count, ready } = useEnquiry();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > SOLID_AT);
@@ -47,24 +65,29 @@ export function Header() {
   const [routeAtOpen, setRouteAtOpen] = useState(pathname);
   if (pathname !== routeAtOpen) {
     setRouteAtOpen(pathname);
+    if (mobileOpen) setMobileOpen(false);
     if (menuOpen) setMenuOpen(false);
+    if (searchOpen) setSearchOpen(false);
+    if (enquiryOpen) setEnquiryOpen(false);
     if (openKey) setOpenKey(null);
   }
 
-  // Lock the page behind the mobile drawer.
+  // Lock the page behind the mobile drawer. The other surfaces manage their
+  // own lock, because each also traps focus and must undo both together.
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!mobileOpen) return;
     const { overflow } = document.documentElement.style;
     document.documentElement.style.overflow = "hidden";
     return () => {
       document.documentElement.style.overflow = overflow;
     };
-  }, [menuOpen]);
+  }, [mobileOpen]);
 
-  // Escape closes whichever surface is open.
+  // Escape closes the two surfaces that do not trap focus themselves.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
+      setMobileOpen(false);
       setMenuOpen(false);
       setOpenKey(null);
     };
@@ -81,7 +104,13 @@ export function Header() {
   };
 
   const solid = scrolled || openKey !== null;
-  const onDark = !solid || menuOpen;
+  const anyOverlay = mobileOpen || menuOpen;
+  const onDark = !solid || anyOverlay;
+
+  const utility = cn(
+    "relative flex size-11 items-center justify-center transition-colors duration-500 ease-brand",
+    onDark ? "text-soft/75 hover:text-soft" : "text-carbon/65 hover:text-carbon",
+  );
 
   return (
     <>
@@ -99,19 +128,19 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50",
           "transition-[background-color,border-color,backdrop-filter] duration-700 ease-brand",
-          solid && !menuOpen
+          solid && !anyOverlay
             ? "border-b border-carbon/10 bg-soft/85 backdrop-blur-xl"
             : "border-b border-transparent bg-transparent",
         )}
         onMouseLeave={scheduleClose}
       >
-        <div className="container-content flex h-18 items-center justify-between gap-6">
+        <div className="container-content flex h-18 items-center justify-between gap-4">
           <Link
             href="/"
             aria-label={`${site.name} — home`}
             onFocus={() => setOpenKey(null)}
             className={cn(
-              "transition-colors duration-500 ease-brand",
+              "shrink-0 transition-colors duration-500 ease-brand",
               onDark ? "text-soft" : "text-carbon",
             )}
           >
@@ -120,14 +149,14 @@ export function Header() {
 
           <nav
             aria-label="Primary"
-            className="hidden flex-1 items-center justify-center xl:flex xl:gap-5 2xl:gap-7"
+            className="hidden flex-1 items-center justify-center xl:flex xl:gap-6 2xl:gap-8"
           >
             {nav.map((item) => {
               const key = item.href ?? item.label;
+              const panelId = `nav-panel-${item.label.toLowerCase()}`;
               const active = item.href
-                ? pathname === item.href ||
-                  pathname.startsWith(`${item.href}/`)
-                : item.menu?.links.some((l) => pathname === l.href) ?? false;
+                ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+                : (item.menu?.links.some((l) => pathname === l.href) ?? false);
               const isOpen = openKey === key;
 
               const face = cn(
@@ -161,12 +190,11 @@ export function Header() {
                   }}
                 >
                   {item.menu ? (
-                    /* A dropdown trigger is a button, not a link — it has no
-                       destination of its own on the reference either. */
                     <button
                       type="button"
                       aria-expanded={isOpen}
-                      aria-haspopup="menu"
+                      aria-haspopup="true"
+                      aria-controls={isOpen ? panelId : undefined}
                       onFocus={() => setOpenKey(key)}
                       onClick={() => setOpenKey(isOpen ? null : key)}
                       className={face}
@@ -212,6 +240,7 @@ export function Header() {
                       <div onMouseEnter={cancelClose}>
                         <NavPanel
                           item={item}
+                          id={panelId}
                           onNavigate={() => setOpenKey(null)}
                         />
                       </div>
@@ -222,48 +251,92 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-4">
-            <WhatsAppCTA
-              intent="specialist"
-              variant="outline"
-              tone={onDark ? "dark" : "light"}
-              className="hidden px-6 py-3 md:inline-flex"
-            />
+          {/* Utility controls */}
+          <div className="flex shrink-0 items-center gap-0.5 sm:gap-1">
+            <button
+              type="button"
+              onClick={() => {
+                setOpenKey(null);
+                setSearchOpen(true);
+              }}
+              aria-expanded={searchOpen}
+              aria-haspopup="dialog"
+              className={utility}
+            >
+              <span className="sr-only">Search</span>
+              <SearchIcon className="size-5" />
+            </button>
 
             <button
               type="button"
-              onClick={() => setMenuOpen((v) => !v)}
+              onClick={() => {
+                setOpenKey(null);
+                setEnquiryOpen(true);
+              }}
+              aria-expanded={enquiryOpen}
+              aria-haspopup="dialog"
+              className={utility}
+            >
+              {/* The count is announced, not just drawn, so a screen-reader
+                  user hears the list grow as they add to it. */}
+              <span className="sr-only">
+                Enquiry list, {ready ? count : 0}{" "}
+                {count === 1 ? "compound" : "compounds"}
+              </span>
+              <EnquiryIcon className="size-5" />
+              {ready && count > 0 ? (
+                <span
+                  aria-hidden
+                  className={cn(
+                    "type-label absolute top-1 right-0.5 flex min-w-4 items-center justify-center rounded-pill px-1",
+                    "text-[0.5625rem] leading-4 tracking-normal tabular-nums",
+                    onDark ? "bg-soft text-carbon" : "bg-carbon text-soft",
+                  )}
+                >
+                  {count}
+                </span>
+              ) : null}
+            </button>
+
+            {/* Desktop: the full site index. */}
+            <button
+              type="button"
+              onClick={() => {
+                setOpenKey(null);
+                setMenuOpen((v) => !v);
+              }}
               aria-expanded={menuOpen}
-              aria-controls="primary-menu"
-              className={cn(
-                "relative z-[70] -mr-2 flex size-12 items-center justify-center xl:hidden",
-                "transition-colors duration-500 ease-brand",
-                onDark ? "text-soft" : "text-carbon",
-              )}
+              aria-haspopup="dialog"
+              aria-controls="utility-index"
+              className={cn(utility, "z-[80] hidden xl:flex")}
             >
               <span className="sr-only">
-                {menuOpen ? "Close menu" : "Open menu"}
+                {menuOpen ? "Close site index" : "Open site index"}
               </span>
-              <span aria-hidden className="relative block h-3 w-6">
-                <span
-                  className={cn(
-                    "absolute left-0 h-px w-full bg-current transition-all duration-500 ease-brand",
-                    menuOpen ? "top-1/2 rotate-45" : "top-0 rotate-0",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "absolute left-0 h-px w-full bg-current transition-all duration-500 ease-brand",
-                    menuOpen ? "top-1/2 -rotate-45" : "top-full rotate-0",
-                  )}
-                />
+              <MenuIcon className="size-5" open={menuOpen} />
+            </button>
+
+            {/* Below xl: the full-screen drawer. */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-expanded={mobileOpen}
+              aria-controls="primary-menu"
+              className={cn(utility, "z-[80] xl:hidden")}
+            >
+              <span className="sr-only">
+                {mobileOpen ? "Close menu" : "Open menu"}
               </span>
+              <MenuIcon className="size-5" open={mobileOpen} />
             </button>
           </div>
         </div>
       </header>
 
-      <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MenuPanel open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <EnquiryDrawer open={enquiryOpen} onClose={() => setEnquiryOpen(false)} />
     </>
   );
 }

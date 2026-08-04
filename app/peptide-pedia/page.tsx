@@ -107,7 +107,7 @@ export default function PeptidePediaPage() {
                     return (
                       <Reveal key={product.slug} delay={i * 0.05} as="li">
                         <Link
-                          href={`/catalogue/${product.slug}`}
+                          href={`/products/${product.slug}`}
                           className="group/e grid gap-5 border-b border-carbon/12 py-9 lg:grid-cols-12 lg:gap-8"
                         >
                           <div className="lg:col-span-4">
@@ -196,7 +196,7 @@ export default function PeptidePediaPage() {
             {productsAlphabetical.map((product) => (
               <li key={product.slug}>
                 <Link
-                  href={`/catalogue/${product.slug}`}
+                  href={`/products/${product.slug}`}
                   className="group/a flex items-baseline justify-between gap-4 border-b border-carbon/12 py-3.5"
                 >
                   <span className="type-title-s text-carbon">

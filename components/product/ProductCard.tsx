@@ -37,7 +37,7 @@ export function ProductCard({
 
   return (
     <Link
-      href={`/catalogue/${product.slug}`}
+      href={`/products/${product.slug}`}
       className={cn("group/card block", className)}
     >
       <div className="relative overflow-hidden">

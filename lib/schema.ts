@@ -52,7 +52,7 @@ export function productSchema(product: Product) {
     name: product.name,
     description: product.summary,
     category: category.name,
-    url: `${site.url}/catalogue/${product.slug}`,
+    url: `${site.url}/products/${product.slug}`,
     brand: { "@type": "Brand", name: site.name },
     manufacturer: { "@type": "Organization", name: site.name },
     additionalProperty: [
@@ -126,7 +126,7 @@ export function stackSchema(stack: Stack) {
     itemListElement: stack.includes.map((entry, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `${site.url}/catalogue/${entry.slug}`,
+      url: `${site.url}/products/${entry.slug}`,
     })),
   };
 }

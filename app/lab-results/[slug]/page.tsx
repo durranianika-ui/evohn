@@ -168,7 +168,7 @@ export default async function LabResultPage(
 
                 <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                   <Link
-                    href={`/catalogue/${product.slug}`}
+                    href={`/products/${product.slug}`}
                     className="type-label text-carbon/62 transition-colors duration-400 ease-brand hover:text-carbon"
                   >
                     Compound entry

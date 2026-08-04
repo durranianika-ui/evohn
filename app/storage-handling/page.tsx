@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Storage & Handling Guide",
   description:
     "How to keep research compounds stable: lyophilised versus reconstituted, refrigeration versus freezing, transport, and shelf life. For laboratory research use only.",
-  alternates: { canonical: "/storage" },
+  alternates: { canonical: "/storage-handling" },
 };
 
 /** The four states a vial passes through, in order of custody. */
@@ -52,7 +52,7 @@ export default function StoragePage() {
         data={[
           breadcrumbSchema([
             { name: "Home", href: "/" },
-            { name: "Storage & Handling Guide", href: "/storage" },
+            { name: "Storage & Handling Guide", href: "/storage-handling" },
           ]),
         ]}
       />
@@ -63,7 +63,7 @@ export default function StoragePage() {
         body="Degradation is not one process but four, with different chemistry and different countermeasures. Reading a handling note is largely a matter of identifying which of the four it is guarding against — because the instruction names the threat."
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Storage & Handling Guide", href: "/storage" },
+          { name: "Storage & Handling Guide", href: "/storage-handling" },
         ]}
         meta={[
           { label: "Lyophilised", value: "−20 °C, dark" },
@@ -76,7 +76,7 @@ export default function StoragePage() {
       <section className="border-b border-carbon/10 bg-soft text-carbon">
         <div className="container-content flex flex-wrap gap-4 py-10">
           <Link
-            href="/reconstitution"
+            href="/reconstitution-guide"
             className="type-label inline-flex min-h-12 items-center gap-3 bg-carbon px-8 py-4 text-soft"
           >
             Reconstitution guide

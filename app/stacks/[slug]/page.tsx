@@ -153,7 +153,7 @@ export default async function StackPage(props: PageProps<"/stacks/[slug]">) {
                     </p>
                     <h3 className="type-title mt-5 text-soft">
                       <Link
-                        href={`/catalogue/${entry.product.slug}`}
+                        href={`/products/${entry.product.slug}`}
                         className="group/c relative inline-block"
                       >
                         {entry.product.name}
@@ -261,7 +261,7 @@ export default async function StackPage(props: PageProps<"/stacks/[slug]">) {
                   {stack.storage}
                 </p>
                 <Link
-                  href="/storage"
+                  href="/storage-handling"
                   className="type-label mt-8 inline-flex items-center gap-3 border border-carbon/20 px-7 py-4 text-carbon transition-colors duration-400 ease-brand hover:border-carbon"
                 >
                   Storage &amp; handling guide

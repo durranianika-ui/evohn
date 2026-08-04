@@ -96,7 +96,7 @@ export function CoaCard({ entry }: { entry: LabEntry }) {
           </Link>
 
           <Link
-            href={`/catalogue/${product.slug}`}
+            href={`/products/${product.slug}`}
             className="type-label ml-auto text-carbon/62 transition-colors duration-400 ease-brand hover:text-carbon"
           >
             Compound

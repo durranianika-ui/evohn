@@ -129,7 +129,7 @@ export function ReviewCard({
             <>
               <span aria-hidden>·</span>
               <Link
-                href={`/catalogue/${product.slug}`}
+                href={`/products/${product.slug}`}
                 className={cn(
                   "transition-colors duration-400 ease-brand",
                   dark ? "hover:text-soft" : "hover:text-carbon",
