@@ -1,0 +1,21 @@
+{
+ "fetchTime": "2026-08-04T19:20:17.900Z",
+ "lighthouseVersion": "13.4.1",
+ "requestedUrl": "http://127.0.0.1:3999/",
+ "categories": {
+  "performance": 77,
+  "accessibility": 97,
+  "best-practices": 100,
+  "seo": 100
+ },
+ "metrics": {
+  "first-contentful-paint": "0.9 s",
+  "largest-contentful-paint": "4.7 s",
+  "total-blocking-time": "240 ms",
+  "cumulative-layout-shift": "0",
+  "speed-index": "3.7 s",
+  "interactive": "4.9 s",
+  "mainthread-work-breakdown": "3.5 s",
+  "unused-javascript": "Est savings of 48 KiB"
+ }
+}
