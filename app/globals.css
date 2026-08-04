@@ -374,9 +374,13 @@
    were already approved. Only `/` opts into this. */
 @utility container-home {
   width: 100%;
-  max-width: 85.5rem; /* 1368px */
+  /* 1400px, not 1368: box-sizing is border-box, so the 16px of padding on
+     each side comes out of max-width. 1400 - 32 leaves the 1368px content
+     column the reference actually renders, which puts the gutter at 36px at
+     1440 and 276px at 1920 — both measured values. */
+  max-width: 87.5rem;
   margin-inline: auto;
-  padding-inline: 1rem; /* 16px, at every width — as the reference does */
+  padding-inline: 1rem; /* 16px at every width, as the reference does */
 }
 
 @utility section-y {
