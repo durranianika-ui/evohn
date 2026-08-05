@@ -1,5 +1,7 @@
 User-Agent: *
 Allow: /
+Disallow: /search
+Disallow: /enquiry
 
 Host: https://evohn.com
 Sitemap: https://evohn.com/sitemap.xml
