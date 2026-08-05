@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { CollectionTrack, type TrackItem } from "@/components/home/CollectionTrack";
 import { products } from "@/data/products";
+import { asset } from "@/lib/media";
 
 /** One compound drawn from each of six domains. */
 const FEATURED = [
@@ -35,7 +36,11 @@ export function Collection() {
       slug: product.slug,
       name: product.name,
       summary: product.summary,
-      image: `/products/${product.slug}.jpg`,
+      // Through `asset`, or the deployment base path is missing: the export
+      // build sets `unoptimized`, which makes next/image emit `src` exactly as
+      // given, so every photograph on this track 404'd under /evohn while the
+      // hero — which does go through the helper — resolved.
+      image: asset(`/products/${product.slug}.jpg`),
     };
   }).filter((item): item is TrackItem => item !== null);
 
