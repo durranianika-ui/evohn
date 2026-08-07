@@ -31,6 +31,8 @@ export const test = base.extend({
         /* Storage can be unavailable; the gate then simply shows. */
       }
     }, AGE_GATE_KEY);
+    // Playwright's fixture `use` callback, not the React hook of the same name.
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await use(page);
   },
 });

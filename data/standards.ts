@@ -19,11 +19,11 @@ export const pillars: Standard[] = [
     body: "Temperature-controlled from synthesis through to delivery, so that what was verified is what arrives.",
   },
   {
-    title: "Independent\nVerification",
+    title: "Third-Party\nTested",
     body: "Accredited third-party laboratories confirm in-house analysis. Trust is a consequence of transparency.",
   },
   {
-    title: "Manufacturing\nStandards",
+    title: "GMP\nStandards",
     body: "Produced under good manufacturing practice protocols within certified facilities, documented at every stage.",
   },
 ];

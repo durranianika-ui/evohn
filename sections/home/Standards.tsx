@@ -1,41 +1,27 @@
 import { SplitText } from "@/components/motion/SplitText";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 import { ArrowLink } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/common/SectionHeading";
-import { DotField } from "@/components/ui/DotField";
-import { pillars } from "@/data/standards";
-import { cn } from "@/lib/utils";
+import { StandardsCards } from "@/components/home/StandardsCards";
 
 /**
- * Philosophy and the four standards — one block, not two.
+ * Philosophy and the four standards — one block, as the reference composes it:
+ * a compact editorial opening on the warm fog ground, then the interactive
+ * four-card row (see StandardsCards for the measured mechanics), the whole
+ * section dissolving into the dark research block below through the 200px
+ * blend the reference draws on every section boundary.
  *
- * Measured off the reference: this is a single 0.98vh block on the warm mist
- * ground, holding a compact editorial opening and then a *row* of four panels
- * side by side. The panel headings sit at x = 61 / 403 / 745 / 1087 at 1440 —
- * a 342px pitch across one row, roughly 600px tall — which is why the whole
- * block resolves inside one viewport despite carrying both elements.
- *
- * Splitting these into two sections was worth ~0.9vh of the page's excess
- * length and broke the reference's pacing: the statement and the evidence for
- * it are meant to arrive together.
- *
- * Panel grounds alternate graphite / sand / graphite / off-white, so the row
- * reads as one object with internal rhythm rather than four cards.
+ * The grain layer sits behind everything; the cards are translucent with a
+ * backdrop blur, so the grain is part of their material rather than a
+ * texture pasted on top.
  */
-const tones = ["graphite", "sand", "graphite", "light"] as const;
-
 export function Standards() {
   return (
     <section
       id="mission"
-      className="scroll-mt-24 bg-mist py-[clamp(4rem,7vh,6rem)] text-carbon"
+      className="section-blend-to-dark grain-field relative isolate overflow-hidden bg-mist pb-[clamp(6rem,16vh,12rem)] pt-[clamp(4rem,10vh,8rem)] text-carbon"
     >
-      <div className="container-home">
-        {/* Editorial opening — deliberately compact; the reference gives this
-            roughly a fifth of the block and spends the rest on the panels. */}
-        {/* The opener arrives as one object — scale 0.95, 19px low, over a
-            full second — which is the gesture the reference gives this exact
-            block, rather than each part fading in on its own schedule. */}
+      <div className="container-home relative z-[1]">
         <Reveal
           scaleFrom={0.95}
           distance={19}
@@ -67,68 +53,12 @@ export function Standards() {
           </div>
         </Reveal>
 
-        {/* The four standards, one row. */}
-        <Stagger
-          className="mt-[clamp(2.5rem,5vh,4rem)] grid gap-3 sm:grid-cols-2 xl:grid-cols-4"
-          gap={0.07}
-        >
-          {pillars.map((pillar, i) => {
-            const tone = tones[i] ?? "graphite";
-            const dark = tone === "graphite";
-            return (
-              <StaggerItem key={pillar.title}>
-                <article
-                  className={cn(
-                    // Stacked on a phone the reference gives each panel roughly
-                    // 450px — they read as four full objects, not four rows of
-                    // a list, and they carry the block on their own. From the
-                    // two-column stop up they go back to content height, and
-                    // at xl the row takes over with its 0.62 aspect.
-                    "group flex h-full min-h-[25rem] flex-col justify-between overflow-hidden rounded-[14px] p-6 transition-transform duration-500 ease-[var(--ease-brand)] sm:min-h-0 xl:aspect-[0.62] xl:p-7 hover:-translate-y-1",
-                    dark && "bg-onyx text-soft",
-                    tone === "sand" && "bg-[var(--color-cat-growth)] text-carbon",
-                    tone === "light" && "bg-soft text-carbon",
-                  )}
-                >
-                  <h3
-                    className={cn(
-                      "type-title-s whitespace-pre-line",
-                      dark ? "text-soft" : "text-carbon",
-                    )}
-                  >
-                    {pillar.title}
-                  </h3>
+        {/* The four standards — the interactive row. */}
+        <Reveal delay={0.1} distance={24} duration={0.9}>
+          <StandardsCards />
+        </Reveal>
 
-                  <DotField
-                    className="my-6 block sm:hidden xl:block"
-                    tone={dark ? "light" : "dark"}
-                  />
-
-                  <div>
-                    <span
-                      className={cn(
-                        "type-label tabular-nums",
-                        dark ? "text-soft/60" : "text-carbon/60",
-                      )}
-                    >
-                      {String(i + 1).padStart(2, "0")} / {String(pillars.length).padStart(2, "0")}
-                    </span>
-                    <p
-                      className={cn(
-                        "type-body-s mt-3",
-                        dark ? "text-soft/55" : "text-carbon/62",
-                      )}
-                    >
-                      {pillar.body}
-                    </p>
-                  </div>
-                </article>
-              </StaggerItem>
-            );
-          })}
-        </Stagger>
-
-        <Reveal delay={0.2} className="mt-8">
+        <Reveal delay={0.2} className="mt-10">
           <p className="type-body-s max-w-[62ch] text-carbon/55">
             Purity figures quoted anywhere on this site are measured values
             published per batch on the certificate of analysis — not

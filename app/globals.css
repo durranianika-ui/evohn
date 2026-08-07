@@ -431,6 +431,68 @@
 }
 
 /* ============================================================================
+   SECTION BLENDS AND GRAIN
+   ----------------------------------------------------------------------------
+   The reference dissolves one section into the next with a 200px gradient
+   drawn as an ::after on the outgoing section, and lays a faint fractal
+   grain over its light grounds. Both are reproduced here as plain classes so
+   server components can use them without a client boundary.
+   ========================================================================== */
+
+.section-blend-to-dark,
+.section-blend-to-ink,
+.section-blend-to-soft {
+  position: relative;
+}
+
+.section-blend-to-dark::after,
+.section-blend-to-ink::after,
+.section-blend-to-soft::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.section-blend-to-dark::after {
+  background: linear-gradient(to bottom, transparent, var(--color-onyx));
+}
+
+.section-blend-to-ink::after {
+  background: linear-gradient(to bottom, transparent, var(--color-ink));
+}
+
+.section-blend-to-soft::after {
+  background: linear-gradient(to bottom, transparent, var(--color-soft));
+}
+
+/* Fractal grain, the reference's own recipe: an inline feTurbulence tile at
+   3.5% opacity. Sits behind content — pair with `relative isolate`. */
+.grain-field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Oversized domain index type — the reference's `h-vw` scale. */
+.type-domain {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 7vw, 6rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+/* ============================================================================
    PRINT
    ----------------------------------------------------------------------------
    The two handling guides are written to be printed and pinned up next to a

@@ -9,7 +9,7 @@ export interface Line {
   /** The words of this line. */
   text: string;
   /** Which edge the line sits against. The reference alternates. */
-  align?: "left" | "right";
+  align?: "left" | "right" | "center";
 }
 
 interface LineMaskProps {
@@ -50,7 +50,11 @@ export function LineMask({
           key={`${line.text}-${i}`}
           className={cn(
             "block overflow-hidden",
-            line.align === "right" ? "text-right" : "text-left",
+            line.align === "right"
+              ? "text-right"
+              : line.align === "center"
+                ? "text-center"
+                : "text-left",
           )}
           /* The pitch the reference runs, expressed against the face size so
              it holds as the display scale clamps down on narrow viewports. */
@@ -58,7 +62,12 @@ export function LineMask({
         >
           <motion.span
             className="block will-change-transform"
-            initial={{ y: reduced ? 0 : "105%", opacity: reduced ? 0 : 1 }}
+            /* The travel is 1.1em expressed in px-free style: framer receives
+               a plain number so the value animates identically before and
+               after hydration. A percentage here left the SSR style string
+               unadopted — the one motion value in the site that did — and
+               the lines never rose. 1.1 lines clears the 1.24 mask pitch. */
+            initial={{ y: reduced ? 0 : "1.1em", opacity: reduced ? 0 : 1 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={VIEWPORT}
             transition={{

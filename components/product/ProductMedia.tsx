@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { VialGlyph } from "./VialGlyph";
-import { getCategory } from "@/data/categories";
 import type { Product } from "@/data/products";
-import { asset, hasAsset } from "@/lib/media";
+import { asset } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 interface ProductMediaProps {
@@ -18,9 +16,13 @@ interface ProductMediaProps {
 /**
  * Product plate.
  *
- * Renders the photograph when one exists, and the vector vial on the brand's
- * stone-toned ground when it does not — so the catalogue is presentable at
- * every stage of the photography schedule.
+ * Renders the finalized product photography for every compound. The vector
+ * fallback is gone by request: the supplied assets are authoritative, every
+ * catalogue entry has one, and nothing may quietly stand in for them.
+ *
+ * The photograph keeps its own aspect ratio inside a standardized frame:
+ * `object-cover` from the centre, so vials read at a consistent size across
+ * cards even where source dimensions differ, without stretching the bottle.
  */
 export function ProductMedia({
   product,
@@ -29,7 +31,6 @@ export function ProductMedia({
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
   priority = false,
 }: ProductMediaProps) {
-  const category = getCategory(product.category);
   const src =
     frame === undefined ? product.image : (product.gallery[frame] ?? product.image);
 
@@ -42,26 +43,14 @@ export function ProductMedia({
         className,
       )}
     >
-      {hasAsset(src) ? (
-        <Image
-          src={asset(src)}
-          alt={`${product.name} — ${product.subtitle}`}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className="object-cover"
-        />
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center p-[12%]">
-          <VialGlyph
-            labelColor={category.token}
-            labelIsLight={category.swatchIsLight}
-            caption={product.name}
-            seed={product.slug.length}
-            className="h-full w-auto max-w-full drop-shadow-[0_28px_44px_rgba(60,52,46,0.34)]"
-          />
-        </div>
-      )}
+      <Image
+        src={asset(src)}
+        alt={`${product.name} — ${product.subtitle}`}
+        fill
+        sizes={sizes}
+        priority={priority}
+        className="object-cover object-center"
+      />
     </div>
   );
 }
