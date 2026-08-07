@@ -105,15 +105,26 @@ export function DomainsIndex({ categories }: { categories: Category[] }) {
   return (
     <div className="relative">
       {/* The cinematic mask: dark at the fold edges, clear through the
-          middle, pinned for the whole travel of the section. */}
+          middle, pinned for the whole travel of the section.
+
+          The sticky element lives inside an absolute wrapper spanning
+          exactly this section, so its containment is the section itself.
+          (An earlier build used a flow sticky with a -100dvh margin; sticky
+          containment tracks the MARGIN box, so the zero-height margin box
+          let the mask slide a full viewport past the section and lay its
+          dark fade over the collection that follows.) */}
       <div
         aria-hidden
-        className="pointer-events-none sticky top-0 z-[5] -mb-[100dvh] hidden h-dvh w-full md:block"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, var(--color-onyx) 0%, transparent 28%, transparent 72%, var(--color-onyx) 100%)",
-        }}
-      />
+        className="pointer-events-none absolute inset-0 z-[5] hidden md:block"
+      >
+        <div
+          className="sticky top-0 h-dvh w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, var(--color-onyx) 0%, transparent 28%, transparent 72%, var(--color-onyx) 100%)",
+          }}
+        />
+      </div>
 
       <div className="container-home relative">
         <ul

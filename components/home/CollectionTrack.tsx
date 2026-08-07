@@ -276,7 +276,9 @@ function Card({
             "group/img relative mt-5 w-full overflow-hidden rounded-[12px]",
             "bg-[radial-gradient(120%_90%_at_50%_18%,var(--color-mist)_0%,var(--color-warm)_58%,#b3aca4_100%)]",
             "transition-[aspect-ratio] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
-            open ? "aspect-[4/3]" : "aspect-[3/4]",
+            /* 5:4 open, not 4:3: the contained portrait bottle reads larger
+               and the intentional plate side-margins stay slim. */
+            open ? "aspect-[5/4]" : "aspect-[3/4]",
           )}
         >
           <Image
