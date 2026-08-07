@@ -21,8 +21,11 @@ interface ProductMediaProps {
  * catalogue entry has one, and nothing may quietly stand in for them.
  *
  * The photograph keeps its own aspect ratio inside a standardized frame:
- * `object-cover` from the centre, so vials read at a consistent size across
- * cards even where source dimensions differ, without stretching the bottle.
+ * `object-contain` on the warm plate, so vials read at a consistent size
+ * across cards even where source dimensions differ, and no crop can ever
+ * take a cap or a base off a bottle. Most sources are exactly the frame's
+ * 4:5, where contain and cover are the same picture; the square and tall
+ * outliers letterbox onto the plate instead of cropping.
  */
 export function ProductMedia({
   product,
@@ -49,7 +52,7 @@ export function ProductMedia({
         fill
         sizes={sizes}
         priority={priority}
-        className="object-cover object-center"
+        className="object-contain object-center"
       />
     </div>
   );

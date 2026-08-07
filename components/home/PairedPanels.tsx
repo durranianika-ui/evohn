@@ -2,8 +2,19 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { CornerFrame } from "@/components/ui/CornerFrame";
+import {
+  SciencePattern,
+  type SciencePatternVariant,
+} from "@/components/ui/SciencePattern";
 import { Eyebrow } from "@/components/common/SectionHeading";
 import { cn } from "@/lib/utils";
+
+/**
+ * Which field each card carries, cycling with the stack. The mirrored block
+ * offsets into the cycle so the two sequences never show the same artwork
+ * side by side.
+ */
+const PATTERNS: SciencePatternVariant[] = ["dots", "rings", "wave", "grid"];
 
 /**
  * Where the first panel comes to rest, and how far each one behind it sits
@@ -158,12 +169,27 @@ export function PairedPanels({
                     // 768 — which widened the track it sits in and scrolled
                     // the page sideways. The ratio was redundant anyway: at
                     // every width the floor is the taller of the two.
-                    "flex min-h-[25rem] min-w-0 flex-col justify-between p-8 md:min-h-[36rem] md:p-11 xl:min-h-[38rem]",
+                    "relative isolate flex min-h-[25rem] min-w-0 flex-col justify-between overflow-hidden p-8 md:min-h-[36rem] md:p-11 xl:min-h-[38rem]",
                     panel.tone === "sand"
                       ? "bg-[var(--color-cat-growth)] text-carbon"
                       : "bg-onyx text-soft",
                   )}
                 >
+                  {/* The card's scientific field — the reference's own
+                      treatment for these panels. Drawn in the card's ink at
+                      low volume, seated in the open middle of the card where
+                      neither the heading nor the body runs, and part of the
+                      card itself so it travels with the stack. */}
+                  <SciencePattern
+                    variant={
+                      PATTERNS[(i + (reverse ? 2 : 0)) % PATTERNS.length] ??
+                      "dots"
+                    }
+                    className={cn(
+                      "pointer-events-none absolute right-[4%] top-1/2 -z-[1] h-[62%] w-auto max-w-[70%] -translate-y-1/2",
+                      panel.tone === "sand" ? "opacity-[0.16]" : "opacity-[0.13]",
+                    )}
+                  />
                   <div className="flex items-start justify-between gap-6">
                     <h3
                       className={cn(

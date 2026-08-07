@@ -37,7 +37,7 @@ export function Facilities() {
   return (
     <>
       {/* The statement, on the light ground the standard band established. */}
-      <section className="section-blend-to-ink relative bg-soft pb-[clamp(10rem,26vh,16rem)] pt-[clamp(4rem,10vh,7rem)] text-carbon">
+      <section className="section-blend-to-ink relative bg-soft pb-[clamp(7rem,16vh,10rem)] pt-[clamp(3rem,8vh,5rem)] text-carbon">
         <div className="container-home">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">

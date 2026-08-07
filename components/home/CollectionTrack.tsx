@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -28,27 +28,29 @@ export interface TrackItem {
 /**
  * The pinned horizontal collection.
  *
- * Measured off the reference: the section occupies four viewport heights with
- * a `sticky top-0 h-dvh` stage inside it; scrolling walks the track sideways.
- * The active card is 42vw against 15vw for its neighbours, each card a
- * 20px-rounded plate, and the whole rail leans (skews) with scroll velocity
- * and settles as the scroll rests — the reference's shuffle energy, kept
- * shallow.
+ * Measured off the reference: the section occupies four-plus viewport heights
+ * with a `sticky top-0 h-dvh` stage inside it; scrolling walks the track
+ * sideways. The active card is 42vw against 15vw for its neighbours.
  *
- * A 3px progress bar rides the top of the pinned stage, filling across the
- * section's travel — the reference's own affordance for "this section is a
- * journey, not a wall".
+ * ## Continuous, not stepped
  *
- * All positional state is one discrete index expressed as a CSS variable;
- * widths, opacities and the track offset are pure calc() on that number so
- * the shuffle runs on the compositor. The velocity lean is the one
- * continuous value, and it is a compositor transform too.
+ * The rail's translation is a CONTINUOUS function of scroll progress passed
+ * through a spring — the track is always moving while the page moves, with
+ * momentum that settles when the scroll rests, which is the reference's
+ * fluidity. The earlier build stepped the offset per card index through a
+ * 700ms transition, and every threshold crossing read as a lurch. Only the
+ * card widths remain discrete (the active card opens, neighbours close),
+ * riding their own 700ms ease over the gliding rail.
  *
- * Under reduced motion the pin is dropped: natural height, scroll-snap rail,
- * no lean, no bar.
+ * Slot geometry lives in CSS custom properties per breakpoint; they are read
+ * back and converted to pixels so the offset can be computed continuously.
+ * A shallow velocity lean (±2deg) keeps the shuffle energy.
+ *
+ * Under reduced motion the pin is dropped: natural height, scroll-snap rail.
  */
 export function CollectionTrack({ items }: { items: TrackItem[] }) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotionSafe();
   const [active, setActive] = useState(0);
   const last = Math.max(items.length - 1, 1);
@@ -68,12 +70,55 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
     setActive((current) => (current === next ? current : next));
   });
 
+  /* Slot geometry in pixels, read back from the rail's CSS custom
+     properties so the continuous offset and the class-driven widths can
+     never disagree. Re-read on resize (which also covers breakpoint
+     changes — the vars themselves are vw-based). */
+  const [slots, setSlots] = useState({ active: 0, idle: 0, gap: 0, vw: 0 });
+  useEffect(() => {
+    if (reduced) return;
+    const read = () => {
+      const el = railRef.current;
+      if (!el) return;
+      const cs = getComputedStyle(el);
+      const vwPx = window.innerWidth / 100;
+      const toPx = (name: string) => parseFloat(cs.getPropertyValue(name)) * vwPx;
+      setSlots({
+        active: toPx("--slot-active"),
+        idle: toPx("--slot-idle"),
+        gap: toPx("--slot-gap"),
+        vw: window.innerWidth,
+      });
+    };
+    read();
+    window.addEventListener("resize", read);
+    return () => window.removeEventListener("resize", read);
+  }, [reduced]);
+
+  /* The continuous offset: centre the (fractional) position. Springed so
+     the rail carries momentum and settles without a snap. */
+  const xTarget = useTransform(progress, (p) => {
+    if (!slots.vw) return 0;
+    return slots.vw / 2 - p * last * (slots.idle + slots.gap) - slots.active / 2;
+  });
+  const x = useSpring(xTarget, { stiffness: 100, damping: 28, mass: 0.6 });
+
+  /* First measurement arrives after mount; jump the spring there rather
+     than animating in from 0. */
+  const measuredOnce = useRef(false);
+  useEffect(() => {
+    if (slots.vw && !measuredOnce.current) {
+      measuredOnce.current = true;
+      x.jump(xTarget.get());
+    }
+  }, [slots, x, xTarget]);
+
   /* The lean: scroll velocity, softened, becomes a shallow skew that always
-     settles back to rest. Capped at 3deg — energy, not distortion. */
+     settles back to rest. */
   const velocity = useVelocity(scrollYProgress);
-  const lean = useSpring(useTransform(velocity, [-0.8, 0.8], [3, -3]), {
+  const lean = useSpring(useTransform(velocity, [-0.8, 0.8], [2, -2]), {
     stiffness: 180,
-    damping: 28,
+    damping: 30,
     mass: 0.6,
   });
 
@@ -149,7 +194,8 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
           style={reduced ? undefined : { skewY: lean }}
           className={cn(!reduced && "will-change-transform")}
         >
-          <div
+          <motion.div
+            ref={railRef}
             data-rail
             data-collection-rail
             role="group"
@@ -157,25 +203,17 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
             aria-label="The collection"
             tabIndex={0}
             onKeyDown={onKeyDown}
-            style={
-              reduced
-                ? undefined
-                : ({
-                    "--active": active,
-                    transform:
-                      "translateX(calc(50vw - var(--active) * (var(--slot-idle) + var(--slot-gap)) - var(--slot-active) / 2))",
-                  } as React.CSSProperties)
-            }
+            style={reduced ? undefined : { x }}
             className={cn(
               SLOTS,
               "flex items-center gap-[var(--slot-gap)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft",
               reduced
                 ? "snap-x snap-mandatory overflow-x-auto px-[max(1rem,calc((100vw-var(--slot-active))/2))] pb-8 [--slot-idle:var(--slot-active)]"
-                : "will-change-transform transition-transform duration-700 ease-[var(--ease-brand)]",
+                : "will-change-transform",
             )}
           >
             {cards}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
@@ -212,7 +250,7 @@ function Card({
         "relative shrink-0 transition-[width,opacity] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
         open
           ? "w-[var(--slot-active)] opacity-100"
-          : "w-[var(--slot-idle)] opacity-40",
+          : "w-[var(--slot-idle)] opacity-55",
       )}
     >
       {/* The reference's plate: a 20px-rounded card with its own ground. */}
@@ -227,11 +265,17 @@ function Card({
           {item.name}
         </p>
 
-        {/* Landscape when open, portrait when closed — the reference's two
-            states of the same card, not two different cards. */}
+        {/* The photograph sits WHOLE on a light plate — `object-contain`, so
+            caps and bases are never cropped and no dark edge of the source
+            framing swallows the vial. The plate is the catalogue's own warm
+            radial ground, and there is deliberately NO overlay above the
+            image: the bottle keeps its brightness. Landscape frame when
+            open, portrait when closed. */}
         <div
           className={cn(
-            "group/img relative mt-5 w-full overflow-hidden rounded-[12px] bg-graphite transition-[aspect-ratio] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
+            "group/img relative mt-5 w-full overflow-hidden rounded-[12px]",
+            "bg-[radial-gradient(120%_90%_at_50%_18%,var(--color-mist)_0%,var(--color-warm)_58%,#b3aca4_100%)]",
+            "transition-[aspect-ratio] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
             open ? "aspect-[4/3]" : "aspect-[3/4]",
           )}
         >
@@ -243,8 +287,8 @@ function Card({
             loading={index < 2 ? "eager" : "lazy"}
             priority={false}
             className={cn(
-              "object-cover transition-transform duration-[1.2s] ease-[var(--ease-brand)]",
-              "group-hover/img:scale-[1.05] motion-reduce:transition-none",
+              "object-contain transition-transform duration-[1.2s] ease-[var(--ease-brand)]",
+              "group-hover/img:scale-[1.04] motion-reduce:transition-none",
             )}
           />
         </div>
