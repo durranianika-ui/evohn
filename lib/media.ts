@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 /**
@@ -36,4 +36,41 @@ export function hasAsset(publicPath: string) {
 
   const absolute = path.join(process.cwd(), "public", publicPath.slice(1));
   return existsSync(absolute);
+}
+
+/**
+ * Intrinsic width/height ratio of a `public/` WebP, read at build time.
+ *
+ * The supplied photography arrives in more than one framing (most vials are
+ * ~4:5 portrait, two presentations are square), so any hard-coded frame
+ * ratio letterboxes part of the catalogue. Layouts that must wrap an image
+ * exactly ask for the real ratio here and fall back to their own default
+ * when the file is missing or not WebP.
+ */
+export function imageAspect(publicPath: string): number | null {
+  if (!publicPath.startsWith("/") || publicPath.includes("..")) return null;
+  if (!publicPath.endsWith(".webp")) return null;
+
+  const absolute = path.join(process.cwd(), "public", publicPath.slice(1));
+  if (!existsSync(absolute)) return null;
+
+  const buf = readFileSync(absolute);
+  if (buf.length < 30 || buf.toString("ascii", 0, 4) !== "RIFF") return null;
+  if (buf.toString("ascii", 8, 12) !== "WEBP") return null;
+
+  const chunk = buf.toString("ascii", 12, 16);
+  let width = 0;
+  let height = 0;
+  if (chunk === "VP8X") {
+    width = 1 + buf.readUIntLE(24, 3);
+    height = 1 + buf.readUIntLE(27, 3);
+  } else if (chunk === "VP8 ") {
+    width = buf.readUInt16LE(26) & 0x3fff;
+    height = buf.readUInt16LE(28) & 0x3fff;
+  } else if (chunk === "VP8L") {
+    const bits = buf.readUInt32LE(21);
+    width = (bits & 0x3fff) + 1;
+    height = ((bits >>> 14) & 0x3fff) + 1;
+  }
+  return width > 0 && height > 0 ? width / height : null;
 }

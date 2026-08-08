@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { CollectionTrack, type TrackItem } from "@/components/home/CollectionTrack";
 import { products } from "@/data/products";
 import { getCategory } from "@/data/categories";
-import { asset } from "@/lib/media";
+import { asset, imageAspect } from "@/lib/media";
 
 /**
  * The collection — all nine supplied presentations, in the supplied order.
@@ -48,9 +48,13 @@ const FEATURED: (string | TrackItem)[] = [
 ];
 
 export function Collection() {
-  const items: TrackItem[] = FEATURED.map((entry) => {
+  const items: TrackItem[] = FEATURED.map((entry): TrackItem | null => {
     if (typeof entry !== "string") {
-      return { ...entry, image: asset(entry.image) };
+      return {
+        ...entry,
+        image: asset(entry.image),
+        aspect: imageAspect(entry.image) ?? undefined,
+      };
     }
     const product = products.find((p) => p.slug === entry);
     if (!product) return null;
@@ -60,6 +64,7 @@ export function Collection() {
       summary: product.summary,
       category: getCategory(product.category).name,
       image: asset(product.image),
+      aspect: imageAspect(product.image) ?? undefined,
       href: `/products/${product.slug}`,
     };
   }).filter((item): item is TrackItem => item !== null);

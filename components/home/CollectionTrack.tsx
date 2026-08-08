@@ -23,6 +23,8 @@ export interface TrackItem {
   category: string;
   /** Where "View Product" goes — not always a product page. */
   href: string;
+  /** Intrinsic width/height of the photograph; the frame takes this ratio. */
+  aspect?: number | undefined;
 }
 
 /**
@@ -30,7 +32,7 @@ export interface TrackItem {
  *
  * Measured off the reference: the section occupies four-plus viewport heights
  * with a `sticky top-0 h-dvh` stage inside it; scrolling walks the track
- * sideways. The active card is 42vw against 15vw for its neighbours.
+ * sideways. The active card is 34vw against 15vw for its neighbours.
  *
  * ## Continuous, not stepped
  *
@@ -221,11 +223,13 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
 }
 
 /**
- * Slot geometry — the reference's own 42vw / 15vw pair at xl; the narrower
- * stops keep the open card readable on a phone.
+ * Slot geometry — the idle 15vw stop is the reference's own; the active stop
+ * is narrowed from the reference's landscape 42vw to a portrait 34vw so the
+ * open card hugs the ~4:5 photography instead of flanking it with empty
+ * ground. The narrower stops keep the open card readable on a phone.
  */
 const SLOTS =
-  "[--slot-gap:3vw] [--slot-active:80vw] [--slot-idle:32vw] md:[--slot-active:52vw] md:[--slot-idle:20vw] xl:[--slot-active:42vw] xl:[--slot-idle:15vw]";
+  "[--slot-gap:3vw] [--slot-active:80vw] [--slot-idle:32vw] md:[--slot-active:46vw] md:[--slot-idle:20vw] xl:[--slot-active:34vw] xl:[--slot-idle:15vw]";
 
 function Card({
   item,
@@ -265,27 +269,29 @@ function Card({
           {item.name}
         </p>
 
-        {/* The photograph sits WHOLE on a light plate — `object-contain`, so
-            caps and bases are never cropped and no dark edge of the source
-            framing swallows the vial. The plate is the catalogue's own warm
-            radial ground, and there is deliberately NO overlay above the
-            image: the bottle keeps its brightness. Landscape frame when
-            open, portrait when closed. */}
+        {/* The frame takes the photograph's OWN ratio, so `object-contain`
+            fills it edge to edge — the whole vial shows, nothing is cropped
+            or stretched, and no strip of the plate ground peeks out beside a
+            portrait image in a landscape hole. The width is capped so the
+            frame can never push the card past the pinned viewport: whichever
+            is smaller of the card's width and the height budget times the
+            ratio wins, and `mx-auto` keeps the bottle centred. The warm
+            radial ground remains only as the loading backdrop. */}
         <div
           className={cn(
-            "group/img relative mt-5 w-full overflow-hidden rounded-[12px]",
+            "group/img relative mx-auto mt-5 max-w-full overflow-hidden rounded-[12px]",
             "bg-[radial-gradient(120%_90%_at_50%_18%,var(--color-mist)_0%,var(--color-warm)_58%,#b3aca4_100%)]",
-            "transition-[aspect-ratio] duration-700 ease-[var(--ease-brand)] motion-reduce:transition-none",
-            /* 5:4 open, not 4:3: the contained portrait bottle reads larger
-               and the intentional plate side-margins stay slim. */
-            open ? "aspect-[5/4]" : "aspect-[3/4]",
           )}
+          style={{
+            aspectRatio: String(item.aspect ?? 4 / 5),
+            width: `min(100%, calc(max(14rem, 100dvh - 19rem) * ${item.aspect ?? 4 / 5}))`,
+          }}
         >
           <Image
             src={item.image}
             alt={`EVOHN ${item.name} vial`}
             fill
-            sizes="(min-width: 1280px) 42vw, (min-width: 768px) 52vw, 80vw"
+            sizes="(min-width: 1280px) 34vw, (min-width: 768px) 46vw, 80vw"
             loading={index < 2 ? "eager" : "lazy"}
             priority={false}
             className={cn(
