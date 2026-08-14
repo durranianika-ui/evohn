@@ -8,7 +8,6 @@ import type { SearchKind } from "@/lib/search";
 const KINDS: SearchKind[] = [
   "Compound",
   "Stack",
-  "Strip",
   "Domain",
   "Article",
   "Batch",

@@ -35,7 +35,6 @@ export const staticRoutes: StaticRoute[] = [
   /* --- Catalogue -------------------------------------------------------- */
   { path: "/catalogue", changeFrequency: "weekly", priority: 0.9 },
   { path: "/stacks", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/strips", changeFrequency: "monthly", priority: 0.85 },
 
   /* --- Science ---------------------------------------------------------- */
   { path: "/science", changeFrequency: "monthly", priority: 0.85 },
@@ -46,9 +45,8 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/quality", changeFrequency: "monthly", priority: 0.8 },
   { path: "/lab-results", changeFrequency: "weekly", priority: 0.9 },
 
-  /* --- Editorial and trust ---------------------------------------------- */
+  /* --- Editorial ---------------------------------------------------------- */
   { path: "/journal", changeFrequency: "weekly", priority: 0.85 },
-  { path: "/reviews", changeFrequency: "monthly", priority: 0.6 },
 
   /* --- Company ---------------------------------------------------------- */
   { path: "/about", changeFrequency: "yearly", priority: 0.7 },

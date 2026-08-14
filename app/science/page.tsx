@@ -7,7 +7,6 @@ import { JsonLd } from "@/components/common/JsonLd";
 import { categories } from "@/data/categories";
 import { products, productsByCategory } from "@/data/products";
 import { stacks } from "@/data/stacks";
-import { strips } from "@/data/strips";
 import { labSummary } from "@/data/lab-results";
 import { sciencePillars } from "@/data/science";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -57,13 +56,6 @@ const FORMATS = [
     count: stacks.length,
     unit: "protocols",
     body: "Curated multi-compound protocols combining mechanistically complementary compounds for targeted research applications.",
-  },
-  {
-    name: "Pocket Strips",
-    href: "/strips",
-    count: strips.length,
-    unit: "formats",
-    body: "Pharmaceutical-grade oral dissolvable films — sublingual delivery without reconstitution or cold chain.",
   },
   {
     name: "Lab Results",

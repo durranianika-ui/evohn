@@ -1,6 +1,5 @@
 import { products } from "@/data/products";
 import { stacks } from "@/data/stacks";
-import { strips } from "@/data/strips";
 import { articles } from "@/data/journal";
 import { labBatches } from "@/data/lab-results";
 import { allFaqItems } from "@/data/faq";
@@ -25,7 +24,6 @@ import { categories } from "@/data/categories";
 export type SearchKind =
   | "Compound"
   | "Stack"
-  | "Strip"
   | "Article"
   | "Batch"
   | "Domain"
@@ -50,7 +48,6 @@ export interface SearchDocument {
 const KIND_WEIGHT: Record<SearchKind, number> = {
   Compound: 6,
   Stack: 5,
-  Strip: 5,
   Domain: 5,
   Article: 4,
   Batch: 3,
@@ -146,14 +143,6 @@ const PAGES: SearchDocument[] = [
     keywords: ["blog", "articles", "writing", "editorial"],
   },
   {
-    id: "page:reviews",
-    kind: "Page",
-    title: "Reviews",
-    description: "What researchers report back about the material.",
-    href: "/reviews",
-    keywords: ["testimonials", "feedback", "ratings"],
-  },
-  {
     id: "page:about",
     kind: "Page",
     title: "About",
@@ -165,7 +154,7 @@ const PAGES: SearchDocument[] = [
     id: "page:contact",
     kind: "Page",
     title: "Contact",
-    description: "Reach the research desk, the laboratory or the partners team.",
+    description: "One desk, one address, for every kind of enquiry.",
     href: "/contact",
     keywords: ["email", "enquiry", "whatsapp", "support", "get in touch"],
   },
@@ -194,14 +183,6 @@ const PAGES: SearchDocument[] = [
     keywords: ["protocol", "combination", "group"],
   },
   {
-    id: "page:strips",
-    kind: "Page",
-    title: "Pocket Strips",
-    description: "Oral dissolvable films — no reconstitution, no cold chain.",
-    href: "/strips",
-    keywords: ["film", "sublingual", "oral", "odf"],
-  },
-  {
     id: "page:faq",
     kind: "Page",
     title: "FAQ",
@@ -215,6 +196,8 @@ function buildIndex(): SearchDocument[] {
   const index: SearchDocument[] = [...PAGES];
 
   for (const product of products) {
+    const category = categories.find((c) => c.slug === product.category);
+
     index.push({
       id: `product:${product.slug}`,
       kind: "Compound",
@@ -222,10 +205,21 @@ function buildIndex(): SearchDocument[] {
       description: product.summary,
       href: `/products/${product.slug}`,
       keywords: [
+        // Accepted aliases carry the names people actually type — "reta",
+        // "BAC water", "copper peptide" — none of which appear in the title.
         ...product.alsoKnownAs,
+        // The slug is the hyphenated spelling; a query typed with spaces or
+        // without punctuation still has to land ("bpc 157", "ghk cu").
+        product.slug,
+        product.slug.replace(/-/g, " "),
+        product.name.replace(/[^a-z0-9]+/gi, " "),
+        // Domain, by slug and by display name, so "weight loss" reaches
+        // Retatrutide and "longevity" reaches GHK-Cu.
         product.category,
+        category?.name ?? "",
         product.subtitle,
-        product.dosage,
+        // Presentation, so "pen" and "vial" are searchable product types.
+        ...product.presentations.flatMap((p) => [p.name, p.kind, p.dosage]),
         product.specs.cas,
         product.specs.formula,
       ].filter(Boolean),
@@ -242,17 +236,6 @@ function buildIndex(): SearchDocument[] {
       href: `/stacks/${stack.slug}`,
       keywords: [stack.eyebrow, stack.category, ...stack.includes.map((c) => c.slug)],
       body: stack.scientificSummary,
-    });
-  }
-
-  for (const strip of strips) {
-    index.push({
-      id: `strip:${strip.slug}`,
-      kind: "Strip",
-      title: strip.name,
-      description: strip.summary,
-      href: "/strips",
-      keywords: [strip.compound, strip.category, strip.loading, "film", "oral"],
     });
   }
 
@@ -356,6 +339,29 @@ export interface SearchResult extends SearchDocument {
 }
 
 /**
+ * Whole-phrase bonus.
+ *
+ * Per-term scoring alone lets a document that mentions every word separately
+ * outrank the document actually named by the query: search "bacteriostatic
+ * water" and the handling guide, which uses both words, competes with the
+ * compound that *is* both words. Scoring the untokenised query against the
+ * title and the accepted aliases settles it, so an exact or near-exact name
+ * match lands first and looser matches fall in behind.
+ */
+function phraseBonus(doc: SearchDocument, query: string) {
+  const title = doc.title.toLowerCase();
+  if (title === query) return 120;
+
+  const aliases = doc.keywords.map((k) => k.toLowerCase());
+  if (aliases.includes(query)) return 90;
+
+  if (title.startsWith(query)) return 60;
+  if (title.includes(query)) return 35;
+  if (aliases.some((a) => a.startsWith(query))) return 20;
+  return 0;
+}
+
+/**
  * Run a query. Multi-word queries require **every** term to match somewhere
  * in the document — an AND, not an OR, because an OR over a small index
  * returns the whole index.
@@ -380,7 +386,7 @@ export function search(rawQuery: string, limit = 40): SearchResult[] {
       total += score;
     }
 
-    if (matchedAll) results.push({ ...doc, score: total });
+    if (matchedAll) results.push({ ...doc, score: total + phraseBonus(doc, query) });
   }
 
   return results

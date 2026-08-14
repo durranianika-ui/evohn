@@ -16,7 +16,6 @@ import { cn } from "@/lib/utils";
 const KIND_ORDER: SearchKind[] = [
   "Compound",
   "Stack",
-  "Strip",
   "Domain",
   "Article",
   "Batch",
