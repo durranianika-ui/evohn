@@ -4,7 +4,7 @@ import { PageHero } from "@/sections/shared/PageHero";
 import { CallToAction } from "@/sections/shared/CallToAction";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Figure } from "@/components/common/Figure";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { ParallaxImage } from "@/components/motion/Parallax";
 import { Marquee } from "@/components/motion/Marquee";
@@ -15,7 +15,6 @@ import {
   facilities,
   mission,
   origin,
-  timeline,
   values,
 } from "@/data/about";
 import { site } from "@/data/site";
@@ -85,9 +84,13 @@ export default function AboutPage() {
       <section className="bg-soft">
         <div className="container-content">
           <ParallaxImage className="w-full">
+            {/* Cut from the approved catalogue's own pen render rather than
+                the hero film's poster frame: the poster's sub-label is render
+                noise rather than type, which a moving frame carries and a
+                full-width still does not. */}
             <Figure
-              src="/editorial/philosophy-vial.jpg"
-              alt="EVOHN presentation vial under studio light"
+              src="/editorial/philosophy-pen.webp"
+              alt="EVOHN pre-filled injection pen under studio light"
               placeholderLabel="Editorial plate"
               sizes="100vw"
               className="aspect-21/9 w-full"
@@ -122,40 +125,6 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="section-y bg-mist/50 text-carbon">
-        <div className="container-content">
-          <SectionHeading
-            eyebrow="How we got here"
-            title={"The decisions,\nin order"}
-            body="Not a growth story. A sequence of decisions about what would and would not be acceptable, most of them taken before there was a catalogue to apply them to."
-          />
-
-          <Stagger className="mt-20">
-            <ol className="border-t border-carbon/15">
-              {timeline.map((entry, i) => (
-                <StaggerItem key={entry.year} distance={18}>
-                  <li className="grid gap-4 border-b border-carbon/12 py-10 md:grid-cols-12 md:gap-10">
-                    <span className="type-display-s tabular-nums text-carbon/25 md:col-span-2">
-                      {entry.year}
-                    </span>
-                    <h3 className="type-title text-carbon md:col-span-4">
-                      {entry.title}
-                    </h3>
-                    <p className="type-body-s max-w-prose text-carbon/68 md:col-span-6">
-                      {entry.body}
-                    </p>
-                    <span className="sr-only">
-                      Step {i + 1} of {timeline.length}
-                    </span>
-                  </li>
-                </StaggerItem>
-              ))}
-            </ol>
-          </Stagger>
         </div>
       </section>
 

@@ -1,22 +1,13 @@
 /**
  * About.
  *
- * Company narrative, timeline and facilities. Flat and serialisable — a CMS
- * collection maps onto it without transformation.
+ * Company narrative, values, facilities and accountability. Flat and
+ * serialisable — a CMS collection maps onto it without transformation.
  *
  * The narrative is written about the standard rather than about individuals:
  * there are no named personnel here, and accountability is described as a
  * structural arrangement, which is the part a reader can actually check.
  */
-
-import { categories } from "./categories";
-import { products } from "./products";
-
-export interface TimelineEntry {
-  year: string;
-  title: string;
-  body: string;
-}
 
 export interface Facility {
   name: string;
@@ -71,39 +62,6 @@ export const values: Value[] = [
     index: "04",
     title: "Precision in language",
     body: "We describe compounds as the published literature characterises them. We do not make therapeutic claims, and we do not translate a mechanism into a promise. The distinction matters more here than the marketing costs us.",
-  },
-];
-
-export const timeline: TimelineEntry[] = [
-  {
-    year: "2021",
-    title: "A documentation problem",
-    body: "The starting position was analytical records that could not be compared to one another, and no dependable link between a batch in the freezer and the analysis that released it. The first work was not chemistry. It was a specification document.",
-  },
-  {
-    year: "2022",
-    title: "The written standard",
-    body: "The acceptance criteria that still govern every release were agreed and fixed: ≥ 99.0% purity by RP-HPLC, mass confirmation of identity, assayed content against label, water by Karl Fischer, residual solvents to USP <467>. Written before any batch existed, so the criteria could never be fitted to a result.",
-  },
-  {
-    year: "2023",
-    title: "Independent analysis from the first batch",
-    body: "Rather than building an in-house laboratory, EVOHN contracted accredited third parties from the outset. In-process testing informs manufacturing; it does not release material. Keeping the two functions structurally separate was a decision taken before the first vial was filled.",
-  },
-  {
-    year: "2024",
-    title: "The catalogue takes shape",
-    body: `${products.length} entries across ${categories.length} research domains, each selected for the depth of its published record rather than the strength of its demand. Compounds without a literature base substantial enough to describe honestly were left out — and still are.`,
-  },
-  {
-    year: "2025",
-    title: "Publication as default",
-    body: "The certificate library moved from disclosure-on-request to publication as standard. Every batch, every result, retrievable by accession number from the issuing laboratory. The change was operationally trivial and reputationally decisive.",
-  },
-  {
-    year: "2026",
-    title: "Documented at every step",
-    body: "Retained samples, batch-level traceability, published chromatograms and a research desk that writes about method rather than product. The current standard, and the floor for what comes next.",
   },
 ];
 
