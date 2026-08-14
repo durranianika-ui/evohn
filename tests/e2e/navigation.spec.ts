@@ -10,7 +10,6 @@ const PRIMARY = [
   "Science",
   "Journal",
   "Lab Results",
-  "Reviews",
   "About",
   "Contact",
 ];

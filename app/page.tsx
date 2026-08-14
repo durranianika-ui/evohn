@@ -4,6 +4,7 @@ import { Standards } from "@/sections/home/Standards";
 import { Research } from "@/sections/home/Research";
 import { Domains } from "@/sections/home/Domains";
 import { Collection } from "@/sections/home/Collection";
+import { Presentations } from "@/sections/home/Presentations";
 import { Transition } from "@/sections/home/Transition";
 import { Facilities } from "@/sections/home/Facilities";
 import { Researchers } from "@/sections/home/Researchers";
@@ -44,6 +45,7 @@ export default function HomePage() {
       <Research />
       <Domains />
       <Collection />
+      <Presentations />
       <Transition />
       <Facilities />
       <Researchers />

@@ -128,9 +128,9 @@ describe("search results", () => {
   });
 
   it("finds a compound and links it at its own address", () => {
-    render(<SearchResults query="semaglutide" kind={null} />);
+    render(<SearchResults query="retatrutide" kind={null} />);
     const first = screen.getAllByRole("link")[0];
-    expect(first).toHaveAttribute("href", "/products/semaglutide");
+    expect(first).toHaveAttribute("href", "/products/retatrutide");
   });
 
   it("announces the result count politely", () => {

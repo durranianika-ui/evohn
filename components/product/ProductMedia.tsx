@@ -1,5 +1,9 @@
 import Image from "next/image";
-import type { Product } from "@/data/products";
+import {
+  getPresentation,
+  type PresentationKind,
+  type Product,
+} from "@/data/products";
 import { asset } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +11,11 @@ interface ProductMediaProps {
   product: Product;
   /** Index into `product.gallery`; omit for the primary image. */
   frame?: number;
+  /**
+   * Show a named presentation instead of the primary image. Preferred over
+   * `frame` where the caller means "the pen", because it says so.
+   */
+  presentation?: PresentationKind;
   className?: string;
   /** `sizes` hint for the responsive image. */
   sizes?: string;
@@ -30,12 +39,19 @@ interface ProductMediaProps {
 export function ProductMedia({
   product,
   frame,
+  presentation,
   className,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
   priority = false,
 }: ProductMediaProps) {
+  const named = presentation
+    ? getPresentation(product, presentation)?.image
+    : undefined;
   const src =
-    frame === undefined ? product.image : (product.gallery[frame] ?? product.image);
+    named ??
+    (frame === undefined
+      ? product.image
+      : (product.gallery[frame] ?? product.image));
 
   return (
     <div
@@ -48,7 +64,11 @@ export function ProductMedia({
     >
       <Image
         src={asset(src)}
-        alt={`${product.name} — ${product.subtitle}`}
+        alt={
+          presentation
+            ? `EVOHN ${product.name} ${presentation} — ${product.subtitle}`
+            : `${product.name} — ${product.subtitle}`
+        }
         fill
         sizes={sizes}
         priority={priority}

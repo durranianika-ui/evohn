@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { ProductMedia } from "./ProductMedia";
 import { getCategory } from "@/data/categories";
-import type { Product } from "@/data/products";
+import {
+  getPresentation,
+  type PresentationKind,
+  type Product,
+} from "@/data/products";
 import { currentBatch } from "@/data/lab-results";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +27,7 @@ export function ProductCard({
   className,
   priority = false,
   sizes,
+  presentation = "vial",
 }: {
   product: Product;
   index?: number;
@@ -30,10 +35,14 @@ export function ProductCard({
   className?: string;
   priority?: boolean;
   sizes?: string;
+  /** Which presentation the plate leads with. */
+  presentation?: PresentationKind;
 }) {
   const category = getCategory(product.category);
   const batch = currentBatch(product.slug);
   const dark = tone === "dark";
+  const shown = getPresentation(product, presentation);
+  const pen = presentation === "pen";
 
   return (
     <Link
@@ -43,10 +52,14 @@ export function ProductCard({
       <div className="relative overflow-hidden">
         <ProductMedia
           product={product}
+          presentation={presentation}
           priority={priority}
           sizes={sizes}
           className={cn(
-            "aspect-4/5 w-full",
+            // The pen is a landscape object; forcing it into the vial's
+            // portrait plate would float it in the middle of the frame at
+            // half the size. The grid switches wholesale, so rows stay even.
+            pen ? "aspect-4/3 w-full" : "aspect-4/5 w-full",
             "transition-transform duration-[1.2s] ease-brand",
             "group-hover/card:scale-[1.045] motion-reduce:transition-none",
           )}
@@ -94,12 +107,44 @@ export function ProductCard({
           )}
         >
           <span>{category.name}</span>
-          <span className="tabular-nums">{product.dosage}</span>
+          <span className="tabular-nums">
+            {shown?.dosage ?? product.dosage}
+          </span>
         </div>
 
         <h3 className={cn("type-title mt-4", dark ? "text-soft" : "text-carbon")}>
           {product.name}
         </h3>
+
+        {/* Both presentations are named on every card, so the pen is visible
+            wherever the catalogue is, not only once you open a product. */}
+        <p
+          className={cn(
+            "type-label mt-3 flex items-center gap-2",
+            dark ? "text-soft/45" : "text-carbon/45",
+          )}
+        >
+          {product.presentations.map((p, i) => (
+            <span key={p.kind} className="flex items-center gap-2">
+              {i > 0 ? (
+                <span aria-hidden className="opacity-50">
+                  ·
+                </span>
+              ) : null}
+              <span
+                className={
+                  p.kind === presentation
+                    ? dark
+                      ? "text-soft"
+                      : "text-carbon"
+                    : undefined
+                }
+              >
+                {p.name}
+              </span>
+            </span>
+          ))}
+        </p>
 
         <p
           className={cn(

@@ -16,7 +16,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 const ITEM = {
-  slug: "bpc-157",
+  slug: "bpc-157-tb-500",
   name: "BPC-157",
   subtitle: "Recovery / Peptide",
   dosage: "5 mg",
@@ -172,11 +172,11 @@ describe("enquiry message", () => {
   it("numbers several compounds and counts them", () => {
     const message = buildEnquiryMessage([
       ITEM,
-      { ...ITEM, slug: "tb-500", name: "TB-500" },
+      { ...ITEM, slug: "ghk-cu", name: "GHK-Cu" },
     ]);
     expect(message).toContain("the following 2 compounds:");
     expect(message).toContain("1. BPC-157");
-    expect(message).toContain("2. TB-500");
+    expect(message).toContain("2. GHK-Cu");
   });
 });
 
@@ -202,12 +202,12 @@ describe("enquiry drawer", () => {
     const drawer = screen.getByRole("dialog", { name: /enquiry list/i });
     expect(
       await within(drawer).findByRole("link", { name: "BPC-157" }),
-    ).toHaveAttribute("href", "/products/bpc-157");
+    ).toHaveAttribute("href", "/products/bpc-157-tb-500");
   });
 
   it("removes an item and updates the count", async () => {
     const user = userEvent.setup();
-    seed([ITEM, { ...ITEM, slug: "tb-500", name: "TB-500" }]);
+    seed([ITEM, { ...ITEM, slug: "ghk-cu", name: "GHK-Cu" }]);
     open();
 
     expect(await screen.findByText("2 compounds")).toBeInTheDocument();

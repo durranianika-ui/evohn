@@ -4,6 +4,8 @@ import { products } from "@/data/products";
 import { articles } from "@/data/journal";
 import { labBatches } from "@/data/lab-results";
 import { legalDocuments } from "@/data/legal";
+import { stacks } from "@/data/stacks";
+import { staticRoutePaths } from "@/data/routes";
 
 describe("search index", () => {
   it("covers every compound", () => {
@@ -39,6 +41,43 @@ describe("search index", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
+  it("indexes no product the catalogue does not list", () => {
+    // The complaint that started this: search was returning compounds that
+    // had been dropped from the catalogue, because the index was built from
+    // its own list rather than from the dataset the pages render.
+    const live = new Set(products.map((p) => `/products/${p.slug}`));
+    for (const doc of searchIndex) {
+      if (doc.href.startsWith("/products/")) {
+        expect(live.has(doc.href)).toBe(true);
+      }
+    }
+  });
+
+  it("points every entry at a route the site actually serves", () => {
+    const dynamic = [
+      ...products.map((p) => `/products/${p.slug}`),
+      ...articles.map((a) => `/journal/${a.slug}`),
+      ...stacks.map((s) => `/stacks/${s.slug}`),
+      ...labBatches.map((b) => `/lab-results/${b.product}`),
+    ];
+    const known = new Set([...staticRoutePaths, ...dynamic]);
+
+    for (const doc of searchIndex) {
+      // Domain entries carry a query string; the path is what must resolve.
+      const path = doc.href.split("?")[0];
+      expect(known.has(path)).toBe(true);
+    }
+  });
+
+  it("never mentions a removed section", () => {
+    const gone = ["/reviews", "/strips"];
+    for (const doc of searchIndex) {
+      for (const dead of gone) {
+        expect(doc.href.startsWith(dead)).toBe(false);
+      }
+    }
+  });
+
   it("gives every entry a title, a description and an href", () => {
     for (const doc of searchIndex) {
       expect(doc.title.trim()).not.toBe("");
@@ -56,7 +95,7 @@ describe("search index", () => {
 
 describe("query handling", () => {
   it("normalises case and collapses whitespace", () => {
-    expect(normalise("  Semaglutide   Peptide ")).toBe("semaglutide peptide");
+    expect(normalise("  Retatrutide   Peptide ")).toBe("retatrutide peptide");
   });
 
   it("returns nothing for a query below two characters", () => {
@@ -66,14 +105,14 @@ describe("query handling", () => {
   });
 
   it("finds a compound by its exact name", () => {
-    const results = search("semaglutide");
+    const results = search("retatrutide");
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0].href).toBe("/products/semaglutide");
+    expect(results[0].href).toBe("/products/retatrutide");
   });
 
   it("is case-insensitive", () => {
-    expect(search("SEMAGLUTIDE")[0].href).toBe(
-      search("semaglutide")[0].href,
+    expect(search("RETATRUTIDE")[0].href).toBe(
+      search("retatrutide")[0].href,
     );
   });
 
@@ -100,10 +139,43 @@ describe("query handling", () => {
     expect(results[0].title.toLowerCase()).toBe("calculator");
   });
 
+  it("puts the named compound first for every product in the catalogue", () => {
+    // The headline complaint about search: typing a product's name did not
+    // reliably surface that product first.
+    for (const product of products) {
+      const results = search(product.name);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results[0].href).toBe(`/products/${product.slug}`);
+    }
+  });
+
+  it("puts the compound above a guide that merely uses both its words", () => {
+    // "bacteriostatic water" appears throughout the handling guidance, so
+    // per-term scoring alone let those pages compete with the product that
+    // *is* both words. The whole-phrase bonus settles it.
+    const results = search("bacteriostatic water");
+    expect(results[0].href).toBe("/products/bacteriostatic-water");
+  });
+
+  it("finds a compound by a shorthand alias", () => {
+    expect(search("reta")[0].href).toBe("/products/retatrutide");
+    expect(search("copper peptide")[0].href).toBe("/products/ghk-cu");
+  });
+
+  it("finds a compound typed without its punctuation", () => {
+    expect(search("ghk cu")[0].href).toBe("/products/ghk-cu");
+    expect(search("bpc 157")[0].href).toBe("/products/bpc-157-tb-500");
+  });
+
+  it("treats a presentation as a searchable product type", () => {
+    const pens = search("pen").filter((r) => r.kind === "Compound");
+    expect(pens.length).toBe(products.length);
+  });
+
   it("requires every term of a multi-word query to match", () => {
     // A term that matches nothing eliminates the document entirely, rather
     // than being ORed in and returning the whole index.
-    expect(search("semaglutide zzzzqqq")).toEqual([]);
+    expect(search("retatrutide zzzzqqq")).toEqual([]);
   });
 
   it("returns nothing for a query that matches nothing", () => {

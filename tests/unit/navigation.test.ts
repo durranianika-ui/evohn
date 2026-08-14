@@ -11,13 +11,12 @@ import { indexableRoutes, staticRoutePaths, staticRoutes } from "@/data/routes";
  * points at.
  */
 
-/** The seven the brief specifies, in the order it specifies. */
+/** The six the brief specifies, in the order it specifies. */
 const PRIMARY = [
   "Catalogue",
   "Science",
   "Journal",
   "Lab Results",
-  "Reviews",
   "About",
   "Contact",
 ];

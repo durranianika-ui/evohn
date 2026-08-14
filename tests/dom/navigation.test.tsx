@@ -48,7 +48,6 @@ describe("primary bar", () => {
       "Catalogue",
       "Journal",
       "Lab Results",
-      "Reviews",
       "About",
       "Contact",
     ]) {
@@ -173,7 +172,7 @@ describe("utility controls", () => {
     window.localStorage.setItem(
       "evohn.enquiry.v1",
       JSON.stringify([
-        { slug: "bpc-157", name: "BPC-157", subtitle: "Recovery", dosage: "5 mg" },
+        { slug: "bpc-157-tb-500", name: "BPC-157", subtitle: "Recovery", dosage: "5 mg" },
       ]),
     );
     renderHeader();
@@ -199,8 +198,8 @@ describe("utility controls", () => {
     await user.click(screen.getByRole("button", { name: /^search$/i }));
 
     const dialog = await screen.findByRole("dialog", { name: /search evohn/i });
-    await user.type(within(dialog).getByRole("searchbox"), "semaglutide{Enter}");
-    expect(push).toHaveBeenCalledWith("/search?q=semaglutide");
+    await user.type(within(dialog).getByRole("searchbox"), "retatrutide{Enter}");
+    expect(push).toHaveBeenCalledWith("/search?q=retatrutide");
   });
 
   it("does not navigate on a query too short to mean anything", async () => {
@@ -245,7 +244,7 @@ describe("utility controls", () => {
 
     const index = await screen.findByRole("dialog", { name: /site index/i });
     // These four left the primary bar; the index is where they went.
-    for (const label of ["Research Stacks", "Pocket Strips", "Quality", "FAQ"]) {
+    for (const label of ["Research Stacks", "Quality", "FAQ"]) {
       expect(
         within(index).getByRole("link", { name: label }),
       ).toBeInTheDocument();
@@ -274,7 +273,6 @@ describe("mobile drawer", () => {
       ["Catalogue", "/catalogue"],
       ["Journal", "/journal"],
       ["Lab Results", "/lab-results"],
-      ["Reviews", "/reviews"],
       ["About", "/about"],
       ["Contact", "/contact"],
     ]) {

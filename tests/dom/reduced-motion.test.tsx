@@ -52,7 +52,7 @@ describe("under prefers-reduced-motion", () => {
     // Scoped to the primary list: the full site index below repeats several of
     // these deliberately, so an unscoped query matches more than one.
     const nav = within(screen.getByRole("navigation", { name: "Primary" }));
-    for (const label of ["Catalogue", "Journal", "Reviews", "Contact"]) {
+    for (const label of ["Catalogue", "Journal", "Lab Results", "Contact"]) {
       expect(nav.getByRole("link", { name: label })).toBeInTheDocument();
     }
   });

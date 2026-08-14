@@ -17,7 +17,7 @@ import { breadcrumbSchema, catalogueSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Catalogue",
   description:
-    "The complete EVOHN catalogue of precision research compounds across eight research domains — each analytically verified, independently confirmed and batch traceable.",
+    "The complete EVOHN catalogue of precision research compounds, each supplied as a lyophilised vial or a pre-filled pen — analytically verified, independently confirmed and batch traceable.",
   alternates: { canonical: "/catalogue" },
 };
 
@@ -46,6 +46,14 @@ export default function CataloguePage() {
         product={product}
         index={i}
         priority={i < 3}
+        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
+      />
+    ),
+    penCard: (
+      <ProductCard
+        product={product}
+        index={i}
+        presentation="pen"
         sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
       />
     ),

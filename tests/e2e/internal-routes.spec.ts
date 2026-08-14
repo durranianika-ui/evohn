@@ -11,14 +11,13 @@ import { test, expect } from "./fixtures";
    point: it proves the route rendered its own content, not a shell. */
 const ROUTES: Array<{ path: string; heading: RegExp }> = [
   { path: "/catalogue", heading: /complete collection/i },
-  { path: "/products/semaglutide", heading: /semaglutide/i },
+  { path: "/products/retatrutide", heading: /retatrutide/i },
   { path: "/calculator", heading: /peptide calculator/i },
   { path: "/peptide-pedia", heading: /reference library/i },
   { path: "/reconstitution-guide", heading: /reconstituted/i },
   { path: "/storage-handling", heading: /keeping compounds stable/i },
   { path: "/journal", heading: /research desk/i },
   { path: "/lab-results", heading: /certificates of analysis/i },
-  { path: "/reviews", heading: /what the bench says/i },
   { path: "/about", heading: /documented at every step/i },
   { path: "/contact", heading: /talk to the research desk/i },
   { path: "/search", heading: /search/i },

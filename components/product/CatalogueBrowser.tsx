@@ -27,7 +27,20 @@ export interface CatalogueEntry extends CatalogueRecord {
    * they are passed in already rendered.
    */
   card: ReactNode;
+  /** The same card leading with the pen render. */
+  penCard: ReactNode;
 }
+
+/** Which presentation the grid is showing. */
+type PresentationView = "vial" | "pen";
+
+const PRESENTATION_VIEWS: { key: PresentationView; label: string }[] = [
+  { key: "vial", label: "Vial" },
+  { key: "pen", label: "Pen" },
+];
+
+const isPresentationView = (v: string | null): v is PresentationView =>
+  v === "vial" || v === "pen";
 
 /**
  * Catalogue browser.
@@ -69,15 +82,22 @@ export function CatalogueBrowser({
   const query = params.get("q") ?? "";
   const deferredQuery = useDeferredValue(query);
 
+  // Which presentation the grid leads with. Mirrored into the URL like every
+  // other control, so "the catalogue, as pens" is a linkable view.
+  const urlView = params.get("as");
+  const view: PresentationView = isPresentationView(urlView) ? urlView : "vial";
+
   const commit = (next: {
     domain?: CategorySlug | "all";
     sort?: SortKey;
     q?: string;
+    as?: PresentationView;
   }) => {
     setUrl({
       domain: (next.domain ?? domain) === "all" ? null : (next.domain ?? domain),
       sort: (next.sort ?? sort) === DEFAULT_SORT ? null : (next.sort ?? sort),
       q: (next.q ?? query).trim() || null,
+      as: (next.as ?? view) === "vial" ? null : (next.as ?? view),
     });
   };
 
@@ -161,6 +181,37 @@ export function CatalogueBrowser({
         </div>
 
         <div className="flex w-full shrink-0 flex-col gap-6 sm:flex-row sm:items-end lg:w-auto">
+          {/* Presentation */}
+          <div className="shrink-0">
+            <span className="type-label block text-carbon/45">Presentation</span>
+            <div
+              role="group"
+              aria-label="Show the catalogue as vials or pens"
+              className="mt-1.5 inline-flex border border-carbon/20"
+            >
+              {PRESENTATION_VIEWS.map((option) => {
+                const selected = view === option.key;
+                return (
+                  <button
+                    key={option.key}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => commit({ as: option.key })}
+                    className={cn(
+                      "type-label min-h-11 px-5 py-2.5",
+                      "transition-colors duration-400 ease-brand",
+                      selected
+                        ? "bg-carbon text-soft"
+                        : "text-carbon/62 hover:text-carbon",
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Sort */}
           <div className="shrink-0">
             <label
@@ -266,7 +317,7 @@ export function CatalogueBrowser({
                 exit={{ opacity: 0, y: reduced ? 0 : -12 }}
                 transition={{ duration: reduced ? 0.12 : 0.5, ease: EASE_BRAND }}
               >
-                {entry.card}
+                {view === "pen" ? entry.penCard : entry.card}
               </motion.div>
             ))}
           </AnimatePresence>
