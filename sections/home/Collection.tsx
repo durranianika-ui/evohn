@@ -7,67 +7,31 @@ import { getCategory } from "@/data/categories";
 import { asset, imageAspect } from "@/lib/media";
 
 /**
- * The collection — all nine supplied presentations, in the supplied order.
+ * The collection — the whole approved catalogue, in catalogue order.
  *
- * Seven are catalogue compounds and carry their own data verbatim. Two are
- * presentations that exist as supplied assets but not as catalogue entries —
- * the TB-500 + BPC-157 co-study vial and bacteriostatic water — and their
- * lines below are the label copy from the supplied artwork, not invented
- * product data. The combination card resolves to the TB-500 entry, whose
- * page documents the co-study; the water resolves to the reconstitution
- * guide, which is where its handling is described.
+ * This used to be a hand-written list of nine entries, two of which existed
+ * only here and carried copy written for this component. That is exactly how a
+ * card ends up describing a product the catalogue does not list. It now reads
+ * `data/products` directly, so the homepage and the catalogue cannot disagree
+ * about what EVOHN sells, what a compound is called, or which photograph
+ * belongs to it.
+ *
+ * Every entry carries both presentations, so the card names the pen alongside
+ * the vial it shows.
  *
  * No prices: the catalogue is a presentation catalogue and carries none.
  */
-const FEATURED: (string | TrackItem)[] = [
-  {
-    slug: "tb-500-bpc-157",
-    name: "TB-500 + BPC-157",
-    category: "Recovery",
-    summary:
-      "A dual-peptide formulation focused on accelerated repair pathways. Studied for synergistic effects in regenerative research.",
-    image: "/products/tb-500-bpc-157.webp",
-    href: "/products/tb-500",
-  },
-  "retatrutide",
-  "mots-c",
-  "ghk-cu",
-  "cjc-1295-ipamorelin",
-  "bpc-157",
-  {
-    slug: "bacteriostatic-water",
-    name: "Bacteriostatic Water",
-    category: "Preparation",
-    summary:
-      "Sterile water for injection, 10 mL. Keep refrigerated at 2–8°C. The reconstitution medium for the range.",
-    image: "/products/bacteriostatic-water.webp",
-    href: "/reconstitution-guide",
-  },
-  "selank",
-  "nad-plus",
-];
-
 export function Collection() {
-  const items: TrackItem[] = FEATURED.map((entry): TrackItem | null => {
-    if (typeof entry !== "string") {
-      return {
-        ...entry,
-        image: asset(entry.image),
-        aspect: imageAspect(entry.image) ?? undefined,
-      };
-    }
-    const product = products.find((p) => p.slug === entry);
-    if (!product) return null;
-    return {
-      slug: product.slug,
-      name: product.name,
-      summary: product.summary,
-      category: getCategory(product.category).name,
-      image: asset(product.image),
-      aspect: imageAspect(product.image) ?? undefined,
-      href: `/products/${product.slug}`,
-    };
-  }).filter((item): item is TrackItem => item !== null);
+  const items: TrackItem[] = products.map((product) => ({
+    slug: product.slug,
+    name: product.name,
+    summary: product.summary,
+    category: getCategory(product.category).name,
+    presentation: product.presentations.map((p) => p.name).join(" · "),
+    image: asset(product.image),
+    aspect: imageAspect(product.image) ?? undefined,
+    href: `/products/${product.slug}`,
+  }));
 
   return (
     <section className="relative -mt-px bg-onyx text-soft">
@@ -83,6 +47,12 @@ export function Collection() {
             <h2 className="type-display-s mt-4 text-soft">
               Precision compounds that set the standard.
             </h2>
+          </Reveal>
+          <Reveal delay={0.14} className="mt-5">
+            <p className="type-body-s max-w-[52ch] text-soft/55">
+              Twelve entries, each supplied as a lyophilised vial or a
+              pre-filled pen carrying the identical certified material.
+            </p>
           </Reveal>
           <Reveal delay={0.18} className="mt-8">
             <ButtonLink href="/catalogue" tone="dark" variant="outline">

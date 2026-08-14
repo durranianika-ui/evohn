@@ -21,6 +21,8 @@ export interface TrackItem {
   image: string;
   /** Domain line shown above the name. */
   category: string;
+  /** Presentations the entry is supplied in, e.g. "Vial · Pen". */
+  presentation?: string;
   /** Where "View Product" goes — not always a product page. */
   href: string;
   /** Intrinsic width/height of the photograph; the frame takes this ratio. */
@@ -48,8 +50,27 @@ export interface TrackItem {
  * back and converted to pixels so the offset can be computed continuously.
  * A shallow velocity lean (±2deg) keeps the shuffle energy.
  *
+ * ## Pace
+ *
+ * The rail is scroll-driven, so its speed is set by how much page a card is
+ * given rather than by any duration. The section height was previously a flat
+ * 430vh whatever the collection held — which meant every compound added made
+ * the whole thing move faster, and at twelve entries a card crossed the stage
+ * in about a third of a screen. Height is now `SCROLL_PER_CARD` per entry, so
+ * the pace is constant as the catalogue grows and each product holds the
+ * centre long enough to be read rather than glimpsed.
+ *
  * Under reduced motion the pin is dropped: natural height, scroll-snap rail.
  */
+
+/**
+ * Viewport heights of scrolling per card.
+ *
+ * A little under one full screen per product: enough that each is legible and
+ * the movement reads as deliberate, without the section becoming a corridor
+ * the reader has to tunnel through to reach the rest of the page.
+ */
+const SCROLL_PER_CARD = 80;
 export function CollectionTrack({ items }: { items: TrackItem[] }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
@@ -177,7 +198,15 @@ export function CollectionTrack({ items }: { items: TrackItem[] }) {
   ));
 
   return (
-    <div ref={sectionRef} className={cn("relative", !reduced && "h-[430vh]")}>
+    <div
+      ref={sectionRef}
+      className="relative"
+      style={
+        reduced
+          ? undefined
+          : { height: `${100 + items.length * SCROLL_PER_CARD}vh` }
+      }
+    >
       <div
         className={cn(
           !reduced && "sticky top-0 flex h-dvh flex-col justify-center overflow-hidden",
@@ -268,6 +297,11 @@ function Card({
         <p className="type-title-s mt-2 truncate uppercase text-soft">
           {item.name}
         </p>
+        {item.presentation ? (
+          <p className="type-label mt-1.5 truncate text-soft/40">
+            {item.presentation}
+          </p>
+        ) : null}
 
         {/* The frame takes the photograph's OWN ratio, so `object-contain`
             fills it edge to edge — the whole vial shows, nothing is cropped
