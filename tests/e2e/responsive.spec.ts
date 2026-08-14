@@ -1,5 +1,5 @@
 import { test, expect } from "./fixtures";
-import { homeBlocks } from "./_helpers";
+import { HOME_BLOCKS, homeBlocks } from "./_helpers";
 
 /**
  * Runs at every viewport project. Tablet is not a narrow desktop and mobile is
@@ -23,10 +23,10 @@ test.describe("responsive", () => {
     }
   });
 
-  test("the eight blocks all render with real height", async ({ page }) => {
+  test("every homepage block renders with real height", async ({ page }) => {
     await page.goto("/");
     const heights = await homeBlocks(page);
-    expect(heights).toHaveLength(8);
+    expect(heights).toHaveLength(HOME_BLOCKS);
     for (const [i, h] of heights.entries()) {
       expect(h, `block ${i + 1} collapsed`).toBeGreaterThan(120);
     }

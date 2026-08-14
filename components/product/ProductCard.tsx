@@ -58,8 +58,11 @@ export function ProductCard({
           className={cn(
             // The pen is a landscape object; forcing it into the vial's
             // portrait plate would float it in the middle of the frame at
-            // half the size. The grid switches wholesale, so rows stay even.
-            pen ? "aspect-4/3 w-full" : "aspect-4/5 w-full",
+            // half the size. The frame takes the render's own 1276:753, so
+            // `object-contain` fills it edge to edge and no band of the plate
+            // shows above and below. The grid switches wholesale, so rows
+            // stay even either way.
+            pen ? "aspect-[1276/753] w-full" : "aspect-4/5 w-full",
             "transition-transform duration-[1.2s] ease-brand",
             "group-hover/card:scale-[1.045] motion-reduce:transition-none",
           )}

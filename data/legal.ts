@@ -101,7 +101,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "Governing law",
         body: [
-          `These terms are governed by the law of the United Arab Emirates. The governing-law and jurisdiction position requires confirmation by a qualified adviser before this document is relied upon.`,
+          `${site.name} operates from ${site.address.region}, ${site.address.country}. The governing law and the jurisdiction in which any dispute would be heard are to be stated here once confirmed by a qualified adviser, and this document should not be relied upon until they are.`,
         ],
       },
     ],

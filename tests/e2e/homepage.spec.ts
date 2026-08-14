@@ -1,15 +1,15 @@
 import { test, expect } from "./fixtures";
-import { homeBlocks, overflowX } from "./_helpers";
+import { HOME_BLOCKS, homeBlocks, overflowX } from "./_helpers";
 
 /**
- * The homepage must resolve into the eight reference-equivalent blocks and
+ * The homepage must resolve into its full block sequence and
  * carry no runtime damage. Asserting a 200 would prove nothing here — these
  * check rendered identity.
  */
 test.describe("homepage", () => {
-  test("renders the eight-block sequence", async ({ page }) => {
+  test("renders the full block sequence", async ({ page }) => {
     await page.goto("/");
-    expect(await homeBlocks(page)).toHaveLength(8);
+    expect(await homeBlocks(page)).toHaveLength(HOME_BLOCKS);
   });
 
   test("hero occupies the opening viewport", async ({ page }, testInfo) => {
