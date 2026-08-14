@@ -73,7 +73,7 @@ export const articles: Article[] = [
     date: "2026-06-18",
     readMinutes: 8,
     featured: true,
-    image: "/journal/certificate-of-analysis.jpg",
+    image: "/journal/certificate-of-analysis.webp",
     body: [
       {
         type: "paragraph",
@@ -149,7 +149,7 @@ export const articles: Article[] = [
     date: "2026-05-27",
     readMinutes: 6,
     featured: true,
-    image: "/journal/purity-identity.jpg",
+    image: "/journal/purity-identity.webp",
     body: [
       {
         type: "paragraph",
@@ -206,7 +206,7 @@ export const articles: Article[] = [
       "Testing is not the same as verification. What separates them is whether the party producing the number has any stake in what it says.",
     date: "2026-05-09",
     readMinutes: 6,
-    image: "/journal/third-party.jpg",
+    image: "/journal/third-party.webp",
     body: [
       {
         type: "paragraph",
@@ -257,7 +257,7 @@ export const articles: Article[] = [
     date: "2026-04-22",
     readMinutes: 9,
     featured: true,
-    image: "/journal/analytical-methods.jpg",
+    image: "/journal/analytical-methods.webp",
     body: [
       {
         type: "paragraph",
@@ -334,7 +334,7 @@ export const articles: Article[] = [
       "The trace on a certificate contains more information than the percentage derived from it. Baseline, peak shape and what sits at the shoulders all carry meaning.",
     date: "2026-04-03",
     readMinutes: 7,
-    image: "/journal/chromatogram.jpg",
+    image: "/journal/chromatogram.webp",
     body: [
       {
         type: "paragraph",
@@ -393,7 +393,7 @@ export const articles: Article[] = [
     date: "2026-03-28",
     readMinutes: 8,
     featured: true,
-    image: "/journal/reconstitution.jpg",
+    image: "/journal/reconstitution.webp",
     body: [
       {
         type: "paragraph",
@@ -459,7 +459,7 @@ export const articles: Article[] = [
       "Hydrolysis, oxidation, deamidation and aggregation each have a different trigger. Knowing which one a compound is prone to determines how it should be handled.",
     date: "2026-03-11",
     readMinutes: 7,
-    image: "/journal/stability.jpg",
+    image: "/journal/stability.webp",
     body: [
       {
         type: "paragraph",
@@ -520,7 +520,7 @@ export const articles: Article[] = [
       "Concentration depends on two numbers, and most preparation errors come from changing one while thinking about the other.",
     date: "2026-02-19",
     readMinutes: 5,
-    image: "/journal/dilution.jpg",
+    image: "/journal/dilution.webp",
     body: [
       {
         type: "paragraph",
@@ -569,7 +569,7 @@ export const articles: Article[] = [
       "Vascular supply, cell migration and matrix deposition are sequential stages, not parallel effects. The literature groups repair compounds accordingly.",
     date: "2026-02-04",
     readMinutes: 8,
-    image: "/journal/tissue-repair.jpg",
+    image: "/journal/tissue-repair.webp",
     body: [
       {
         type: "paragraph",
@@ -622,7 +622,7 @@ export const articles: Article[] = [
       "The progression from GLP-1 mono-agonism through dual and triple receptor engagement is one of the clearest structure-activity narratives in current metabolic research.",
     date: "2026-01-21",
     readMinutes: 9,
-    image: "/journal/incretin.jpg",
+    image: "/journal/incretin.webp",
     body: [
       {
         type: "paragraph",
@@ -675,7 +675,7 @@ export const articles: Article[] = [
       "A small class of peptides encoded in the mitochondrial genome appears to carry information from the organelle back to the nucleus.",
     date: "2026-01-08",
     readMinutes: 7,
-    image: "/journal/mitochondria.jpg",
+    image: "/journal/mitochondria.webp",
     body: [
       {
         type: "paragraph",
@@ -727,7 +727,7 @@ export const articles: Article[] = [
       "GHRH receptor agonism and GHS-R1a agonism are separate routes to the same axis, acting through different G-protein pathways.",
     date: "2025-12-12",
     readMinutes: 7,
-    image: "/journal/somatotropic.jpg",
+    image: "/journal/somatotropic.webp",
     body: [
       {
         type: "paragraph",
@@ -780,7 +780,7 @@ export const articles: Article[] = [
       "Semax and Selank share a stabilising extension and almost nothing else. That combination makes them unusually useful as controls for one another.",
     date: "2025-11-26",
     readMinutes: 6,
-    image: "/journal/neuropeptides.jpg",
+    image: "/journal/neuropeptides.webp",
     body: [
       {
         type: "paragraph",
