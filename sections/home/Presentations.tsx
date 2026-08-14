@@ -82,10 +82,19 @@ export function Presentations() {
         </div>
       </div>
 
-      {/* The rail. */}
+      {/* The rail.
+
+          `tabIndex` is deliberate, not decorative: the band scrolls
+          horizontally, and a scrollable region with no focusable content
+          inside it cannot be reached or panned from the keyboard at all. */}
       <div
-        className="relative mt-[clamp(2rem,5vh,4rem)] w-full min-w-0 overflow-x-auto pb-[clamp(3rem,7vh,5rem)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className={
+          "relative mt-[clamp(2rem,5vh,4rem)] w-full min-w-0 overflow-x-auto pb-[clamp(3rem,7vh,5rem)] " +
+          "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-soft " +
+          "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        }
         role="group"
+        tabIndex={0}
         aria-label={`The EVOHN pen, in ${pens.length} presentations`}
       >
         <div
