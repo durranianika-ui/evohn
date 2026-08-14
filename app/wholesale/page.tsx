@@ -90,10 +90,10 @@ export default function WholesalePage() {
                 <p className="type-body-s mt-6 text-carbon/55">
                   Or write to{" "}
                   <a
-                    href={`mailto:${site.partnersEmail}`}
+                    href={`mailto:${site.email}`}
                     className="underline underline-offset-4"
                   >
-                    {site.partnersEmail}
+                    {site.email}
                   </a>
                   .
                 </p>

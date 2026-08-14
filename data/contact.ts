@@ -43,20 +43,8 @@ export const channels: Channel[] = [
     label: "Email",
     value: site.email,
     href: `mailto:${site.email}`,
-    detail: "General enquiries, documentation requests and catalogue questions.",
-  },
-  {
-    label: "Laboratory desk",
-    value: site.labEmail,
-    href: `mailto:${site.labEmail}`,
     detail:
-      "Certificate verification, batch queries and method questions, answered by the research desk.",
-  },
-  {
-    label: "Partnerships",
-    value: site.partnersEmail,
-    href: `mailto:${site.partnersEmail}`,
-    detail: "Distribution, territory and institutional supply enquiries.",
+      "Catalogue questions, certificate verification, batch and method queries, and partnership enquiries — one address, answered by the research desk.",
   },
 ];
 
@@ -131,6 +119,6 @@ export type EnquiryTopic = (typeof enquiryTopics)[number];
 /** Where the desk is, for the location panel. */
 export const location = {
   ...site.address,
-  note: "Correspondence address and regional dispatch. Synthesis, lyophilisation and independent analysis are contracted — see Facilities.",
+  note: "Correspondence and dispatch. Synthesis, lyophilisation and independent analysis are contracted — see Facilities.",
   hours: site.hours,
 };

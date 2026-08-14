@@ -55,9 +55,9 @@ export function Footer() {
               />
 
               <address className="type-body-s mt-7 space-y-1 not-italic text-soft/60 md:mt-10">
-                <p>{site.address.line2}</p>
+                <p>{site.address.line1}</p>
                 <p>
-                  {site.address.city}, {site.address.country}
+                  {site.address.region}, {site.address.country}
                 </p>
                 <p className="pt-3">
                   <a

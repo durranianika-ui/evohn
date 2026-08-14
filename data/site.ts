@@ -23,23 +23,30 @@ export const site = {
    * Digits are stripped automatically when the wa.me link is built,
    * so any formatting here is safe.
    */
-  whatsapp: "+971XXXXXXXXX",
+  whatsapp: "+1XXXXXXXXXX",
+  /**
+   * The single public address. Every enquiry route — general, laboratory,
+   * documentation and partnership — is answered here, so there is one place to
+   * write to and no dead alias to maintain.
+   */
   email: "enquiries@evohn.com",
-  labEmail: "laboratory@evohn.com",
-  partnersEmail: "partners@evohn.com",
 
-  /** Registered presence. Shown on Contact and in the footer. */
+  /**
+   * Registered presence. Shown on Contact and in the footer.
+   *
+   * State-level only: no street address has been approved for publication, and
+   * inventing one would be a fabricated business detail.
+   */
   address: {
     line1: "EVOHN Research",
-    line2: "Dubai Science Park, Al Barsha South",
-    city: "Dubai",
-    country: "United Arab Emirates",
+    region: "Texas",
+    country: "USA",
   },
 
   /** Support desk hours, in local time. */
   hours: [
-    { days: "Monday – Friday", time: "09:00 – 18:00 GST" },
-    { days: "Saturday", time: "10:00 – 15:00 GST" },
+    { days: "Monday – Friday", time: "09:00 – 18:00 CT" },
+    { days: "Saturday", time: "10:00 – 15:00 CT" },
     { days: "Sunday", time: "Closed" },
   ],
 
@@ -99,14 +106,14 @@ export interface NavItem {
 /**
  * Primary navigation.
  *
- * Seven top-level destinations, in the specified order. Only Science opens a
+ * Six top-level destinations, in the specified order. Only Science opens a
  * panel; everything else is a plain link, because a bar that drops a menu
  * under every item is a bar nobody can scan.
  *
- * Stacks, Strips, Quality and FAQ are real sections and stay reachable — from
- * the utility index below, from the footer, and from the pages they belong
- * to. They are not in the primary bar, because eleven top-level items is not
- * an information architecture.
+ * Stacks, Quality and FAQ are real sections and stay reachable — from the
+ * utility index below, from the footer, and from the pages they belong to.
+ * They are not in the primary bar, because ten top-level items is not an
+ * information architecture.
  */
 export const nav: NavItem[] = [
   { label: "Catalogue", href: "/catalogue" },
@@ -146,7 +153,6 @@ export const nav: NavItem[] = [
   },
   { label: "Journal", href: "/journal" },
   { label: "Lab Results", href: "/lab-results" },
-  { label: "Reviews", href: "/reviews" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -164,7 +170,6 @@ export const menuIndex: NavColumn[] = [
     links: [
       { label: "All Compounds", href: "/catalogue" },
       { label: "Research Stacks", href: "/stacks" },
-      { label: "Pocket Strips", href: "/strips" },
       { label: "Search", href: "/search" },
     ],
   },
@@ -185,7 +190,6 @@ export const menuIndex: NavColumn[] = [
     links: [
       { label: "About", href: "/about" },
       { label: "Journal", href: "/journal" },
-      { label: "Reviews", href: "/reviews" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
       { label: "Legal", href: "/legal" },
@@ -226,7 +230,6 @@ export const footerNav: NavColumn[] = [
     links: [
       { label: "All Products", href: "/catalogue" },
       { label: "Research Stacks", href: "/stacks" },
-      { label: "Pocket Strips", href: "/strips" },
       { label: "Search", href: "/search" },
     ],
   },
@@ -245,7 +248,6 @@ export const footerNav: NavColumn[] = [
     links: [
       { label: "About", href: "/about" },
       { label: "Journal", href: "/journal" },
-      { label: "Reviews", href: "/reviews" },
       { label: "Quality", href: "/quality" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },

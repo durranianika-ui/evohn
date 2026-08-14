@@ -201,7 +201,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "On arrival",
         body: [
-          `Inspect the consignment on receipt. Record the condition of the temperature indicator before opening. Report a compromised shipment to ${site.labEmail} the same day, with the batch number and photographs of the packaging as received.`,
+          `Inspect the consignment on receipt. Record the condition of the temperature indicator before opening. Report a compromised shipment to ${site.email} the same day, with the batch number and photographs of the packaging as received.`,
         ],
       },
     ],
@@ -233,7 +233,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "Raising an analytical dispute",
         body: [
-          `Write to ${site.labEmail} with the batch number, the certificate reference, the analysis you have run and the result you obtained.`,
+          `Write to ${site.email} with the batch number, the certificate reference, the analysis you have run and the result you obtained.`,
         ],
         points: [
           "The retained sample for that lot is re-tested against the original method.",

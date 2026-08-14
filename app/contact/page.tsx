@@ -44,7 +44,7 @@ export default function ContactPage() {
           { label: "Typical reply", value: "Within one business day" },
           { label: "Answered by", value: "The research desk" },
           { label: "Automated outreach", value: "None" },
-          { label: "Based in", value: `${site.address.city}, UAE` },
+          { label: "Based in", value: `, ` },
         ]}
       />
 
@@ -226,14 +226,12 @@ export default function ContactPage() {
             <div className="lg:col-span-5">
               <h2 className="type-label text-carbon/45">Where we are</h2>
               <p className="type-display-s mt-8 max-w-[14ch]">
-                {location.city}
+                {location.region}
               </p>
               <address className="type-body mt-8 not-italic text-carbon/68">
                 {location.line1}
                 <br />
-                {location.line2}
-                <br />
-                {location.city}, {location.country}
+                {location.region}, {location.country}
               </address>
               <p className="type-body-s mt-8 max-w-[44ch] text-carbon/55">
                 {location.note}
@@ -272,7 +270,7 @@ export default function ContactPage() {
                     <span className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-carbon/25" />
                   </span>
                   <span className="type-label text-carbon/45">
-                    Map — {location.city}, {location.country}
+                    Map — {location.region}, {location.country}
                   </span>
                   <span className="type-body-s max-w-[36ch] text-carbon/45">
                     An interactive map is not embedded by default: it would load
