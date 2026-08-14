@@ -1,10 +1,16 @@
 /**
  * About.
  *
- * Company narrative, timeline, facilities and the people accountable for
- * release decisions. Flat and serialisable — a CMS collection maps onto it
- * without transformation.
+ * Company narrative, timeline and facilities. Flat and serialisable — a CMS
+ * collection maps onto it without transformation.
+ *
+ * The narrative is written about the standard rather than about individuals:
+ * there are no named personnel here, and accountability is described as a
+ * structural arrangement, which is the part a reader can actually check.
  */
+
+import { categories } from "./categories";
+import { products } from "./products";
 
 export interface TimelineEntry {
   year: string;
@@ -20,19 +26,20 @@ export interface Facility {
   image: string;
 }
 
-export interface Leader {
-  name: string;
-  role: string;
-  discipline: string;
-  bio: string;
-  image: string;
-}
-
 export interface Value {
   index: string;
   title: string;
   body: string;
 }
+
+/**
+ * The origin statement.
+ *
+ * Declared once and read by the About hero, so the page and any other surface
+ * that tells this story cannot drift apart.
+ */
+export const origin =
+  "EVOHN began with a documentation problem rather than a chemical one. Material arrived from multiple suppliers with analytical records that could not be read against one another, and nothing reliably tied a vial in the freezer to the analysis that released it. The first work was not synthesis — it was the specification, written before any batch existed, that every release has been judged against since.";
 
 export const mission = {
   eyebrow: "Our mission",
@@ -70,8 +77,8 @@ export const values: Value[] = [
 export const timeline: TimelineEntry[] = [
   {
     year: "2021",
-    title: "A procurement problem",
-    body: "EVOHN began as an internal frustration inside a contract research group: four suppliers, four incompatible certificate formats, and no reliable way to tie a batch in the freezer to the analysis that released it. The first work was not chemistry. It was a specification document.",
+    title: "A documentation problem",
+    body: "The starting position was analytical records that could not be compared to one another, and no dependable link between a batch in the freezer and the analysis that released it. The first work was not chemistry. It was a specification document.",
   },
   {
     year: "2022",
@@ -86,7 +93,7 @@ export const timeline: TimelineEntry[] = [
   {
     year: "2024",
     title: "The catalogue takes shape",
-    body: "Twelve compounds across eight research domains, each selected for the depth of its published record rather than the strength of its demand. Compounds without a literature base substantial enough to describe honestly were left out — and still are.",
+    body: `${products.length} entries across ${categories.length} research domains, each selected for the depth of its published record rather than the strength of its demand. Compounds without a literature base substantial enough to describe honestly were left out — and still are.`,
   },
   {
     year: "2025",
@@ -127,42 +134,37 @@ export const facilities: Facility[] = [
   },
   {
     name: "Cold storage and dispatch",
-    location: "Dubai, United Arab Emirates",
+    location: "Texas, USA",
     role: "Custody",
     detail:
-      "Temperature-controlled storage with retained samples held under the same conditions as released material for the duration of the retest interval. Insulated cold-chain dispatch across the region with in-transit indicators.",
+      "Temperature-controlled storage with retained samples held under the same conditions as released material for the duration of the retest interval. Insulated cold-chain dispatch with in-transit indicators.",
     image: "/facilities/cold-storage.jpg",
   },
 ];
 
-export const leadership: Leader[] = [
+/**
+ * How accountability is arranged.
+ *
+ * Replaces the named leadership grid. Who signs a release matters less to a
+ * reader than whether the party that makes the material is allowed to be the
+ * party that passes it — which is a structure, and can be described without
+ * attaching a person's name to a claim.
+ */
+export const accountability: Value[] = [
   {
-    name: "Dr. Yusuf Rahimi",
-    role: "Founder & Scientific Director",
-    discipline: "Analytical chemistry",
-    bio: "Fifteen years in analytical method development and validation, latterly building release testing programmes for contract manufacture. Holds the final release decision on every batch, and the standing instruction that a batch off specification is rejected rather than re-graded.",
-    image: "/team/scientific-director.jpg",
+    index: "01",
+    title: "Release is separated from manufacture",
+    body: "The decision to release a batch does not sit with the facility that produced it. In-process testing informs manufacturing; it does not release material. The separation is structural rather than procedural, which is why it holds when a schedule is under pressure.",
   },
   {
-    name: "Dr. Marta Kovaleva",
-    role: "Head of Quality",
-    discipline: "Pharmaceutical quality systems",
-    bio: "Background in quality assurance for sterile manufacture, with responsibility for specification authorship, laboratory qualification and the audit of contracted facilities. Owns the document that every batch is judged against.",
-    image: "/team/head-of-quality.jpg",
+    index: "02",
+    title: "The specification precedes the batch",
+    body: "Acceptance criteria are fixed in writing before synthesis begins. A batch is judged against the document that existed when it was ordered, so criteria cannot be fitted to a result after the fact.",
   },
   {
-    name: "Samir Al-Hashimi",
-    role: "Head of Supply",
-    discipline: "Cold-chain logistics",
-    bio: "Responsible for custody from fill to delivery: storage conditions, retained sample management, in-transit temperature control and the regional dispatch network. The person who ensures the analytical record still describes the material when it arrives.",
-    image: "/team/head-of-supply.jpg",
-  },
-  {
-    name: "Dr. Elena Castellanos",
-    role: "Research Desk",
-    discipline: "Peptide chemistry",
-    bio: "Writes the Journal and the Science section, and answers the technical enquiries that arrive through it. Her brief is explicitly editorial rather than commercial: explain the method, cite the record, decline to overstate.",
-    image: "/team/research-desk.jpg",
+    index: "03",
+    title: "Analysis is commissioned outside the supply chain",
+    body: "Certificates are issued by accredited laboratories with no commercial interest in the outcome, and each report carries an accession number retrievable from the issuing laboratory directly rather than from us.",
   },
 ];
 

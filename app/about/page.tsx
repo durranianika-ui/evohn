@@ -11,9 +11,10 @@ import { Marquee } from "@/components/motion/Marquee";
 import { JsonLd } from "@/components/common/JsonLd";
 import {
   aboutStats,
+  accountability,
   facilities,
-  leadership,
   mission,
+  origin,
   timeline,
   values,
 } from "@/data/about";
@@ -43,7 +44,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title={"Documented\nat every step"}
-        body="EVOHN began as a procurement problem inside a research group: four suppliers, four incompatible certificate formats, and no reliable way to tie a vial in the freezer to the analysis that released it. The first work was not chemistry. It was a specification document."
+        body={origin}
         crumbs={[
           { name: "Home", href: "/" },
           { name: "About", href: "/about" },
@@ -129,7 +130,7 @@ export default function AboutPage() {
         <div className="container-content">
           <SectionHeading
             eyebrow="How we got here"
-            title={"Six years,\nin order"}
+            title={"The decisions,\nin order"}
             body="Not a growth story. A sequence of decisions about what would and would not be acceptable, most of them taken before there was a catalogue to apply them to."
           />
 
@@ -221,32 +222,33 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership */}
-      <section id="leadership" className="section-y scroll-mt-24 bg-carbon text-soft">
+      {/* Accountability */}
+      <section
+        id="accountability"
+        className="section-y scroll-mt-24 bg-carbon text-soft"
+      >
         <div className="container-content">
           <SectionHeading
-            eyebrow="Leadership"
-            title={"The people\naccountable"}
-            body="Release decisions have a name attached. Where a batch is rejected, it is rejected by someone rather than by a policy."
+            eyebrow="Accountability"
+            title={"How the standard\nis held"}
+            body="A standard that depends on who is on shift is not a standard. These are the structural arrangements that decide whether a batch is released."
           />
 
-          <ul className="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
-            {leadership.map((person, i) => (
-              <Reveal key={person.name} delay={(i % 4) * 0.07} as="li">
-                <Figure
-                  src={person.image}
-                  alt=""
-                  placeholderLabel={person.discipline}
-                  tone="dark"
-                  sizes="(min-width: 1024px) 24vw, (min-width: 640px) 46vw, 92vw"
-                  className="aspect-3/4 w-full"
-                />
-                <h3 className="type-title mt-7 text-soft">{person.name}</h3>
-                <p className="type-label mt-3 text-soft/45">{person.role}</p>
-                <p className="type-body-s mt-5 text-soft/62">{person.bio}</p>
+          <div className="mt-20 grid gap-x-12 gap-y-14 md:grid-cols-3">
+            {accountability.map((entry, i) => (
+              <Reveal key={entry.index} delay={(i % 3) * 0.07}>
+                <article className="border-t border-soft/15 pt-8">
+                  <p className="type-label tabular-nums text-soft/35">
+                    {entry.index}
+                  </p>
+                  <h3 className="type-title mt-6 max-w-[20ch] text-soft">
+                    {entry.title}
+                  </h3>
+                  <p className="type-body-s mt-6 text-soft/62">{entry.body}</p>
+                </article>
               </Reveal>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
