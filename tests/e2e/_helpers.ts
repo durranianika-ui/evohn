@@ -1,15 +1,20 @@
 import type { Page } from "@playwright/test";
 
 /**
- * Sections the homepage resolves into, in order: hero, standards, research,
- * domains, collection, pen presentations, facilities, researchers,
- * performance. The pen stage is the ninth — it was added because the pen is
- * half of what the catalogue supplies and had no presence on the site.
+ * Sections the homepage resolves into, counted off the rendered DOM: hero,
+ * philosophy, research, domains, collection, the pen stage, the standard
+ * band, and the four facilities/researchers/performance blocks.
  *
- * Declared once so the count lives in one place rather than as a bare `8`
- * repeated across two specs.
+ * This was asserted as `8` and had been wrong since before the pen stage
+ * existed — the page rendered ten, because Facilities contributes two
+ * sections and the Transition band contributes one. The stale number was
+ * failing on the branch point too, so it is corrected here rather than
+ * carried forward.
+ *
+ * Declared once so the count lives in one place rather than as a bare
+ * literal repeated across two specs.
  */
-export const HOME_BLOCKS = 9;
+export const HOME_BLOCKS = 11;
 
 /**
  * The homepage sections sit one level inside `<main>`, under the page

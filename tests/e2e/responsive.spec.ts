@@ -28,7 +28,10 @@ test.describe("responsive", () => {
     const heights = await homeBlocks(page);
     expect(heights).toHaveLength(HOME_BLOCKS);
     for (const [i, h] of heights.entries()) {
-      expect(h, `block ${i + 1} collapsed`).toBeGreaterThan(120);
+      // The bar is "did this block collapse", not "is it tall". The standard
+      // band between the pen stage and the facilities is a single hairline
+      // marquee and is legitimately about 90px; 120 marked it as broken.
+      expect(h, `block ${i + 1} collapsed`).toBeGreaterThan(60);
     }
   });
 
