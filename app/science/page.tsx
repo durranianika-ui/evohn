@@ -81,7 +81,12 @@ export default function SciencePage() {
       <PageHero
         eyebrow="Science"
         title={"The\nstandard"}
-        body={`Four positions govern every batch EVOHN releases, and four tools are built on top of them. Beneath both sits the reference library itself — ${products.length} compounds across ${categories.length} research domains, verified by HPLC with identity confirmed by mass spectrometry, and supplied for laboratory research only.`}
+        /* The analytical claim is attributed to the compounds, not to every
+           entry: bacteriostatic water is a diluent, certified sterile and
+           non-pyrogenic rather than assayed for peptide purity, so the blanket
+           "verified by HPLC" it inherited from the old catalogue was false the
+           moment it was listed. */
+        body={`Four positions govern every batch EVOHN releases, and four tools are built on top of them. Beneath both sits the reference library itself — ${products.length} entries across ${categories.length} research domains, each compound verified by HPLC with its identity confirmed by mass spectrometry, and everything supplied for laboratory research only.`}
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Science", href: "/science" },
