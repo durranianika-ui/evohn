@@ -70,7 +70,7 @@ export const stacks: Stack[] = [
     category: "recovery",
     overview: [
       "The most frequently assembled grouping in the tissue-repair literature. BPC-157, TB-500 and GHK-Cu act on three different stages of the same process — vascular supply, cell migration, and the matrix those cells deposit — which is why comparative work rarely examines one without reference to the others.",
-      "Assembled here as three independently certified vials rather than a blend, so that a single component can be withheld, substituted or titrated without discarding the group. Each vial carries its own analytical record.",
+      "Assembled here as independently certified vials rather than a blend, so that a component can be withheld, substituted or titrated without discarding the group. Each vial carries its own analytical record.",
     ],
     purpose:
       "To make the three principal mechanisms of soft-tissue remodelling available in one documented set, so that their contributions can be separated rather than confounded.",
@@ -84,12 +84,8 @@ export const stacks: Stack[] = [
       "BPC-157 is characterised as acting on the VEGFR2-Akt-eNOS axis, establishing vascular supply. TB-500 sequesters monomeric G-actin and shifts the polymerisation equilibrium that governs cell migration into the affected region. GHK-Cu delivers copper to fibroblasts and modulates the balance between matrix metalloproteinases and their tissue inhibitors, determining what those migrated cells deposit. The published rationale for the grouping is sequential rather than additive: each mechanism is upstream of the next.",
     includes: [
       {
-        slug: "bpc-157",
-        role: "Angiogenic and cytoprotective signalling — establishes vascular supply.",
-      },
-      {
-        slug: "tb-500",
-        role: "Actin sequestration and cell migration — mobilises the cellular response.",
+        slug: "bpc-157-tb-500",
+        role: "Angiogenic signalling and actin sequestration — establishes vascular supply and mobilises the cellular response.",
       },
       {
         slug: "ghk-cu",
@@ -105,7 +101,7 @@ export const stacks: Stack[] = [
       {
         label: "Reconstitution",
         detail:
-          "Each component is reconstituted independently in bacteriostatic water. GHK-Cu is prepared last where the three are handled in one session, because the copper complex is the most oxidation-sensitive of the group.",
+          "Each component is reconstituted independently in bacteriostatic water. GHK-Cu is prepared last where both are handled in one session, because the copper complex is the most oxidation-sensitive of the group.",
       },
       {
         label: "Preparation order",
@@ -115,7 +111,7 @@ export const stacks: Stack[] = [
       {
         label: "Documentation",
         detail:
-          "Record the batch number of each component separately. Because the vials are not pre-mixed, a group result is only traceable if all three batch identifiers are captured.",
+          "Record the batch number of each component separately. Because the vials are not pre-mixed, a group result is only traceable if every batch identifier in the set is captured.",
       },
     ],
     storage: SHARED_STORAGE,
@@ -133,7 +129,7 @@ export const stacks: Stack[] = [
       {
         question: "Can a single component be requested on its own?",
         answer:
-          "Yes. Every compound in this grouping is listed individually in the catalogue. The stack exists to describe how they are studied together, not to restrict how they are supplied.",
+          "Yes. Every entry in this grouping is listed in the catalogue in its own right. The stack exists to describe how they are studied together, not to restrict how they are supplied.",
       },
       {
         question: "Why is GHK-Cu handled differently from the other two?",
@@ -146,8 +142,8 @@ export const stacks: Stack[] = [
           "No — and deliberately so. Analytical results describe a batch of a single compound. A combined certificate would obscure which batch produced which result.",
       },
     ],
-    image: "/stacks/regenerative-protocol.jpg",
-    gallery: ["/stacks/regenerative-protocol.jpg", "/editorial/packaging.jpg"],
+    image: "/stacks/regenerative-protocol.webp",
+    gallery: ["/stacks/regenerative-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "metabolic-protocol",
@@ -158,7 +154,7 @@ export const stacks: Stack[] = [
     category: "weight-loss",
     overview: [
       "Metabolic research increasingly separates two questions that were once treated as one: what a compound does at the receptor, and what the cell does with the energy that follows. This grouping pairs a receptor-level agonist with a mitochondrial-derived signalling peptide so that both can be observed in the same model.",
-      "Semaglutide supplies a well-characterised, extensively documented incretin arm. MOTS-c supplies the intracellular energy-sensing arm through AMPK. Neither is a proxy for the other, which is precisely why the pairing is informative.",
+      "Retatrutide supplies a well-characterised, multi-receptor incretin and glucagon arm. MOTS-c supplies the intracellular energy-sensing arm through AMPK. Neither is a proxy for the other, which is precisely why the pairing is informative.",
     ],
     purpose:
       "To hold receptor-level incretin signalling and cellular energy sensing in one experimental frame, rather than inferring one from the other.",
@@ -169,11 +165,11 @@ export const stacks: Stack[] = [
       "Exercise physiology models with a metabolic covariate",
     ],
     scientificSummary:
-      "Semaglutide is characterised as a selective GLP-1 receptor agonist coupling to Gαs, raising cyclic AMP and driving glucose-dependent insulin secretion, with central receptor populations examined in relation to satiety. MOTS-c operates at a different level entirely: encoded in the mitochondrial 12S rRNA gene, it is described as inhibiting the folate cycle, accumulating AICAR and thereby activating AMPK, with reported nuclear translocation under metabolic stress. Studying them together allows receptor-driven and energy-state-driven effects to be attributed separately.",
+      "Retatrutide is characterised as engaging the GIP, GLP-1 and glucagon receptors from a single backbone, with the glucagon arm examined for its contribution to energy expenditure alongside the incretin arms' action on insulin secretion and appetite pathways. MOTS-c operates at a different level entirely: encoded in the mitochondrial 12S rRNA gene, it is described as inhibiting the folate cycle, accumulating AICAR and thereby activating AMPK, with reported nuclear translocation under metabolic stress. Studying them together allows receptor-driven and energy-state-driven effects to be attributed separately.",
     includes: [
       {
-        slug: "semaglutide",
-        role: "GLP-1 receptor agonism — the receptor-level metabolic input.",
+        slug: "retatrutide",
+        role: "Multi-receptor incretin and glucagon agonism — the receptor-level metabolic input.",
       },
       {
         slug: "mots-c",
@@ -189,7 +185,7 @@ export const stacks: Stack[] = [
       {
         label: "Reconstitution",
         detail:
-          "Both compounds reconstitute readily in bacteriostatic water. Semaglutide's acylated side chain makes it tolerant of standard handling; MOTS-c is the shorter-lived of the two in solution.",
+          "Both compounds reconstitute readily in bacteriostatic water. Retatrutide's acylated backbone makes it tolerant of standard handling; MOTS-c is the shorter-lived of the two in solution.",
       },
       {
         label: "Timing",
@@ -215,9 +211,9 @@ export const stacks: Stack[] = [
           "Because they answer different questions. A receptor agonist tells you what happens when a specific signalling route is engaged; a mitochondrial-derived peptide tells you what the cell's own energy sensor does. Observing both in one model prevents attributing a downstream effect to the wrong mechanism.",
       },
       {
-        question: "Can tirzepatide or retatrutide be substituted for semaglutide?",
+        question: "Why a triple agonist rather than a single-receptor analogue?",
         answer:
-          "In published comparative work, yes — the substitution is the point. Moving from single to dual to triple receptor agonism while holding the mitochondrial arm constant is a common way to isolate the contribution of each additional receptor.",
+          "Holding the mitochondrial arm constant while varying the receptor arm is how the contribution of each receptor is isolated. A triple agonist engages GIP, GLP-1 and glucagon from one molecule, so the glucagon contribution to energy expenditure can be examined without introducing a second compound and a second clearance profile.",
       },
       {
         question: "Do the two compounds share a stability window?",
@@ -225,8 +221,8 @@ export const stacks: Stack[] = [
           "No. They have different reported clearance and solution-stability profiles. Where both are in solution simultaneously, the shorter interval on the relevant certificate governs the preparation.",
       },
     ],
-    image: "/stacks/metabolic-protocol.jpg",
-    gallery: ["/stacks/metabolic-protocol.jpg", "/editorial/packaging.jpg"],
+    image: "/stacks/metabolic-protocol.webp",
+    gallery: ["/stacks/metabolic-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "longevity-protocol",
@@ -304,8 +300,8 @@ export const stacks: Stack[] = [
           "No. Each vial is certified independently. For NAD+ in particular the assayed content figure should be read from the certificate rather than assumed from the label strength.",
       },
     ],
-    image: "/stacks/longevity-protocol.jpg",
-    gallery: ["/stacks/longevity-protocol.jpg", "/editorial/packaging.jpg"],
+    image: "/stacks/longevity-protocol.webp",
+    gallery: ["/stacks/longevity-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "somatotropic-protocol",
@@ -334,7 +330,7 @@ export const stacks: Stack[] = [
         role: "Dual somatotropic input — GHRH receptor and GHS-R1a in one preparation.",
       },
       {
-        slug: "tb-500",
+        slug: "bpc-157-tb-500",
         role: "Cytoskeletal readout — actin dynamics as the remodelling endpoint.",
       },
       {
@@ -387,8 +383,8 @@ export const stacks: Stack[] = [
           "Because somatotropic signalling and mitochondrial capacity intersect, and studies that measure only the endocrine arm cannot distinguish a signalling change from a capacity change. It is included as a covariate, not as an intervention.",
       },
     ],
-    image: "/stacks/somatotropic-protocol.jpg",
-    gallery: ["/stacks/somatotropic-protocol.jpg", "/editorial/packaging.jpg"],
+    image: "/stacks/somatotropic-protocol.webp",
+    gallery: ["/stacks/somatotropic-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "cognitive-protocol",
@@ -470,8 +466,8 @@ export const stacks: Stack[] = [
           "Neuronal tissue is metabolically demanding, and neurotrophic endpoints are sensitive to mitochondrial capacity. It is included so that an energy-limited result is not mistaken for a signalling result.",
       },
     ],
-    image: "/stacks/cognitive-protocol.jpg",
-    gallery: ["/stacks/cognitive-protocol.jpg", "/editorial/packaging.jpg"],
+    image: "/stacks/cognitive-protocol.webp",
+    gallery: ["/stacks/cognitive-protocol.webp", "/editorial/packaging.jpg"],
   },
 ];
 

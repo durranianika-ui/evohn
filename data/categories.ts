@@ -13,7 +13,8 @@ export type CategorySlug =
   | "metabolism"
   | "growth"
   | "neuro"
-  | "regeneration";
+  | "regeneration"
+  | "preparation";
 
 export interface Category {
   slug: CategorySlug;
@@ -108,7 +109,22 @@ export const categories: Category[] = [
     description:
       "Copper-binding and matrix-active peptides examined for their role in collagen synthesis, dermal barrier integrity and extracellular matrix remodelling.",
   },
+  {
+    slug: "preparation",
+    name: "Preparation",
+    swatch: "Mist",
+    token: "var(--color-cat-preparation)",
+    swatchIsLight: true,
+    tagline: "Diluents and media",
+    description:
+      "Diluents and reconstitution media supplied to the same analytical standard as the compounds they are used to prepare.",
+  },
 ];
+
+/** Domains that hold a compound rather than a preparation medium. */
+export const compoundCategories = categories.filter(
+  (c) => c.slug !== "preparation",
+);
 
 export const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
 
