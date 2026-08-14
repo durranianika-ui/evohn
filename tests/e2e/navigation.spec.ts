@@ -22,9 +22,15 @@ const SCIENCE_SUBMENU: Array<[string, string]> = [
 ];
 
 test.describe("navigation", () => {
+  // The bar is `xl:flex` in `components/layout/Header.tsx` — it appears at
+  // 1280, not 1024. The threshold here said 1024 and was never contradicted,
+  // because the viewport projects jumped straight from 1280 to 768 and no run
+  // ever landed in the gap. Adding the 1024 project the brief asks for put a
+  // run in that gap, where the drawer is the intended pattern and these
+  // desktop-bar assertions do not apply.
   test.skip(
-    ({ viewport }) => (viewport?.width ?? 0) < 1024,
-    "desktop bar is collapsed below 1024",
+    ({ viewport }) => (viewport?.width ?? 0) < 1280,
+    "desktop bar is collapsed below 1280; the drawer is covered separately",
   );
 
   test("keeps every approved label, in order", async ({ page }) => {
@@ -78,9 +84,12 @@ test.describe("navigation", () => {
 });
 
 test.describe("mobile drawer", () => {
+  // Matches the bar's own breakpoint. With both thresholds at 1024 and the bar
+  // actually appearing at 1280, a 1024 run fell through the gap between the
+  // two suites and its navigation went untested by either.
   test.skip(
-    ({ viewport }) => (viewport?.width ?? 0) >= 1024,
-    "drawer only exists below 1024",
+    ({ viewport }) => (viewport?.width ?? 0) >= 1280,
+    "the bar replaces the drawer at 1280",
   );
 
   test("opens, closes on Escape, and restores focus", async ({ page }) => {
