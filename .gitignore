@@ -55,3 +55,7 @@ dev.log
 # are tracked. Run `node scripts/audit-capture.mjs` to rebuild the images.
 /audit/**/*.png
 /audit/**/*.jpg
+
+# Local preview captures (scripts/qa-shots.mjs, ad-hoc review renders)
+.preview-shots/
+qa-shots/
