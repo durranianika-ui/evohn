@@ -91,13 +91,14 @@ export default function StacksPage() {
       <section className="section-y bg-soft text-carbon">
         <div className="container-content">
           <h2 className="sr-only">All research stacks</h2>
-          <div className="flex flex-col gap-24 md:gap-32">
+          {/* Rows carry their own separator and vertical rhythm, so the list
+              is a continuous ledger rather than five detached blocks. */}
+          <div className="border-b border-carbon/12">
             {stacks.map((stack, i) => (
               <StackCard
                 key={stack.slug}
                 stack={stack}
                 index={i}
-                reversed={i % 2 === 1}
                 priority={i === 0}
               />
             ))}

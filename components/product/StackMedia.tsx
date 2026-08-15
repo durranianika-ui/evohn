@@ -1,18 +1,32 @@
 import Image from "next/image";
-import { VialGlyph } from "./VialGlyph";
-import { getCategory } from "@/data/categories";
+import { getPresentation, type Product } from "@/data/products";
 import { stackComponents, type Stack } from "@/data/stacks";
-import { asset, hasAsset } from "@/lib/media";
+import { asset } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 /**
  * Stack plate.
  *
- * Where a photograph exists it is used. Where one does not, the stack is
- * drawn as its own components: one vector vial per compound, arranged in a
- * shallow arc with the principal compound forward. It communicates the
- * grouping without pretending to be a photograph.
+ * A stack is two or three separately certified compounds, and the plate says
+ * so literally: one panel per component, each showing that compound's own
+ * catalogue render, butted together into a single frame.
+ *
+ * This works because `scripts/prepare-product-renders.mjs` puts every vial at
+ * the same scale and the same height in its 4:5 canvas. Cropping each render
+ * to a narrow vertical slice around its bottle therefore lands the caps on one
+ * line and the bases on another straight across the panels, so the panels read
+ * as one photograph of a group rather than three pictures pushed together.
+ * `objectPosition` is set to the prepared horizontal centre so the slice is
+ * taken around the bottle rather than the middle of the frame.
+ *
+ * It also replaces what was here before: a single generic vial standing in for
+ * a multi-compound grouping, which showed the wrong number of compounds and
+ * the wrong compounds at that.
  */
+
+/** Where the prepared renders place the bottle horizontally. */
+const PRODUCT_CX = "51%";
+
 export function StackMedia({
   stack,
   className,
@@ -26,62 +40,44 @@ export function StackMedia({
 }) {
   const components = stackComponents(stack);
 
-  // Centre the arrangement: the middle vial sits forward and largest.
-  const layout = components.map((entry, i) => {
-    const offset = i - (components.length - 1) / 2;
-    return {
-      entry,
-      // Horizontal spread narrows as the group grows so three still fit.
-      x: offset * (components.length > 2 ? 26 : 22),
-      // Outer vials sit lower and smaller — a shallow arc, not a fan.
-      y: Math.abs(offset) * 4,
-      scale: 1 - Math.abs(offset) * 0.12,
-      z: components.length - Math.abs(offset),
-    };
-  });
+  // Each panel carries a fraction of the frame, so the `sizes` hint has to be
+  // divided down or every browser fetches a full-width image per component.
+  const panelSizes = `calc((${sizes.split(",").pop()?.trim() ?? "100vw"}) / ${components.length})`;
 
   return (
     <div
       className={cn(
-        "relative isolate overflow-hidden",
-        "bg-[radial-gradient(120%_90%_at_50%_16%,var(--color-mist)_0%,var(--color-warm)_56%,#b1aaa2_100%)]",
+        "relative isolate flex overflow-hidden",
+        "bg-[radial-gradient(120%_90%_at_50%_16%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
         className,
       )}
     >
-      {hasAsset(stack.image) ? (
-        <Image
-          src={asset(stack.image)}
-          alt={`${stack.name} — ${stack.tagline}`}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className="object-cover"
-        />
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center">
-          {layout.map(({ entry, x, y, scale, z }) => {
-            const category = getCategory(entry.product.category);
-            return (
-              <div
-                key={entry.product.slug}
-                className="absolute h-[68%]"
-                style={{
-                  transform: `translate(${x}%, ${y}%) scale(${scale})`,
-                  zIndex: z,
-                }}
-              >
-                <VialGlyph
-                  labelColor={category.token}
-                  labelIsLight={category.swatchIsLight}
-                  caption={entry.product.name}
-                  seed={entry.product.slug.length}
-                  className="h-full w-auto drop-shadow-[0_28px_44px_rgba(60,52,46,0.32)]"
-                />
-              </div>
-            );
-          })}
+      {components.map(({ product }, i) => (
+        <div
+          key={product.slug}
+          className={cn(
+            "relative h-full flex-1",
+            // A hairline between panels, so the join reads as a considered
+            // triptych rather than a seam nobody noticed.
+            i > 0 && "border-l border-soft/10",
+          )}
+        >
+          <Image
+            src={asset(vialRender(product))}
+            alt={`EVOHN ${product.name}`}
+            fill
+            sizes={panelSizes}
+            priority={priority && i === 0}
+            className="object-cover"
+            style={{ objectPosition: `${PRODUCT_CX} 50%` }}
+          />
         </div>
-      )}
+      ))}
     </div>
   );
+}
+
+/** The vial render, which is the presentation the stack plates are built from. */
+function vialRender(product: Product) {
+  return getPresentation(product, "vial")?.image ?? product.image;
 }

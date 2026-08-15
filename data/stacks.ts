@@ -53,8 +53,6 @@ export interface Stack {
   /** Journal slugs that expand on the stack's science. */
   researchLinks: string[];
   faqs: StackFaq[];
-  image: string;
-  gallery: string[];
 }
 
 const SHARED_STORAGE =
@@ -142,8 +140,6 @@ export const stacks: Stack[] = [
           "No — and deliberately so. Analytical results describe a batch of a single compound. A combined certificate would obscure which batch produced which result.",
       },
     ],
-    image: "/stacks/regenerative-protocol.webp",
-    gallery: ["/stacks/regenerative-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "metabolic-protocol",
@@ -221,8 +217,6 @@ export const stacks: Stack[] = [
           "No. They have different reported clearance and solution-stability profiles. Where both are in solution simultaneously, the shorter interval on the relevant certificate governs the preparation.",
       },
     ],
-    image: "/stacks/metabolic-protocol.webp",
-    gallery: ["/stacks/metabolic-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "longevity-protocol",
@@ -300,8 +294,6 @@ export const stacks: Stack[] = [
           "No. Each vial is certified independently. For NAD+ in particular the assayed content figure should be read from the certificate rather than assumed from the label strength.",
       },
     ],
-    image: "/stacks/longevity-protocol.webp",
-    gallery: ["/stacks/longevity-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "somatotropic-protocol",
@@ -383,8 +375,6 @@ export const stacks: Stack[] = [
           "Because somatotropic signalling and mitochondrial capacity intersect, and studies that measure only the endocrine arm cannot distinguish a signalling change from a capacity change. It is included as a covariate, not as an intervention.",
       },
     ],
-    image: "/stacks/somatotropic-protocol.webp",
-    gallery: ["/stacks/somatotropic-protocol.webp", "/editorial/packaging.jpg"],
   },
   {
     slug: "cognitive-protocol",
@@ -466,8 +456,6 @@ export const stacks: Stack[] = [
           "Neuronal tissue is metabolically demanding, and neurotrophic endpoints are sensitive to mitochondrial capacity. It is included so that an energy-limited result is not mistaken for a signalling result.",
       },
     ],
-    image: "/stacks/cognitive-protocol.webp",
-    gallery: ["/stacks/cognitive-protocol.webp", "/editorial/packaging.jpg"],
   },
 ];
 

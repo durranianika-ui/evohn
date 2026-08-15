@@ -20,6 +20,11 @@ import { asset } from "@/lib/media";
  * takes a minute and a half — because the point is that each pen is legible,
  * not that the band is busy. `motion-reduce` stops it outright and the rail
  * becomes a normal horizontal scroller.
+ *
+ * The tiles are portrait 4:5, matching the prepared renders and the rest of
+ * the catalogue. They are narrower than the vial cards elsewhere because the
+ * pen is a slender object standing in the same frame: at the vial's width the
+ * rail showed three devices adrift in a lot of empty ground.
  */
 export function Presentations() {
   const pens = products
@@ -36,15 +41,15 @@ export function Presentations() {
       {pens.map((pen) => (
         <div
           key={pen.slug}
-          className="relative aspect-[1276/753] w-[62vw] shrink-0 sm:w-[42vw] lg:w-[26vw]"
+          className="relative aspect-4/5 w-[52vw] shrink-0 sm:w-[32vw] lg:w-[19vw]"
         >
           <Image
             src={asset(pen.image)}
             alt=""
             fill
-            sizes="(min-width: 1024px) 26vw, (min-width: 640px) 42vw, 62vw"
+            sizes="(min-width: 1024px) 19vw, (min-width: 640px) 32vw, 52vw"
             loading="lazy"
-            className="object-contain"
+            className="object-cover"
           />
         </div>
       ))}

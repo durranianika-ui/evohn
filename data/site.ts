@@ -106,17 +106,23 @@ export interface NavItem {
 /**
  * Primary navigation.
  *
- * Six top-level destinations, in the specified order. Only Science opens a
+ * Seven top-level destinations, in the specified order. Only Science opens a
  * panel; everything else is a plain link, because a bar that drops a menu
  * under every item is a bar nobody can scan.
  *
- * Stacks, Quality and FAQ are real sections and stay reachable — from the
- * utility index below, from the footer, and from the pages they belong to.
- * They are not in the primary bar, because ten top-level items is not an
- * information architecture.
+ * Stacks sits directly after Catalogue: it is the second way into the same
+ * range — the compounds grouped as the literature studies them rather than
+ * listed one by one — so the two belong next to each other and neither reads
+ * as a subsection of the other.
+ *
+ * Quality and FAQ are real sections and stay reachable from the utility index
+ * below, from the footer, and from the pages they belong to. They are not in
+ * the primary bar, because ten top-level items is not an information
+ * architecture.
  */
 export const nav: NavItem[] = [
   { label: "Catalogue", href: "/catalogue" },
+  { label: "Stacks", href: "/stacks" },
   {
     label: "Science",
     menu: {

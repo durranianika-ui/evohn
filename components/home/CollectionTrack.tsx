@@ -308,18 +308,20 @@ function Card({
           </p>
         ) : null}
 
-        {/* The frame takes the photograph's OWN ratio, so `object-contain`
+        {/* The frame takes the photograph's OWN ratio, so `object-cover`
             fills it edge to edge — the whole vial shows, nothing is cropped
             or stretched, and no strip of the plate ground peeks out beside a
             portrait image in a landscape hole. The width is capped so the
             frame can never push the card past the pinned viewport: whichever
             is smaller of the card's width and the height budget times the
-            ratio wins, and `mx-auto` keeps the bottle centred. The warm
-            radial ground remains only as the loading backdrop. */}
+            ratio wins, and `mx-auto` keeps the bottle centred. The prepared
+            renders are all 4:5, so the ratio is uniform down the rail; the
+            dark radial ground remains only as the loading backdrop and is
+            keyed to the photography's own near-black. */}
         <div
           className={cn(
             "group/img relative mx-auto mt-5 max-w-full overflow-hidden rounded-[12px]",
-            "bg-[radial-gradient(120%_90%_at_50%_18%,var(--color-mist)_0%,var(--color-warm)_58%,#b3aca4_100%)]",
+            "bg-[radial-gradient(120%_90%_at_50%_18%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
           )}
           style={{
             aspectRatio: String(item.aspect ?? 4 / 5),
@@ -334,7 +336,7 @@ function Card({
             loading={index < 2 ? "eager" : "lazy"}
             priority={false}
             className={cn(
-              "object-contain transition-transform duration-[1.2s] ease-[var(--ease-brand)]",
+              "object-cover transition-transform duration-[1.2s] ease-[var(--ease-brand)]",
               "group-hover/img:scale-[1.04] motion-reduce:transition-none",
             )}
           />

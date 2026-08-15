@@ -29,12 +29,17 @@ interface ProductMediaProps {
  * fallback is gone by request: the supplied assets are authoritative, every
  * catalogue entry has one, and nothing may quietly stand in for them.
  *
- * The photograph keeps its own aspect ratio inside a standardized frame:
- * `object-contain` on the warm plate, so vials read at a consistent size
- * across cards even where source dimensions differ, and no crop can ever
- * take a cap or a base off a bottle. Most sources are exactly the frame's
- * 4:5, where contain and cover are the same picture; the square and tall
- * outliers letterbox onto the plate instead of cropping.
+ * Both presentations are prepared to one 4:5 canvas by
+ * `scripts/prepare-product-renders.mjs`, which recrops each render so the
+ * product occupies the same fraction of the frame at the same position. The
+ * frame here is therefore the image's own ratio, and `object-cover` neither
+ * crops nor letterboxes anything — it is the guard that keeps a future
+ * off-ratio asset filling the plate instead of floating in it.
+ *
+ * The ground is the renders' own near-black rather than the warm plate this
+ * used to paint. The photography carries its own lit background now, so a
+ * light ground would only ever be seen as a pale seam at the frame's edge
+ * while the image decodes.
  */
 export function ProductMedia({
   product,
@@ -57,8 +62,8 @@ export function ProductMedia({
     <div
       className={cn(
         "relative isolate overflow-hidden",
-        // The kit's photography direction: neutral warm ground, soft light.
-        "bg-[radial-gradient(120%_90%_at_50%_18%,var(--color-mist)_0%,var(--color-warm)_58%,#b3aca4_100%)]",
+        // Matches the ground the renders are lit against.
+        "bg-[radial-gradient(120%_90%_at_50%_18%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
         className,
       )}
     >
@@ -72,7 +77,7 @@ export function ProductMedia({
         fill
         sizes={sizes}
         priority={priority}
-        className="object-contain object-center"
+        className="object-cover object-center"
       />
     </div>
   );

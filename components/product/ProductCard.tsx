@@ -42,7 +42,6 @@ export function ProductCard({
   const batch = currentBatch(product.slug);
   const dark = tone === "dark";
   const shown = getPresentation(product, presentation);
-  const pen = presentation === "pen";
 
   return (
     <Link
@@ -56,27 +55,29 @@ export function ProductCard({
           priority={priority}
           sizes={sizes}
           className={cn(
-            // The pen is a landscape object; forcing it into the vial's
-            // portrait plate would float it in the middle of the frame at
-            // half the size. The frame takes the render's own 1276:753, so
-            // `object-contain` fills it edge to edge and no band of the plate
-            // shows above and below. The grid switches wholesale, so rows
-            // stay even either way.
-            pen ? "aspect-[1276/753] w-full" : "aspect-4/5 w-full",
+            // One frame for both presentations. The pen used to need its own
+            // landscape ratio because its render was a landscape crop; the
+            // current photography puts vial and pen on the same 4:5 canvas at
+            // the same scale, so switching the grid between them no longer
+            // changes a card's proportions — only what is standing in it.
+            "aspect-4/5 w-full",
             "transition-transform duration-[1.2s] ease-brand",
             "group-hover/card:scale-[1.045] motion-reduce:transition-none",
           )}
         />
 
-        {/* Category swatch — the kit's colour-coded range system. */}
+        {/* Category swatch and index sit ON the photograph, which is now a
+            lit near-black rather than the warm plate they were coloured for.
+            Both are keyed to `soft` so they stay legible against it — carbon
+            on carbon read as nothing at all. */}
         <span
-          className="absolute top-5 left-5 size-2.5 rounded-full ring-1 ring-carbon/15"
+          className="absolute top-5 left-5 size-2.5 rounded-full ring-1 ring-soft/30"
           style={{ backgroundColor: category.token }}
           aria-hidden
         />
 
         {index !== undefined ? (
-          <span className="type-label absolute top-5 right-5 tabular-nums text-carbon/62">
+          <span className="type-label absolute top-5 right-5 tabular-nums text-soft/70">
             {String(index + 1).padStart(2, "0")}
           </span>
         ) : null}

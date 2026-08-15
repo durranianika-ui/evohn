@@ -53,8 +53,12 @@ export function ProductGallery({
               onClick={() => setIndex(i)}
               aria-pressed={i === index}
               aria-label={`View image ${i + 1} of ${frames.length}`}
+              // 4:5, matching the frames themselves. As squares these cropped
+              // the top and bottom off each composition, which mattered most
+              // for the pen: a slender object in a portrait frame lost its
+              // ends and the thumbnail became a picture of the background.
               className={cn(
-                "relative aspect-square w-20 overflow-hidden transition-opacity duration-400 ease-brand",
+                "relative aspect-4/5 w-16 overflow-hidden transition-opacity duration-400 ease-brand",
                 i === index
                   ? "opacity-100 ring-1 ring-carbon/35"
                   : "opacity-45 hover:opacity-80",

@@ -11,9 +11,16 @@ import { indexableRoutes, staticRoutePaths, staticRoutes } from "@/data/routes";
  * points at.
  */
 
-/** The six the brief specifies, in the order it specifies. */
+/**
+ * The seven the brief specifies, in the order it specifies.
+ *
+ * Stacks joined the bar directly after Catalogue: it is the second route into
+ * the same range, and it had previously been reachable only from the utility
+ * index and the footer.
+ */
 const PRIMARY = [
   "Catalogue",
+  "Stacks",
   "Science",
   "Journal",
   "Lab Results",
