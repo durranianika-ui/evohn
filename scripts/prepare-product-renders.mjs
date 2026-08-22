@@ -20,16 +20,17 @@
  *
  * THE 2026-08 VIAL SHOOT
  * ----------------------
- * The current vial photography is composited onto ONE master scene, so it
- * arrives already uniform: measured across all twelve, the bottle's centre is
- * at 0.498 of the width and its base at 0.819 of the height on every frame,
- * and the ground reads 147–150 of 255 — a three-level spread where the
- * previous shoot spread 45 to 122. This pass therefore no longer *corrects*
- * the vial family, it only reframes it. Uncropped, the composition gives the
- * bottle 59% of the frame height, which reads undersized in a catalogue card,
- * so the crop pulls in to `TARGET.vial.height` while keeping the crevice walls
- * that are the composition. Grading is off for vials for the same reason:
- * there is nothing left to converge.
+ * The shipped vial photography is the client-approved original set
+ * (`Documents/EVOHN_SUPPLIED_2026-08-22`, 1122×1402): one master stone-crevice
+ * scene, every label uniform black. A regenerated 2048×2560 batch of the same
+ * scene exists (`EVOHN_BATCH_FINAL`) but was REJECTED — its CJC-1295, Selank
+ * and Bacteriostatic Water labels differ from the approved set — so it must
+ * not be re-installed however much larger its files are. The approved frames
+ * share one scene and one centre (cx 0.498, ground ~140 of 255) but the
+ * bottle's height varies 0.66–0.70 of the frame between them, so this pass
+ * still normalises scale per file from the measured table. Grading is off for
+ * vials: the ground is already converged, and the corner probe samples the
+ * crevice walls, which are near-black by design.
  *
  * THE MEASUREMENTS
  * ----------------
@@ -98,18 +99,18 @@ const TARGET = {
  * restructuring — and so any drift shows up as one changed line in review.
  */
 const MEASURED = {
-  "vial-bacteriostatic-water": { top: 0.214, bottom: 0.819, cx: 0.498 },
-  "vial-bpc-157-tb-500": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-cjc-1295-ipamorelin": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-ghk-cu": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-melanotan-ii": { top: 0.211, bottom: 0.819, cx: 0.498 },
-  "vial-mots-c": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-nad-plus": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-retatrutide": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-selank": { top: 0.231, bottom: 0.819, cx: 0.498 },
-  "vial-semax": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-snap-8": { top: 0.23, bottom: 0.819, cx: 0.498 },
-  "vial-tesamorelin": { top: 0.214, bottom: 0.819, cx: 0.498 },
+  "vial-bacteriostatic-water": { top: 0.186, bottom: 0.87, cx: 0.498 },
+  "vial-bpc-157-tb-500": { top: 0.186, bottom: 0.866, cx: 0.498 },
+  "vial-cjc-1295-ipamorelin": { top: 0.189, bottom: 0.859, cx: 0.498 },
+  "vial-ghk-cu": { top: 0.184, bottom: 0.869, cx: 0.498 },
+  "vial-melanotan-ii": { top: 0.183, bottom: 0.878, cx: 0.498 },
+  "vial-mots-c": { top: 0.189, bottom: 0.858, cx: 0.498 },
+  "vial-nad-plus": { top: 0.2, bottom: 0.861, cx: 0.498 },
+  "vial-retatrutide": { top: 0.197, bottom: 0.859, cx: 0.498 },
+  "vial-selank": { top: 0.194, bottom: 0.856, cx: 0.498 },
+  "vial-semax": { top: 0.194, bottom: 0.859, cx: 0.498 },
+  "vial-snap-8": { top: 0.189, bottom: 0.867, cx: 0.498 },
+  "vial-tesamorelin": { top: 0.186, bottom: 0.856, cx: 0.498 },
 
   "pen-bacteriostatic-water": { top: 0.1, bottom: 0.92, cx: 0.5 },
   "pen-bpc-157-tb-500": { top: 0.11, bottom: 0.92, cx: 0.5 },
@@ -138,19 +139,10 @@ const MEASURED = {
 const SOURCE_ALIASES = {
   // 2026-08-22 GHK-Cu pen reshoot, delivered under its generator's filename.
   "pen-ghk-cu": ["ChatGPT Image Aug 22, 2026, 03_53_57 PM"],
-
-  "vial-nad-plus": ["01_NAD+"],
-  "vial-retatrutide": ["02_Retatrutide"],
-  "vial-tesamorelin": ["03_Tesamorelin"],
-  "vial-bpc-157-tb-500": ["04_BPC157_TB500"],
-  "vial-cjc-1295-ipamorelin": ["05_CJC1295_Ipamorelin"],
-  "vial-mots-c": ["06_MOTSC"],
-  "vial-ghk-cu": ["07_GHKCu"],
-  "vial-semax": ["08_Semax"],
-  "vial-selank": ["09_Selank"],
-  "vial-snap-8": ["10_SNAP8"],
-  "vial-melanotan-ii": ["11_MelanotanII"],
-  "vial-bacteriostatic-water": ["12_BacteriostaticWater"],
+  // The approved vial sources are already named for their slugs. The rejected
+  // 2048px batch's `NN_Product` aliases were removed deliberately, so pointing
+  // this script at that folder reports "not in this delivery" instead of
+  // silently reinstalling the wrong labels.
 };
 
 /** The first candidate filename that exists in the source directory. */
