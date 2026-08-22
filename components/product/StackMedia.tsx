@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
  */
 
 /** Where the prepared renders place the bottle horizontally. */
-const PRODUCT_CX = "51%";
+const PRODUCT_CX = "50%";
 
 export function StackMedia({
   stack,
@@ -48,7 +48,10 @@ export function StackMedia({
     <div
       className={cn(
         "relative isolate flex overflow-hidden",
-        "bg-[radial-gradient(120%_90%_at_50%_16%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
+        // The vial renders' own ground — a light warm stone falling to dark
+        // crevice walls — so the panels' loading backdrop matches what the
+        // slices actually show.
+        "bg-[radial-gradient(120%_90%_at_50%_45%,#ada59f_0%,#7d7873_58%,#3a3733_100%)]",
         className,
       )}
     >

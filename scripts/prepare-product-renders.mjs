@@ -4,13 +4,11 @@
  *
  * WHY THIS EXISTS
  * ---------------
- * The renders are delivered one per compound, shot to the same brief but not
- * to the same frame: the source aspect ratio varies (most are 4:5, two are
- * square), the bottle sits anywhere between 68% and 74% of the frame height,
- * and its centre drifts by up to five points horizontally and four
- * vertically. Dropped straight into a grid those differences read as sloppy
- * photography — one card's vial noticeably larger than its neighbour's, one
- * sitting lower than the rest.
+ * Renders are delivered one per compound, and historically not to one frame:
+ * the source ratio varied, the bottle sat anywhere between 68% and 74% of the
+ * frame height, and its centre drifted by several points. Dropped straight
+ * into a grid those differences read as sloppy photography — one card's vial
+ * noticeably larger than its neighbour's, one sitting lower than the rest.
  *
  * Fixing that in CSS is not possible: `object-fit` can only scale the whole
  * frame, and the frames disagree about where the product is inside them. So
@@ -20,21 +18,35 @@
  * one `object-fit` rule for the entire catalogue, which is what makes the
  * grid read as a single shoot.
  *
+ * THE 2026-08 VIAL SHOOT
+ * ----------------------
+ * The current vial photography is composited onto ONE master scene, so it
+ * arrives already uniform: measured across all twelve, the bottle's centre is
+ * at 0.498 of the width and its base at 0.819 of the height on every frame,
+ * and the ground reads 147–150 of 255 — a three-level spread where the
+ * previous shoot spread 45 to 122. This pass therefore no longer *corrects*
+ * the vial family, it only reframes it. Uncropped, the composition gives the
+ * bottle 59% of the frame height, which reads undersized in a catalogue card,
+ * so the crop pulls in to `TARGET.vial.height` while keeping the crevice walls
+ * that are the composition. Grading is off for vials for the same reason:
+ * there is nothing left to converge.
+ *
  * THE MEASUREMENTS
  * ----------------
  * `top`/`bottom` are the product's vertical extent (top of the crimp cap to
  * the foot of the base for a vial; top of the glass cartridge to the foot of
  * the device for a pen) and `cx` its horizontal centre, all as fractions of
- * the SOURCE frame. They were read off a labelled 10% grid overlaid on each
- * render rather than detected programmatically: the compositions wrap the
- * product in a bright water swirl that defeats edge- and detail-based
- * subject detection, and with two dozen fixed assets a measured table is both
- * more accurate and easier to audit than a heuristic. Re-measure with
- * `scripts/grid-sheet.mjs` if the photography is ever replaced.
+ * the SOURCE frame. The pen figures were read off a labelled 10% grid, because
+ * that shoot wraps the product in a bright water swirl that defeats edge- and
+ * detail-based subject detection. The vial figures are detected instead — the
+ * master scene stands a dark bottle on a light ground, which thresholds
+ * cleanly. Re-measure with `scripts/grid-sheet.mjs` if either is replaced.
  *
  * Usage:  node scripts/prepare-product-renders.mjs <source-dir> [--dry]
  * Sources are named `<kind>-<slug>.png`, matching `renderFor` in
- * `data/products.ts`.
+ * `data/products.ts` — or any alias in `SOURCE_ALIASES`, which is how a
+ * delivery batch's own filenames are accepted without renaming a dozen files
+ * by hand and risking a compound being wired to the wrong photograph.
  */
 
 import sharp from "sharp";
@@ -68,29 +80,42 @@ const QUALITY = 80;
    composition's balance intact.
    -------------------------------------------------------------------------- */
 const TARGET = {
-  vial: { height: 0.74, cx: 0.51, cy: 0.56 },
+  // 0.72 is set against the previous shoot's 0.74, so the catalogue does not
+  // appear to have shrunk overnight, and against the composition's own limits:
+  // it leaves ~14% clearance above the cap and below the base — the bottle
+  // never touches the frame — and keeps both crevice walls in shot.
+  vial: { height: 0.72, cx: 0.5, cy: 0.5 },
   pen: { height: 0.82, cx: 0.505, cy: 0.515 },
 };
 
-/** Measured against a 10% grid. See the note above. */
+/**
+ * Where the product sits in each source frame. See the note above for how each
+ * family was measured.
+ *
+ * Every vial reads the same because that shoot is one master scene. They are
+ * still listed one per compound rather than collapsed to a shared constant, so
+ * that a delivery which is NOT uniform can be corrected here without
+ * restructuring — and so any drift shows up as one changed line in review.
+ */
 const MEASURED = {
-  "vial-bacteriostatic-water": { top: 0.2, bottom: 0.92, cx: 0.49 },
-  "vial-bpc-157-tb-500": { top: 0.19, bottom: 0.93, cx: 0.51 },
-  "vial-cjc-1295-ipamorelin": { top: 0.19, bottom: 0.93, cx: 0.51 },
-  "vial-ghk-cu": { top: 0.21, bottom: 0.91, cx: 0.5 },
-  "vial-melanotan-ii": { top: 0.22, bottom: 0.9, cx: 0.51 },
-  "vial-mots-c": { top: 0.2, bottom: 0.91, cx: 0.505 },
-  "vial-nad-plus": { top: 0.19, bottom: 0.92, cx: 0.515 },
-  "vial-retatrutide": { top: 0.19, bottom: 0.92, cx: 0.53 },
-  "vial-selank": { top: 0.22, bottom: 0.92, cx: 0.515 },
-  "vial-semax": { top: 0.25, bottom: 0.94, cx: 0.515 },
-  "vial-snap-8": { top: 0.24, bottom: 0.93, cx: 0.515 },
-  "vial-tesamorelin": { top: 0.25, bottom: 0.94, cx: 0.525 },
+  "vial-bacteriostatic-water": { top: 0.214, bottom: 0.819, cx: 0.498 },
+  "vial-bpc-157-tb-500": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-cjc-1295-ipamorelin": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-ghk-cu": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-melanotan-ii": { top: 0.211, bottom: 0.819, cx: 0.498 },
+  "vial-mots-c": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-nad-plus": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-retatrutide": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-selank": { top: 0.231, bottom: 0.819, cx: 0.498 },
+  "vial-semax": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-snap-8": { top: 0.23, bottom: 0.819, cx: 0.498 },
+  "vial-tesamorelin": { top: 0.214, bottom: 0.819, cx: 0.498 },
 
   "pen-bacteriostatic-water": { top: 0.1, bottom: 0.92, cx: 0.5 },
   "pen-bpc-157-tb-500": { top: 0.11, bottom: 0.92, cx: 0.5 },
   "pen-cjc-1295-ipamorelin": { top: 0.11, bottom: 0.93, cx: 0.505 },
-  "pen-ghk-cu": { top: 0.11, bottom: 0.92, cx: 0.5 },
+  // Reshot 2026-08-22. Same framing as the family; re-read off the grid.
+  "pen-ghk-cu": { top: 0.1, bottom: 0.905, cx: 0.49 },
   "pen-melanotan-ii": { top: 0.11, bottom: 0.91, cx: 0.5 },
   "pen-mots-c": { top: 0.11, bottom: 0.91, cx: 0.505 },
   "pen-nad-plus": { top: 0.11, bottom: 0.92, cx: 0.5 },
@@ -100,6 +125,42 @@ const MEASURED = {
   "pen-snap-8": { top: 0.11, bottom: 0.92, cx: 0.495 },
   "pen-tesamorelin": { top: 0.12, bottom: 0.91, cx: 0.525 },
 };
+
+/* --------------------------------------------------------------------------
+   Delivery filenames.
+
+   A batch arrives named for its own running order, not for this catalogue's
+   slugs. Renaming twelve files by hand before every run is exactly how a
+   compound ends up wired to the wrong photograph, so the mapping is declared
+   once, here, where it can be reviewed against the delivery note. A source
+   already named for its slug needs no entry.
+   -------------------------------------------------------------------------- */
+const SOURCE_ALIASES = {
+  // 2026-08-22 GHK-Cu pen reshoot, delivered under its generator's filename.
+  "pen-ghk-cu": ["ChatGPT Image Aug 22, 2026, 03_53_57 PM"],
+
+  "vial-nad-plus": ["01_NAD+"],
+  "vial-retatrutide": ["02_Retatrutide"],
+  "vial-tesamorelin": ["03_Tesamorelin"],
+  "vial-bpc-157-tb-500": ["04_BPC157_TB500"],
+  "vial-cjc-1295-ipamorelin": ["05_CJC1295_Ipamorelin"],
+  "vial-mots-c": ["06_MOTSC"],
+  "vial-ghk-cu": ["07_GHKCu"],
+  "vial-semax": ["08_Semax"],
+  "vial-selank": ["09_Selank"],
+  "vial-snap-8": ["10_SNAP8"],
+  "vial-melanotan-ii": ["11_MelanotanII"],
+  "vial-bacteriostatic-water": ["12_BacteriostaticWater"],
+};
+
+/** The first candidate filename that exists in the source directory. */
+function resolveSource(dir, name) {
+  for (const stem of [name, ...(SOURCE_ALIASES[name] ?? [])]) {
+    const file = path.join(dir, stem + ".png");
+    if (fs.existsSync(file)) return file;
+  }
+  return null;
+}
 
 /* --------------------------------------------------------------------------
    Tonal convergence.
@@ -125,7 +186,13 @@ const MEASURED = {
    inconsistency without restyling either.
    -------------------------------------------------------------------------- */
 const GRADE = {
-  vial: { target: 82, strength: 0.8 },
+  // Off. The 2026-08 vial shoot is one master scene and arrives converged
+  // (ground 147–150 of 255), so there is nothing to correct — and the corner
+  // probe below samples the crevice WALLS on that composition, which are
+  // near-black by design. Grading toward any single number would read those
+  // walls as "a dark background", lift them, and flatten the depth the shoot
+  // was lit for.
+  vial: null,
   pen: { target: 35, strength: 0.8 },
 };
 
@@ -136,7 +203,9 @@ function gammaExponent(from, to) {
 }
 
 async function applyGrade(buffer, luma, kind) {
-  const { target, strength } = GRADE[kind];
+  const rule = GRADE[kind];
+  if (!rule) return buffer;
+  const { target, strength } = rule;
   const to = luma + (target - luma) * strength;
   const e = gammaExponent(luma, to);
   if (Math.abs(e - 1) < 0.01) return buffer;
@@ -225,8 +294,9 @@ async function prepare(sourceFile, name, dry, grade) {
     .toBuffer();
 
   const before = await cornerLuma(buffer);
-  if (grade) buffer = await applyGrade(buffer, before, kind);
-  const after = grade ? await cornerLuma(buffer) : before;
+  const graded = Boolean(grade && GRADE[kind]);
+  if (graded) buffer = await applyGrade(buffer, before, kind);
+  const after = graded ? await cornerLuma(buffer) : before;
 
   const outPath = path.join(OUT_DIR, `${name}.webp`);
   if (!dry) fs.writeFileSync(outPath, buffer);
@@ -248,25 +318,44 @@ async function prepare(sourceFile, name, dry, grade) {
 const sourceDir = process.argv[2];
 const dry = process.argv.includes("--dry");
 const grade = !process.argv.includes("--no-grade");
+const strict = process.argv.includes("--strict");
 if (!sourceDir) {
   console.error(
-    "usage: prepare-product-renders.mjs <source-dir> [--dry] [--no-grade]",
+    "usage: prepare-product-renders.mjs <source-dir> [--dry] [--no-grade] [--strict]",
   );
   process.exit(1);
 }
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
+/*
+   A source directory usually holds one family, not both — a vial shoot is
+   redelivered without the pens being reshot. Absent renders are reported and
+   skipped rather than failing the run, so re-preparing one family leaves the
+   other's prepared files untouched; `--strict` restores the old behaviour for
+   the case where a full redelivery is expected to be complete.
+*/
 const names = Object.keys(MEASURED);
 const results = [];
+const missing = [];
 for (const name of names) {
-  const file = path.join(sourceDir, `${name}.png`);
-  if (!fs.existsSync(file)) {
-    console.error(`MISSING SOURCE  ${name}.png`);
-    process.exitCode = 1;
+  const file = resolveSource(sourceDir, name);
+  if (!file) {
+    missing.push(name);
     continue;
   }
   results.push(await prepare(file, name, dry, grade));
+}
+
+if (missing.length) {
+  console.error(
+    `not in this delivery (${missing.length}, left as prepared): ${missing.join(", ")}`,
+  );
+  if (strict) process.exitCode = 1;
+}
+if (!results.length) {
+  console.error("no sources matched — nothing to prepare");
+  process.exit(1);
 }
 
 const pad = (s, n) => String(s).padEnd(n);

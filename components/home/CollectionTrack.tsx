@@ -316,12 +316,12 @@ function Card({
             is smaller of the card's width and the height budget times the
             ratio wins, and `mx-auto` keeps the bottle centred. The prepared
             renders are all 4:5, so the ratio is uniform down the rail; the
-            dark radial ground remains only as the loading backdrop and is
-            keyed to the photography's own near-black. */}
+            radial ground remains only as the loading backdrop and is keyed
+            to the vial photography's own light warm stone. */}
         <div
           className={cn(
             "group/img relative mx-auto mt-5 max-w-full overflow-hidden rounded-[12px]",
-            "bg-[radial-gradient(120%_90%_at_50%_18%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
+            "bg-[radial-gradient(120%_90%_at_50%_45%,#ada59f_0%,#7d7873_58%,#3a3733_100%)]",
           )}
           style={{
             aspectRatio: String(item.aspect ?? 4 / 5),

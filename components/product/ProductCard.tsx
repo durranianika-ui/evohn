@@ -66,18 +66,27 @@ export function ProductCard({
           )}
         />
 
-        {/* Category swatch and index sit ON the photograph, which is now a
-            lit near-black rather than the warm plate they were coloured for.
-            Both are keyed to `soft` so they stay legible against it — carbon
-            on carbon read as nothing at all. */}
+        {/* Category swatch and index sit ON the photograph, so their tones
+            are keyed to the presentation's ground: the vial shoot stands on
+            light warm stone, where a `soft` overlay reads as nothing at all,
+            while the pen shoot is lit near-black, where `carbon` would
+            vanish the same way. */}
         <span
-          className="absolute top-5 left-5 size-2.5 rounded-full ring-1 ring-soft/30"
+          className={cn(
+            "absolute top-5 left-5 size-2.5 rounded-full ring-1",
+            presentation === "pen" ? "ring-soft/30" : "ring-carbon/25",
+          )}
           style={{ backgroundColor: category.token }}
           aria-hidden
         />
 
+        {/* The index cannot be keyed the way the swatch ring is: it stands in
+            a corner where the vial composition varies card to card — a black
+            crevice wall on one, open light stone on the next — so any fixed
+            tone vanishes somewhere in the grid. Difference blending inverts
+            whatever is actually behind it instead. */}
         {index !== undefined ? (
-          <span className="type-label absolute top-5 right-5 tabular-nums text-soft/70">
+          <span className="type-label absolute top-5 right-5 tabular-nums text-soft/70 mix-blend-difference">
             {String(index + 1).padStart(2, "0")}
           </span>
         ) : null}

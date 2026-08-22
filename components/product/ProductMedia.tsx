@@ -36,11 +36,18 @@ interface ProductMediaProps {
  * crops nor letterboxes anything — it is the guard that keeps a future
  * off-ratio asset filling the plate instead of floating in it.
  *
- * The ground is the renders' own near-black rather than the warm plate this
- * used to paint. The photography carries its own lit background now, so a
- * light ground would only ever be seen as a pale seam at the frame's edge
- * while the image decodes.
+ * The ground behind the loading image is keyed per family to the
+ * photography's own backdrop, so nothing flashes while the file decodes: the
+ * 2026-08 vial shoot stands on a light warm stone scene (centre ~#ada59f
+ * falling to near-black crevice walls at the edges), while the pen shoot
+ * remains lit against near-black. One shared gradient cannot serve both — a
+ * dark plate behind a light photograph reads as a hard flash on every
+ * navigation, which is exactly the defect this used to prevent.
  */
+const GROUND: Record<PresentationKind, string> = {
+  vial: "bg-[radial-gradient(120%_90%_at_50%_45%,#ada59f_0%,#7d7873_58%,#3a3733_100%)]",
+  pen: "bg-[radial-gradient(120%_90%_at_50%_18%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
+};
 export function ProductMedia({
   product,
   frame,
@@ -58,14 +65,14 @@ export function ProductMedia({
       ? product.image
       : (product.gallery[frame] ?? product.image));
 
+  // Which family's backdrop to stand behind the loading image. The source
+  // path is authoritative — a gallery frame is a pen render even when no
+  // `presentation` was asked for by name.
+  const kind: PresentationKind = src.includes("/pen-") ? "pen" : "vial";
+
   return (
     <div
-      className={cn(
-        "relative isolate overflow-hidden",
-        // Matches the ground the renders are lit against.
-        "bg-[radial-gradient(120%_90%_at_50%_18%,#2a2a2c_0%,#161618_62%,#0d0d0e_100%)]",
-        className,
-      )}
+      className={cn("relative isolate overflow-hidden", GROUND[kind], className)}
     >
       <Image
         src={asset(src)}
