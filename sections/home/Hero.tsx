@@ -9,32 +9,33 @@ import { asset, hasAsset } from "@/lib/media";
  *
  * The film is a full-width band sitting under the fixed header, exactly as
  * the reference presents its own product footage: portrait 4:5 on a phone
- * and the film's native 32:17 from the tablet stop up, with a radial
- * vignette, a heavier foot for the type, and a breath of grain. The
- * headline rides the bottom-left of the frame; the band ends and the next
- * section's light ground provides the whitespace the reference keeps around
- * its footage.
+ * and 32:17 from the tablet stop up, with a radial vignette, a heavier foot
+ * for the type, and a breath of grain. The headline rides the bottom-left
+ * of the frame; the band ends and the next section's light ground provides
+ * the whitespace the reference keeps around its footage.
  *
- * ## The CTA doubles as the mark cover
+ * ## How the film meets the band
  *
- * The supplied footage carries a small watermark in its upper-left corner.
- * The primary CTA is deliberately stationed over that corner so the mark is
- * never visible — measured off the source frames (1920x1020), the mark
- * occupies 3.5–8.1% of the frame's width and 6.8–12% of its height, i.e.
- * 3.5vw–8.1vw across and 3.61vw–6.38vw down once the film spans the full
- * viewport width. The frame is the film's NATIVE ratio from `md` up (not
- * 16:9) precisely so `object-cover` never crops the sides: this mark hugs
- * the left edge, and any horizontal crop slides it out from under the
- * button. With the film top-anchored (see HeroFilm) the `max-h` clamp can
- * only crop the bottom, so the mark's position stays a pure function of
- * viewport width. The CTA's inset (2vw), minimum height (max(3rem, 4.75vw))
- * and minimum width (max(10rem, 13vw)) are solved against those bounds, so
- * the button covers the mark at every viewport from 768 to ultrawide
- * without ever reading as a patch. Below `md` the 4:5 crop removes the
- * corner of the frame the mark lives in entirely; the CTA simply remains
- * the hero action.
+ * The film is the EVOHN brand edit, prepared by `scripts/prepare-hero-film.mjs`
+ * — read that file before replacing it, because the supplied master carries a
+ * watermark, a black bar and a misspelled label that the prepare pass strips.
+ * What lands in `public/` is 1080x640, i.e. 27:16 (1.6875).
  *
- * Do not swap the CTA for a transparent variant: opacity is load-bearing.
+ * That is NARROWER than the 32:17 band, so from `md` up `object-cover`
+ * matches the film's width to the band's and takes its crop from the height:
+ * about 10% of the frame, off the bottom, since the film is top-anchored
+ * (see HeroFilm). The sides are never cropped and the film is never
+ * stretched — the subject of every shot sits at or above the middle of the
+ * frame and survives the trim. Below `md` the 4:5 band inverts that and
+ * shows the middle 47% of the frame's width; the compositions are centred,
+ * so they read, but anything that must stay whole — a wordmark spanning the
+ * frame, say — cannot live in this film. That is why the prepare pass cuts
+ * the end card rather than leaving it for CSS to rescue.
+ *
+ * The CTA is stationed on the film's upper-left corner as the hero action,
+ * nothing more. Earlier footage hid a watermark under it and its geometry
+ * was solved for that coverage; the mark is now cropped out of the source,
+ * so the button is free to be sized however the design wants.
  */
 const headline: Line[] = [
   { text: "Scientific", align: "left" },
@@ -43,8 +44,8 @@ const headline: Line[] = [
 ];
 
 export function Hero() {
-  const film = "/editorial/hero-pen-fhd.mp4";
-  const posterPath = "/editorial/hero-pen-fhd-poster.jpg";
+  const film = "/editorial/hero-film.mp4";
+  const posterPath = "/editorial/hero-film-poster.jpg";
   const poster = hasAsset(posterPath) ? asset(posterPath) : undefined;
 
   return (
@@ -67,8 +68,7 @@ export function Hero() {
         />
         <div aria-hidden className="grain-field pointer-events-none absolute inset-0" />
 
-        {/* Primary CTA — stationed over the film's upper-left corner. The
-            geometry is coverage-critical; see the section comment. */}
+        {/* Primary CTA — stationed on the film's upper-left corner. */}
         <Link
           href="/catalogue"
           className="group/cta type-label absolute left-[max(1rem,2vw)] top-[max(0.875rem,2vw)] z-20 inline-flex min-h-[max(3rem,4.75vw)] min-w-[max(10rem,13vw)] items-center justify-center gap-3 bg-soft px-[clamp(1.25rem,2vw,2.5rem)] text-carbon transition-colors duration-500 ease-brand hover:bg-mist focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soft"

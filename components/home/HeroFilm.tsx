@@ -14,12 +14,10 @@ import { cn } from "@/lib/utils";
  * In both cases the poster stands in with the identical composition.
  *
  * The film is anchored to the TOP of its frame (`object-top`), not the
- * centre. This is a functional constraint, not a taste: the supplied footage
- * carries a mark in its upper-left corner that the hero CTA is positioned to
- * conceal, and top-anchoring means any cropping the responsive frame does is
- * taken from the bottom of the frame only — so the mark's position against
- * the frame is a pure function of viewport width, which is what the CTA's
- * vw-based geometry is sized against.
+ * centre, so the crop the responsive band takes is spent entirely on the
+ * bottom of the frame. That is the half the headline covers anyway, and it
+ * keeps the empty upper ground the shots are composed against — and the CTA
+ * parked on it — fixed as the viewport changes.
  */
 export function HeroFilm({
   src,
